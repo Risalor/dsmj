@@ -1,0 +1,183 @@
+
+components <= {
+    menu: <Menu>
+    api: <Api>
+    images: <ImageDisplay>
+    styles: <Style>
+    footer: <Footer>
+    login: <Menu>
+}
+
+menu <= {
+    options <= {
+        HOME <= {
+            url: /home,
+            text: "Home",
+            style <= {
+                color: green,
+                background-color: black
+            }
+        },
+        DISCOVER <= {
+            url: /discover,
+            text: "Discover",
+            style <= {
+                text-decoration-line: overline underline
+            }
+        },
+        GALLERY <= {
+            url: /Gallery,
+            text: "Gallery",
+            style <= {
+                text-shadow: 2px 2px red
+            }
+        },
+        UPLOAD <= {
+            url: /upload,
+            text: "Upload image",
+            style <= {
+                color: green,
+                background-color: black
+            }
+        },
+        HELP <= {
+            url: /help,
+            text: "Help",
+            style <= {
+                text-shadow: 2px 2px red
+            }
+        }
+    },
+    style <= {
+        border: solid 1px black
+        background-color: white
+    },
+    type: topbar
+}
+
+login <= {
+    $userId ? {
+        options <= {
+            LOGIN <= {
+                url: /login,
+                text: "Login",
+                style <= {
+                    color: green,
+                    background-color: black
+                }
+            },
+            REGISTER <= {
+                url: /register,
+                text: "Register",
+                style <= {
+                    color: green,
+                    background-color: black
+                }
+            }
+        }
+    } : {
+        LOGOUT <= {
+            url: /logout,
+            text: "Logout",
+            style <= {
+                color: green,
+                background-color: black
+            }
+        }
+    },
+    type: topbar
+}
+
+api <= {
+    base_url: "http://localhost:3000/",
+    endpoints <= {
+        images: "GET /images",
+        users: "GET /users",
+        like_image(imageId): "POST /images/(imageId)/like",
+        dislike_image(imageId): "POST /images/(imageId)/dislike",
+        add_to_favorite: "POST /users/{userId}/favorite",
+        image_comments(imageId): "POST /images/(imageId)/comments"
+    }
+}
+
+images <= {
+    load_actions: {
+        contents: api.images,
+        for_each <= {
+            imageId: contents[]._id,
+            like_num: contents[].num_of_likes,
+            dislike_num: contents[].num_of_dislikes,
+            top_comments <= api.image_comments(imageId)
+        }
+    },
+    layout <= {
+        options: [grid, list],
+        default: grid
+    },
+    items_per_page: 20,
+    sorting <= {
+        options: [newest_first, most_popular],
+        default: newest_first
+    },
+    enabled_components <= {
+        likes <= {
+            enabled: true,
+            content: like_num,
+            position: bottom-left
+        },
+        dislikes <= {
+            enabled: true,
+            content: dislike_num
+            position: bottom-right,
+            style <= {
+                color: red
+            }
+        },
+        comments <= {
+            enabled: true,
+            content <= top_comments,
+            max_visible: 3
+        },
+        favorite: {
+            enabled: true
+        }
+    },
+    click_actions <= {
+        likes <= {
+            endpoint: api.like_image(imageId),
+            payload <= {
+                user_id: $userId
+            },
+            on_success: reload
+        },
+        dislikes <= {
+            endpoint: api.dislike_image(imageId),
+            payload <= {
+                user_id: $userId
+            },
+            on_success: reload
+        },
+        favorite <= {
+            endpoint: api.add_to_favorite,
+            payload <= {
+                image_id: imageId
+            }
+        }
+    }
+}
+
+footer <= {
+    content <= {
+        text: "Kristjan's art gallery website"
+    }
+}
+
+DRAW <= {
+    "
+    {menu} | {login}
+    -
+    {gallery}
+    -
+    {footer}
+    "
+}

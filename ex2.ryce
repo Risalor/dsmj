@@ -1,0 +1,164 @@
+components <= {
+    menu: <Menu>
+    api: <Api>
+    images: <ImageDisplay>
+    styles: <Style>
+    footer: <Footer>
+    login: <Menu>
+}
+
+menu <= {
+    options <= {
+        GALLERY <= {
+            url: /gallery,
+            text: "Gallery",
+            style <= {
+                font-weight: bold
+            }
+        },
+        ARTISTS <= {
+            url: /artists,
+            text: "Artists",
+            style <= {
+                text-decoration-line: overline underline
+            }
+        },
+        ABOUT <= {
+            url: /about,
+            text: "About",
+            style <= {
+                font-style: italic
+            }
+        }
+    },
+    style <= {
+        background-color: #f0f0f0
+    },
+    type: sidemenu
+}
+
+login <= {
+    $userId ? {
+        options <= {
+            LOGIN <= {
+                url: /login,
+                text: "Login",
+                style <= {
+                    color: green,
+                    background-color: black
+                }
+            },
+            REGISTER <= {
+                url: /register,
+                text: "Register",
+                style <= {
+                    color: green,
+                    background-color: black
+                }
+            }
+        }
+    } : {
+        LOGOUT <= {
+            url: /logout,
+            text: "Logout",
+            style <= {
+                color: green,
+                background-color: black
+            }
+        }
+    },
+    type: topbar
+}
+
+api <= {
+    base_url: "http://localhost:3000/",
+    endpoints <= {
+        images: "GET /images",
+        artists: "GET /artists",
+        like_image(imageId): "POST /images/(imageId)/like",
+        share_image(imageId): "POST /images/(imageId)/share",
+        add_to_favorite: "POST /users/{userId}/favorite"
+    }
+}
+
+images <= {
+    load_actions: {
+        contents: api.images,
+        for_each <= {
+            imageId: contents[]._id,
+            like_num: contents[].num_of_likes,
+            artist_name: contents[].artist_name,
+            description: contents[].description
+        }
+    },
+    layout <= {
+        options: [masonry, grid],
+        default: masonry
+    },
+    items_per_page: 30,
+    sorting <= {
+        options: [most_popular, newest_first],
+        default: most_popular
+    },
+    enabled_components <= {
+        likes <= {
+            enabled: true,
+            content: like_num,
+            position: bottom-left
+        },
+        artist <= {
+            enabled: true,
+            content: artist_name,
+            position: top-left
+        },
+        description <= {
+            enabled: true,
+            content: description,
+            max_visible: 1
+        },
+        favorite: {
+            enabled: true
+        },
+        share: {
+            enabled: true,
+            position: top-right
+        }
+    },
+    click_actions <= {
+        likes <= {
+            endpoint: api.like_image(imageId),
+            payload <= {
+                user_id: $userId
+            },
+            on_success: reload
+        },
+        favorite <= {
+            endpoint: api.add_to_favorite,
+            payload <= {
+                image_id: imageId
+            }
+        },
+        share <= {
+            endpoint: api.share_image(imageId),
+            payload <= {
+                user_id: $userId
+            }
+        }
+    }
+}
+
+footer <= {
+    content <= {
+        text: "Art Space"
+    }
+}
+
+DRAW <= {
+    "
+    {menu} | {login}
+    -
+    {gallery}
+    -
+    {footer}
+    "
+}

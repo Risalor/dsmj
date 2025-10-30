@@ -1,0 +1,47 @@
+# Dependency directories [citation:2][citation:3][citation:7]
+node_modules/
+
+# Build outputs [citation:2][citation:9]
+build/
+dist/
+.out/
+.next/
+.nuxt/
+
+# Logs [citation:2][citation:3]
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# Runtime data [citation:2]
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage directory used by tools like istanbul [citation:2]
+coverage/
+*.lcov
+.nyc_output
+
+# Environment variables [citation:2][citation:3]
+.env
+.env.test
+.env*.local
+
+# Cache directories [citation:2]
+.npm
+.eslintcache
+.cache
+.parcel-cache
+
+# TypeScript cache [citation:2]
+*.tsbuildinfo
+
+# Optional REPL history [citation:2]
+.node_repl_history
+
+# OS-generated files [citation:2][citation:10]
+.DS_Store

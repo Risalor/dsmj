@@ -1,0 +1,159 @@
+components <= {
+    menu: <Menu>
+    api: <Api>
+    images: <ImageDisplay>
+    styles: <Style>
+    login: <Menu>
+}
+
+menu <= {
+    options <= {
+        COLLECTIONS <= {
+            url: /collections,
+            text: "Collections",
+            style <= {
+                color: gold,
+                background-color: #222
+            }
+        },
+        EXHIBITIONS <= {
+            url: /exhibitions,
+            text: "Exhibitions"
+        },
+        ARTIST_SPOTLIGHT <= {
+            url: /spotlight,
+            text: "Artist Spotlight",
+            style <= {
+                text-shadow: 1px 1px 2px purple
+            }
+        },
+        CONTACT <= {
+            url: /contact,
+            text: "Contact"
+        }
+    },
+    style <= {
+        border-bottom: solid 2px gold,
+        background-color: #111
+    },
+    type: dropdown
+
+}
+
+login <= {
+    $userId ? {
+        options <= {
+            LOGIN <= {
+                url: /login,
+                text: "Login",
+                style <= {
+                    color: green,
+                    background-color: black
+                }
+            },
+            REGISTER <= {
+                url: /register,
+                text: "Register",
+                style <= {
+                    color: green,
+                    background-color: black
+                }
+            }
+        }
+    } : {
+        LOGOUT <= {
+            url: /logout,
+            text: "Logout",
+            style <= {
+                color: green,
+                background-color: black
+            }
+        }
+    }
+}
+
+api <= {
+    base_url: "http://localhost:3000/",
+    endpoints <= {
+        featured_art: "GET /art/featured",
+        artist_profile(artistId): "GET /artists/(artistId)",
+        purchase_inquiry(imageId): "POST /inquiries/(imageId)/purchase",
+        contact_artist(artistId): "POST /artists/(artistId)/contact"
+    }
+}
+
+images <= {
+    load_actions: {
+        contents: api.featured_art,
+        for_each <= {
+            imageId: contents[]._id,
+            title: contents[].title,
+            artist_name: contents[].artist_name,
+            artist_id: contents[].artist_id,
+            price: contents[].price,
+            medium: contents[].medium
+        }
+    },
+    layout <= {
+        options: [grid],
+        default: grid
+    },
+    items_per_page: 12,
+    sorting <= {
+        options: [curators_pick, newest_first],
+        default: curators_pick
+    },
+    enabled_components <= {
+        title <= {
+            enabled: true,
+            content: title,
+            position: "top-left",
+            style <= {
+                font-size: 1.1em
+            }
+        },
+        artist <= {
+            enabled: true,
+            content: artist_name,
+            position: "bottom-left"
+        },
+        details <= {
+            enabled: true,
+            content: medium,
+            position: "bottom-center"
+        },
+        price <= {
+            enabled: true,
+            content: price,
+            position: "bottom-right",
+            style <= {
+                color: gold,
+                font-weight: bold
+            }
+        },
+        purchase <= {
+            enabled: true,
+            position: "top-right"
+        }
+    },
+    click_actions <= {
+        artist <= {
+            endpoint: api.artist_profile(artist_id),
+            on_success: navigate
+        },
+        purchase <= {
+            endpoint: api.purchase_inquiry(imageId),
+            payload <= {
+                client_email: $userEmail
+            }
+        }
+    }
+}
+
+DRAW <= {
+    "
+    {menu} | {login}
+    -
+    {images}
+    "
+}

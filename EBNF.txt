@@ -1,0 +1,71 @@
+(* Root production *)
+config = components, draw ;
+
+(* Components definition *)
+components = "components", "<=", "{", component_list, "}" ;
+component_list = component_definition, { ",", component_definition } ;
+component_definition = identifier, ":", component_type ;
+component_type = "<", identifier, ">" ;
+
+(* Component assignments *)
+component_assignments = { component_assignment } ;
+component_assignment = identifier, "<=", value ;
+
+(* Values *)
+value = object
+      | array
+      | string
+      | number
+      | boolean
+      | conditional
+      | reference
+      | function_call ;
+
+(* Objects *)
+object = "{", [ property_list ], "}" ;
+property_list = property, { ",", property } ;
+property = identifier, "<=", value
+         | identifier, ":", value
+         | identifier, "?", value ;
+
+(* Arrays *)
+array = "[", [ value_list ], "]" ;
+value_list = value, { ",", value } ;
+
+(* Array references)
+array_reference = identifier, "[]", { ".", identifier } ;
+
+(* For-each construct)
+for_each = "for_each", "<=", "{", for_each_mappings, "}" ;
+for_each_mappings = for_each_mapping, { ",", for_each_mapping } ;
+for_each_mapping = identifier, ":", array_reference ;
+
+(* Load actions)
+load_actions = "load_actions", ":", "{", load_properties, "}" ;
+load_properties = "contents", ":", reference, [ ",", for_each ] ;
+
+(* Conditionals *)
+conditional = condition, "?", value, ":", value ;
+condition = reference ;
+
+(* References and function calls *)
+reference = "$", identifier
+          | identifier, { ".", identifier } ;
+function_call = identifier, "(", [ argument_list ], ")" ;
+argument_list = argument, { ",", argument } ;
+argument = identifier | string | number ;
+
+(* DRAW section *)
+draw = "DRAW", "<=", "{", layout_string, "}" ;
+layout_string = string ;
+
+(* Basic tokens *)
+identifier = letter, { letter | digit | "_" } ;
+string = '"', { character }, '"' ;
+number = digit, { digit } ;
+boolean = "true" | "false" ;
+
+(* Character classes *)
+letter = "a" | "b" | ... | "z" | "A" | "B" | ... | "Z" ;
+digit = "0" | "1" | ... | "9" ;
+character = ? any character except " ? ;
