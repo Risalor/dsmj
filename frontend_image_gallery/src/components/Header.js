@@ -7,16 +7,16 @@ function Header() {
 
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark px-3">
-            <Link className="navbar-brand" to="/">PhotoApp</Link>
+            <Link className="navbar-brand" to="/">KrisGallery</Link>
             <div className="collapse navbar-collapse">
                 <ul className="navbar-nav me-auto">
                     <li className="nav-item">
-                        <Link className="nav-link" to="/">Photos</Link>
+                        <Link className="nav-link" to="/">Images</Link>
                     </li>
                     {user && (
                         <>
                             <li className="nav-item">
-                                <Link className="nav-link" to="/AddPhoto">Add Photo</Link>
+                                <Link className="nav-link" to="/AddPhoto">Add Image</Link>
                             </li>
                             <li className="nav-item">
                                 <Link className="nav-link" to="/Profile">Profile</Link>

@@ -12,6 +12,7 @@ router.get('/', UserController.list);
 /*
  * GET
  */
+router.get('/checkFavorite/:imageId', UserController.checkFavorite);
 router.get('/:id', UserController.show);
 router.get('/:userId/profile', UserController.profile)
 /*
@@ -30,5 +31,6 @@ router.put('/:id', UserController.update);
  * DELETE
  */
 router.delete('/:id', UserController.remove);
+router.delete('/removeFavorite/:imageId', UserController.removeFavorite);
 
 module.exports = router;

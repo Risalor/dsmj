@@ -286,4 +286,65 @@ module.exports = {
             });
         });
     },
+
+    checkFavorite: function(req, res) {
+        if (!req.session.userId) {
+            return res.status(401).json({ error: 'Not authenticated' });
+        }
+
+        const imageId = req.params.imageId;
+        
+        if (!imageId) {
+            return res.status(400).json({ error: 'Image ID is required' });
+        }
+
+        UserModel.findById(req.session.userId, 'Favorites')
+            .exec(function(err, user) {
+                if (err) {
+                    return res.status(500).json({
+                        message: 'Error when checking favorite status',
+                        error: err
+                    });
+                }
+
+                if (!user) {
+                    return res.status(404).json({ error: 'User not found' });
+                }
+
+                const isFavorited = user.Favorites.includes(imageId);
+                return res.json({ isFavorited });
+        });
+    },
+
+    removeFavorite: function(req, res) {
+        if (!req.session.userId) {
+            return res.status(401).json({ error: 'Not authenticated' });
+        }
+
+        const imageId = req.params.imageId;
+        
+        if (!imageId) {
+            return res.status(400).json({ error: 'Image ID is required' });
+        }
+
+        UserModel.findByIdAndUpdate(
+            req.session.userId,
+            { 
+                $pull: { Favorites: imageId }
+            },
+            { new: true }
+        ).exec(function(err, user) {
+            if (err) {
+                return res.status(500).json({
+                    message: 'Error when removing from favorites',
+                    error: err
+                });
+            }
+
+            return res.json({
+                message: 'Image removed from favorites',
+                favorites: user.Favorites
+            });
+        });
+    }
 };

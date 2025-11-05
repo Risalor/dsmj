@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import DislikePhoto from "./DislikePhoto";
 import LikePhoto from "./LikePhoto";
-import InappropriateButton from "./ReportButton";
+import AddToFavoritesButton from "./AddToFavoritesButton";
 import { UserContext } from "../userContexts";
 
 function Photo({ photo: initialPhoto }) {
@@ -29,9 +29,9 @@ function Photo({ photo: initialPhoto }) {
             <div className="card-footer d-flex justify-content-between">
                 <LikePhoto photo={photo} setPhoto={setPhoto} />
                 {user && (
-                    <InappropriateButton
+                    <AddToFavoritesButton
                         photoId={photo._id}
-                        isNotProperBy={photo.IsNotProperBy}
+                        isFavoritedBy={photo.FavoritedBy || []} // Make sure this field exists in your photo model
                         currentUserId={user._id}
                     />
                 )}
