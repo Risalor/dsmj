@@ -6,7 +6,11 @@ var UserSchema = new Schema({
 	'ProfileName' : String,
 	'ProfileImage' : String,
 	'Email' : String,
-	'Password' : String
+	'Password' : String,
+	'Favorites' :  [{
+	 	type: Schema.Types.ObjectId,
+	 	ref: 'Image'
+	}]
 });
 
 UserSchema.pre('save', function(next){

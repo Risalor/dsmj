@@ -1,3 +1,4 @@
+var mongoose = require('mongoose')
 var UserModel = require('../models/UserModel.js');
 var CommentModel = require('../models/CommentModel.js');
 var ImageModel = require('../models/ImageModel.js');
@@ -231,5 +232,58 @@ module.exports = {
                 res.status(500).json({ error: 'Server error' });
             });
         });
-    }
+    },
+
+    addFavorite: function(req, res) {
+        if (!req.session.userId) {
+            return res.status(401).json({ error: 'Not authenticated' });
+        }
+
+        const imageId = req.body.imageId;
+        
+        if (!imageId) {
+            return res.status(400).json({ error: 'Image ID is required' });
+        }
+
+        ImageModel.findById(imageId, function(err, image) {
+            if (err) {
+                return res.status(500).json({
+                    message: 'Error when checking image',
+                    error: err
+                });
+            }
+
+            if (!image) {
+                return res.status(404).json({ error: 'Image not found' });
+            }
+
+            UserModel.findOneAndUpdate(
+                { 
+                    _id: req.session.userId,
+                    Favorites: { $ne: imageId }
+                },
+                { 
+                    $addToSet: { Favorites: imageId }
+                },
+                { new: true }
+            ).populate('Favorites')
+             .exec(function(err, user) {
+                if (err) {
+                    return res.status(500).json({
+                        message: 'Error when adding to favorites',
+                        error: err
+                    });
+                }
+
+                if (!user) {
+                    return res.status(400).json({ error: 'Image already in favorites' });
+                }
+
+                return res.json({
+                    message: 'Image added to favorites',
+                    favorites: user.Favorites
+                });
+            });
+        });
+    },
 };

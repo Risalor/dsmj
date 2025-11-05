@@ -23,6 +23,11 @@ router.get('/', ImageController.list);
 /*
  * GET
  */
+
+router.put('/:id', ImageController.update);
+router.get('/:imageId/comments', ImageController.getComments);
+router.post('/:imageId/comments', ImageController.postComment);
+
 router.get('/:id', ImageController.show);
 
 /*
@@ -34,9 +39,7 @@ router.post('/:imageId/dislike', requiresLogin, ImageController.dislikePhoto);
 /*
  * PUT
  */
-router.put('/:id', ImageController.update);
-router.get('/:imageId/comments', ImageController.getComments);
-router.post('/:imageId/comments', ImageController.postComment);
+
 
 /*
  * DELETE

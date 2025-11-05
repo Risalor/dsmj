@@ -13,7 +13,7 @@ function PostComment({ photoId, onCommentPosted }) {
         setError(null);
 
         try {
-            const res = await fetch(`http://localhost:3001/photos/${photoId}/comments`, {
+            const res = await fetch(`http://localhost:3001/images/${photoId}/comments`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 credentials: 'include',

@@ -20,6 +20,7 @@ router.get('/:userId/profile', UserController.profile)
 router.post('/', upload.single('ProfileImage'), UserController.create);
 router.post('/login', UserController.login);
 router.post('/logout', UserController.logout);
+router.post('/addToFavorites', UserController.addFavorite);
 /*
  * PUT
  */

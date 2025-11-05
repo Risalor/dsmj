@@ -9,7 +9,7 @@ function Comments({ photoId }) {
     useEffect(() => {
         async function fetchComments() {
             try {
-                const res = await fetch(`http://localhost:3001/photos/${photoId}/comments`);
+                const res = await fetch(`http://localhost:3001/images/${photoId}/comments`);
                 if (!res.ok) throw new Error("Failed to fetch");
                 const data = await res.json();
                 setComments(data);

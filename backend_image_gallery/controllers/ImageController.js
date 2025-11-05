@@ -136,44 +136,46 @@ module.exports = {
     },
 
     likePhoto: function(req, res) {
-        if (!req.session.userId) {
-            return res.status(401).json({ error: 'Unauthorized' });
-        }
-    
-        const photoId = req.params.photoId;
-        const userId = req.session.userId;
-    
-        ImageModel.findById(photoId)
-            .then(function(photo) {
-                if (!photo) {
-                    return res.status(404).json({ error: 'Photo not found' });
+    if (!req.session.userId) {
+        return res.status(401).json({ error: 'Unauthorized' });
+    }
+
+    const imageId = req.params.imageId;
+    const userId = req.session.userId;
+
+    ImageModel.findById(imageId)
+        .then(function(photo) {
+            if (!photo) {
+                res.status(404).json({ error: 'Photo not found' });
+                return null;
+            }
+
+            const likedIndex = photo.LikedBy.indexOf(userId);
+            const dislikedIndex = photo.DislikedBy.indexOf(userId);
+
+            if (likedIndex !== -1) {
+                photo.LikedBy.splice(likedIndex, 1);
+                photo.Likes--;
+            } else {
+                photo.LikedBy.push(userId);
+                photo.Likes++;
+                if (dislikedIndex !== -1) {
+                    photo.DislikedBy.splice(dislikedIndex, 1);
+                    photo.Dislikes--;
                 }
-    
-                const likedIndex = photo.LikedBy.indexOf(userId);
-                const dislikedIndex = photo.DislikedBy.indexOf(userId);
-    
-                if (likedIndex !== -1) {
-                    photo.LikedBy.splice(likedIndex, 1);
-                    photo.Likes--;
-                } else {
-                    photo.LikedBy.push(userId);
-                    photo.Likes++;
-    
-                    if (dislikedIndex !== -1) {
-                        photo.DislikedBy.splice(dislikedIndex, 1);
-                        photo.Dislikes--;
-                    }
-                }
-    
-                return photo.save();
-            })
-            .then(function(updatedPhoto) {
-                res.json(updatedPhoto);
-            })
-            .catch(function(err) {
-                console.error(err);
+            }
+
+            return photo.save();
+        })
+        .then(function(updatedPhoto) {
+            if (!updatedPhoto) return;
+            res.json(updatedPhoto.toObject());
+        })
+        .catch(function(err) {
+            console.error(err);
+            if (!res.headersSent)
                 res.status(500).json({ error: 'Server error' });
-            });
+        });
     },
     
     dislikePhoto: function(req, res) {
@@ -181,10 +183,10 @@ module.exports = {
             return res.status(401).json({ error: 'Unauthorized' });
         }
     
-        const photoId = req.params.photoId;
+        const imageId = req.params.imageId;
         const userId = req.session.userId;
     
-        ImageModel.findById(photoId)
+        ImageModel.findById(imageId)
             .then(function(photo) {
                 if (!photo) {
                     return res.status(404).json({ error: 'Photo not found' });
@@ -218,7 +220,7 @@ module.exports = {
     },
 
     getComments: function(req, res) {
-        ImageModel.findById(req.params.photoId)
+        ImageModel.findById(req.params.imageId)
         .populate({
             path: 'Comments',
             populate: { path: 'PostedBy', select: 'ProfileName' }
@@ -257,7 +259,7 @@ module.exports = {
                 return res.status(500).json({ error: 'Server error' });
             }
     
-            ImageModel.findById(req.params.photoId, function(err, photo) {
+            ImageModel.findById(req.params.imageId, function(err, photo) {
                 if (err) {
                     console.error(err);
                     return res.status(500).json({ error: 'Server error' });
@@ -279,5 +281,4 @@ module.exports = {
             });
         });
     }
-
 };
