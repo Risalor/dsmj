@@ -1,4 +1,3 @@
-/* Reset all nav-link styles */
 .navbar-nav .nav-link.icon-link {
   display: flex !important;
   align-items: center !important;
@@ -14,7 +13,6 @@
   min-height: 50px !important;
 }
 
-/* Force consistent icon sizing */
 .navbar-nav .nav-link.icon-link .header-icon {
   color: rgb(0, 174, 3) !important;
   margin: 0 !important;
@@ -34,7 +32,6 @@
   height: 28px !important;
 }
 
-/* Tooltip styles - text only, no arrow */
 .navbar-nav .nav-link.icon-link::after {
   content: attr(data-tooltip);
   position: absolute;
@@ -56,7 +53,6 @@
   opacity: 1;
 }
 
-/* Nav item consistency */
 .navbar-nav .nav-item {
   margin: 0 4px;
   position: relative;

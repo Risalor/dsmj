@@ -1,9 +1,14 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { ThumbsDown } from 'feather-icons-react';
+import { UserContext } from '../userContexts';
 
 function DislikePhoto({ photo, setPhoto }) {
     const [isLoading, setIsLoading] = useState(false);
     const navigate = useNavigate();
+    const { user } = useContext(UserContext);
+    
+    const hasDisliked = photo.DislikedBy?.includes(user?._id);
 
     const handleDislike = async () => {
         setIsLoading(true);
@@ -30,10 +35,11 @@ function DislikePhoto({ photo, setPhoto }) {
     return (
         <button 
             onClick={handleDislike} 
-            className="btn btn-outline-danger"
+            className={`dislike-btn ${hasDisliked ? 'disliked' : ''}`}
             disabled={isLoading}
+            title={`Dislikes: ${photo.Dislikes ?? 0}${hasDisliked ? ' (You disliked this)' : ''}`}
         >
-            {isLoading ? '...' : `👎 ${photo.Dislikes ?? 0}`}
+            {isLoading ? '...' : <ThumbsDown size={18} fill={hasDisliked ? "currentColor" : "none"} />}
         </button>
     );
 }

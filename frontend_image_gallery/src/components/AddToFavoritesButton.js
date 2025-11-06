@@ -1,16 +1,17 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Star } from 'feather-icons-react';
 
 function AddToFavoritesButton({ photoId, currentUserId }) {
     const [isLoading, setIsLoading] = useState(false);
+    const [isChecking, setIsChecking] = useState(true);
     const [isFavorited, setIsFavorited] = useState(false);
-    const [checkingInitialStatus, setCheckingInitialStatus] = useState(true);
     const navigate = useNavigate();
 
     useEffect(() => {
         const checkFavoriteStatus = async () => {
             if (!currentUserId) {
-                setCheckingInitialStatus(false);
+                setIsChecking(false);
                 return;
             }
 
@@ -20,16 +21,14 @@ function AddToFavoritesButton({ photoId, currentUserId }) {
                     credentials: 'include',
                 });
 
-                if (res.status === 401) {
-                    setIsFavorited(false);
-                } else if (res.ok) {
+                if (res.ok) {
                     const data = await res.json();
                     setIsFavorited(data.isFavorited);
                 }
             } catch (err) {
-                console.error('Error checking favorite status:', err);
+                console.error('Check favorite error:', err);
             } finally {
-                setCheckingInitialStatus(false);
+                setIsChecking(false);
             }
         };
 
@@ -37,26 +36,15 @@ function AddToFavoritesButton({ photoId, currentUserId }) {
     }, [photoId, currentUserId]);
 
     const handleToggleFavorite = async () => {
-        if (!currentUserId) {
-            navigate('/Login');
-            return;
-        }
-
         setIsLoading(true);
         try {
-            const url = isFavorited 
-                ? `http://localhost:3001/users/removeFavorite/${photoId}`
-                : `http://localhost:3001/users/addToFavorites`;
-
-            const method = isFavorited ? 'DELETE' : 'POST';
-
-            const res = await fetch(url, {
-                method: method,
+            const res = await fetch(`http://localhost:3001/users/addToFavorites`, {
+                method: 'POST',
                 credentials: 'include',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: method === 'POST' ? JSON.stringify({ imageId: photoId }) : undefined,
+                body: JSON.stringify({ imageId: photoId }),
             });
 
             if (res.status === 401) {
@@ -65,10 +53,8 @@ function AddToFavoritesButton({ photoId, currentUserId }) {
             }
 
             if (res.ok) {
-                setIsFavorited(!isFavorited);
-            } else {
-                const errorData = await res.json();
-                console.error('Failed to toggle favorite:', errorData);
+                const data = await res.json();
+                setIsFavorited(data.isFavorited);
             }
         } catch (err) {
             console.error('Toggle favorite error:', err);
@@ -77,10 +63,10 @@ function AddToFavoritesButton({ photoId, currentUserId }) {
         }
     };
 
-    if (checkingInitialStatus) {
+    if (isChecking) {
         return (
-            <button className="btn btn-outline-secondary me-2" disabled>
-                Loading...
+            <button className="favorite-btn" disabled>
+                ...
             </button>
         );
     }
@@ -88,10 +74,11 @@ function AddToFavoritesButton({ photoId, currentUserId }) {
     return (
         <button
             onClick={handleToggleFavorite}
-            className={`btn me-2 ${isFavorited ? 'btn-warning' : 'btn-outline-primary'}`}
-            disabled={isLoading || !currentUserId}
+            className={`favorite-btn ${isFavorited ? 'favorited' : ''}`}
+            disabled={isLoading}
+            title={isFavorited ? "Remove from favorites" : "Add to favorites"}
         >
-            {isLoading ? '...' : isFavorited ? '★ Unfavorite' : '★ Favorite'}
+            {isLoading ? '...' : <Star size={18} fill={isFavorited ? "currentColor" : "none"} />}
         </button>
     );
 }

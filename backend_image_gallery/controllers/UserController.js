@@ -235,57 +235,72 @@ module.exports = {
     },
 
     addFavorite: function(req, res) {
-        if (!req.session.userId) {
-            return res.status(401).json({ error: 'Not authenticated' });
+    if (!req.session.userId) {
+        return res.status(401).json({ error: 'Not authenticated' });
+    }
+
+    const imageId = req.body.imageId;
+    
+    if (!imageId) {
+        return res.status(400).json({ error: 'Image ID is required' });
+    }
+
+    ImageModel.findById(imageId, function(err, image) {
+        if (err) {
+            return res.status(500).json({
+                message: 'Error when checking image',
+                error: err
+            });
         }
 
-        const imageId = req.body.imageId;
-        
-        if (!imageId) {
-            return res.status(400).json({ error: 'Image ID is required' });
+        if (!image) {
+            return res.status(404).json({ error: 'Image not found' });
         }
 
-        ImageModel.findById(imageId, function(err, image) {
-            if (err) {
-                return res.status(500).json({
-                    message: 'Error when checking image',
-                    error: err
-                });
-            }
-
-            if (!image) {
-                return res.status(404).json({ error: 'Image not found' });
-            }
-
-            UserModel.findOneAndUpdate(
-                { 
-                    _id: req.session.userId,
-                    Favorites: { $ne: imageId }
-                },
-                { 
-                    $addToSet: { Favorites: imageId }
-                },
-                { new: true }
-            ).populate('Favorites')
-             .exec(function(err, user) {
+        // First check if the image is already in favorites
+        UserModel.findById(req.session.userId, 'Favorites')
+            .exec(function(err, user) {
                 if (err) {
                     return res.status(500).json({
-                        message: 'Error when adding to favorites',
+                        message: 'Error when checking user favorites',
                         error: err
                     });
                 }
 
                 if (!user) {
-                    return res.status(400).json({ error: 'Image already in favorites' });
+                    return res.status(404).json({ error: 'User not found' });
                 }
 
-                return res.json({
-                    message: 'Image added to favorites',
-                    favorites: user.Favorites
+                const isAlreadyFavorited = user.Favorites.includes(imageId);
+                const updateOperation = isAlreadyFavorited 
+                    ? { $pull: { Favorites: imageId } } // Remove from favorites
+                    : { $addToSet: { Favorites: imageId } }; // Add to favorites
+
+                const action = isAlreadyFavorited ? 'removed from' : 'added to';
+
+                // Perform the update
+                UserModel.findByIdAndUpdate(
+                    req.session.userId,
+                    updateOperation,
+                    { new: true }
+                ).populate('Favorites')
+                 .exec(function(err, updatedUser) {
+                    if (err) {
+                        return res.status(500).json({
+                            message: `Error when ${action} favorites`,
+                            error: err
+                        });
+                    }
+
+                    return res.json({
+                        message: `Image ${action} favorites`,
+                        favorites: updatedUser.Favorites,
+                        isFavorited: !isAlreadyFavorited // Return the new state
+                    });
                 });
             });
-        });
-    },
+    });
+},
 
     checkFavorite: function(req, res) {
         if (!req.session.userId) {
@@ -316,7 +331,7 @@ module.exports = {
         });
     },
 
-    removeFavorite: function(req, res) {
+    /*removeFavorite: function(req, res) {
         if (!req.session.userId) {
             return res.status(401).json({ error: 'Not authenticated' });
         }
@@ -346,5 +361,5 @@ module.exports = {
                 favorites: user.Favorites
             });
         });
-    }
+    }*/
 };

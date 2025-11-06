@@ -31,6 +31,6 @@ router.put('/:id', UserController.update);
  * DELETE
  */
 router.delete('/:id', UserController.remove);
-router.delete('/removeFavorite/:imageId', UserController.removeFavorite);
+//router.delete('/removeFavorite/:imageId', UserController.removeFavorite);
 
 module.exports = router;

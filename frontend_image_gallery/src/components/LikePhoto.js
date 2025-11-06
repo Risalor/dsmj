@@ -1,9 +1,14 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { ThumbsUp } from 'feather-icons-react';
+import { UserContext } from '../userContexts';
 
 function LikePhoto({ photo, setPhoto }) {
     const [isLoading, setIsLoading] = useState(false);
     const navigate = useNavigate();
+    const { user } = useContext(UserContext);
+    
+    const hasLiked = photo.LikedBy?.includes(user?._id);
     
     const handleLike = async () => {
         setIsLoading(true);
@@ -30,13 +35,13 @@ function LikePhoto({ photo, setPhoto }) {
     return (
         <button 
             onClick={handleLike} 
-            className="btn btn-outline-success me-2"
+            className={`like-btn ${hasLiked ? 'liked' : ''}`}
             disabled={isLoading}
+            title={`Likes: ${photo.Likes ?? 0}${hasLiked ? ' (You liked this)' : ''}`}
         >
-            {isLoading ? '...' : `👍 ${photo.Likes ?? 0}`}
+            {isLoading ? '...' : <ThumbsUp size={18} fill={hasLiked ? "currentColor" : "none"} />}
         </button>
     );
 }
 
 export default LikePhoto;
-
