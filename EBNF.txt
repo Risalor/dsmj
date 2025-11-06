@@ -1,71 +1,166 @@
-(* Root production *)
+//Root production
 config = components, draw ;
 
-(* Components definition *)
+//Components definition
 components = "components", "<=", "{", component_list, "}" ;
 component_list = component_definition, { ",", component_definition } ;
 component_definition = identifier, ":", component_type ;
-component_type = "<", identifier, ">" ;
+component_type = "<Menu>" | "<Api>" | "<ImageDisplay>" | "<Style>" | "<Footer>" ;
 
-(* Component assignments *)
-component_assignments = { component_assignment } ;
-component_assignment = identifier, "<=", value ;
+//Component assignments with strict validation
+component_assignment = menu_assignment | api_assignment | images_assignment | footer_assignment | login_assignment ;
 
-(* Values *)
-value = object
-      | array
-      | string
-      | number
-      | boolean
-      | conditional
-      | reference
-      | function_call ;
+//Menu component
+menu_assignment = "menu", "<=", menu_object ;
+menu_object = "{",
+    "options", "<=", menu_options, ",",
+    "style", "<=", style_object, ",",
+    "type", ":", menu_type,
+    "}" ;
+menu_options = "{", menu_item, { ",", menu_item }, "}" ;
+menu_item = identifier, "<=", "{",
+    "url", ":", string, ",",
+    "text", ":", string,
+    [ ",", "style", "<=", style_object ],
+    "}" ;
+menu_type = "topbar" | "sidemenu" | "dropdown" ;
 
-(* Objects *)
+//API component
+api_assignment = "api", "<=", api_object ;
+api_object = "{",
+    "base_url", ":", string, ",",
+    "endpoints", "<=", endpoints_object,
+    "}" ;
+endpoints_object = "{", endpoint, { ",", endpoint }, "}" ;
+endpoint = identifier, [ "(", identifier, ")" ], ":", string ;
+
+//Images/ImageDisplay component
+images_assignment = "images", "<=", images_object ;
+images_object = "{",
+    "load_actions", ":", load_actions, ",",
+    "layout", "<=", layout_object, ",",
+    "items_per_page", ":", number, ",",
+    "sorting", "<=", sorting_object, ",",
+    "enabled_components", "<=", enabled_components_object,
+    [ ",", "click_actions", "<=", click_actions_object ],
+    "}" ;
+
+load_actions = "{",
+    "contents", ":", reference,
+    [ ",", "for_each", "<=", for_each_object ],
+    "}" ;
+for_each_object = "{", for_each_mapping, { ",", for_each_mapping }, "}" ;
+for_each_mapping = identifier, ":", array_reference ;
+
+layout_object = "{",
+    "options", ":", layout_options, ",",
+    "default", ":", layout_type,
+    "}" ;
+layout_options = "[", layout_type, { ",", layout_type }, "]" ;
+layout_type = "grid" | "list" | "masonry" ;
+
+sorting_object = "{",
+    "options", ":", sorting_options, ",",
+    "default", ":", sorting_type,
+    "}" ;
+sorting_options = "[", sorting_type, { ",", sorting_type }, "]" ;
+sorting_type = "newest_first" | "most_popular" | "curators_pick" ;
+
+//Strict enabled_components with only allowed components
+enabled_components_object = "{", enabled_component, { ",", enabled_component }, "}" ;
+enabled_component =
+    "likes", "<=", component_config |
+    "dislikes", "<=", component_config |
+    "comments", "<=", component_config |
+    "favorite", ( "<=", component_config | ":", "{", "enabled", ":", boolean, "}" ) |
+    "artist", "<=", component_config |
+    "description", "<=", component_config |
+    "share", ( "<=", component_config | ":", "{", "enabled", ":", boolean, "}" ) |
+    "title", "<=", component_config |
+    "details", "<=", component_config |
+    "price", "<=", component_config |
+    "purchase", ( "<=", component_config | ":", "{", "enabled", ":", boolean, "}" ) ;
+
+component_config = "{",
+    "enabled", ":", boolean,
+    [ ",", "content", ( ":" | "<=" ), ( reference | array_reference ) ],
+    [ ",", "position", ":", position_value ],
+    [ ",", "max_visible", ":", number ],
+    [ ",", "style", "<=", style_object ],
+    "}" ;
+
+position_value = string | ( identifier, [ "-", identifier ] ) ;
+
+click_actions_object = "{", click_action, { ",", click_action }, "}" ;
+click_action =
+    "likes", "<=", action_config |
+    "dislikes", "<=", action_config |
+    "favorite", "<=", action_config |
+    "share", "<=", action_config |
+    "artist", "<=", action_config |
+    "purchase", "<=", action_config ;
+
+action_config = "{",
+    "endpoint", ":", function_call,
+    [ ",", "payload", "<=", payload_object ],
+    [ ",", "on_success", ":", success_action ],
+    "}" ;
+payload_object = "{", payload_field, { ",", payload_field }, "}" ;
+payload_field = identifier, ":", reference ;
+success_action = "reload" | "navigate" ;
+
+//Footer component
+footer_assignment = "footer", "<=", footer_object ;
+footer_object = "{", "content", "<=", content_object, "}" ;
+content_object = "{", "text", ":", string, "}" ;
+
+//Login component (special menu)
+login_assignment = "login", "<=", login_object ;
+login_object = "{",
+    conditional, ",",
+    "type", ":", "topbar",
+    "}" ;
+
+//Style object
+style_object = "{", style_property, { ",", style_property }, "}" ;
+style_property = css_property, ":", css_value ;
+css_property = identifier, [ "-", identifier ] ;
+css_value = string | number | identifier ;
+
+//Values
+value = object | array | string | number | boolean | conditional | reference | array_reference ;
 object = "{", [ property_list ], "}" ;
 property_list = property, { ",", property } ;
-property = identifier, "<=", value
-         | identifier, ":", value
-         | identifier, "?", value ;
+property = identifier, ( "<=" | ":" ), value ;
 
-(* Arrays *)
+//Arrays
 array = "[", [ value_list ], "]" ;
 value_list = value, { ",", value } ;
 
-(* Array references)
-array_reference = identifier, "[]", { ".", identifier } ;
-
-(* For-each construct)
-for_each = "for_each", "<=", "{", for_each_mappings, "}" ;
-for_each_mappings = for_each_mapping, { ",", for_each_mapping } ;
-for_each_mapping = identifier, ":", array_reference ;
-
-(* Load actions)
-load_actions = "load_actions", ":", "{", load_properties, "}" ;
-load_properties = "contents", ":", reference, [ ",", for_each ] ;
-
-(* Conditionals *)
+//Conditionals
 conditional = condition, "?", value, ":", value ;
-condition = reference ;
+condition = global_variable ;
 
-(* References and function calls *)
-reference = "$", identifier
-          | identifier, { ".", identifier } ;
+//References
+reference = global_variable | component_reference ;
+global_variable = "$", identifier ;
+component_reference = identifier, { ".", identifier } ;
+array_reference = identifier, "[]", { ".", identifier } ;
 function_call = identifier, "(", [ argument_list ], ")" ;
 argument_list = argument, { ",", argument } ;
 argument = identifier | string | number ;
 
-(* DRAW section *)
+//DRAW
 draw = "DRAW", "<=", "{", layout_string, "}" ;
 layout_string = string ;
 
-(* Basic tokens *)
+//Basic tokens
 identifier = letter, { letter | digit | "_" } ;
 string = '"', { character }, '"' ;
 number = digit, { digit } ;
 boolean = "true" | "false" ;
 
-(* Character classes *)
+//Character classes
 letter = "a" | "b" | ... | "z" | "A" | "B" | ... | "Z" ;
 digit = "0" | "1" | ... | "9" ;
 character = ? any character except " ? ;

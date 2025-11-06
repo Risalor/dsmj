@@ -15,7 +15,6 @@ function Photos() {
 
     return (
         <div className="container mt-4">
-            <h3 className="mb-4">Photo Gallery</h3>
             <div className="row">
                 {photos.map(photo => (
                     <div className="col-md-4" key={photo._id}>

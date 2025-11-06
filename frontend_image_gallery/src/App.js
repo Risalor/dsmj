@@ -1,7 +1,7 @@
-import {useState, useEffect} from 'react';
+import {useState} from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
-import Footer from './components/Footer'; // Import the Footer
+import Footer from './components/Footer';
 import Photos from "./components/Photos";
 import Register from "./components/Register";
 import AddPhoto from "./components/AddPhoto";
