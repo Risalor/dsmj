@@ -76,12 +76,14 @@ login <= {
             }
         }
     } : {
-        LOGOUT <= {
-            url: /logout,
-            text: "Logout",
-            style <= {
-                color: green,
-                background-color: black
+        options <= {
+            LOGOUT <= {
+                url: /logout,
+                text: "Logout",
+                style <= {
+                    color: green,
+                    background-color: black
+                }
             }
         }
     },

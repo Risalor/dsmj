@@ -35,7 +35,7 @@ module.exports = {
     var id = req.params.id;
 
     ImageModel.findOne({ _id: id })
-        .populate('PostedBy') // Populate the PostedBy field
+        .populate('PostedBy')
         .exec(function (err, photo) {
             if (err) {
                 return res.status(500).json({
