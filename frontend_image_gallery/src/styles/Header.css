@@ -1,3 +1,83 @@
+.user-display {
+  margin-left: auto;
+}
+
+.user-info {
+  padding: 8px 12px;
+  border-radius: 20px;
+  transition: background-color 0.3s ease;
+}
+
+.user-info:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.user-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgb(0, 174, 3);
+}
+
+.user-avatar.placeholder {
+  background-color: rgb(0, 174, 3);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.user-name {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.user-display .nav-item {
+    margin: 0 2px;
+}
+
+.user-display .nav-link.icon-link {
+    min-width: 60px !important;
+    min-height: 50px !important;
+}
+
+.user-display .header-icon {
+    color: rgb(0, 174, 3) !important;
+    width: 28px !important;
+    height: 28px !important;
+    flex-shrink: 0 !important;
+}
+
+.user-display .nav-link.icon-link:hover .header-icon {
+    color: rgb(221, 221, 221) !important;
+}
+
+@media (max-width: 768px) {
+    .user-info {
+        flex-direction: column;
+        text-align: center;
+        padding: 6px 8px;
+    }
+    
+    .user-avatar {
+        margin-right: 0 !important;
+        margin-bottom: 4px;
+    }
+    
+    .user-name {
+        font-size: 12px;
+    }
+    
+    .user-display .nav-link.icon-link {
+        min-width: 50px !important;
+        min-height: 45px !important;
+        padding: 8px 12px !important;
+    }
+}
+
 .navbar-nav .nav-link.icon-link {
   display: flex !important;
   align-items: center !important;

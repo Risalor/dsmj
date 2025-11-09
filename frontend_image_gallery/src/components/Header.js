@@ -1,8 +1,9 @@
 import { useContext } from "react";
 import { UserContext } from "../userContexts";
 import { Link } from "react-router-dom";
-import { LogOut, LogIn, User, Image, Plus, UserPlus } from 'feather-icons-react';
+import { User, Image, Plus } from 'feather-icons-react';
 import { FaPaintBrush } from "react-icons/fa";
+import UserDisplay from "./UserDisplay";
 import '../styles/Header.css';
 
 function Header() {
@@ -14,10 +15,20 @@ function Header() {
                 <FaPaintBrush className="me-2" style={{ fontSize: '2.5rem', color: 'rgb(0, 174, 3)' }} />
                 <span className="icon-text">KrisGallery</span>
             </Link>
-            <div className="collapse navbar-collapse">
+            
+            <button 
+                className="navbar-toggler" 
+                type="button" 
+                data-bs-toggle="collapse" 
+                data-bs-target="#navbarNav"
+            >
+                <span className="navbar-toggler-icon"></span>
+            </button>
+            
+            <div className="collapse navbar-collapse" id="navbarNav">
                 <ul className="navbar-nav me-auto align-items-center">
                     <li className="nav-item">
-                        <Link className="nav-link icon-link" to="/">
+                        <Link className="nav-link icon-link" to="/" data-tooltip="Images">
                             <Image className="header-icon" size={28} />
                             <span className="icon-text">Images</span>
                         </Link>
@@ -25,45 +36,21 @@ function Header() {
                     {user && (
                         <>
                             <li className="nav-item">
-                                <Link className="nav-link icon-link" to="/AddPhoto">
+                                <Link className="nav-link icon-link" to="/AddPhoto" data-tooltip="Add Image">
                                     <Plus className="header-icon" size={28} />
                                     <span className="icon-text">Add Image</span>
                                 </Link>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link icon-link" to="/Profile">
+                                <Link className="nav-link icon-link" to="/Profile" data-tooltip="Profile">
                                     <User className="header-icon" size={28} />
                                     <span className="icon-text">Profile</span>
-                                </Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link className="nav-link icon-link" to="/Logout">
-                                    <LogOut className="header-icon" size={28} />
-                                    <span className="icon-text">Logout</span>
-                                </Link>
-                            </li>
-                        </>
-                    )}
-                    {!user && (
-                        <>
-                            <li className="nav-item">
-                                <Link className="nav-link icon-link" to="/Login">
-                                    <LogIn className="header-icon" size={28} />
-                                    <span className="icon-text">Login</span>
-                                </Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link className="nav-link icon-link" to="/Register">
-                                    <UserPlus className="header-icon" size={28} />
-                                    <span className="icon-text">Register</span>
                                 </Link>
                             </li>
                         </>
                     )}
                 </ul>
-                <span className="navbar-text text-white">
-                    {user ? `Logged in as ${user.ProfileName}` : "Not logged in"}
-                </span>
+                <UserDisplay />
             </div>
         </nav>
     );

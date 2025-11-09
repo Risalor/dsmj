@@ -1,0 +1,71 @@
+.login-card {
+    background-color: rgb(33, 37, 41) !important;
+    border: none !important;
+}
+
+.form-control:focus {
+    border-color: rgb(0, 174, 3) !important;
+    box-shadow: 0 0 0 0.2rem rgba(0, 174, 3, 0.25) !important;
+    background-color: rgb(33, 37, 41) !important;
+    color: white !important;
+}
+
+.input-group-text {
+    background-color: rgb(33, 37, 41) !important;
+    border-color: #6c757d !important;
+    color: #6c757d !important;
+}
+
+.btn-primary-custom {
+    background-color: rgb(0, 174, 3) !important;
+    border: none !important;
+    transition: all 0.3s ease !important;
+}
+
+.btn-primary-custom:hover {
+    background-color: rgb(20, 79, 34) !important;
+    transform: translateY(-1px);
+}
+
+.alert-danger {
+    background-color: rgba(220, 53, 69, 0.1) !important;
+    border-color: rgba(220, 53, 69, 0.3) !important;
+    color: #f8d7da !important;
+}
+
+.text-accent {
+    color: rgb(0, 174, 3) !important;
+    transition: color 0.3s ease !important;
+}
+
+.text-accent:hover {
+    color: rgb(20, 79, 34) !important;
+}
+
+.card {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08) !important;
+}
+
+.btn-register {
+    background-color: rgb(108, 117, 125) !important;
+    border: none !important;
+    transition: all 0.3s ease !important;
+}
+
+.btn-register:hover {
+    background-color: rgb(73, 80, 87) !important;
+    transform: translateY(-1px);
+}
+
+.btn-outline-accent {
+    background-color: transparent !important;
+    border: 2px solid rgb(0, 174, 3) !important;
+    color: rgb(0, 174, 3) !important;
+    transition: all 0.3s ease !important;
+}
+
+.btn-outline-accent:hover {
+    background-color: rgb(0, 174, 3) !important;
+    color: white !important;
+    transform: translateY(-1px);
+}
