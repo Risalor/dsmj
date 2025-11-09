@@ -56,34 +56,32 @@ menu <= {
 }
 
 login <= {
-    $userId ? {
-        options <= {
-            LOGIN <= {
-                url: /login,
-                text: "Login",
-                style <= {
-                    color: green,
-                    background-color: black
-                }
-            },
-            REGISTER <= {
-                url: /register,
-                text: "Register",
-                style <= {
-                    color: green,
-                    background-color: black
-                }
+    set: $userId,
+    options_IsSet <= {
+        LOGIN <= {
+            url: /login,
+            text: "Login",
+            style <= {
+                color: green,
+                background-color: black
+            }
+        },
+        REGISTER <= {
+            url: /register,
+            text: "Register",
+            style <= {
+                color: green,
+                background-color: black
             }
         }
-    } : {
-        options <= {
-            LOGOUT <= {
-                url: /logout,
-                text: "Logout",
-                style <= {
-                    color: green,
-                    background-color: black
-                }
+    },
+    options_IsNotSet <= {
+        LOGOUT <= {
+            url: /logout,
+            text: "Logout",
+            style <= {
+                color: green,
+                background-color: black
             }
         }
     },

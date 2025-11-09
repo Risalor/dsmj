@@ -9,21 +9,31 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 
 public final class LanguageConceptSwitch {
   private final LanguageConceptIndex myIndex;
-  public static final int Login = 0;
-  public static final int Menu = 1;
-  public static final int MenuOption = 2;
-  public static final int MenuOptionElement = 3;
-  public static final int MenuType = 4;
-  public static final int Style = 5;
-  public static final int StyleElement = 6;
+  public static final int Api = 0;
+  public static final int BaseUrl = 1;
+  public static final int Endpoint = 2;
+  public static final int Endpoints = 3;
+  public static final int Menu = 4;
+  public static final int MenuOption = 5;
+  public static final int MenuOptionElement = 6;
+  public static final int MenuType = 7;
+  public static final int Parameter = 8;
+  public static final int Set = 9;
+  public static final int Style = 10;
+  public static final int StyleElement = 11;
 
   public LanguageConceptSwitch() {
     LanguageConceptIndexBuilder builder = new LanguageConceptIndexBuilder(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL);
-    builder.put(0x5f82ea2efcbadc16L, Login);
+    builder.put(0x4b61efe7ede3967eL, Api);
+    builder.put(0x4b61efe7ede39682L, BaseUrl);
+    builder.put(0x4b61efe7ede396a1L, Endpoint);
+    builder.put(0x4b61efe7ede396abL, Endpoints);
     builder.put(0x5f82ea2efca8b118L, Menu);
     builder.put(0x5f82ea2efca8b121L, MenuOption);
     builder.put(0x5f82ea2efcb389d0L, MenuOptionElement);
     builder.put(0x5f82ea2efcb9e2a7L, MenuType);
+    builder.put(0x4b61efe7ede396a7L, Parameter);
+    builder.put(0x4b61efe7ede0c75aL, Set);
     builder.put(0x5f82ea2efca8b139L, Style);
     builder.put(0x5f82ea2efca8b13bL, StyleElement);
     myIndex = builder.seal();
