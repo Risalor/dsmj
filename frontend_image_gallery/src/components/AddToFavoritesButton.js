@@ -4,14 +4,12 @@ import { Star } from 'feather-icons-react';
 
 function AddToFavoritesButton({ photoId, currentUserId }) {
     const [isLoading, setIsLoading] = useState(false);
-    const [isChecking, setIsChecking] = useState(true);
     const [isFavorited, setIsFavorited] = useState(false);
     const navigate = useNavigate();
 
     useEffect(() => {
         const checkFavoriteStatus = async () => {
             if (!currentUserId) {
-                setIsChecking(false);
                 return;
             }
 
@@ -27,8 +25,6 @@ function AddToFavoritesButton({ photoId, currentUserId }) {
                 }
             } catch (err) {
                 console.error('Check favorite error:', err);
-            } finally {
-                setIsChecking(false);
             }
         };
 
@@ -37,6 +33,7 @@ function AddToFavoritesButton({ photoId, currentUserId }) {
 
     const handleToggleFavorite = async () => {
         setIsLoading(true);
+        setIsFavorited(!isFavorited);
         try {
             const res = await fetch(`http://localhost:3001/users/addToFavorites`, {
                 method: 'POST',
@@ -62,14 +59,6 @@ function AddToFavoritesButton({ photoId, currentUserId }) {
             setIsLoading(false);
         }
     };
-
-    if (isChecking) {
-        return (
-            <button className="favorite-btn" disabled>
-                ...
-            </button>
-        );
-    }
 
     return (
         <button

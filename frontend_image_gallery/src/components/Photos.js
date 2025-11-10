@@ -1,8 +1,10 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import Photo from './Photo';
+import { UserContext } from "../userContexts";
 
 function Photos() {
     const [photos, setPhotos] = useState([]);
+    const { user, cont, styles } = useContext(UserContext);
 
     useEffect(() => {
         const getPhotos = async () => {
@@ -15,9 +17,9 @@ function Photos() {
 
     return (
         <div className="container mt-4">
-            <div className="row">
+            <div className={styles === 'ver1' ? "row" : "photos-list"}>
                 {photos.map(photo => (
-                    <div className="col-md-4" key={photo._id}>
+                    <div className={styles === 'ver1' ? "col-md-4" : "photo-list-item"} key={photo._id}>
                         <Photo photo={photo} />
                     </div>
                 ))}

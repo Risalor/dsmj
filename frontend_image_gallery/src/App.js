@@ -13,6 +13,7 @@ import Profile from './components/Profile';
 
 function App() {
   const [user, setUser] = useState(localStorage.user ? JSON.parse(localStorage.user) : null);
+  const [currStyle, setCurrStyle] = useState('ver1');
   const updateUserData = (userInfo) => {
     localStorage.setItem("user", JSON.stringify(userInfo));
     setUser(userInfo);
@@ -22,7 +23,8 @@ function App() {
     <BrowserRouter>
       <UserContext.Provider value={{
         user: user,
-        setUserContext: updateUserData
+        setUserContext: updateUserData,
+        styles: currStyle
       }}>
         <div className="App" style={{ 
           minHeight: '100vh', 
@@ -41,7 +43,7 @@ function App() {
               <Route path="/Profile" element={<Profile />}></Route>
             </Routes>
           </main>
-          <Footer />
+          {currStyle === 'ver1' ? <Footer /> : <></>}
         </div>
       </UserContext.Provider>
     </BrowserRouter>
