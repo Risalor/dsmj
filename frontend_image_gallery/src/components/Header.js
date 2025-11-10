@@ -1,13 +1,22 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { UserContext } from "../userContexts";
 import { Link } from "react-router-dom";
 import { User, Image, Plus } from 'feather-icons-react';
 import { FaPaintBrush } from "react-icons/fa";
 import UserDisplay from "./UserDisplay";
-import '../styles/Header.css';
 
 function Header() {
-    const { user } = useContext(UserContext);
+    const { user, cont, styles } = useContext(UserContext);
+
+    useEffect(() => {
+            if (styles === 'ver1') {
+                import('../styles/Headerv1.css');
+            } else if (styles === 'ver2') {
+                import('../styles/Headerv2.css');
+            } else if (styles === 'ver3') {
+                import('../styles/Headerv1.css');
+            }
+    }, [styles]);
 
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark px-3">
@@ -41,12 +50,16 @@ function Header() {
                                     <span className="icon-text">Add Image</span>
                                 </Link>
                             </li>
-                            <li className="nav-item">
-                                <Link className="nav-link icon-link" to="/Profile" data-tooltip="Profile">
-                                    <User className="header-icon" size={28} />
-                                    <span className="icon-text">Profile</span>
-                                </Link>
-                            </li>
+                        { styles === 'ver1' && (
+                            <>
+                                <li className="nav-item">
+                                    <Link className="nav-link icon-link" to="/Profile" data-tooltip="Profile">
+                                        <User className="header-icon" size={28} />
+                                        <span className="icon-text">Profile</span>
+                                    </Link>
+                                </li>
+                            </>
+                            )}
                         </>
                     )}
                 </ul>
