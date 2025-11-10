@@ -138,7 +138,7 @@ images <= {
             content <= top_comments,
             max_visible: 3
         },
-        favorite: {
+        favorite <= {
             enabled: true
         }
     },
@@ -148,14 +148,12 @@ images <= {
             payload <= {
                 user_id: $userId
             },
-            on_success: reload
         },
         dislikes <= {
             endpoint: api.dislike_image(imageId),
             payload <= {
                 user_id: $userId
             },
-            on_success: reload
         },
         favorite <= {
             endpoint: api.add_to_favorite,
