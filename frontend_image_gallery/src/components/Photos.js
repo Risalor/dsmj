@@ -15,11 +15,39 @@ function Photos() {
         getPhotos();
     }, []);
 
+    if (styles === 'ver1') {
+        return (
+            <div className="container mt-4">
+                <div className="row">
+                    {photos.map(photo => (
+                        <div className="col-md-4" key={photo._id}>
+                            <Photo photo={photo} />
+                        </div>
+                    ))}
+                </div>
+            </div>
+        );
+    }
+
+    if (styles === 'ver2') {
+        return (
+            <div className="container mt-4">
+                <div className="photos-list">
+                    {photos.map(photo => (
+                        <div className="photo-list-item" key={photo._id}>
+                            <Photo photo={photo} />
+                        </div>
+                    ))}
+                </div>
+            </div>
+        );
+    }
+
     return (
-        <div className="container mt-4">
-            <div className={styles === 'ver1' ? "row" : "photos-list"}>
+        <div className="masonry-container">
+            <div className="masonry-grid">
                 {photos.map(photo => (
-                    <div className={styles === 'ver1' ? "col-md-4" : "photo-list-item"} key={photo._id}>
+                    <div className="masonry-item" key={photo._id}>
                         <Photo photo={photo} />
                     </div>
                 ))}

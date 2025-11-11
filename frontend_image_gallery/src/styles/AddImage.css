@@ -5,7 +5,7 @@
 }
 
 .add-photo-card {
-    background: #2d3748; /* Dark background for the component */
+    background: #2d3748;
     border-radius: 12px;
     padding: 2rem;
     border: 1px solid #4a5568;
@@ -40,7 +40,7 @@
 .form-input,
 .form-textarea,
 .form-file {
-    background: var(--background-color, transparent); /* Light/transparent background for inputs */
+    background: var(--background-color, transparent);
     border: 1px solid #4a5568;
     border-radius: 8px;
     padding: 0.75rem 1rem;
@@ -133,7 +133,6 @@
     color: #f8d7da;
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
     .add-photo-container {
         margin: 1rem auto;

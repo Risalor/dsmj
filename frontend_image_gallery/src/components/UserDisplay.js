@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { LogOut, LogIn, UserPlus, User, Settings } from 'feather-icons-react';
 
 function UserDisplay() {
-    const { user, cont, styles } = useContext(UserContext);
+    const { user, styles } = useContext(UserContext);
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     
     useEffect(() => {
@@ -13,7 +13,7 @@ function UserDisplay() {
         } else if (styles === 'ver2') {
             import('../styles/Headerv2.css');
         } else if (styles === 'ver3') {
-            import('../styles/Headerv1.css');
+            import('../styles/Headerv3.css');
         }
     }, [styles]);
 
@@ -30,11 +30,85 @@ function UserDisplay() {
                 document.removeEventListener('click', handleClickOutside);
             };
         }
-    }, []);
+    }, [styles]);
 
     const toggleDropdown = () => {
         setIsDropdownOpen(!isDropdownOpen);
     };
+
+    if (styles === 'ver3') {
+        return (
+            <div className="sidebar-user-display">
+                {user ? (
+                    <div className="user-dropdown position-relative">
+                        <button 
+                            className="user-dropdown-trigger d-flex align-items-center bg-transparent border-0 text-white p-2 rounded w-100"
+                            onClick={toggleDropdown}
+                        >
+                            <div className="user-info d-flex align-items-center w-100">
+                                {user.ProfileImage ? (
+                                    <img 
+                                        src={"http://localhost:3001" + user.ProfileImage} 
+                                        alt={user.ProfileName}
+                                        className="user-avatar me-2"
+                                    />
+                                ) : (
+                                    <div className="user-avatar placeholder me-2">
+                                        {user.ProfileName ? user.ProfileName.charAt(0).toUpperCase() : 'U'}
+                                    </div>
+                                )}
+                                <div className="user-details text-start flex-grow-1">
+                                    <div className="user-name">{user.ProfileName}</div>
+                                    <div className="user-email text-muted small">{user.Email}</div>
+                                </div>
+                            </div>
+                        </button>
+
+                        {isDropdownOpen && (
+                            <div className="user-dropdown-menu position-absolute bottom-100 start-0 mb-2 w-100 py-2 bg-dark border border-secondary rounded shadow-lg">
+                                <Link 
+                                    className="dropdown-item d-flex align-items-center px-3 py-2 text-white text-decoration-none"
+                                    to="/Profile"
+                                    onClick={() => setIsDropdownOpen(false)}
+                                >
+                                    <User className="me-2" size={18} />
+                                    <span>Profile</span>
+                                </Link>
+                                <Link 
+                                    className="dropdown-item d-flex align-items-center px-3 py-2 text-white text-decoration-none"
+                                    to="/Settings"
+                                    onClick={() => setIsDropdownOpen(false)}
+                                >
+                                    <Settings className="me-2" size={18} />
+                                    <span>Settings</span>
+                                </Link>
+                                <div className="dropdown-divider my-2 border-secondary"></div>
+                                <Link 
+                                    className="dropdown-item d-flex align-items-center px-3 py-2 text-white text-decoration-none"
+                                    to="/Logout"
+                                    onClick={() => setIsDropdownOpen(false)}
+                                >
+                                    <LogOut className="me-2" size={18} />
+                                    <span>Logout</span>
+                                </Link>
+                            </div>
+                        )}
+                    </div>
+                ) : (
+                    <div className="auth-buttons d-flex flex-column gap-2">
+                        <Link className="auth-button login-button d-flex align-items-center justify-content-center text-decoration-none" to="/Login">
+                            <LogIn className="me-2" size={18} />
+                            <span>Login</span>
+                        </Link>
+                        <Link className="auth-button register-button d-flex align-items-center justify-content-center text-decoration-none" to="/Register">
+                            <UserPlus className="me-2" size={18} />
+                            <span>Register</span>
+                        </Link>
+                    </div>
+                )}
+            </div>
+        );
+    }
 
     return (
         styles === 'ver1' ?

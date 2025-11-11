@@ -10,20 +10,14 @@ components <= {
 
 menu <= {
     options <= {
-        HOME <= {
-            url: /home,
-            text: "Home",
-            style <= {
-                color: green,
-                background-color: black
-            }
+        KRISGALERY <= {
+            url: /,
+            text: "KrisGallery",
+            icon: Paintbrush
         },
-        DISCOVER <= {
-            url: /discover,
-            text: "Discover",
-            style <= {
-                text-decoration-line: overline underline
-            }
+        IMAGES <= {
+            url: /images,
+            text: "Images"
         },
         GALLERY <= {
             url: /Gallery,
@@ -132,11 +126,6 @@ images <= {
             style <= {
                 color: red
             }
-        },
-        comments <= {
-            enabled: true,
-            content <= top_comments,
-            max_visible: 3
         },
         favorite <= {
             enabled: true
