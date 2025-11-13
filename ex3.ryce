@@ -1,150 +1,124 @@
+
 components <= {
-    menu: <Menu>
-    api: <Api>
-    images: <ImageDisplay>
-    styles: <Style>
-    login: <Menu>
+    menu: <Menu>,
+    api: <Api>,
+    images: <ImageDisplay>,
+    styles: <Style>,
+    login: <Menu>,
 }
 
 menu <= {
     options <= {
-        COLLECTIONS <= {
-            url: /collections,
-            text: "Collections",
-            style <= {
-                color: gold,
-                background-color: #222
-            }
+        KRISGALERY <= {
+            url: /,
+            text: "KrisGallery",
+            icon: FaPaintBrush
         },
-        EXHIBITIONS <= {
-            url: /exhibitions,
-            text: "Exhibitions"
+        IMAGES <= {
+            url: /,
+            text: "Images"
+            icon: Image
         },
-        ARTIST_SPOTLIGHT <= {
-            url: /spotlight,
-            text: "Artist Spotlight",
-            style <= {
-                text-shadow: 1px 1px 2px purple
-            }
+        ADD_IMAGE <= {
+            url: /AddPhoto,
+            text: "Add Image",
+            icon: Plus
         },
-        CONTACT <= {
-            url: /contact,
-            text: "Contact"
+        PROFILE <= {
+            url: /profile,
+            text: "Profile",
+            icon: 
         }
     },
-    style <= {
-        border-bottom: solid 2px gold,
-        background-color: #111
-    },
-    type: dropdown
-
+    type: topbar
 }
 
 login <= {
-    $userId ? {
-        options <= {
-            LOGIN <= {
-                url: /login,
-                text: "Login",
-                style <= {
-                    color: green,
-                    background-color: black
-                }
-            },
-            REGISTER <= {
-                url: /register,
-                text: "Register",
-                style <= {
-                    color: green,
-                    background-color: black
-                }
-            }
+    set: $userId,
+    options_IsSet <= {
+        LOGIN <= {
+            url: /login,
+            text: "Login",
+            icon: LogIn
+        },
+        REGISTER <= {
+            url: /register,
+            text: "Register",
+            icon: UserPlus
         }
-    } : {
+    },
+    options_IsNotSet <= {
+        USER <= {
+            url:,
+            text: "",
+            icon: 
+        },
         LOGOUT <= {
             url: /logout,
             text: "Logout",
-            style <= {
-                color: green,
-                background-color: black
-            }
+            icon: LogOut
         }
-    }
+    },
+    type: topbar
 }
 
 api <= {
-    base_url: "http://localhost:3000/",
+    base_url: "http://localhost:3001/",
     endpoints <= {
-        featured_art: "GET /art/featured",
-        artist_profile(artistId): "GET /artists/(artistId)",
-        purchase_inquiry(imageId): "POST /inquiries/(imageId)/purchase",
-        contact_artist(artistId): "POST /artists/(artistId)/contact"
+        images: GET /images
+        is_favorite(imageId): GET users/checkFavorite/:imageId
+        users: GET /users,
+        profile(id): GET users/(id)/profile,
+        like_image(imageId): POST /images/(imageId)/like,
+        dislike_image(imageId): POST /images/(imageId)/dislike,
+        add_to_favorite: POST /users/addToFavorites,
     }
 }
 
 images <= {
     load_actions: {
-        contents: api.featured_art,
+        contents: api.images,
         for_each <= {
             imageId: contents[]._id,
-            title: contents[].title,
-            artist_name: contents[].artist_name,
-            artist_id: contents[].artist_id,
-            price: contents[].price,
-            medium: contents[].medium
+            userName: contents[].PostedBy.ProfileName,
+            date: contents[].DatePosted,
+            title: contents[].Title,
+            dascription: contents[].Text,
+            likes: contents[].Likes,
+            dislikes: contents[].Dislikes
         }
     },
-    layout <= {
-        options: [grid],
-        default: grid
-    },
-    items_per_page: 12,
-    sorting <= {
-        options: [curators_pick, newest_first],
-        default: curators_pick
-    },
+    layout: masonary,
+    sorting: newest_first,
     enabled_components <= {
-        title <= {
-            enabled: true,
-            content: title,
-            position: "top-left",
-            style <= {
-                font-size: 1.1em
-            }
+        likes <= {
+            enabled: true
         },
-        artist <= {
-            enabled: true,
-            content: artist_name,
-            position: "bottom-left"
+        dislikes <= {
+            enabled: true
         },
-        details <= {
-            enabled: true,
-            content: medium,
-            position: "bottom-center"
+        favorite <= {
+            enabled: true
         },
-        price <= {
-            enabled: true,
-            content: price,
-            position: "bottom-right",
-            style <= {
-                color: gold,
-                font-weight: bold
-            }
-        },
-        purchase <= {
-            enabled: true,
-            position: "top-right"
-        }
+        position: top-right
     },
     click_actions <= {
-        artist <= {
-            endpoint: api.artist_profile(artist_id),
-            on_success: navigate
-        },
-        purchase <= {
-            endpoint: api.purchase_inquiry(imageId),
+        likes <= {
+            endpoint: api.like_image(imageId),
             payload <= {
-                client_email: $userEmail
+                user_id: $userId
+            },
+        },
+        dislikes <= {
+            endpoint: api.dislike_image(imageId),
+            payload <= {
+                user_id: $userId
+            },
+        },
+        favorite <= {
+            endpoint: api.add_to_favorite,
+            payload <= {
+                image_id: imageId
             }
         }
     }
@@ -152,8 +126,8 @@ images <= {
 
 DRAW <= {
     "
-    {menu} | {login}
+    {menu} | {gallery}
     -
-    {images}
+    {login}|
     "
 }

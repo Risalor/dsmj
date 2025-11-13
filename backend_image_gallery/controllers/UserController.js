@@ -257,7 +257,6 @@ module.exports = {
             return res.status(404).json({ error: 'Image not found' });
         }
 
-        // First check if the image is already in favorites
         UserModel.findById(req.session.userId, 'Favorites')
             .exec(function(err, user) {
                 if (err) {
@@ -273,12 +272,11 @@ module.exports = {
 
                 const isAlreadyFavorited = user.Favorites.includes(imageId);
                 const updateOperation = isAlreadyFavorited 
-                    ? { $pull: { Favorites: imageId } } // Remove from favorites
-                    : { $addToSet: { Favorites: imageId } }; // Add to favorites
+                    ? { $pull: { Favorites: imageId } }
+                    : { $addToSet: { Favorites: imageId } };
 
                 const action = isAlreadyFavorited ? 'removed from' : 'added to';
 
-                // Perform the update
                 UserModel.findByIdAndUpdate(
                     req.session.userId,
                     updateOperation,
@@ -295,7 +293,7 @@ module.exports = {
                     return res.json({
                         message: `Image ${action} favorites`,
                         favorites: updatedUser.Favorites,
-                        isFavorited: !isAlreadyFavorited // Return the new state
+                        isFavorited: !isAlreadyFavorited
                     });
                 });
             });
@@ -329,37 +327,5 @@ module.exports = {
                 const isFavorited = user.Favorites.includes(imageId);
                 return res.json({ isFavorited });
         });
-    },
-
-    /*removeFavorite: function(req, res) {
-        if (!req.session.userId) {
-            return res.status(401).json({ error: 'Not authenticated' });
-        }
-
-        const imageId = req.params.imageId;
-        
-        if (!imageId) {
-            return res.status(400).json({ error: 'Image ID is required' });
-        }
-
-        UserModel.findByIdAndUpdate(
-            req.session.userId,
-            { 
-                $pull: { Favorites: imageId }
-            },
-            { new: true }
-        ).exec(function(err, user) {
-            if (err) {
-                return res.status(500).json({
-                    message: 'Error when removing from favorites',
-                    error: err
-                });
-            }
-
-            return res.json({
-                message: 'Image removed from favorites',
-                favorites: user.Favorites
-            });
-        });
-    }*/
+    }
 };

@@ -76,16 +76,12 @@ enabled_component =
     "artist", "<=", component_config |
     "description", "<=", component_config |
     "share", ( "<=", component_config | ":", "{", "enabled", ":", boolean, "}" ) |
-    "title", "<=", component_config |
-    "details", "<=", component_config |
-    "price", "<=", component_config |
-    "purchase", ( "<=", component_config | ":", "{", "enabled", ":", boolean, "}" ) ;
+    "title", "<=", component_config ;
 
 component_config = "{",
     "enabled", ":", boolean,
     [ ",", "content", ( ":" | "<=" ), ( reference | array_reference ) ],
-    [ ",", "position", ":", position_value ],
-    [ ",", "max_visible", ":", number ],
+    [ ",", "position", ":", position_value ]
     [ ",", "style", "<=", style_object ],
     "}" ;
 
@@ -97,8 +93,7 @@ click_action =
     "dislikes", "<=", action_config |
     "favorite", "<=", action_config |
     "share", "<=", action_config |
-    "artist", "<=", action_config |
-    "purchase", "<=", action_config ;
+    "artist", "<=", action_config ;
 
 action_config = "{",
     "endpoint", ":", function_call,

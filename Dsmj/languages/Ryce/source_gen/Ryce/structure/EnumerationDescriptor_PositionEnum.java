@@ -19,9 +19,13 @@ public class EnumerationDescriptor_PositionEnum extends EnumerationDescriptorBas
   private final EnumerationDescriptor.MemberDescriptor myMember_top_right_0 = new EnumerationDescriptor.MemberDescriptor("top_right", "top_right", 0x7f63219c035cbe4fL, "r:6f21ea0b-8f9f-4069-8bcc-6c3e23fc8fea(Ryce.structure)/9179217419466227279");
   private final EnumerationDescriptor.MemberDescriptor myMember_bottom_left_0 = new EnumerationDescriptor.MemberDescriptor("bottom_left", "bottom_left", 0x7f63219c035cbe50L, "r:6f21ea0b-8f9f-4069-8bcc-6c3e23fc8fea(Ryce.structure)/9179217419466227280");
   private final EnumerationDescriptor.MemberDescriptor myMember_bottom_right_0 = new EnumerationDescriptor.MemberDescriptor("bottom_right", "bottom_right", 0x7f63219c035cbe51L, "r:6f21ea0b-8f9f-4069-8bcc-6c3e23fc8fea(Ryce.structure)/9179217419466227281");
+  private final EnumerationDescriptor.MemberDescriptor myMember_top_middle_0 = new EnumerationDescriptor.MemberDescriptor("top_middle", "top_middle", 0x39c93bd42dd9787bL, "r:6f21ea0b-8f9f-4069-8bcc-6c3e23fc8fea(Ryce.structure)/4163925112969066619");
+  private final EnumerationDescriptor.MemberDescriptor myMember_bottom_middle_0 = new EnumerationDescriptor.MemberDescriptor("bottom_middle", "bottom_middle", 0x39c93bd42dd9787cL, "r:6f21ea0b-8f9f-4069-8bcc-6c3e23fc8fea(Ryce.structure)/4163925112969066620");
+  private final EnumerationDescriptor.MemberDescriptor myMember_right_middle_0 = new EnumerationDescriptor.MemberDescriptor("right_middle", "right_middle", 0x39c93bd42dd9787dL, "r:6f21ea0b-8f9f-4069-8bcc-6c3e23fc8fea(Ryce.structure)/4163925112969066621");
+  private final EnumerationDescriptor.MemberDescriptor myMember_left_middle_0 = new EnumerationDescriptor.MemberDescriptor("left_middle", "left_middle", 0x39c93bd42dd9787eL, "r:6f21ea0b-8f9f-4069-8bcc-6c3e23fc8fea(Ryce.structure)/4163925112969066622");
 
-  private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x7f63219c035cbe4dL, 0x7f63219c035cbe4eL, 0x7f63219c035cbe4fL, 0x7f63219c035cbe50L, 0x7f63219c035cbe51L);
-  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList0(myIndex, myMember_top_left_0, myMember_top_right_0, myMember_bottom_left_0, myMember_bottom_right_0);
+  private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x7f63219c035cbe4dL, 0x7f63219c035cbe4eL, 0x7f63219c035cbe4fL, 0x7f63219c035cbe50L, 0x7f63219c035cbe51L, 0x39c93bd42dd9787bL, 0x39c93bd42dd9787cL, 0x39c93bd42dd9787dL, 0x39c93bd42dd9787eL);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList0(myIndex, myMember_top_left_0, myMember_top_right_0, myMember_bottom_left_0, myMember_bottom_right_0, myMember_top_middle_0, myMember_bottom_middle_0, myMember_right_middle_0, myMember_left_middle_0);
 
   @Nullable
   @Override
@@ -50,6 +54,14 @@ public class EnumerationDescriptor_PositionEnum extends EnumerationDescriptorBas
         return myMember_bottom_left_0;
       case "bottom_right":
         return myMember_bottom_right_0;
+      case "top_middle":
+        return myMember_top_middle_0;
+      case "bottom_middle":
+        return myMember_bottom_middle_0;
+      case "right_middle":
+        return myMember_right_middle_0;
+      case "left_middle":
+        return myMember_left_middle_0;
     }
     return null;
   }

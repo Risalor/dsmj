@@ -13,7 +13,7 @@ import Profile from './components/Profile';
 
 function App() {
   const [user, setUser] = useState(localStorage.user ? JSON.parse(localStorage.user) : null);
-  const [currStyle] = useState('ver3');
+  const [currStyle] = useState('ver1');
   const updateUserData = (userInfo) => {
     localStorage.setItem("user", JSON.stringify(userInfo));
     setUser(userInfo);

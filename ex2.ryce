@@ -1,3 +1,4 @@
+
 components <= {
     menu: <Menu>
     api: <Api>
@@ -9,75 +10,64 @@ components <= {
 
 menu <= {
     options <= {
-        GALLERY <= {
-            url: /gallery,
-            text: "Gallery",
-            style <= {
-                font-weight: bold
-            }
+        KRISGALERY <= {
+            url: /,
+            text: "KrisGallery",
+            icon: FaPaintBrush
         },
-        ARTISTS <= {
-            url: /artists,
-            text: "Artists",
-            style <= {
-                text-decoration-line: overline underline
-            }
+        IMAGES <= {
+            url: /,
+            text: "Images"
+            icon: Image
         },
-        ABOUT <= {
-            url: /about,
-            text: "About",
-            style <= {
-                font-style: italic
-            }
-        }
-    },
-    style <= {
-        background-color: #f0f0f0
-    },
-    type: sidemenu
-}
-
-login <= {
-    $userId ? {
-        options <= {
-            LOGIN <= {
-                url: /login,
-                text: "Login",
-                style <= {
-                    color: green,
-                    background-color: black
-                }
-            },
-            REGISTER <= {
-                url: /register,
-                text: "Register",
-                style <= {
-                    color: green,
-                    background-color: black
-                }
-            }
-        }
-    } : {
-        LOGOUT <= {
-            url: /logout,
-            text: "Logout",
-            style <= {
-                color: green,
-                background-color: black
-            }
+        ADD_IMAGE <= {
+            url: /AddPhoto,
+            text: "Add Image",
+            icon: Plus
         }
     },
     type: topbar
 }
 
+login <= {
+    set: $userId,
+    options_IsSet <= {
+        LOGIN <= {
+            url: /login,
+            text: "Login",
+            icon: LogIn
+        },
+        REGISTER <= {
+            url: /register,
+            text: "Register",
+            icon: UserPlus
+        }
+    },
+    options_IsNotSet <= {
+        USER <= {
+            url: ,
+            text: $user.ProfileName,
+            image: $user.ProfileImage
+        },
+        LOGOUT <= {
+            url: /logout,
+            text: "Logout",
+            icon: LogOut
+        }
+    },
+    type: dropdown
+}
+
 api <= {
-    base_url: "http://localhost:3000/",
+    base_url: "http://localhost:3001/",
     endpoints <= {
-        images: "GET /images",
-        artists: "GET /artists",
-        like_image(imageId): "POST /images/(imageId)/like",
-        share_image(imageId): "POST /images/(imageId)/share",
-        add_to_favorite: "POST /users/{userId}/favorite"
+        images: GET /images
+        is_favorite(imageId): GET users/checkFavorite/(imageId)
+        users: GET /users,
+        profile(id): GET users/(id)/profile,
+        like_image(imageId): POST /images/(imageId)/like,
+        dislike_image(imageId): POST /images/(imageId)/dislike,
+        add_to_favorite: POST /users/addToFavorites,
     }
 }
 
@@ -86,70 +76,39 @@ images <= {
         contents: api.images,
         for_each <= {
             imageId: contents[]._id,
-            like_num: contents[].num_of_likes,
-            artist_name: contents[].artist_name,
-            description: contents[].description
+            userName: contents[].PostedBy.ProfileName,
+            date: contents[].DatePosted,
+            title: contents[].Title,
+            dascription: contents[].text
         }
     },
-    layout <= {
-        options: [masonry, grid],
-        default: masonry
-    },
-    items_per_page: 30,
-    sorting <= {
-        options: [most_popular, newest_first],
-        default: most_popular
-    },
+    layout: list,
+    sorting: newest_first,
     enabled_components <= {
         likes <= {
-            enabled: true,
-            content: like_num,
-            position: bottom-left
-        },
-        artist <= {
-            enabled: true,
-            content: artist_name,
-            position: top-left
-        },
-        description <= {
-            enabled: true,
-            content: description,
-            max_visible: 1
-        },
-        favorite: {
             enabled: true
         },
-        share: {
-            enabled: true,
-            position: top-right
-        }
+        dislikes <= {
+            enabled: false
+        },
+        favorite <= {
+            enabled: true
+        },
+        position: bottom-left
     },
     click_actions <= {
         likes <= {
             endpoint: api.like_image(imageId),
             payload <= {
-                user_id: $userId
+                user_id: $user._id
             },
-            on_success: reload
         },
-        favorite <= {
-            endpoint: api.add_to_favorite,
+        dislikes <= {
+            endpoint: api.dislike_image(imageId),
             payload <= {
-                image_id: imageId
-            }
-        },
-        share <= {
-            endpoint: api.share_image(imageId),
-            payload <= {
-                user_id: $userId
-            }
+                user_id: $user._id
+            },
         }
-    }
-}
-
-footer <= {
-    content <= {
-        text: "Art Space"
     }
 }
 
@@ -159,6 +118,5 @@ DRAW <= {
     -
     {gallery}
     -
-    {footer}
     "
 }

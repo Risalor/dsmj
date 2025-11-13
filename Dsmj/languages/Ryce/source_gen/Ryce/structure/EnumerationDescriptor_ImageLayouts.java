@@ -17,9 +17,10 @@ public class EnumerationDescriptor_ImageLayouts extends EnumerationDescriptorBas
 
   private final EnumerationDescriptor.MemberDescriptor myMember_Grid_0 = new EnumerationDescriptor.MemberDescriptor("Grid", "Grid", 0x7f63219c035cbd93L, "r:6f21ea0b-8f9f-4069-8bcc-6c3e23fc8fea(Ryce.structure)/9179217419466227091");
   private final EnumerationDescriptor.MemberDescriptor myMember_List_0 = new EnumerationDescriptor.MemberDescriptor("List", "List", 0x7f63219c035cbd94L, "r:6f21ea0b-8f9f-4069-8bcc-6c3e23fc8fea(Ryce.structure)/9179217419466227092");
+  private final EnumerationDescriptor.MemberDescriptor myMember_Masonary_0 = new EnumerationDescriptor.MemberDescriptor("Masonary", "Masonary", 0x39c93bd42dd7ce59L, "r:6f21ea0b-8f9f-4069-8bcc-6c3e23fc8fea(Ryce.structure)/4163925112968957529");
 
-  private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x7f63219c035cbd92L, 0x7f63219c035cbd93L, 0x7f63219c035cbd94L);
-  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList0(myIndex, myMember_Grid_0, myMember_List_0);
+  private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x7f63219c035cbd92L, 0x7f63219c035cbd93L, 0x7f63219c035cbd94L, 0x39c93bd42dd7ce59L);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList0(myIndex, myMember_Grid_0, myMember_List_0, myMember_Masonary_0);
 
   @Nullable
   @Override
@@ -44,6 +45,8 @@ public class EnumerationDescriptor_ImageLayouts extends EnumerationDescriptorBas
         return myMember_Grid_0;
       case "List":
         return myMember_List_0;
+      case "Masonary":
+        return myMember_Masonary_0;
     }
     return null;
   }

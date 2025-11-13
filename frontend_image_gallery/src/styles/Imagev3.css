@@ -131,7 +131,6 @@
     margin-top: 1rem;
 }
 
-/* Updated button styles to match original version */
 .masonry-actions button {
     width: 40px;
     height: 40px;
@@ -151,7 +150,6 @@
     transform: scale(1.1);
 }
 
-/* Specific styles for liked state */
 .masonry-actions .like-btn.liked {
     background: rgba(0, 0, 0, 0.9);
     color: white;
@@ -162,7 +160,6 @@
     transform: scale(1.1);
 }
 
-/* Specific styles for disliked state */
 .masonry-actions .dislike-btn.disliked {
     background: rgba(0, 0, 0, 0.9);
     color: white;
@@ -173,7 +170,6 @@
     transform: scale(1.1);
 }
 
-/* Specific styles for favorited state */
 .masonry-actions .favorite-btn.favorited {
     background: rgba(0, 0, 0, 0.9);
     color: white;

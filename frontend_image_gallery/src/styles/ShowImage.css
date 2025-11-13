@@ -11,10 +11,12 @@
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     border: 1px solid #4a5568;
     margin-bottom: 2rem;
+    position: relative;
 }
 
 .photo-image-container {
     width: 100%;
+    position: relative;
 }
 
 .photo-detail-image {
@@ -22,6 +24,82 @@
     max-height: 600px;
     object-fit: contain;
     display: block;
+}
+
+.showphoto-actions {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    z-index: 20;
+}
+
+.showphoto-actions button {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+}
+
+.showphoto-actions button:hover {
+    background: rgba(0, 0, 0, 0.9);
+    transform: scale(1.1);
+}
+
+.showphoto-actions .like-btn {
+    color: white;
+}
+
+.showphoto-actions .like-btn.liked {
+    color: white; 
+}
+
+.showphoto-actions .like-btn.liked svg {
+    fill: currentColor;
+}
+
+.showphoto-actions .dislike-btn {
+    color: white;
+}
+
+.showphoto-actions .dislike-btn.disliked {
+    color: white;
+}
+
+.showphoto-actions .dislike-btn.disliked svg {
+    fill: currentColor;
+}
+
+.showphoto-actions .favorite-btn {
+    color: white;
+}
+
+.showphoto-actions .favorite-btn.favorited {
+    color: white;
+}
+
+.showphoto-actions .favorite-btn.favorited svg {
+    fill: currentColor;
+}
+
+.showphoto-actions button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.showphoto-actions button:disabled:hover {
+    background: rgba(0, 0, 0, 0.7);
+    transform: none;
 }
 
 .photo-info {
@@ -50,28 +128,6 @@
 .meta-item {
     color: #a0aec0;
     font-size: 0.9rem;
-}
-
-.photo-actions {
-    display: flex;
-    justify-content: center;
-    gap: 3rem;
-    padding: 1rem;
-    background: #1a202c;
-    border-top: 1px solid #4a5568;
-}
-
-.action-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.action-count {
-    color: #cbd5e0;
-    font-size: 0.9rem;
-    font-weight: 500;
 }
 
 .comments-section-wrapper {
@@ -180,9 +236,14 @@
         gap: 0.5rem;
     }
     
-    .photo-actions {
-        gap: 2rem;
-        padding: 0.75rem;
+    .showphoto-actions {
+        top: 10px;
+        right: 10px;
+    }
+    
+    .showphoto-actions button {
+        width: 36px;
+        height: 36px;
     }
     
     .comment-meta {
@@ -193,5 +254,22 @@
     
     .comments-section-wrapper {
         padding: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .showphoto-actions {
+        top: 8px;
+        right: 8px;
+    }
+    
+    .showphoto-actions button {
+        width: 32px;
+        height: 32px;
+    }
+    
+    .showphoto-actions button svg {
+        width: 16px;
+        height: 16px;
     }
 }

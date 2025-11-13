@@ -3,7 +3,6 @@ components <= {
     menu: <Menu>
     api: <Api>
     images: <ImageDisplay>
-    styles: <Style>
     footer: <Footer>
     login: <Menu>
 }
@@ -13,38 +12,23 @@ menu <= {
         KRISGALERY <= {
             url: /,
             text: "KrisGallery",
-            icon: Paintbrush
+            icon: FaPaintBrush
         },
         IMAGES <= {
-            url: /images,
+            url: /,
             text: "Images"
+            icon: Image
         },
-        GALLERY <= {
-            url: /Gallery,
-            text: "Gallery",
-            style <= {
-                text-shadow: 2px 2px red
-            }
+        ADD_IMAGE <= {
+            url: /AddPhoto,
+            text: "Add Image",
+            icon: Plus
         },
-        UPLOAD <= {
-            url: /upload,
-            text: "Upload image",
-            style <= {
-                color: green,
-                background-color: black
-            }
-        },
-        HELP <= {
-            url: /help,
-            text: "Help",
-            style <= {
-                text-shadow: 2px 2px red
-            }
+        PROFILE <= {
+            url: /profile,
+            text: "Profile",
+            icon: User
         }
-    },
-    style <= {
-        border: solid 1px black
-        background-color: white
     },
     type: topbar
 }
@@ -55,42 +39,39 @@ login <= {
         LOGIN <= {
             url: /login,
             text: "Login",
-            style <= {
-                color: green,
-                background-color: black
-            }
+            icon: LogIn
         },
         REGISTER <= {
             url: /register,
             text: "Register",
-            style <= {
-                color: green,
-                background-color: black
-            }
+            icon: UserPlus
         }
     },
     options_IsNotSet <= {
+        USER <= {
+            url: ,
+            text: $user.ProfileName,
+            image: $user.ProfileImage
+        },
         LOGOUT <= {
             url: /logout,
             text: "Logout",
-            style <= {
-                color: green,
-                background-color: black
-            }
+            icon: LogOut
         }
     },
     type: topbar
 }
 
 api <= {
-    base_url: "http://localhost:3000/",
+    base_url: "http://localhost:3001/",
     endpoints <= {
-        images: "GET /images",
-        users: "GET /users",
-        like_image(imageId): "POST /images/(imageId)/like",
-        dislike_image(imageId): "POST /images/(imageId)/dislike",
-        add_to_favorite: "POST /users/{userId}/favorite",
-        image_comments(imageId): "POST /images/(imageId)/comments"
+        images: GET /images
+        is_favorite(imageId): GET users/checkFavorite/(imageId)
+        users: GET /users,
+        profile(id): GET users/(id)/profile,
+        like_image(imageId): POST /images/(imageId)/like,
+        dislike_image(imageId): POST /images/(imageId)/dislike,
+        add_to_favorite: POST /users/addToFavorites,
     }
 }
 
@@ -99,49 +80,38 @@ images <= {
         contents: api.images,
         for_each <= {
             imageId: contents[]._id,
-            like_num: contents[].num_of_likes,
-            dislike_num: contents[].num_of_dislikes,
-            top_comments <= api.image_comments(imageId)
+            userName: contents[].PostedBy.ProfileName,
+            date: contents[].DatePosted,
+            title: contents[].Title,
+            dascription: contents[].text
         }
     },
-    layout <= {
-        options: [grid, list],
-        default: grid
-    },
-    items_per_page: 20,
-    sorting <= {
-        options: [newest_first, most_popular],
-        default: newest_first
-    },
+    layout: grid,
+    items_per_page: -1,
+    sorting: newest_first,
     enabled_components <= {
         likes <= {
-            enabled: true,
-            content: like_num,
-            position: bottom-left
+            enabled: true
         },
         dislikes <= {
-            enabled: true,
-            content: dislike_num
-            position: bottom-right,
-            style <= {
-                color: red
-            }
+            enabled: true
         },
         favorite <= {
             enabled: true
-        }
+        },
+        position: top-right
     },
     click_actions <= {
         likes <= {
             endpoint: api.like_image(imageId),
             payload <= {
-                user_id: $userId
+                user_id: $user._id
             },
         },
         dislikes <= {
             endpoint: api.dislike_image(imageId),
             payload <= {
-                user_id: $userId
+                user_id: $user._id
             },
         },
         favorite <= {
@@ -155,7 +125,7 @@ images <= {
 
 footer <= {
     content <= {
-        text: "Kristjan's art gallery website"
+        text: "2025 KrisGallery. All rights reserved."
     }
 }
 
