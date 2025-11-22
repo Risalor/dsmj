@@ -50,34 +50,6 @@
     transform: scale(1.05);
 }
 
-.action-buttons-horizontal {
-    position: absolute;
-    bottom: 15px;
-    left: 15px;
-    display: flex;
-    gap: 8px;
-    z-index: 20;
-}
-
-.action-buttons-horizontal button {
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: none;
-    background: rgba(0, 0, 0, 0.7);
-    color: white;
-    transition: all 0.3s ease;
-    backdrop-filter: blur(5px);
-}
-
-.action-buttons-horizontal button:hover {
-    background: rgba(0, 0, 0, 0.9);
-    transform: scale(1.1);
-}
-
 .photo-list-info {
     flex: 1;
     padding: 1.5rem;
@@ -132,31 +104,6 @@
 .photo-date {
     font-size: 0.85rem;
     color: #718096;
-}
-
-@media (max-width: 768px) {
-    .photo-list-content {
-        flex-direction: column;
-    }
-    
-    .photo-list-image {
-        width: 100%;
-        min-width: 100%;
-        height: 250px;
-    }
-    
-    .photo-list-info {
-        padding: 1rem;
-    }
-    
-    .photo-list-title {
-        font-size: 1.2rem;
-    }
-    
-    .action-buttons-horizontal {
-        bottom: 10px;
-        left: 10px;
-    }
 }
 
 .favorite-btn {

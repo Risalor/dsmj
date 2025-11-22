@@ -11,16 +11,16 @@ function Header() {
     const location = useLocation();
 
     useEffect(() => {
-        if (styles === 'ver1') {
+        if (styles.ver1) {
             import('../styles/Headerv1.css');
-        } else if (styles === 'ver2') {
+        } else if (styles.ver2) {
             import('../styles/Headerv2.css');
-        } else if (styles === 'ver3') {
+        } else if (styles.ver3) {
             import('../styles/Headerv3.css');
         }
     }, [styles]);
 
-    if (styles !== 'ver3') {
+    if (styles.ver1) {
         return (
             <nav className="navbar navbar-expand-lg navbar-dark bg-dark px-3">
                 <Link className="navbar-brand d-flex align-items-center" to="/">
@@ -64,7 +64,9 @@ function Header() {
                             </>
                         )}
                     </ul>
-                    <UserDisplay />
+                    <div className="sidebar-user">
+                        <UserDisplay />
+                    </div>
                 </div>
             </nav>
         );

@@ -13,7 +13,15 @@ import Profile from './components/Profile';
 
 function App() {
   const [user, setUser] = useState(localStorage.user ? JSON.parse(localStorage.user) : null);
-  const [currStyle] = useState('ver1');
+
+  const [currStyle, setCurrStyle] = useState({
+    ver1: true,
+    ver2: false,
+    ver3: false,
+    layout: 'grid',
+    menu: 'topbar'
+  });
+
   const updateUserData = (userInfo) => {
     localStorage.setItem("user", JSON.stringify(userInfo));
     setUser(userInfo);
@@ -29,10 +37,10 @@ function App() {
         <div className="App" style={{ 
           minHeight: '100vh', 
           display: 'flex', 
-          flexDirection: currStyle === 'ver3' ? 'row' : 'column' 
+          flexDirection: currStyle.menu === 'sidebar' ? 'row' : 'column' 
         }}>
           <Header />
-          <main style={{ flex: 1, marginLeft: currStyle === 'ver3' ? '250px' : '0' }}>
+          <main style={{ flex: 1, marginLeft: currStyle.ver3 ? '250px' : '0' }}>
             <Routes>
               <Route path="/" exact element={<Photos />}></Route>
               <Route path="/Register" element={<Register />}></Route>
@@ -43,7 +51,7 @@ function App() {
               <Route path="/Profile" element={<Profile />}></Route>
             </Routes>
           </main>
-          {currStyle === 'ver1' ? <Footer /> : <></>}
+          {currStyle.ver1 ? <Footer /> : <></>}
         </div>
       </UserContext.Provider>
     </BrowserRouter>

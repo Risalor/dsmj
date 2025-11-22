@@ -1,0 +1,174 @@
+/* Base button styles */
+.action-buttons button {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+    z-index: 20;
+}
+
+.action-buttons button:hover {
+    background: rgba(0, 0, 0, 0.9);
+    transform: scale(1.1);
+}
+
+/* Small variant */
+.action-buttons.small button {
+    width: 36px;
+    height: 36px;
+}
+
+/* Positioning classes */
+.action-buttons.top {
+    top: 10px;
+}
+
+.action-buttons.bottom {
+    bottom: 10px;
+}
+
+.action-buttons.left {
+    left: 10px;
+}
+
+.action-buttons.right {
+    right: 10px;
+}
+
+.action-buttons.middle {
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.action-buttons.center {
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* Layout direction classes */
+.action-buttons.vertical {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.action-buttons.horizontal {
+    display: flex;
+    gap: 8px;
+}
+
+/* Position absolute for all action buttons */
+.action-buttons {
+    position: absolute;
+    z-index: 20;
+}
+
+/* Specific combinations for common use cases */
+.action-buttons.vertical.top.right {
+    top: 10px;
+    right: 10px;
+    left: auto;
+    bottom: auto;
+}
+
+.action-buttons.horizontal.bottom.left {
+    bottom: 15px;
+    left: 15px;
+    right: auto;
+    top: auto;
+}
+
+.action-buttons.horizontal.bottom.center {
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    right: auto;
+    top: auto;
+}
+
+.action-buttons.vertical.middle.right {
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    left: auto;
+    bottom: auto;
+}
+
+.action-buttons.horizontal.top.center {
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    right: auto;
+    bottom: auto;
+}
+
+/* Masonry specific */
+.masonry-actions {
+    display: flex;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-top: 1rem;
+}
+
+.masonry-actions button {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+}
+
+.masonry-actions button:hover {
+    background: rgba(0, 0, 0, 0.9);
+    transform: scale(1.1);
+}
+
+/* State styles for all button types */
+.action-buttons .like-btn.liked,
+.masonry-actions .like-btn.liked {
+    background: rgba(0, 0, 0, 0.9);
+    color: white;
+}
+
+.action-buttons .like-btn.liked:hover,
+.masonry-actions .like-btn.liked:hover {
+    background: rgba(0, 0, 0, 0.9);
+    transform: scale(1.1);
+}
+
+.action-buttons .dislike-btn.disliked,
+.masonry-actions .dislike-btn.disliked {
+    background: rgba(0, 0, 0, 0.9);
+    color: white;
+}
+
+.action-buttons .dislike-btn.disliked:hover,
+.masonry-actions .dislike-btn.disliked:hover {
+    background: rgba(0, 0, 0, 0.9);
+    transform: scale(1.1);
+}
+
+.action-buttons .favorite-btn.favorited,
+.masonry-actions .favorite-btn.favorited {
+    background: rgba(0, 0, 0, 0.9);
+    color: white;
+}
+
+.action-buttons .favorite-btn.favorited:hover,
+.masonry-actions .favorite-btn.favorited:hover {
+    background: rgba(0, 0, 0, 0.9);
+    transform: scale(1.1);
+}

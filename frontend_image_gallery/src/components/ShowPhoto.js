@@ -39,7 +39,6 @@ function ShowPhoto() {
                         className="photo-detail-image"
                     />
                     
-                    {/* Action buttons positioned like in gallery view */}
                     <div className="action-buttons-vertical showphoto-actions">
                         <LikePhoto photo={photoState} setPhoto={setPhoto} />
                         {user && (

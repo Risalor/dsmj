@@ -4,6 +4,7 @@ import DislikePhoto from "./DislikePhoto";
 import LikePhoto from "./LikePhoto";
 import AddToFavoritesButton from "./AddToFavoritesButton";
 import { UserContext } from "../userContexts";
+import "../styles/combined.css"
 
 function Photo({ photo: initialPhoto }) {
     const [photo, setPhoto] = useState(initialPhoto);
@@ -11,16 +12,16 @@ function Photo({ photo: initialPhoto }) {
     const [showOverlay, setShowOverlay] = useState(false);
 
     useEffect(() => {
-        if (styles === 'ver1') {
+        if (styles.ver1) {
             import('../styles/Imagev1.css');
-        } else if (styles === 'ver2') {
+        } else if (styles.ver2) {
             import('../styles/Imagev2.css');
-        } else if (styles === 'ver3') {
+        } else if (styles.ver3) {
             import('../styles/Imagev3.css');
         }
     }, [styles]);
 
-    if (styles === 'ver1') {
+    if (styles.ver1) {
         return (
             <div className="photo-card card text-white bg-dark mb-3 border-secondary">
                 <div 
@@ -38,7 +39,7 @@ function Photo({ photo: initialPhoto }) {
                     
                     {showOverlay && (
                         <>
-                            <div className="action-buttons-vertical">
+                            <div className="action-buttons horizontal bottom right">
                                 <LikePhoto photo={photo} setPhoto={setPhoto} />
                                 {user && (
                                     <AddToFavoritesButton
@@ -67,7 +68,7 @@ function Photo({ photo: initialPhoto }) {
         );
     }
 
-    if (styles === 'ver2') {
+    if (styles.ver2) {
         return (
             <div className="photo-list-card">
                 <div className="photo-list-content">
@@ -127,7 +128,7 @@ function Photo({ photo: initialPhoto }) {
                         alt={photo.Title}
                     />
                 </Link>
-                
+                {!showOverlay && (
                 <div className="masonry-info-bar">
                     <div className="masonry-text-content">
                         <h4 className="masonry-title">{photo.Title}</h4>
@@ -138,10 +139,11 @@ function Photo({ photo: initialPhoto }) {
                         <span className="masonry-dislikes">👎 {photo.Dislikes || 0}</span>
                     </div>
                 </div>
+                )}
 
                 {showOverlay && (
                     <div className="masonry-overlay">
-                        <div className="masonry-actions">
+                        <div className="action-buttons horizontal bottom right">
                             <LikePhoto photo={photo} setPhoto={setPhoto} />
                             {user && (
                                 <AddToFavoritesButton

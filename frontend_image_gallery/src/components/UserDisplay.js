@@ -8,17 +8,17 @@ function UserDisplay() {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     
     useEffect(() => {
-        if (styles === 'ver1') {
+        if (styles.ver1) {
             import('../styles/Headerv1.css');
-        } else if (styles === 'ver2') {
+        } else if (styles.ver2) {
             import('../styles/Headerv2.css');
-        } else if (styles === 'ver3') {
+        } else if (styles.ver3) {
             import('../styles/Headerv3.css');
         }
     }, [styles]);
 
     useEffect(() => {
-        if(styles === 'ver2') {
+        if(styles.ver2) {
             const handleClickOutside = (event) => {
                 if (!event.target.closest('.user-dropdown')) {
                     setIsDropdownOpen(false);
@@ -36,7 +36,7 @@ function UserDisplay() {
         setIsDropdownOpen(!isDropdownOpen);
     };
 
-    if (styles === 'ver3') {
+    if (styles.ver3) {
         return (
             <div className="sidebar-user-display">
                 {user ? (
@@ -111,7 +111,7 @@ function UserDisplay() {
     }
 
     return (
-        styles === 'ver1' ?
+        styles.ver1 ?
         <div className="user-display d-flex align-items-center">
             {user ? (
                 <div className="d-flex align-items-center">
