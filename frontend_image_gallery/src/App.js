@@ -15,11 +15,18 @@ function App() {
   const [user, setUser] = useState(localStorage.user ? JSON.parse(localStorage.user) : null);
 
   const [currStyle, setCurrStyle] = useState({
-    ver1: true,
+    ver1: false,
     ver2: false,
     ver3: false,
     layout: 'grid',
-    menu: 'topbar'
+    menu: 'topbar',
+    like: true,
+    dislike: true,
+    favorite: true,
+    like_display: true,
+    dislike_display: false,
+    action_buttons_layout: '',
+    display_stats_layout: ''
   });
 
   const updateUserData = (userInfo) => {
@@ -37,7 +44,7 @@ function App() {
         <div className="App" style={{ 
           minHeight: '100vh', 
           display: 'flex', 
-          flexDirection: currStyle.menu === 'sidebar' ? 'row' : 'column' 
+          flexDirection: 'column' 
         }}>
           <Header />
           <main style={{ flex: 1, marginLeft: currStyle.ver3 ? '250px' : '0' }}>

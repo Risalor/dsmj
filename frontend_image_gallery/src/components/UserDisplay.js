@@ -8,11 +8,11 @@ function UserDisplay() {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     
     useEffect(() => {
-        if (styles.ver1) {
+        if (styles.menu === 'topbar') {
             import('../styles/Headerv1.css');
         } else if (styles.ver2) {
             import('../styles/Headerv2.css');
-        } else if (styles.ver3) {
+        } else if (styles.menu === 'sidebar') {
             import('../styles/Headerv3.css');
         }
     }, [styles]);
@@ -36,7 +36,7 @@ function UserDisplay() {
         setIsDropdownOpen(!isDropdownOpen);
     };
 
-    if (styles.ver3) {
+    if (styles.menu === 'sidebar') {
         return (
             <div className="sidebar-user-display">
                 {user ? (
@@ -111,7 +111,7 @@ function UserDisplay() {
     }
 
     return (
-        styles.ver1 ?
+        styles.menu === 'topbar' ?
         <div className="user-display d-flex align-items-center">
             {user ? (
                 <div className="d-flex align-items-center">

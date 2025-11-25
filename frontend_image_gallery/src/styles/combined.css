@@ -172,3 +172,18 @@
     background: rgba(0, 0, 0, 0.9);
     transform: scale(1.1);
 }
+
+.stats {
+    display: flex;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    color: #cbd5e0;
+    flex-shrink: 0;
+    margin-left: 0.5rem;
+}
+
+.display-likes, .display-dislikes {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}

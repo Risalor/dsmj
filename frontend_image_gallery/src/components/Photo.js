@@ -12,16 +12,16 @@ function Photo({ photo: initialPhoto }) {
     const [showOverlay, setShowOverlay] = useState(false);
 
     useEffect(() => {
-        if (styles.ver1) {
+        if (styles.layout === 'grid') {
             import('../styles/Imagev1.css');
-        } else if (styles.ver2) {
+        } else if (styles.layout === 'list') {
             import('../styles/Imagev2.css');
-        } else if (styles.ver3) {
+        } else if (styles.layout === 'masonry') {
             import('../styles/Imagev3.css');
         }
     }, [styles]);
 
-    if (styles.ver1) {
+    if (styles.layout === 'grid') {
         return (
             <div className="photo-card card text-white bg-dark mb-3 border-secondary">
                 <div 
@@ -36,18 +36,18 @@ function Photo({ photo: initialPhoto }) {
                             alt={photo.Title}
                         />
                     </Link>
-                    
+                    {!showOverlay && (
+                        <div className="stats action-buttons horizontal top right">
+                            {styles.like_display && (<span className="display-likes">👍 {photo.Likes || 0}</span>)}
+                            {styles.dislike_display && (<span className="display-dislikes">👎 {photo.Dislikes || 0}</span>)}
+                        </div>
+                    )}
                     {showOverlay && (
                         <>
                             <div className="action-buttons horizontal bottom right">
-                                <LikePhoto photo={photo} setPhoto={setPhoto} />
-                                {user && (
-                                    <AddToFavoritesButton
-                                        photoId={photo._id}
-                                        currentUserId={user._id}
-                                    />
-                                )}
-                                <DislikePhoto photo={photo} setPhoto={setPhoto} />
+                                {styles.like && (<LikePhoto photo={photo} setPhoto={setPhoto} />)}
+                                {styles.favorite && (<AddToFavoritesButton photoId={photo._id} currentUserId={user._id}/>)}
+                                {styles.dislike && (<DislikePhoto photo={photo} setPhoto={setPhoto} />)}
                             </div>
                             <Link to="/ShowPhoto" state={{ photo }} className="image-link">
                                 <div className="content-overlay">
@@ -68,7 +68,7 @@ function Photo({ photo: initialPhoto }) {
         );
     }
 
-    if (styles.ver2) {
+    if (styles.layout === 'list') {
         return (
             <div className="photo-list-card">
                 <div className="photo-list-content">
@@ -84,17 +84,17 @@ function Photo({ photo: initialPhoto }) {
                                 alt={photo.Title}
                             />
                         </Link>
-                        
                         {showOverlay && (
-                            <div className="action-buttons-horizontal">
-                                <LikePhoto photo={photo} setPhoto={setPhoto} />
-                                {user && (
-                                    <AddToFavoritesButton
-                                        photoId={photo._id}
-                                        currentUserId={user._id}
-                                    />
-                                )}
-                                <DislikePhoto photo={photo} setPhoto={setPhoto} />
+                            <div className="action-buttons horizontal top right">
+                                {styles.like && (<LikePhoto photo={photo} setPhoto={setPhoto} />)}
+                                {styles.favorite && (<AddToFavoritesButton photoId={photo._id} currentUserId={user._id}/>)}
+                                {styles.dislike && (<DislikePhoto photo={photo} setPhoto={setPhoto} />)}
+                            </div>
+                        )}
+                        {!showOverlay && (
+                            <div className="stats action-buttons horizontal bottom left">
+                                {styles.like_display && (<span className="display-likes">👍 {photo.Likes || 0}</span>)}
+                                {styles.dislike_display && (<span className="display-dislikes">👎 {photo.Dislikes || 0}</span>)}
                             </div>
                         )}
                     </div>
@@ -134,9 +134,9 @@ function Photo({ photo: initialPhoto }) {
                         <h4 className="masonry-title">{photo.Title}</h4>
                         <p className="masonry-author">by {photo.PostedBy?.ProfileName}</p>
                     </div>
-                    <div className="masonry-stats">
-                        <span className="masonry-likes">👍 {photo.Likes || 0}</span>
-                        <span className="masonry-dislikes">👎 {photo.Dislikes || 0}</span>
+                    <div className="stats">
+                        {styles.like_display && (<span className="display-likes">👍 {photo.Likes || 0}</span>)}
+                        {styles.dislike_display && (<span className="display-dislikes">👎 {photo.Dislikes || 0}</span>)}
                     </div>
                 </div>
                 )}
@@ -144,14 +144,9 @@ function Photo({ photo: initialPhoto }) {
                 {showOverlay && (
                     <div className="masonry-overlay">
                         <div className="action-buttons horizontal bottom right">
-                            <LikePhoto photo={photo} setPhoto={setPhoto} />
-                            {user && (
-                                <AddToFavoritesButton
-                                    photoId={photo._id}
-                                    currentUserId={user._id}
-                                />
-                            )}
-                            <DislikePhoto photo={photo} setPhoto={setPhoto} />
+                            {styles.like && (<LikePhoto photo={photo} setPhoto={setPhoto} />)}
+                            {styles.favorite && (<AddToFavoritesButton photoId={photo._id} currentUserId={user._id}/>)}
+                            {styles.dislike && (<DislikePhoto photo={photo} setPhoto={setPhoto} />)}
                         </div>
                         <Link to="/ShowPhoto" state={{ photo }} className="masonry-details-link">
                             <div className="masonry-full-info">

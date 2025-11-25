@@ -11,16 +11,16 @@ function Header() {
     const location = useLocation();
 
     useEffect(() => {
-        if (styles.ver1) {
+        if (styles.menu === 'topbar') {
             import('../styles/Headerv1.css');
         } else if (styles.ver2) {
             import('../styles/Headerv2.css');
-        } else if (styles.ver3) {
+        } else if (styles.menu === 'sidebar') {
             import('../styles/Headerv3.css');
         }
     }, [styles]);
 
-    if (styles.ver1) {
+    if (styles.menu === 'topbar') {
         return (
             <nav className="navbar navbar-expand-lg navbar-dark bg-dark px-3">
                 <Link className="navbar-brand d-flex align-items-center" to="/">
@@ -53,18 +53,16 @@ function Header() {
                                         <span className="icon-text">Add Image</span>
                                     </Link>
                                 </li>
-                                {styles === 'ver1' && (
-                                    <li className="nav-item">
-                                        <Link className="nav-link icon-link" to="/Profile" data-tooltip="Profile">
-                                            <User className="header-icon" size={28} />
-                                            <span className="icon-text">Profile</span>
-                                        </Link>
-                                    </li>
-                                )}
+                                <li className="nav-item">
+                                    <Link className="nav-link icon-link" to="/Profile" data-tooltip="Profile">
+                                        <User className="header-icon" size={28} />
+                                        <span className="icon-text">Profile</span>
+                                    </Link>
+                                </li>
                             </>
                         )}
                     </ul>
-                    <div className="sidebar-user">
+                    <div>
                         <UserDisplay />
                     </div>
                 </div>

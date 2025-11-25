@@ -87,21 +87,6 @@
     text-overflow: ellipsis;
 }
 
-.masonry-stats {
-    display: flex;
-    gap: 0.5rem;
-    font-size: 0.8rem;
-    color: #cbd5e0;
-    flex-shrink: 0;
-    margin-left: 0.5rem;
-}
-
-.masonry-likes, .masonry-dislikes {
-    display: flex;
-    align-items: center;
-    gap: 0.25rem;
-}
-
 .masonry-overlay {
     position: absolute;
     top: 0;
