@@ -15,15 +15,21 @@ function App() {
   const [user, setUser] = useState(localStorage.user ? JSON.parse(localStorage.user) : null);
 
   const [currStyle, setCurrStyle] = useState({
-    layout: 'grid',
-    menu: 'topbar',
+    layout: 'list',
+    menu: 'sidebar',
     like: true,
     dislike: true,
     favorite: true,
     like_display: true,
     dislike_display: true,
     action_buttons_layout: 'action-buttons horizontal top left',
-    display_stats_layout: 'action-buttons horizontal top right'
+    display_stats_layout: 'action-buttons vertical bottom right',
+    images_per_page: 2,
+    sorting: 'newest_asc',
+    sorting_options_display: false,
+    sorting_options: [],
+    footer: true,
+    footer_content: "2025 KrisGallery. All rights reserved."
   });
 
   const updateUserData = (userInfo) => {
@@ -55,7 +61,7 @@ function App() {
               <Route path="/Profile" element={<Profile />}></Route>
             </Routes>
           </main>
-          {currStyle.ver1 ? <Footer /> : <></>}
+          {currStyle.footer ? <Footer /> : <></>}
         </div>
       </UserContext.Provider>
     </BrowserRouter>

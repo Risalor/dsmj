@@ -1,4 +1,9 @@
+import { UserContext } from "../userContexts";
+import { useContext } from 'react';
+
 function Footer() {
+  const { user, cont, styles } = useContext(UserContext);
+
   return (
     <footer style={{
       backgroundColor: '#1a1a1a',
@@ -9,7 +14,7 @@ function Footer() {
       borderTop: '1px solid #333'
     }}>
       <div className="container">
-        <p>&copy; 2025 KrisGallery. All rights reserved.</p>
+        <p>{styles.footer_content}</p>
       </div>
     </footer>
   );
