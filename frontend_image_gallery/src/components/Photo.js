@@ -37,14 +37,14 @@ function Photo({ photo: initialPhoto }) {
                         />
                     </Link>
                     {!showOverlay && (
-                        <div className="stats action-buttons horizontal top right">
+                        <div className={`stats ${styles.display_stats_layout}`}>
                             {styles.like_display && (<span className="display-likes">👍 {photo.Likes || 0}</span>)}
                             {styles.dislike_display && (<span className="display-dislikes">👎 {photo.Dislikes || 0}</span>)}
                         </div>
                     )}
                     {showOverlay && (
                         <>
-                            <div className="action-buttons horizontal bottom right">
+                            <div className={`${styles.action_buttons_layout}`}>
                                 {styles.like && (<LikePhoto photo={photo} setPhoto={setPhoto} />)}
                                 {styles.favorite && (<AddToFavoritesButton photoId={photo._id} currentUserId={user._id}/>)}
                                 {styles.dislike && (<DislikePhoto photo={photo} setPhoto={setPhoto} />)}
@@ -85,14 +85,14 @@ function Photo({ photo: initialPhoto }) {
                             />
                         </Link>
                         {showOverlay && (
-                            <div className="action-buttons horizontal top right">
+                            <div className={`${styles.action_buttons_layout}`}>
                                 {styles.like && (<LikePhoto photo={photo} setPhoto={setPhoto} />)}
                                 {styles.favorite && (<AddToFavoritesButton photoId={photo._id} currentUserId={user._id}/>)}
                                 {styles.dislike && (<DislikePhoto photo={photo} setPhoto={setPhoto} />)}
                             </div>
                         )}
                         {!showOverlay && (
-                            <div className="stats action-buttons horizontal bottom left">
+                            <div className={`stats ${styles.display_stats_layout}`}>
                                 {styles.like_display && (<span className="display-likes">👍 {photo.Likes || 0}</span>)}
                                 {styles.dislike_display && (<span className="display-dislikes">👎 {photo.Dislikes || 0}</span>)}
                             </div>
@@ -134,7 +134,7 @@ function Photo({ photo: initialPhoto }) {
                         <h4 className="masonry-title">{photo.Title}</h4>
                         <p className="masonry-author">by {photo.PostedBy?.ProfileName}</p>
                     </div>
-                    <div className="stats">
+                    <div className={`stats ${styles.display_stats_layout}`}>
                         {styles.like_display && (<span className="display-likes">👍 {photo.Likes || 0}</span>)}
                         {styles.dislike_display && (<span className="display-dislikes">👎 {photo.Dislikes || 0}</span>)}
                     </div>
@@ -143,7 +143,7 @@ function Photo({ photo: initialPhoto }) {
 
                 {showOverlay && (
                     <div className="masonry-overlay">
-                        <div className="action-buttons horizontal bottom right">
+                        <div className={`${styles.action_buttons_layout}`}>
                             {styles.like && (<LikePhoto photo={photo} setPhoto={setPhoto} />)}
                             {styles.favorite && (<AddToFavoritesButton photoId={photo._id} currentUserId={user._id}/>)}
                             {styles.dislike && (<DislikePhoto photo={photo} setPhoto={setPhoto} />)}

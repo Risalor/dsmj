@@ -15,18 +15,15 @@ function App() {
   const [user, setUser] = useState(localStorage.user ? JSON.parse(localStorage.user) : null);
 
   const [currStyle, setCurrStyle] = useState({
-    ver1: false,
-    ver2: false,
-    ver3: false,
     layout: 'grid',
     menu: 'topbar',
     like: true,
     dislike: true,
     favorite: true,
     like_display: true,
-    dislike_display: false,
-    action_buttons_layout: '',
-    display_stats_layout: ''
+    dislike_display: true,
+    action_buttons_layout: 'action-buttons horizontal top left',
+    display_stats_layout: 'action-buttons horizontal top right'
   });
 
   const updateUserData = (userInfo) => {
