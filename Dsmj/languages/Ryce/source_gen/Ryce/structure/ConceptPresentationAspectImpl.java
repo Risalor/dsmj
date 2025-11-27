@@ -47,6 +47,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_Payload;
   private ConceptPresentation props_PayloadElement;
   private ConceptPresentation props_Position;
+  private ConceptPresentation props_Ryce;
   private ConceptPresentation props_Set;
   private ConceptPresentation props_Sorting;
   private ConceptPresentation props_Style;
@@ -323,6 +324,13 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_Position = cpb.create();
         }
         return props_Position;
+      case LanguageConceptSwitch.Ryce:
+        if (props_Ryce == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.presentationByName();
+          props_Ryce = cpb.create();
+        }
+        return props_Ryce;
       case LanguageConceptSwitch.Set:
         if (props_Set == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();

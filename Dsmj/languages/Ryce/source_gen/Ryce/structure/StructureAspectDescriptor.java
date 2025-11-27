@@ -54,6 +54,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptPayload = createDescriptorForPayload();
   /*package*/ final ConceptDescriptor myConceptPayloadElement = createDescriptorForPayloadElement();
   /*package*/ final ConceptDescriptor myConceptPosition = createDescriptorForPosition();
+  /*package*/ final ConceptDescriptor myConceptRyce = createDescriptorForRyce();
   /*package*/ final ConceptDescriptor myConceptSet = createDescriptorForSet();
   /*package*/ final ConceptDescriptor myConceptSorting = createDescriptorForSorting();
   /*package*/ final ConceptDescriptor myConceptStyle = createDescriptorForStyle();
@@ -77,7 +78,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
 
   @Override
   public Collection<ConceptDescriptor> getDescriptors() {
-    return Arrays.asList(myConceptApi, myConceptBaseUrl, myConceptClickActions, myConceptClickEndpoint, myConceptComponent, myConceptComponents, myConceptContent, myConceptContentSource, myConceptContents, myConceptDislike, myConceptDislikeClickAction, myConceptEnable, myConceptEnableComponents, myConceptEndpoint, myConceptEndpoints, myConceptFavorite, myConceptFavoriteClickAction, myConceptFooter, myConceptForEach, myConceptIcon, myConceptImageLayout, myConceptImageLink, myConceptImages, myConceptItemsPerPage, myConceptLike, myConceptLikeClickAction, myConceptLoadAction, myConceptLoadElement, myConceptMenu, myConceptMenuOption, myConceptMenuOptionElement, myConceptMenuOptionIsNotSet, myConceptMenuOptionIsSet, myConceptMenuType, myConceptParameter, myConceptPayload, myConceptPayloadElement, myConceptPosition, myConceptSet, myConceptSorting, myConceptStyle, myConceptStyleElement);
+    return Arrays.asList(myConceptApi, myConceptBaseUrl, myConceptClickActions, myConceptClickEndpoint, myConceptComponent, myConceptComponents, myConceptContent, myConceptContentSource, myConceptContents, myConceptDislike, myConceptDislikeClickAction, myConceptEnable, myConceptEnableComponents, myConceptEndpoint, myConceptEndpoints, myConceptFavorite, myConceptFavoriteClickAction, myConceptFooter, myConceptForEach, myConceptIcon, myConceptImageLayout, myConceptImageLink, myConceptImages, myConceptItemsPerPage, myConceptLike, myConceptLikeClickAction, myConceptLoadAction, myConceptLoadElement, myConceptMenu, myConceptMenuOption, myConceptMenuOptionElement, myConceptMenuOptionIsNotSet, myConceptMenuOptionIsSet, myConceptMenuType, myConceptParameter, myConceptPayload, myConceptPayloadElement, myConceptPosition, myConceptRyce, myConceptSet, myConceptSorting, myConceptStyle, myConceptStyleElement);
   }
 
   @Override
@@ -160,6 +161,8 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
         return myConceptPayloadElement;
       case LanguageConceptSwitch.Position:
         return myConceptPosition;
+      case LanguageConceptSwitch.Ryce:
+        return myConceptRyce;
       case LanguageConceptSwitch.Set:
         return myConceptSet;
       case LanguageConceptSwitch.Sorting:
@@ -529,6 +532,18 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.origin("r:6f21ea0b-8f9f-4069-8bcc-6c3e23fc8fea(Ryce.structure)/9179217419466227273");
     b.version(3);
     b.property("position", 0x7f63219c035cbe52L).type(MetaIdFactory.dataTypeId(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x7f63219c035cbe4dL)).origin("9179217419466227282").done();
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForRyce() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("Ryce", "Ryce", 0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x2ae72384232f840eL);
+    b.class_(false, false, true);
+    b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L);
+    b.origin("r:6f21ea0b-8f9f-4069-8bcc-6c3e23fc8fea(Ryce.structure)/3091478719646106638");
+    b.version(3);
+    b.aggregate("api", 0x2ae72384232f8410L).target(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x4b61efe7ede3967eL).optional(false).ordered(true).multiple(false).origin("3091478719646106640").done();
+    b.aggregate("menu", 0x2ae72384232f8411L).target(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x5f82ea2efca8b118L).optional(true).ordered(true).multiple(false).origin("3091478719646106641").done();
+    b.aggregate("images", 0x2ae72384232f8412L).target(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x7f63219c035cbd8dL).optional(true).ordered(true).multiple(false).origin("3091478719646106642").done();
+    b.aggregate("footer", 0x2ae72384232f8413L).target(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x39c93bd42df58afaL).optional(true).ordered(true).multiple(false).origin("3091478719646106643").done();
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForSet() {

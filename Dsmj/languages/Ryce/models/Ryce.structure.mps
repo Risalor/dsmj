@@ -880,5 +880,39 @@
       <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
     </node>
   </node>
+  <node concept="1TIwiD" id="2FB8SgzbSge">
+    <property role="EcuMT" value="3091478719646106638" />
+    <property role="TrG5h" value="Ryce" />
+    <property role="19KtqR" value="true" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="PrWs8" id="2FB8SgzbSgf" role="PzmwI">
+      <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
+    </node>
+    <node concept="1TJgyj" id="2FB8SgzbSgg" role="1TKVEi">
+      <property role="IQ2ns" value="3091478719646106640" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="api" />
+      <property role="20lbJX" value="fLJekj4/_1" />
+      <ref role="20lvS9" node="4HxVYvHSTpY" resolve="Api" />
+    </node>
+    <node concept="1TJgyj" id="2FB8SgzbSgh" role="1TKVEi">
+      <property role="IQ2ns" value="3091478719646106641" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="menu" />
+      <ref role="20lvS9" node="5Y2UyVWEb4o" resolve="Menu" />
+    </node>
+    <node concept="1TJgyj" id="2FB8SgzbSgi" role="1TKVEi">
+      <property role="IQ2ns" value="3091478719646106642" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="images" />
+      <ref role="20lvS9" node="7Xz8pK3nbQd" resolve="Images" />
+    </node>
+    <node concept="1TJgyj" id="2FB8SgzbSgj" role="1TKVEi">
+      <property role="IQ2ns" value="3091478719646106643" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="footer" />
+      <ref role="20lvS9" node="3B9eXgHXoFU" resolve="Footer" />
+    </node>
+  </node>
 </model>
 

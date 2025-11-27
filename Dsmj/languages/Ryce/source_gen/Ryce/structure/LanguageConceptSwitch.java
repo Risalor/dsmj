@@ -47,10 +47,11 @@ public final class LanguageConceptSwitch {
   public static final int Payload = 35;
   public static final int PayloadElement = 36;
   public static final int Position = 37;
-  public static final int Set = 38;
-  public static final int Sorting = 39;
-  public static final int Style = 40;
-  public static final int StyleElement = 41;
+  public static final int Ryce = 38;
+  public static final int Set = 39;
+  public static final int Sorting = 40;
+  public static final int Style = 41;
+  public static final int StyleElement = 42;
 
   public LanguageConceptSwitch() {
     LanguageConceptIndexBuilder builder = new LanguageConceptIndexBuilder(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL);
@@ -92,6 +93,7 @@ public final class LanguageConceptSwitch {
     builder.put(0x39c93bd42deb4352L, Payload);
     builder.put(0x39c93bd42deb4330L, PayloadElement);
     builder.put(0x7f63219c035cbe49L, Position);
+    builder.put(0x2ae72384232f840eL, Ryce);
     builder.put(0x4b61efe7ede0c75aL, Set);
     builder.put(0x7f63219c035cbddeL, Sorting);
     builder.put(0x5f82ea2efca8b139L, Style);

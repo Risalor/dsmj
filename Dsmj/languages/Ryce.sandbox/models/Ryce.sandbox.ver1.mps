@@ -12,6 +12,11 @@
       </concept>
     </language>
     <language id="5566a3bc-3a3d-48e5-9986-b96a01ec7bad" name="Ryce">
+      <concept id="3091478719646106638" name="Ryce.structure.Ryce" flags="ng" index="9Maua">
+        <child id="3091478719646106640" name="api" index="9Mauk" />
+        <child id="3091478719646106641" name="menu" index="9Maul" />
+        <child id="3091478719646106642" name="images" index="9Maum" />
+      </concept>
       <concept id="4163925112968762428" name="Ryce.structure.Icon" flags="ng" index="k7uZC">
         <property id="4163925112968762429" name="icon" index="k7uZD" />
       </concept>
@@ -50,6 +55,8 @@
       </concept>
       <concept id="4163925112969871115" name="Ryce.structure.Dislike" flags="ng" index="kb8jv">
         <child id="4163925112969871116" name="enable" index="kb8jo" />
+        <child id="4163925112969871117" name="content" index="kb8jp" />
+        <child id="4163925112969871118" name="position" index="kb8jq" />
       </concept>
       <concept id="4163925112970632802" name="Ryce.structure.ClickEndpoint" flags="ng" index="ke6mQ">
         <property id="4163925112970632804" name="endpoint" index="ke6mK" />
@@ -59,6 +66,10 @@
       </concept>
       <concept id="6882320668103848225" name="Ryce.structure.MenuOption" flags="ng" index="2za_Gf">
         <child id="6882320668104559063" name="options" index="2zcmfT" />
+      </concept>
+      <concept id="6882320668103848251" name="Ryce.structure.StyleElement" flags="ng" index="2za_Gl" />
+      <concept id="6882320668103848249" name="Ryce.structure.Style" flags="ng" index="2za_Gn">
+        <child id="6882320668103848259" name="CSSproperties" index="2za_HH" />
       </concept>
       <concept id="6882320668103848216" name="Ryce.structure.Menu" flags="ng" index="2za_GQ">
         <child id="6882320668103848229" name="options" index="2za_Gb" />
@@ -72,6 +83,7 @@
         <property id="6882320668104559059" name="text" index="2zcmfX" />
         <child id="4163925112968762430" name="icon" index="k7uZE" />
         <child id="4163925112968762425" name="Image" index="k7uZH" />
+        <child id="6882320668104559060" name="style" index="2zcmfU" />
       </concept>
       <concept id="6882320668104975015" name="Ryce.structure.MenuType" flags="ng" index="2zeKy9">
         <property id="6882320668104975016" name="menutype" index="2zeKy6" />
@@ -144,11 +156,13 @@
         <child id="9179217419466227423" name="favorite" index="1WfTX3" />
       </concept>
       <concept id="9179217419466227425" name="Ryce.structure.Favorite" flags="ng" index="1WfTXX">
+        <child id="4163925112969066624" name="position" index="k44dk" />
         <child id="9179217419466227426" name="enable" index="1WfTXY" />
       </concept>
       <concept id="9179217419466227207" name="Ryce.structure.Enable" flags="ng" index="1WfTYr">
         <property id="9179217419466227208" name="value" index="1WfTYk" />
       </concept>
+      <concept id="9179217419466227239" name="Ryce.structure.Content" flags="ng" index="1WfTYV" />
       <concept id="9179217419466227273" name="Ryce.structure.Position" flags="ng" index="1WfTZl">
         <property id="9179217419466227282" name="position" index="1WfTZe" />
       </concept>
@@ -411,6 +425,93 @@
   <node concept="kfb4I" id="3B9eXgHYuG0">
     <property role="TrG5h" value="footer" />
     <property role="kfb4J" value="2025 KrisGallery. All rights reserved." />
+  </node>
+  <node concept="9Maua" id="2FB8Sgzdlq1">
+    <property role="TrG5h" value="ImageGallery" />
+    <node concept="2AwBAp" id="2FB8Sgzdlq2" role="9Mauk">
+      <node concept="2AwB__" id="2FB8Sgzdlq3" role="2AwB_T" />
+      <node concept="2AwB_c" id="2FB8Sgzdlq4" role="2AwBzP">
+        <node concept="2AwB_6" id="2FB8Sgzdlq5" role="2AwB_b" />
+        <node concept="2AwB_6" id="2FB8SgzdlqB" role="2AwB_b" />
+        <node concept="2AwB_6" id="2FB8SgzdlqC" role="2AwB_b" />
+        <node concept="2AwB_6" id="2FB8SgzdlqD" role="2AwB_b" />
+        <node concept="2AwB_6" id="2FB8SgzdlqE" role="2AwB_b" />
+      </node>
+    </node>
+    <node concept="2za_GQ" id="2FB8Sgzdlq6" role="9Maul">
+      <node concept="2zeKy9" id="2FB8Sgzdlq7" role="2zeKzE" />
+      <node concept="2za_Gf" id="2FB8Sgzdlqy" role="2za_Gb">
+        <node concept="2zcmfY" id="2FB8Sgzdlqz" role="2zcmfT">
+          <node concept="2za_Gn" id="2FB8SgzdlqM" role="2zcmfU">
+            <node concept="2za_Gl" id="2FB8SgzdlqN" role="2za_HH" />
+            <node concept="2za_Gl" id="2FB8SgzdlqO" role="2za_HH" />
+            <node concept="2za_Gl" id="2FB8SgzdlqP" role="2za_HH" />
+            <node concept="2za_Gl" id="2FB8SgzdlqQ" role="2za_HH" />
+            <node concept="2za_Gl" id="2FB8SgzdlqR" role="2za_HH" />
+            <node concept="2za_Gl" id="2FB8SgzdlqS" role="2za_HH" />
+            <node concept="2za_Gl" id="2FB8SgzdlqT" role="2za_HH" />
+            <node concept="2za_Gl" id="2FB8SgzdlqU" role="2za_HH" />
+          </node>
+        </node>
+        <node concept="2zcmfY" id="2FB8SgzdlqF" role="2zcmfT">
+          <node concept="2za_Gn" id="2FB8SgzdlqV" role="2zcmfU">
+            <node concept="2za_Gl" id="2FB8SgzdlqW" role="2za_HH" />
+            <node concept="2za_Gl" id="2FB8SgzdlqX" role="2za_HH" />
+            <node concept="2za_Gl" id="2FB8SgzdlqY" role="2za_HH" />
+            <node concept="2za_Gl" id="2FB8SgzdlqZ" role="2za_HH" />
+            <node concept="2za_Gl" id="2FB8Sgzdlr0" role="2za_HH" />
+            <node concept="2za_Gl" id="2FB8Sgzdlr1" role="2za_HH" />
+          </node>
+        </node>
+        <node concept="2zcmfY" id="2FB8Sgzdlq$" role="2zcmfT" />
+        <node concept="2zcmfY" id="2FB8Sgzdlq_" role="2zcmfT" />
+      </node>
+    </node>
+    <node concept="1WfTKh" id="2FB8Sgzdlq8" role="9Maum">
+      <node concept="1WfTMD" id="2FB8Sgzdlq9" role="1WfTKj">
+        <node concept="1WeqPY" id="2FB8Sgzdlqa" role="1WfTME">
+          <node concept="1WeqPO" id="2FB8Sgzdlqb" role="1WeqPV" />
+        </node>
+        <node concept="1WfTMp" id="2FB8Sgzdlqc" role="1WfTMF">
+          <node concept="1WeqMi" id="2FB8SgzdlqG" role="1WfTMl" />
+          <node concept="1WeqMi" id="2FB8SgzdlqL" role="1WfTMl" />
+          <node concept="1WeqMi" id="2FB8SgzdlqH" role="1WfTMl" />
+          <node concept="1WeqMi" id="2FB8SgzdlqI" role="1WfTMl" />
+          <node concept="1WeqMi" id="2FB8SgzdlqJ" role="1WfTMl" />
+        </node>
+      </node>
+      <node concept="1WfTK5" id="2FB8Sgzdlqd" role="1WfTK4" />
+      <node concept="1WfTKy" id="2FB8Sgzdlqe" role="1WfTKB" />
+      <node concept="1WfTL2" id="2FB8Sgzdlqf" role="1WfTYo" />
+      <node concept="1WfTX0" id="2FB8Sgzdlqg" role="1WfTSq">
+        <node concept="1WfTZH" id="2FB8Sgzdlqi" role="1WfTX1">
+          <node concept="1WfTYr" id="2FB8Sgzdlqj" role="1WfTZJ" />
+        </node>
+        <node concept="1WfTZl" id="2FB8Sgzdlqk" role="k44dq">
+          <property role="1WfTZe" value="3B9eXgHQnxY/left_middle" />
+        </node>
+        <node concept="1WfTXX" id="2FB8Sgzdlql" role="1WfTX3">
+          <node concept="1WfTYr" id="2FB8Sgzdlqm" role="1WfTXY" />
+          <node concept="1WfTZl" id="2FB8SgzdlqA" role="k44dk" />
+        </node>
+        <node concept="kb8jv" id="2FB8Sgzdlqn" role="1WfTX2">
+          <node concept="1WfTYr" id="2FB8Sgzdlqo" role="kb8jo" />
+          <node concept="1WfTYV" id="2FB8Sgzdlqp" role="kb8jp" />
+          <node concept="1WfTZl" id="2FB8Sgzdlqq" role="kb8jq" />
+        </node>
+      </node>
+      <node concept="k8BYi" id="2FB8Sgzdlqr" role="k8BXP">
+        <node concept="k8Bxi" id="2FB8Sgzdlqs" role="k8BYj">
+          <node concept="ke6mQ" id="2FB8Sgzdlqt" role="k8Bxj" />
+        </node>
+        <node concept="k8BxI" id="2FB8Sgzdlqu" role="k8BYs">
+          <node concept="ke6mQ" id="2FB8Sgzdlqv" role="k8BxJ" />
+        </node>
+        <node concept="k8BwF" id="2FB8Sgzdlqw" role="k8BYt">
+          <node concept="ke6mQ" id="2FB8Sgzdlqx" role="k8BZm" />
+        </node>
+      </node>
+    </node>
   </node>
 </model>
 
