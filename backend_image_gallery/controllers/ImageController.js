@@ -270,10 +270,19 @@ module.exports = {
     },
 
     getComments: function (req, res) {
+        const page = parseInt(req.query.page) || 1;
+        const limit = parseInt(req.query.limit) || 5;
+        const skip = (page - 1) * limit;
+
         ImageModel.findById(req.params.imageId)
             .populate({
                 path: 'Comments',
-                populate: { path: 'PostedBy', select: 'ProfileName' }
+                populate: { path: 'PostedBy', select: 'ProfileName' },
+                options: {
+                    sort: { DatePosted: -1 },
+                    skip: skip,
+                    limit: limit
+                }
             })
             .exec(function (err, photo) {
                 if (err) {
@@ -285,7 +294,26 @@ module.exports = {
                     return res.status(404).json({ error: 'Photo not found' });
                 }
 
-                res.json(photo.Comments);
+                ImageModel.findById(req.params.imageId)
+                    .populate('Comments')
+                    .exec(function (err, photoWithAllComments) {
+                        if (err) {
+                            console.error(err);
+                            return res.status(500).json({ error: 'Server error' });
+                        }
+
+                        const totalComments = photoWithAllComments.Comments.length;
+
+                        res.json({
+                            comments: photo.Comments,
+                            pagination: {
+                                currentPage: page,
+                                totalPages: Math.ceil(totalComments / limit),
+                                totalComments: totalComments,
+                                commentsPerPage: limit
+                            }
+                        });
+                    });
             });
     },
 

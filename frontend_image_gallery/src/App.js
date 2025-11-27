@@ -25,7 +25,7 @@ function App() {
     action_buttons_layout: 'action-buttons horizontal top left',
     display_stats_layout: 'action-buttons vertical bottom right',
     images_per_page: 2,
-    comments_per_page: 10,
+    comments_per_page: 2,
     sorting: 'newest_asc',
     sorting_options_display: false,
     sorting_options: [],
