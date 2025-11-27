@@ -1,9 +1,11 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import { UserContext } from "../userContexts";
 
 function PostComment({ photoId, onCommentPosted }) {
     const [text, setText] = useState('');
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
+    const { user, cont, styles } = useContext(UserContext);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -13,7 +15,7 @@ function PostComment({ photoId, onCommentPosted }) {
         setError(null);
 
         try {
-            const res = await fetch(`http://localhost:3001/images/${photoId}/comments`, {
+            const res = await fetch(`${styles.base_api}${styles.post_comment_api_endpoint(photoId)}`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 credentials: 'include',

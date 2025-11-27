@@ -32,7 +32,7 @@ function Photo({ photo: initialPhoto }) {
                     <Link to="/ShowPhoto" state={{ photo }} className="image-link">
                         <img
                             className="card-img-top full-size-image"
-                            src={`http://localhost:3001/${photo.Path}`}
+                            src={`${styles.base_api}${photo.Path}`}
                             alt={photo.Title}
                         />
                     </Link>
@@ -80,7 +80,7 @@ function Photo({ photo: initialPhoto }) {
                         <Link to="/ShowPhoto" state={{ photo }} className="image-link">
                             <img
                                 className="list-image"
-                                src={`http://localhost:3001/${photo.Path}`}
+                                src={`${styles.base_api}${photo.Path}`}
                                 alt={photo.Title}
                             />
                         </Link>
@@ -124,7 +124,7 @@ function Photo({ photo: initialPhoto }) {
                 <Link to="/ShowPhoto" state={{ photo }} className="masonry-image-link">
                     <img
                         className="masonry-image"
-                        src={`http://localhost:3001/${photo.Path}`}
+                        src={`${styles.base_api}${photo.Path}`}
                         alt={photo.Title}
                     />
                 </Link>

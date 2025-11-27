@@ -25,11 +25,21 @@ function App() {
     action_buttons_layout: 'action-buttons horizontal top left',
     display_stats_layout: 'action-buttons vertical bottom right',
     images_per_page: 2,
+    comments_per_page: 10,
     sorting: 'newest_asc',
     sorting_options_display: false,
     sorting_options: [],
     footer: true,
-    footer_content: "2025 KrisGallery. All rights reserved."
+    footer_content: "2025 KrisGallery. All rights reserved.",
+
+    
+    base_api: 'http://localhost:3001/',
+    images_api_endpoint(currentPage, images_per_page, sorting) {
+      return "http://localhost:3001/images/?page=" + currentPage + "&limit=" + images_per_page + "&sort=" + sorting;
+    },
+    post_comment_api_endpoint(imageId) {
+      return "images/" + imageId + "/comments";
+    }
   });
 
   const updateUserData = (userInfo) => {

@@ -11,7 +11,7 @@ function Photos() {
 
     useEffect(() => {
         const getPhotos = async () => {
-            const res = await fetch(`http://localhost:3001/images?page=${currentPage}&limit=${styles.images_per_page}&sort=${styles.sorting}`);
+            const res = await fetch(styles.images_api_endpoint(currentPage.toString(), styles.images_per_page.toString(), styles.sorting));
             const data = await res.json();
             setPhotos(data.photos);
             setPagination(data.pagination);
