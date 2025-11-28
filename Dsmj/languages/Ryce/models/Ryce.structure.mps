@@ -660,7 +660,7 @@
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyi" id="3B9eXgHPdgV" role="1TKVEl">
       <property role="IQ2nx" value="4163925112968762427" />
-      <property role="TrG5h" value="image" />
+      <property role="TrG5h" value="image_name" />
       <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
     </node>
   </node>
@@ -670,7 +670,7 @@
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyi" id="3B9eXgHPdgX" role="1TKVEl">
       <property role="IQ2nx" value="4163925112968762429" />
-      <property role="TrG5h" value="icon" />
+      <property role="TrG5h" value="iconName" />
       <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
     </node>
   </node>

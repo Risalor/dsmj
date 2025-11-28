@@ -13541,7 +13541,7 @@
                   <node concept="liA8E" id="19O" role="2OqNvi">
                     <ref role="37wK5l" to="bzg8:~ConceptDescriptorBuilder2.property(java.lang.String,long)" resolve="property" />
                     <node concept="Xl_RD" id="19P" role="37wK5m">
-                      <property role="Xl_RC" value="icon" />
+                      <property role="Xl_RC" value="iconName" />
                     </node>
                     <node concept="11gdke" id="19Q" role="37wK5m">
                       <property role="11gdj1" value="39c93bd42dd4d43dL" />
@@ -13808,7 +13808,7 @@
                   <node concept="liA8E" id="1bn" role="2OqNvi">
                     <ref role="37wK5l" to="bzg8:~ConceptDescriptorBuilder2.property(java.lang.String,long)" resolve="property" />
                     <node concept="Xl_RD" id="1bo" role="37wK5m">
-                      <property role="Xl_RC" value="image" />
+                      <property role="Xl_RC" value="image_name" />
                     </node>
                     <node concept="11gdke" id="1bp" role="37wK5m">
                       <property role="11gdj1" value="39c93bd42dd4d43bL" />

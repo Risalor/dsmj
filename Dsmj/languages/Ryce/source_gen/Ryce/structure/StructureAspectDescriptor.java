@@ -363,7 +363,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.class_(false, false, false);
     b.origin("r:6f21ea0b-8f9f-4069-8bcc-6c3e23fc8fea(Ryce.structure)/4163925112968762428");
     b.version(3);
-    b.property("icon", 0x39c93bd42dd4d43dL).type(PrimitiveTypeId.STRING).origin("4163925112968762429").done();
+    b.property("iconName", 0x39c93bd42dd4d43dL).type(PrimitiveTypeId.STRING).origin("4163925112968762429").done();
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForImageLayout() {
@@ -379,7 +379,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.class_(false, false, false);
     b.origin("r:6f21ea0b-8f9f-4069-8bcc-6c3e23fc8fea(Ryce.structure)/4163925112968762426");
     b.version(3);
-    b.property("image", 0x39c93bd42dd4d43bL).type(PrimitiveTypeId.STRING).origin("4163925112968762427").done();
+    b.property("image_name", 0x39c93bd42dd4d43bL).type(PrimitiveTypeId.STRING).origin("4163925112968762427").done();
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForImages() {

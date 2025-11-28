@@ -1194,7 +1194,7 @@
           <property role="3F0ifm" value=":" />
         </node>
         <node concept="3F0A7n" id="3B9eXgHQMov" role="3EZMnx">
-          <ref role="1NtTu8" to="qmra:3B9eXgHPdgX" resolve="icon" />
+          <ref role="1NtTu8" to="qmra:3B9eXgHPdgX" resolve="iconName" />
         </node>
         <node concept="3F0ifn" id="3B9eXgHQMoy" role="3EZMnx">
           <property role="3F0ifm" value="," />
@@ -1216,7 +1216,7 @@
           <property role="3F0ifm" value=":" />
         </node>
         <node concept="3F0A7n" id="3B9eXgHS5C9" role="3EZMnx">
-          <ref role="1NtTu8" to="qmra:3B9eXgHPdgV" resolve="image" />
+          <ref role="1NtTu8" to="qmra:3B9eXgHPdgV" resolve="image_name" />
         </node>
         <node concept="3F0ifn" id="3B9eXgHS5Cc" role="3EZMnx">
           <property role="3F0ifm" value="," />

@@ -2,21 +2,23 @@
 <debug-info version="2">
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1082113931046:jetbrains.mps.baseLanguage.structure.ContinueStatement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123155:jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1144226303539:jetbrains.mps.baseLanguage.structure.ForeachStatement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123159:jetbrains.mps.baseLanguage.structure.IfStatement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123165:jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242864:jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242878:jetbrains.mps.baseLanguage.structure.ReturnStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123157:jetbrains.mps.baseLanguage.structure.Statement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
   <root>
     <file name="TextGenAspectDescriptor.java">
-      <unit at="50,0,53,0" name="Ryce.textGen.TextGenAspectDescriptor$CONCEPTS" />
-      <unit at="16,0,54,0" name="Ryce.textGen.TextGenAspectDescriptor" />
+      <unit at="96,0,102,0" name="Ryce.textGen.TextGenAspectDescriptor$CONCEPTS" />
+      <unit at="16,0,103,0" name="Ryce.textGen.TextGenAspectDescriptor" />
     </file>
   </root>
   <root nodeRef="r:219ce8c7-2ce4-476c-ad30-1dd042e47b75(Ryce.textGen)/3133708390973028381">
     <file name="Footer_TextGen.java">
-      <node id="3133708390973028381" at="14,54,15,55" concept="4" />
+      <node id="3133708390973028381" at="14,54,15,55" concept="5" />
       <node id="3133708390973051875" at="15,55,16,67" concept="1" />
       <node id="3133708390973051949" at="16,67,17,18" concept="1" />
       <node id="3133708390973052025" at="17,18,18,54" concept="1" />
@@ -59,8 +61,8 @@
       <node id="3133708390973067838" at="54,44,55,20" concept="1" />
       <node id="3133708390973107764" at="55,20,56,18" concept="1" />
       <node id="3133708390973068121" at="56,18,57,41" concept="1" />
-      <node id="3133708390973028381" at="61,0,62,0" concept="6" trace="text$$jDp" />
-      <node id="3133708390973028381" at="13,0,59,0" concept="3" trace="generateText#(Ljetbrains/mps/text/rt/TextGenContext;)V" />
+      <node id="3133708390973028381" at="61,0,62,0" concept="8" trace="text$$jDp" />
+      <node id="3133708390973028381" at="13,0,59,0" concept="4" trace="generateText#(Ljetbrains/mps/text/rt/TextGenContext;)V" />
       <scope id="3133708390973028381" at="14,54,57,41">
         <var name="tgs" id="3133708390973028381" />
       </scope>
@@ -71,28 +73,225 @@
       <unit id="3133708390973028381" at="12,0,64,0" name="Ryce.textGen.Footer_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
-      <node id="3133708390973028381" at="26,40,27,36" concept="5" />
-      <node id="3133708390973028381" at="35,57,36,48" concept="4" />
-      <node id="3133708390973028381" at="36,48,37,51" concept="4" />
-      <node id="3133708390973028381" at="37,51,38,84" concept="1" />
-      <node id="3133708390973028381" at="38,84,39,17" concept="0" />
-      <node id="3133708390973028381" at="43,56,44,26" concept="5" />
-      <node id="3133708390973050970" at="46,61,47,16" concept="5" />
-      <node id="3133708390973028381" at="43,0,46,0" concept="7" trace="getFileName_Footer#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
-      <node id="3133708390973028381" at="46,0,49,0" concept="7" trace="getFileExtension_Footer#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
-      <node id="3133708390973028381" at="34,58,40,7" concept="2" />
+      <node id="3133708390973028381" at="26,40,27,36" concept="6" />
+      <node id="3133708390973028381" at="45,57,46,48" concept="5" />
+      <node id="3133708390973028381" at="46,48,47,51" concept="5" />
+      <node id="3133708390973028381" at="47,51,48,84" concept="1" />
+      <node id="3133708390973028381" at="48,84,49,17" concept="0" />
+      <node id="3133708390973028381" at="71,56,72,26" concept="6" />
+      <node id="3133708390973050970" at="83,61,84,16" concept="6" />
+      <node id="3133708390973028381" at="71,0,74,0" concept="9" trace="getFileName_Footer#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
+      <node id="3133708390973028381" at="83,0,86,0" concept="9" trace="getFileExtension_Footer#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
+      <node id="3133708390973028381" at="44,58,50,7" concept="3" />
       <scope id="3133708390973028381" at="26,40,27,36" />
-      <scope id="3133708390973028381" at="43,56,44,26" />
-      <scope id="3133708390973028381" at="46,61,47,16" />
-      <scope id="3133708390973028381" at="43,0,46,0">
+      <scope id="3133708390973028381" at="71,56,72,26" />
+      <scope id="3133708390973028381" at="83,61,84,16" />
+      <scope id="3133708390973028381" at="71,0,74,0">
         <var name="node" id="3133708390973028381" />
       </scope>
-      <scope id="3133708390973028381" at="46,0,49,0">
+      <scope id="3133708390973028381" at="83,0,86,0">
         <var name="node" id="3133708390973028381" />
       </scope>
-      <scope id="3133708390973028381" at="35,57,39,17">
+      <scope id="3133708390973028381" at="45,57,49,17">
         <var name="ext" id="3133708390973028381" />
         <var name="fname" id="3133708390973028381" />
+      </scope>
+    </file>
+  </root>
+  <root nodeRef="r:219ce8c7-2ce4-476c-ad30-1dd042e47b75(Ryce.textGen)/4892352824876154486">
+    <file name="Ryce_TextGen.java">
+      <node id="4892352824876154486" at="14,54,15,55" concept="5" />
+      <node id="4892352824876607824" at="16,86,17,88" concept="1" />
+      <node id="4892352824876176723" at="18,5,19,88" concept="1" />
+      <node id="4892352824876154486" at="23,0,24,0" concept="8" trace="menu$qitg" />
+      <node id="4892352824876154486" at="24,0,25,0" concept="8" trace="footer$qiVi" />
+      <node id="4892352824876603484" at="15,55,18,5" concept="3" />
+      <node id="4892352824876154486" at="13,0,21,0" concept="4" trace="generateText#(Ljetbrains/mps/text/rt/TextGenContext;)V" />
+      <scope id="4892352824876603486" at="16,86,17,88" />
+      <scope id="4892352824876154486" at="14,54,19,88">
+        <var name="tgs" id="4892352824876154486" />
+      </scope>
+      <scope id="4892352824876154486" at="13,0,21,0">
+        <var name="ctx" id="4892352824876154486" />
+      </scope>
+      <unit id="4892352824876154486" at="22,0,26,0" name="Ryce.textGen.Ryce_TextGen$LINKS" />
+      <unit id="4892352824876154486" at="12,0,27,0" name="Ryce.textGen.Ryce_TextGen" />
+    </file>
+    <file name="TextGenAspectDescriptor.java">
+      <node id="4892352824876154486" at="34,38,35,34" concept="6" />
+      <node id="4892352824876154486" at="51,55,52,46" concept="5" />
+      <node id="4892352824876154486" at="52,46,53,49" concept="5" />
+      <node id="4892352824876154486" at="53,49,54,84" concept="1" />
+      <node id="4892352824876154486" at="54,84,55,17" concept="0" />
+      <node id="4892352824876154486" at="74,54,75,26" concept="6" />
+      <node id="4892352824876176551" at="86,59,87,16" concept="6" />
+      <node id="4892352824876154486" at="74,0,77,0" concept="9" trace="getFileName_Ryce#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
+      <node id="4892352824876154486" at="86,0,89,0" concept="9" trace="getFileExtension_Ryce#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
+      <node id="4892352824876154486" at="50,7,56,7" concept="3" />
+      <scope id="4892352824876154486" at="34,38,35,34" />
+      <scope id="4892352824876154486" at="74,54,75,26" />
+      <scope id="4892352824876154486" at="86,59,87,16" />
+      <scope id="4892352824876154486" at="74,0,77,0">
+        <var name="node" id="4892352824876154486" />
+      </scope>
+      <scope id="4892352824876154486" at="86,0,89,0">
+        <var name="node" id="4892352824876154486" />
+      </scope>
+      <scope id="4892352824876154486" at="51,55,55,17">
+        <var name="ext" id="4892352824876154486" />
+        <var name="fname" id="4892352824876154486" />
+      </scope>
+    </file>
+  </root>
+  <root nodeRef="r:219ce8c7-2ce4-476c-ad30-1dd042e47b75(Ryce.textGen)/4892352824876225771">
+    <file name="Menu_TextGen.java">
+      <node id="4892352824876225771" at="11,54,12,55" concept="5" />
+      <node id="4892352824878666369" at="12,55,13,77" concept="1" />
+      <node id="4892352824878666490" at="13,77,14,18" concept="1" />
+      <node id="4892352824878666612" at="14,18,15,67" concept="1" />
+      <node id="4892352824878666687" at="15,67,16,18" concept="1" />
+      <node id="4892352824878666763" at="16,18,17,74" concept="1" />
+      <node id="4892352824878666838" at="17,74,18,18" concept="1" />
+      <node id="4892352824878666915" at="18,18,19,75" concept="1" />
+      <node id="4892352824878667014" at="19,75,20,67" concept="1" />
+      <node id="4892352824878667089" at="20,67,21,18" concept="1" />
+      <node id="4892352824878667166" at="21,18,22,61" concept="1" />
+      <node id="4892352824878667220" at="22,61,23,18" concept="1" />
+      <node id="4892352824878667272" at="23,18,24,18" concept="1" />
+      <node id="4892352824878667299" at="24,18,25,0" concept="7" />
+      <node id="4892352824876225771" at="25,0,26,44" concept="1" />
+      <node id="4892352824878667368" at="26,44,27,17" concept="1" />
+      <node id="4892352824878667444" at="27,17,28,38" concept="1" />
+      <node id="4892352824878667691" at="28,38,29,18" concept="1" />
+      <node id="4892352824876225771" at="29,18,30,44" concept="1" />
+      <node id="4892352824878667541" at="30,44,31,17" concept="1" />
+      <node id="4892352824878667617" at="31,17,32,68" concept="1" />
+      <node id="4892352824876225771" at="32,68,33,44" concept="1" />
+      <node id="4892352824876225771" at="33,44,34,44" concept="1" />
+      <node id="4892352824876225771" at="10,0,36,0" concept="4" trace="generateText#(Ljetbrains/mps/text/rt/TextGenContext;)V" />
+      <scope id="4892352824876225771" at="11,54,34,44">
+        <var name="tgs" id="4892352824876225771" />
+      </scope>
+      <scope id="4892352824876225771" at="10,0,36,0">
+        <var name="ctx" id="4892352824876225771" />
+      </scope>
+      <unit id="4892352824876225771" at="9,0,37,0" name="Ryce.textGen.Menu_TextGen" />
+    </file>
+    <file name="TextGenAspectDescriptor.java">
+      <node id="4892352824876225771" at="32,38,33,34" concept="6" />
+      <node id="4892352824876225771" at="57,55,58,46" concept="5" />
+      <node id="4892352824876225771" at="58,46,59,49" concept="5" />
+      <node id="4892352824876225771" at="59,49,60,84" concept="1" />
+      <node id="4892352824876225771" at="60,84,61,17" concept="0" />
+      <node id="4892352824876225771" at="77,54,78,26" concept="6" />
+      <node id="4892352824876226177" at="89,59,90,16" concept="6" />
+      <node id="4892352824876225771" at="77,0,80,0" concept="9" trace="getFileName_Menu#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
+      <node id="4892352824876225771" at="89,0,92,0" concept="9" trace="getFileExtension_Menu#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
+      <node id="4892352824876225771" at="56,7,62,7" concept="3" />
+      <scope id="4892352824876225771" at="32,38,33,34" />
+      <scope id="4892352824876225771" at="77,54,78,26" />
+      <scope id="4892352824876225771" at="89,59,90,16" />
+      <scope id="4892352824876225771" at="77,0,80,0">
+        <var name="node" id="4892352824876225771" />
+      </scope>
+      <scope id="4892352824876225771" at="89,0,92,0">
+        <var name="node" id="4892352824876225771" />
+      </scope>
+      <scope id="4892352824876225771" at="57,55,61,17">
+        <var name="ext" id="4892352824876225771" />
+        <var name="fname" id="4892352824876225771" />
+      </scope>
+    </file>
+  </root>
+  <root nodeRef="r:219ce8c7-2ce4-476c-ad30-1dd042e47b75(Ryce.textGen)/4892352824876285519">
+    <file name="Icon_TextGen.java">
+      <node id="4892352824876285519" at="14,54,15,55" concept="5" />
+      <node id="4892352824876518981" at="15,55,16,90" concept="1" />
+      <node id="4892352824876285519" at="20,0,21,0" concept="8" trace="iconName$he9p" />
+      <node id="4892352824876285519" at="13,0,18,0" concept="4" trace="generateText#(Ljetbrains/mps/text/rt/TextGenContext;)V" />
+      <scope id="4892352824876285519" at="14,54,16,90">
+        <var name="tgs" id="4892352824876285519" />
+      </scope>
+      <scope id="4892352824876285519" at="13,0,18,0">
+        <var name="ctx" id="4892352824876285519" />
+      </scope>
+      <unit id="4892352824876285519" at="19,0,22,0" name="Ryce.textGen.Icon_TextGen$PROPS" />
+      <unit id="4892352824876285519" at="12,0,23,0" name="Ryce.textGen.Icon_TextGen" />
+    </file>
+    <file name="TextGenAspectDescriptor.java">
+      <node id="4892352824876285519" at="28,38,29,34" concept="6" />
+      <scope id="4892352824876285519" at="28,38,29,34" />
+    </file>
+  </root>
+  <root nodeRef="r:219ce8c7-2ce4-476c-ad30-1dd042e47b75(Ryce.textGen)/4892352824876778143">
+    <file name="ImageLink_TextGen.java">
+      <node id="4892352824876778143" at="14,54,15,55" concept="5" />
+      <node id="4892352824876778247" at="15,55,16,92" concept="1" />
+      <node id="4892352824876778143" at="20,0,21,0" concept="8" trace="image_name$hdEp" />
+      <node id="4892352824876778143" at="13,0,18,0" concept="4" trace="generateText#(Ljetbrains/mps/text/rt/TextGenContext;)V" />
+      <scope id="4892352824876778143" at="14,54,16,92">
+        <var name="tgs" id="4892352824876778143" />
+      </scope>
+      <scope id="4892352824876778143" at="13,0,18,0">
+        <var name="ctx" id="4892352824876778143" />
+      </scope>
+      <unit id="4892352824876778143" at="19,0,22,0" name="Ryce.textGen.ImageLink_TextGen$PROPS" />
+      <unit id="4892352824876778143" at="12,0,23,0" name="Ryce.textGen.ImageLink_TextGen" />
+    </file>
+    <file name="TextGenAspectDescriptor.java">
+      <node id="4892352824876778143" at="30,43,31,39" concept="6" />
+      <scope id="4892352824876778143" at="30,43,31,39" />
+    </file>
+  </root>
+  <root nodeRef="r:219ce8c7-2ce4-476c-ad30-1dd042e47b75(Ryce.textGen)/4892352824876780013">
+    <file name="Style_TextGen.java">
+      <node id="4892352824876780013" at="18,54,19,55" concept="5" />
+      <node id="4892352824876781925" at="20,124,21,71" concept="1" />
+      <node id="4892352824876786169" at="21,71,22,22" concept="1" />
+      <node id="4892352824876786223" at="22,22,23,72" concept="1" />
+      <node id="4892352824876789510" at="23,72,24,22" concept="1" />
+      <node id="4892352824876780013" at="29,0,30,0" concept="8" trace="name$hrv" />
+      <node id="4892352824876780013" at="30,0,31,0" concept="8" trace="value$m_P" />
+      <node id="4892352824876780013" at="34,0,35,0" concept="8" trace="CSSproperties$9YR" />
+      <node id="4892352824876780040" at="19,55,25,5" concept="2" />
+      <node id="4892352824876780013" at="17,0,27,0" concept="4" trace="generateText#(Ljetbrains/mps/text/rt/TextGenContext;)V" />
+      <scope id="4892352824876780043" at="20,124,24,22" />
+      <scope id="4892352824876780040" at="19,55,25,5">
+        <var name="style" id="4892352824876780041" />
+      </scope>
+      <scope id="4892352824876780013" at="18,54,25,5">
+        <var name="tgs" id="4892352824876780013" />
+      </scope>
+      <scope id="4892352824876780013" at="17,0,27,0">
+        <var name="ctx" id="4892352824876780013" />
+      </scope>
+      <unit id="4892352824876780013" at="33,0,36,0" name="Ryce.textGen.Style_TextGen$LINKS" />
+      <unit id="4892352824876780013" at="28,0,32,0" name="Ryce.textGen.Style_TextGen$PROPS" />
+      <unit id="4892352824876780013" at="16,0,37,0" name="Ryce.textGen.Style_TextGen" />
+    </file>
+    <file name="TextGenAspectDescriptor.java">
+      <node id="4892352824876780013" at="36,39,37,35" concept="6" />
+      <node id="4892352824876780013" at="63,56,64,47" concept="5" />
+      <node id="4892352824876780013" at="64,47,65,50" concept="5" />
+      <node id="4892352824876780013" at="65,50,66,84" concept="1" />
+      <node id="4892352824876780013" at="66,84,67,17" concept="0" />
+      <node id="4892352824876780013" at="80,55,81,26" concept="6" />
+      <node id="4892352824876780013" at="92,60,93,16" concept="6" />
+      <node id="4892352824876780013" at="80,0,83,0" concept="9" trace="getFileName_Style#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
+      <node id="4892352824876780013" at="92,0,95,0" concept="9" trace="getFileExtension_Style#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
+      <node id="4892352824876780013" at="62,7,68,7" concept="3" />
+      <scope id="4892352824876780013" at="36,39,37,35" />
+      <scope id="4892352824876780013" at="80,55,81,26" />
+      <scope id="4892352824876780013" at="92,60,93,16" />
+      <scope id="4892352824876780013" at="80,0,83,0">
+        <var name="node" id="4892352824876780013" />
+      </scope>
+      <scope id="4892352824876780013" at="92,0,95,0">
+        <var name="node" id="4892352824876780013" />
+      </scope>
+      <scope id="4892352824876780013" at="63,56,67,17">
+        <var name="ext" id="4892352824876780013" />
+        <var name="fname" id="4892352824876780013" />
       </scope>
     </file>
   </root>

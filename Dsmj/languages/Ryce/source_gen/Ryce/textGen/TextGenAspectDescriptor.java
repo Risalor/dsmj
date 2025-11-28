@@ -25,6 +25,16 @@ public class TextGenAspectDescriptor extends TextGenAspectBase {
     switch (myIndex.index(concept)) {
       case LanguageConceptSwitch.Footer:
         return new Footer_TextGen();
+      case LanguageConceptSwitch.Icon:
+        return new Icon_TextGen();
+      case LanguageConceptSwitch.ImageLink:
+        return new ImageLink_TextGen();
+      case LanguageConceptSwitch.Menu:
+        return new Menu_TextGen();
+      case LanguageConceptSwitch.Ryce:
+        return new Ryce_TextGen();
+      case LanguageConceptSwitch.Style:
+        return new Style_TextGen();
     }
     return null;
   }
@@ -38,16 +48,55 @@ public class TextGenAspectDescriptor extends TextGenAspectBase {
         outline.registerTextUnit((ext == null ? fname : (fname + '.' + ext)), root);
         continue;
       }
+      if (root.getConcept().equals(CONCEPTS.Ryce$Vt)) {
+        String fname = getFileName_Ryce(root);
+        String ext = getFileExtension_Ryce(root);
+        outline.registerTextUnit((ext == null ? fname : (fname + '.' + ext)), root);
+        continue;
+      }
+      if (root.getConcept().equals(CONCEPTS.Menu$SI)) {
+        String fname = getFileName_Menu(root);
+        String ext = getFileExtension_Menu(root);
+        outline.registerTextUnit((ext == null ? fname : (fname + '.' + ext)), root);
+        continue;
+      }
+      if (root.getConcept().equals(CONCEPTS.Style$Be)) {
+        String fname = getFileName_Style(root);
+        String ext = getFileExtension_Style(root);
+        outline.registerTextUnit((ext == null ? fname : (fname + '.' + ext)), root);
+        continue;
+      }
     }
   }
   private static String getFileName_Footer(SNode node) {
     return node.getName();
   }
+  private static String getFileName_Ryce(SNode node) {
+    return node.getName();
+  }
+  private static String getFileName_Menu(SNode node) {
+    return node.getName();
+  }
+  private static String getFileName_Style(SNode node) {
+    return node.getName();
+  }
   private static String getFileExtension_Footer(SNode node) {
     return "js";
+  }
+  private static String getFileExtension_Ryce(SNode node) {
+    return "js";
+  }
+  private static String getFileExtension_Menu(SNode node) {
+    return "js";
+  }
+  private static String getFileExtension_Style(SNode node) {
+    return null;
   }
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept Footer$8C = MetaAdapterFactory.getConcept(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x39c93bd42df58afaL, "Ryce.structure.Footer");
+    /*package*/ static final SConcept Ryce$Vt = MetaAdapterFactory.getConcept(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x2ae72384232f840eL, "Ryce.structure.Ryce");
+    /*package*/ static final SConcept Menu$SI = MetaAdapterFactory.getConcept(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x5f82ea2efca8b118L, "Ryce.structure.Menu");
+    /*package*/ static final SConcept Style$Be = MetaAdapterFactory.getConcept(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x5f82ea2efca8b139L, "Ryce.structure.Style");
   }
 }

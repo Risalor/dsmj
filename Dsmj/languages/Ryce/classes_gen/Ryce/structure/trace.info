@@ -154,8 +154,8 @@
       <node id="4163925112968762426" at="378,148,379,34" concept="1" />
       <node id="4163925112968762426" at="379,34,380,91" concept="1" />
       <node id="4163925112968762426" at="380,91,381,17" concept="1" />
-      <node id="4163925112968762427" at="381,17,382,111" concept="1" />
-      <node id="4163925112968762426" at="382,111,383,22" concept="6" />
+      <node id="4163925112968762427" at="381,17,382,116" concept="1" />
+      <node id="4163925112968762426" at="382,116,383,22" concept="6" />
       <node id="4163925112968762426" at="377,0,385,0" concept="8" trace="createDescriptorForImageLink#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
       <scope id="4163925112968762426" at="130,43,131,34" />
       <scope id="4163925112968762426" at="377,67,383,22">
@@ -188,8 +188,8 @@
       <node id="4163925112968762428" at="362,143,363,34" concept="1" />
       <node id="4163925112968762428" at="363,34,364,91" concept="1" />
       <node id="4163925112968762428" at="364,91,365,17" concept="1" />
-      <node id="4163925112968762429" at="365,17,366,110" concept="1" />
-      <node id="4163925112968762428" at="366,110,367,22" concept="6" />
+      <node id="4163925112968762429" at="365,17,366,114" concept="1" />
+      <node id="4163925112968762428" at="366,114,367,22" concept="6" />
       <node id="4163925112968762428" at="361,0,369,0" concept="8" trace="createDescriptorForIcon#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
       <scope id="4163925112968762428" at="126,38,127,29" />
       <scope id="4163925112968762428" at="361,62,367,22">
