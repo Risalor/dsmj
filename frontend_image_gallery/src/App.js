@@ -16,7 +16,7 @@ function App() {
 
   const [currStyle, setCurrStyle] = useState({
     layout: 'grid',
-    menu: 'topbar',
+    menu: 'sidebar',
     like: true,
     dislike: true,
     favorite: true,
@@ -24,7 +24,7 @@ function App() {
     dislike_display: true,
     action_buttons_layout: 'action-buttons horizontal top left',
     action_buttons_layout_show: 'action-buttons horizontal top left',
-    display_stats_layout: 'action-buttons vertical top right',
+    display_stats_layout: 'action-buttons horizontal bottom right',
     images_per_page: 3,
     comments_per_page: 3,
     default_sorting: 'newest_asc',
@@ -61,7 +61,7 @@ function App() {
           flexDirection: 'column' 
         }}>
           <Header />
-          <main style={{ flex: 1, marginLeft: currStyle.ver3 ? '250px' : '0' }}>
+          <main style={{ flex: 1 }}>
             <Routes>
               <Route path="/" exact element={<Photos />}></Route>
               <Route path="/Register" element={<Register />}></Route>

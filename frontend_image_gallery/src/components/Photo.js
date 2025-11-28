@@ -4,6 +4,7 @@ import DislikePhoto from "./DislikePhoto";
 import LikePhoto from "./LikePhoto";
 import AddToFavoritesButton from "./AddToFavoritesButton";
 import { UserContext } from "../userContexts";
+import { FaThumbsUp, FaThumbsDown } from "react-icons/fa";
 import "../styles/combined.css"
 
 function Photo({ photo: initialPhoto }) {
@@ -38,8 +39,8 @@ function Photo({ photo: initialPhoto }) {
                     </Link>
                     {!showOverlay && (
                         <div className={`stats ${styles.display_stats_layout}`}>
-                            {styles.like_display && (<span className="display-likes">👍 {photo.Likes || 0}</span>)}
-                            {styles.dislike_display && (<span className="display-dislikes">👎 {photo.Dislikes || 0}</span>)}
+                            {styles.like_display && (<span className="display-likes"><FaThumbsUp/> {photo.Likes || 0}</span>)}
+                            {styles.dislike_display && (<span className="display-dislikes"><FaThumbsDown/> {photo.Dislikes || 0}</span>)}
                         </div>
                     )}
                     {showOverlay && (
@@ -93,8 +94,8 @@ function Photo({ photo: initialPhoto }) {
                         )}
                         {!showOverlay && (
                             <div className={`stats ${styles.display_stats_layout}`}>
-                                {styles.like_display && (<span className="display-likes">👍 {photo.Likes || 0}</span>)}
-                                {styles.dislike_display && (<span className="display-dislikes">👎 {photo.Dislikes || 0}</span>)}
+                                {styles.like_display && (<span className="display-likes"><FaThumbsUp/> {photo.Likes || 0}</span>)}
+                                {styles.dislike_display && (<span className="display-dislikes"><FaThumbsDown/> {photo.Dislikes || 0}</span>)}
                             </div>
                         )}
                     </div>
@@ -135,8 +136,8 @@ function Photo({ photo: initialPhoto }) {
                         <p className="masonry-author">by {photo.PostedBy?.ProfileName}</p>
                     </div>
                     <div className={`stats ${styles.display_stats_layout}`}>
-                        {styles.like_display && (<span className="display-likes">👍 {photo.Likes || 0}</span>)}
-                        {styles.dislike_display && (<span className="display-dislikes">👎 {photo.Dislikes || 0}</span>)}
+                        {styles.like_display && (<span className="display-likes"><FaThumbsUp/> {photo.Likes || 0}</span>)}
+                        {styles.dislike_display && (<span className="display-dislikes"><FaThumbsDown/> {photo.Dislikes || 0}</span>)}
                     </div>
                 </div>
                 )}

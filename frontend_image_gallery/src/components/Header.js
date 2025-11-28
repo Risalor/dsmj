@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../userContexts";
 import { Link, useLocation } from "react-router-dom";
-import { User, Image, Plus, Home } from 'feather-icons-react';
+import { User, Image, Plus } from 'feather-icons-react';
 import { FaPaintBrush } from "react-icons/fa";
 import UserDisplay from "./UserDisplay";
 

@@ -7,13 +7,15 @@ import PostComment from './PostComment';
 import AddToFavoritesButton from "./AddToFavoritesButton";
 import { UserContext } from '../userContexts';
 import "../styles/ShowImage.css"
+import { FaThumbsUp, FaThumbsDown } from "react-icons/fa";
+import "../styles/combined.css"
 
 function ShowPhoto() {
     const { state } = useLocation();
     const photo = state?.photo;
     const [photoState, setPhoto] = useState(photo);
     const [reloadComments, setReloadComments] = useState(0);
-    const { user } = useContext(UserContext);
+    const { user, cont, styles } = useContext(UserContext);
 
     const handleCommentPosted = () => {
         setReloadComments(prev => prev + 1);
@@ -39,15 +41,10 @@ function ShowPhoto() {
                         className="photo-detail-image"
                     />
                     
-                    <div className="action-buttons-vertical showphoto-actions">
-                        <LikePhoto photo={photoState} setPhoto={setPhoto} />
-                        {user && (
-                            <AddToFavoritesButton
-                                photoId={photo._id}
-                                currentUserId={user._id}
-                            />
-                        )}
-                        <DislikePhoto photo={photoState} setPhoto={setPhoto} />
+                    <div className={`${styles.action_buttons_layout}`}>
+                        {styles.like && (<LikePhoto photo={photo} setPhoto={setPhoto} />)}
+                        {styles.favorite && (<AddToFavoritesButton photoId={photo._id} currentUserId={user._id}/>)}
+                        {styles.dislike && (<DislikePhoto photo={photo} setPhoto={setPhoto} />)}
                     </div>
                 </div>
 
@@ -63,10 +60,10 @@ function ShowPhoto() {
                             <strong>Posted:</strong> {new Date(photo.DatePosted).toLocaleDateString()}
                         </div>
                         <div className="meta-item">
-                            <strong>Likes:</strong> {photoState.Likes || 0}
+                            <FaThumbsUp/> {photoState.Likes || 0}
                         </div>
                         <div className="meta-item">
-                            <strong>Dislikes:</strong> {photoState.Dislikes || 0}
+                            <FaThumbsDown/> {photoState.Dislikes || 0}
                         </div>
                     </div>
                 </div>
