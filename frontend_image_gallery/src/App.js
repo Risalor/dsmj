@@ -15,21 +15,22 @@ function App() {
   const [user, setUser] = useState(localStorage.user ? JSON.parse(localStorage.user) : null);
 
   const [currStyle, setCurrStyle] = useState({
-    layout: 'list',
-    menu: 'sidebar',
+    layout: 'grid',
+    menu: 'topbar',
     like: true,
     dislike: true,
     favorite: true,
     like_display: true,
     dislike_display: true,
     action_buttons_layout: 'action-buttons horizontal top left',
-    display_stats_layout: 'action-buttons vertical bottom right',
-    images_per_page: 2,
-    comments_per_page: 2,
-    sorting: 'newest_asc',
-    sorting_options_display: false,
-    sorting_options: [],
-    footer: true,
+    action_buttons_layout_show: 'action-buttons horizontal top left',
+    display_stats_layout: 'action-buttons vertical top right',
+    images_per_page: 3,
+    comments_per_page: 3,
+    default_sorting: 'newest_asc',
+    sorting_options_display: true,
+    sorting_options: ['newest_asc', 'newest_dsc', 'likes_asc', 'likes_dsc', 'title_asc', 'title_dsc'],
+    footer: false,
     footer_content: "2025 KrisGallery. All rights reserved.",
 
     
