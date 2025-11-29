@@ -59,6 +59,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptSorting = createDescriptorForSorting();
   /*package*/ final ConceptDescriptor myConceptStyle = createDescriptorForStyle();
   /*package*/ final ConceptDescriptor myConceptStyleElement = createDescriptorForStyleElement();
+  /*package*/ final ConceptDescriptor myConceptTitleMenuOption = createDescriptorForTitleMenuOption();
   /*package*/ final EnumerationDescriptor myEnumerationComponentEnum = new EnumerationDescriptor_ComponentEnum();
   /*package*/ final EnumerationDescriptor myEnumerationImageLayouts = new EnumerationDescriptor_ImageLayouts();
   /*package*/ final EnumerationDescriptor myEnumerationMenuTypes = new EnumerationDescriptor_MenuTypes();
@@ -78,7 +79,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
 
   @Override
   public Collection<ConceptDescriptor> getDescriptors() {
-    return Arrays.asList(myConceptApi, myConceptBaseUrl, myConceptClickActions, myConceptClickEndpoint, myConceptComponent, myConceptComponents, myConceptContent, myConceptContentSource, myConceptContents, myConceptDislike, myConceptDislikeClickAction, myConceptEnable, myConceptEnableComponents, myConceptEndpoint, myConceptEndpoints, myConceptFavorite, myConceptFavoriteClickAction, myConceptFooter, myConceptForEach, myConceptIcon, myConceptImageLayout, myConceptImageLink, myConceptImages, myConceptItemsPerPage, myConceptLike, myConceptLikeClickAction, myConceptLoadAction, myConceptLoadElement, myConceptMenu, myConceptMenuOption, myConceptMenuOptionElement, myConceptMenuOptionIsNotSet, myConceptMenuOptionIsSet, myConceptMenuType, myConceptParameter, myConceptPayload, myConceptPayloadElement, myConceptPosition, myConceptRyce, myConceptSet, myConceptSorting, myConceptStyle, myConceptStyleElement);
+    return Arrays.asList(myConceptApi, myConceptBaseUrl, myConceptClickActions, myConceptClickEndpoint, myConceptComponent, myConceptComponents, myConceptContent, myConceptContentSource, myConceptContents, myConceptDislike, myConceptDislikeClickAction, myConceptEnable, myConceptEnableComponents, myConceptEndpoint, myConceptEndpoints, myConceptFavorite, myConceptFavoriteClickAction, myConceptFooter, myConceptForEach, myConceptIcon, myConceptImageLayout, myConceptImageLink, myConceptImages, myConceptItemsPerPage, myConceptLike, myConceptLikeClickAction, myConceptLoadAction, myConceptLoadElement, myConceptMenu, myConceptMenuOption, myConceptMenuOptionElement, myConceptMenuOptionIsNotSet, myConceptMenuOptionIsSet, myConceptMenuType, myConceptParameter, myConceptPayload, myConceptPayloadElement, myConceptPosition, myConceptRyce, myConceptSet, myConceptSorting, myConceptStyle, myConceptStyleElement, myConceptTitleMenuOption);
   }
 
   @Override
@@ -171,6 +172,8 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
         return myConceptStyle;
       case LanguageConceptSwitch.StyleElement:
         return myConceptStyleElement;
+      case LanguageConceptSwitch.TitleMenuOption:
+        return myConceptTitleMenuOption;
       default:
         return null;
     }
@@ -448,9 +451,10 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L);
     b.origin("r:6f21ea0b-8f9f-4069-8bcc-6c3e23fc8fea(Ryce.structure)/6882320668103848216");
     b.version(3);
+    b.property("type", 0x605f898c118a05aeL).type(MetaIdFactory.dataTypeId(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x5f82ea2efcb96886L)).origin("6944420385111279022").done();
+    b.aggregate("title_option", 0x605f898c1134850dL).target(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x605f898c115e3b2dL).optional(true).ordered(true).multiple(false).origin("6944420385105675533").done();
     b.aggregate("options", 0x5f82ea2efca8b125L).target(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x5f82ea2efca8b121L).optional(true).ordered(true).multiple(false).origin("6882320668103848229").done();
     b.aggregate("style", 0x5f82ea2efca9754dL).target(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x5f82ea2efca8b139L).optional(true).ordered(true).multiple(false).origin("6882320668103898445").done();
-    b.aggregate("type", 0x5f82ea2efcb9e2c4L).target(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x5f82ea2efcb9e2a7L).optional(false).ordered(true).multiple(false).origin("6882320668104975044").done();
     b.aggregate("set", 0x4b61efe7ede0c75cL).target(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x4b61efe7ede0c75aL).optional(true).ordered(true).multiple(false).origin("5431886404992943964").done();
     b.aggregate("options_IsSet", 0x4b61efe7ede292efL).target(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x39c93bd42de220a5L).optional(true).ordered(true).multiple(false).origin("5431886404993061615").done();
     b.aggregate("options_NotSet", 0x4b61efe7ede292f0L).target(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x39c93bd42de220c0L).optional(true).ordered(true).multiple(false).origin("5431886404993061616").done();
@@ -461,6 +465,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.class_(false, false, false);
     b.origin("r:6f21ea0b-8f9f-4069-8bcc-6c3e23fc8fea(Ryce.structure)/6882320668103848225");
     b.version(3);
+    b.property("menu_type", 0x605f898c11774282L).type(MetaIdFactory.dataTypeId(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x5f82ea2efcb96886L)).origin("6944420385110049410").done();
     b.aggregate("options", 0x5f82ea2efcb389d7L).target(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x5f82ea2efcb389d0L).optional(true).ordered(true).multiple(true).origin("6882320668104559063").done();
     return b.create();
   }
@@ -473,7 +478,6 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.property("url", 0x5f82ea2efcb389d2L).type(PrimitiveTypeId.STRING).origin("6882320668104559058").done();
     b.property("text", 0x5f82ea2efcb389d3L).type(PrimitiveTypeId.STRING).origin("6882320668104559059").done();
     b.aggregate("style", 0x5f82ea2efcb389d4L).target(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x5f82ea2efca8b139L).optional(true).ordered(true).multiple(false).origin("6882320668104559060").done();
-    b.aggregate("Image", 0x39c93bd42dd4d439L).target(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x39c93bd42dd4d43aL).optional(true).ordered(true).multiple(false).origin("4163925112968762425").done();
     b.aggregate("icon", 0x39c93bd42dd4d43eL).target(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x39c93bd42dd4d43cL).optional(true).ordered(true).multiple(false).origin("4163925112968762430").done();
     return b.create();
   }
@@ -578,6 +582,14 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.version(3);
     b.property("name", 0x5f82ea2efca8b14dL).type(PrimitiveTypeId.STRING).origin("6882320668103848269").done();
     b.property("value", 0x5f82ea2efca8b14eL).type(PrimitiveTypeId.STRING).origin("6882320668103848270").done();
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForTitleMenuOption() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("Ryce", "TitleMenuOption", 0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x605f898c115e3b2dL);
+    b.class_(false, false, false);
+    b.origin("r:6f21ea0b-8f9f-4069-8bcc-6c3e23fc8fea(Ryce.structure)/6944420385108409133");
+    b.version(3);
+    b.aggregate("option", 0x605f898c115e3b2eL).target(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x5f82ea2efcb389d0L).optional(true).ordered(true).multiple(true).origin("6944420385108409134").done();
     return b.create();
   }
 }

@@ -13,6 +13,7 @@
         <property id="1421157252384165432" name="memberId" index="3tVfz5" />
       </concept>
       <concept id="3348158742936976479" name="jetbrains.mps.lang.structure.structure.EnumerationDeclaration" flags="ng" index="25R3W">
+        <reference id="1075010451642646892" name="defaultMember" index="1H5jkz" />
         <child id="3348158742936976577" name="members" index="25R1y" />
       </concept>
       <concept id="1082978164218" name="jetbrains.mps.lang.structure.structure.DataTypeDeclaration" flags="ng" index="AxPO6">
@@ -57,6 +58,12 @@
     <node concept="PrWs8" id="5Y2UyVWEb4r" role="PzmwI">
       <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
     </node>
+    <node concept="1TJgyj" id="61vyoKhd8kd" role="1TKVEi">
+      <property role="IQ2ns" value="6944420385105675533" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="title_option" />
+      <ref role="20lvS9" node="61vyoKhnzGH" resolve="TitleMenuOption" />
+    </node>
     <node concept="1TJgyj" id="5Y2UyVWEb4_" role="1TKVEi">
       <property role="IQ2ns" value="6882320668103848229" />
       <property role="20lmBu" value="fLJjDmT/aggregation" />
@@ -68,13 +75,6 @@
       <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="style" />
       <ref role="20lvS9" node="5Y2UyVWEb4T" resolve="Style" />
-    </node>
-    <node concept="1TJgyj" id="5Y2UyVWIub4" role="1TKVEi">
-      <property role="IQ2ns" value="6882320668104975044" />
-      <property role="20lmBu" value="fLJjDmT/aggregation" />
-      <property role="20kJfa" value="type" />
-      <property role="20lbJX" value="fLJekj4/_1" />
-      <ref role="20lvS9" node="5Y2UyVWIuaB" resolve="MenuType" />
     </node>
     <node concept="1TJgyj" id="4HxVYvHScts" role="1TKVEi">
       <property role="IQ2ns" value="5431886404992943964" />
@@ -94,6 +94,11 @@
       <property role="20kJfa" value="options_NotSet" />
       <ref role="20lvS9" node="3B9eXgHSy30" resolve="MenuOptionIsNotSet" />
     </node>
+    <node concept="1TJgyi" id="61vyoKhywmI" role="1TKVEl">
+      <property role="IQ2nx" value="6944420385111279022" />
+      <property role="TrG5h" value="type" />
+      <ref role="AX2Wp" node="5Y2UyVWImy6" resolve="MenuTypes" />
+    </node>
   </node>
   <node concept="1TIwiD" id="5Y2UyVWEb4x">
     <property role="EcuMT" value="6882320668103848225" />
@@ -105,6 +110,11 @@
       <property role="20kJfa" value="options" />
       <property role="20lbJX" value="fLJekj5/_0__n" />
       <ref role="20lvS9" node="5Y2UyVWGSBg" resolve="MenuOptionElement" />
+    </node>
+    <node concept="1TJgyi" id="61vyoKhtOa2" role="1TKVEl">
+      <property role="IQ2nx" value="6944420385110049410" />
+      <property role="TrG5h" value="menu_type" />
+      <ref role="AX2Wp" node="5Y2UyVWImy6" resolve="MenuTypes" />
     </node>
   </node>
   <node concept="1TIwiD" id="5Y2UyVWEb4T">
@@ -160,12 +170,6 @@
       <property role="20kJfa" value="style" />
       <ref role="20lvS9" node="5Y2UyVWEb4T" resolve="Style" />
     </node>
-    <node concept="1TJgyj" id="3B9eXgHPdgT" role="1TKVEi">
-      <property role="IQ2ns" value="4163925112968762425" />
-      <property role="20lmBu" value="fLJjDmT/aggregation" />
-      <property role="20kJfa" value="Image" />
-      <ref role="20lvS9" node="3B9eXgHPdgU" resolve="ImageLink" />
-    </node>
     <node concept="1TJgyj" id="3B9eXgHPdgY" role="1TKVEi">
       <property role="IQ2ns" value="4163925112968762430" />
       <property role="20lmBu" value="fLJjDmT/aggregation" />
@@ -179,13 +183,10 @@
   <node concept="25R3W" id="5Y2UyVWImy6">
     <property role="3F6X1D" value="6882320668104943750" />
     <property role="TrG5h" value="MenuTypes" />
+    <ref role="1H5jkz" node="5Y2UyVWImy7" resolve="topbar" />
     <node concept="25R33" id="5Y2UyVWImy7" role="25R1y">
       <property role="3tVfz5" value="6882320668104943751" />
       <property role="TrG5h" value="topbar" />
-    </node>
-    <node concept="25R33" id="5Y2UyVWImy9" role="25R1y">
-      <property role="3tVfz5" value="6882320668104943753" />
-      <property role="TrG5h" value="dropdown" />
     </node>
     <node concept="25R33" id="5Y2UyVWImya" role="25R1y">
       <property role="3tVfz5" value="6882320668104943754" />
@@ -912,6 +913,18 @@
       <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="footer" />
       <ref role="20lvS9" node="3B9eXgHXoFU" resolve="Footer" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="61vyoKhnzGH">
+    <property role="EcuMT" value="6944420385108409133" />
+    <property role="TrG5h" value="TitleMenuOption" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="1TJgyj" id="61vyoKhnzGI" role="1TKVEi">
+      <property role="IQ2ns" value="6944420385108409134" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="option" />
+      <property role="20lbJX" value="fLJekj5/_0__n" />
+      <ref role="20lvS9" node="5Y2UyVWGSBg" resolve="MenuOptionElement" />
     </node>
   </node>
 </model>

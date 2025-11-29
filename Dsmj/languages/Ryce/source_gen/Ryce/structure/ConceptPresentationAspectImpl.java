@@ -52,6 +52,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_Sorting;
   private ConceptPresentation props_Style;
   private ConceptPresentation props_StyleElement;
+  private ConceptPresentation props_TitleMenuOption;
 
   @Override
   @Nullable
@@ -359,6 +360,13 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_StyleElement = cpb.create();
         }
         return props_StyleElement;
+      case LanguageConceptSwitch.TitleMenuOption:
+        if (props_TitleMenuOption == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("TitleMenuOption");
+          props_TitleMenuOption = cpb.create();
+        }
+        return props_TitleMenuOption;
     }
     return null;
   }

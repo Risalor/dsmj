@@ -25,17 +25,9 @@ function Photo({ photo: initialPhoto }) {
     if (styles.layout === 'grid') {
         return (
             <div className="photo-card card text-white bg-dark mb-3 border-secondary">
-                <div 
-                    className="image-container"
-                    onMouseEnter={() => setShowOverlay(true)}
-                    onMouseLeave={() => setShowOverlay(false)}
-                >
+                <div className="image-container" onMouseEnter={() => setShowOverlay(true)} onMouseLeave={() => setShowOverlay(false)} >
                     <Link to="/ShowPhoto" state={{ photo }} className="image-link">
-                        <img
-                            className="card-img-top full-size-image"
-                            src={`${styles.base_api}${photo.Path}`}
-                            alt={photo.Title}
-                        />
+                        <img className="card-img-top full-size-image" src={`${styles.base_api}${photo.Path}`} alt={photo.Title} />
                     </Link>
                     {!showOverlay && (
                         <div className={`stats ${styles.display_stats_layout}`}>
@@ -73,17 +65,9 @@ function Photo({ photo: initialPhoto }) {
         return (
             <div className="photo-list-card">
                 <div className="photo-list-content">
-                    <div 
-                        className="photo-list-image"
-                        onMouseEnter={() => setShowOverlay(true)}
-                        onMouseLeave={() => setShowOverlay(false)}
-                    >
+                    <div className="photo-list-image" onMouseEnter={() => setShowOverlay(true)} onMouseLeave={() => setShowOverlay(false)}>
                         <Link to="/ShowPhoto" state={{ photo }} className="image-link">
-                            <img
-                                className="list-image"
-                                src={`${styles.base_api}${photo.Path}`}
-                                alt={photo.Title}
-                            />
+                            <img className="list-image" src={`${styles.base_api}${photo.Path}`} alt={photo.Title}/>
                         </Link>
                         {showOverlay && (
                             <div className={`${styles.action_buttons_layout}`}>
@@ -117,17 +101,9 @@ function Photo({ photo: initialPhoto }) {
 
     return (
         <div className="photo-masonry-card">
-            <div 
-                className="masonry-image-container"
-                onMouseEnter={() => setShowOverlay(true)}
-                onMouseLeave={() => setShowOverlay(false)}
-            >
+            <div className="masonry-image-container" onMouseEnter={() => setShowOverlay(true)} onMouseLeave={() => setShowOverlay(false)}>
                 <Link to="/ShowPhoto" state={{ photo }} className="masonry-image-link">
-                    <img
-                        className="masonry-image"
-                        src={`${styles.base_api}${photo.Path}`}
-                        alt={photo.Title}
-                    />
+                    <img className="masonry-image" src={`${styles.base_api}${photo.Path}`} alt={photo.Title}/>
                 </Link>
                 {!showOverlay && (
                 <div className="masonry-info-bar">

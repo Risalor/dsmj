@@ -1,10 +1,27 @@
-Image:sdfsfsdf
-Styles:asd:asdsaa;asd:ddddddd;
-IconHalelujaImage:bbbbbbbbbbbbb
-Styles:aaa:aaa;aaa:aaa;
-IconaaaaaaaaaaaaImage:aaaaa
-Styles:vdvdv:dvdvdvd;
-Icondddimport { UserContext } from "../userContexts";
+import { useContext, useEffect, useState } from "react";
+import { UserContext } from "../userContexts";
+import { Link, useLocation } from "react-router-dom";
+import { User, Image, Plus } from 'feather-icons-react';import { FaPaintBrush } from "react-icons/fa";
+import UserDisplay from "./UserDisplay";
+import "HeaderTopbar.css";
+
+function Header() {
+    const { user } = useContext(UserContext);
+
+    return (
+      <div className="navbar navbar-expand-lg navbar-dark bg-dark px-3">
+        <div>
+          <Link className="navbar-brand d-flex align-items-center" to="<!TextGen not found for 'Ryce.structure.MenuOptionElement'!>>
+            <asdadasdclassName="me-2" style={{ fontSize: '2.5rem', color: 'rgb(0, 174, 3)' }}/>
+            <span className="icon-text">sdsdsddsd</span>
+          </Link>
+          <Link className="navbar-brand d-flex align-items-center" to="<!TextGen not found for 'Ryce.structure.MenuOptionElement'!>>
+            <ssssssssclassName="me-2" style={{ fontSize: '2.5rem', color: 'rgb(0, 174, 3)' }}/>
+            <span className="icon-text">sdsdd</span>
+          </Link>
+          
+        </div>
+import { UserContext } from "../userContexts";
 import { useContext } from 'react';
 
 function Footer() {

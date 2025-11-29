@@ -52,6 +52,7 @@ public final class LanguageConceptSwitch {
   public static final int Sorting = 40;
   public static final int Style = 41;
   public static final int StyleElement = 42;
+  public static final int TitleMenuOption = 43;
 
   public LanguageConceptSwitch() {
     LanguageConceptIndexBuilder builder = new LanguageConceptIndexBuilder(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL);
@@ -98,6 +99,7 @@ public final class LanguageConceptSwitch {
     builder.put(0x7f63219c035cbddeL, Sorting);
     builder.put(0x5f82ea2efca8b139L, Style);
     builder.put(0x5f82ea2efca8b13bL, StyleElement);
+    builder.put(0x605f898c115e3b2dL, TitleMenuOption);
     myIndex = builder.seal();
   }
 

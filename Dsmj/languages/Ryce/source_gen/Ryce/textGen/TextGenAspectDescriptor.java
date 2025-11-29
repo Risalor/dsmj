@@ -31,10 +31,14 @@ public class TextGenAspectDescriptor extends TextGenAspectBase {
         return new ImageLink_TextGen();
       case LanguageConceptSwitch.Menu:
         return new Menu_TextGen();
+      case LanguageConceptSwitch.MenuOption:
+        return new MenuOption_TextGen();
       case LanguageConceptSwitch.Ryce:
         return new Ryce_TextGen();
       case LanguageConceptSwitch.Style:
         return new Style_TextGen();
+      case LanguageConceptSwitch.TitleMenuOption:
+        return new TitleMenuOption_TextGen();
     }
     return null;
   }

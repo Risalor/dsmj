@@ -15,6 +15,8 @@ public class Ryce_TextGen extends TextGenDescriptorBase {
     final TextGenSupport tgs = new TextGenSupport(ctx);
     if ((SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.menu$qitg) != null)) {
       tgs.appendNode(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.menu$qitg));
+      tgs.newLine();
+      tgs.newLine();
     }
     tgs.appendNode(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.footer$qiVi));
   }

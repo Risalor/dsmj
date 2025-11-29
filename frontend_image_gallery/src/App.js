@@ -32,6 +32,7 @@ function App() {
     sorting_options: ['newest_asc', 'newest_dsc', 'likes_asc', 'likes_dsc', 'title_asc', 'title_dsc'],
     footer: false,
     footer_content: "2025 KrisGallery. All rights reserved.",
+    user_display: true,
 
     
     base_api: 'http://localhost:3001/',

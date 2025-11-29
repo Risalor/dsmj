@@ -5,6 +5,12 @@ package Ryce.textGen;
 import jetbrains.mps.text.rt.TextGenDescriptorBase;
 import jetbrains.mps.text.rt.TextGenContext;
 import jetbrains.mps.text.impl.TextGenSupport;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import org.jetbrains.mps.openapi.language.SProperty;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class Menu_TextGen extends TextGenDescriptorBase {
   @Override
@@ -21,16 +27,81 @@ public class Menu_TextGen extends TextGenDescriptorBase {
     tgs.newLine();
     tgs.append("import UserDisplay from \"./UserDisplay\";");
     tgs.newLine();
-    tgs.newLine();
+    if (SEnumOperations.isMember(SPropertyOperations.getEnum(ctx.getPrimaryInput(), PROPS.type$SqYo), 0x5f82ea2efcb96887L)) {
+      tgs.append("import \"HeaderTopbar.css\";");
+      tgs.newLine();
+      tgs.newLine();
+    } else if (SEnumOperations.isMember(SPropertyOperations.getEnum(ctx.getPrimaryInput(), PROPS.type$SqYo), 0x5f82ea2efcb9688aL)) {
+      tgs.append("import \"HeaderSidebar.css\";");
+      tgs.newLine();
+      tgs.newLine();
+    }
 
     ctx.getBuffer().area().increaseIndent();
-    tgs.indent();
     tgs.append("function Header() {");
     tgs.newLine();
     ctx.getBuffer().area().increaseIndent();
     tgs.indent();
-    tgs.append("const { user, styles } = useContext(UserContext);");
+    tgs.append("const { user } = useContext(UserContext);");
+    tgs.newLine();
+    tgs.newLine();
+
+    tgs.indent();
+    tgs.append("return (");
+    tgs.newLine();
+
+    ctx.getBuffer().area().increaseIndent();
+    tgs.indent();
+    if (SEnumOperations.isMember(SPropertyOperations.getEnum(ctx.getPrimaryInput(), PROPS.type$SqYo), 0x5f82ea2efcb96887L)) {
+      tgs.append("<div className=\"navbar navbar-expand-lg navbar-dark bg-dark px-3\">");
+      tgs.newLine();
+      ctx.getBuffer().area().increaseIndent();
+      tgs.indent();
+      tgs.append("<div>");
+      tgs.newLine();
+      ctx.getBuffer().area().increaseIndent();
+      tgs.indent();
+      if ((SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.title_option$Cz$y) != null)) {
+        tgs.appendNode(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.title_option$Cz$y));
+        tgs.newLine();
+      }
+      ctx.getBuffer().area().decreaseIndent();
+      tgs.indent();
+      tgs.append("</div>");
+      tgs.newLine();
+
+      tgs.indent();
+      tgs.append("<div className=\"collapse navbar-collapse\" id=\"navbarNav\">");
+      tgs.newLine();
+      ctx.getBuffer().area().increaseIndent();
+      tgs.indent();
+      tgs.append("<ul className=\"navbar-nav me-auto align-items-center\">");
+      ctx.getBuffer().area().increaseIndent();
+      tgs.indent();
+      if ((SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.options$ZNrU) != null)) {
+        tgs.appendNode(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.options$ZNrU));
+        tgs.newLine();
+      }
+      ctx.getBuffer().area().decreaseIndent();
+      tgs.indent();
+      tgs.append("</ul>");
+      tgs.newLine();
+      ctx.getBuffer().area().decreaseIndent();
+      ctx.getBuffer().area().decreaseIndent();
+    } else if (SEnumOperations.isMember(SPropertyOperations.getEnum(ctx.getPrimaryInput(), PROPS.type$SqYo), 0x5f82ea2efcb9688aL)) {
+    }
+    ctx.getBuffer().area().decreaseIndent();
+
     ctx.getBuffer().area().decreaseIndent();
     ctx.getBuffer().area().decreaseIndent();
+  }
+
+  private static final class PROPS {
+    /*package*/ static final SProperty type$SqYo = MetaAdapterFactory.getProperty(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x5f82ea2efca8b118L, 0x605f898c118a05aeL, "type");
+  }
+
+  private static final class LINKS {
+    /*package*/ static final SContainmentLink title_option$Cz$y = MetaAdapterFactory.getContainmentLink(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x5f82ea2efca8b118L, 0x605f898c1134850dL, "title_option");
+    /*package*/ static final SContainmentLink options$ZNrU = MetaAdapterFactory.getContainmentLink(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x5f82ea2efca8b118L, 0x5f82ea2efca8b125L, "options");
   }
 }
