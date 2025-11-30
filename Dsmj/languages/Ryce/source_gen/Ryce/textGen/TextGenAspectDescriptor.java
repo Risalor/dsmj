@@ -33,6 +33,10 @@ public class TextGenAspectDescriptor extends TextGenAspectBase {
         return new Menu_TextGen();
       case LanguageConceptSwitch.MenuOption:
         return new MenuOption_TextGen();
+      case LanguageConceptSwitch.MenuOptionIsNotSet:
+        return new MenuOptionIsNotSet_TextGen();
+      case LanguageConceptSwitch.MenuOptionIsSet:
+        return new MenuOptionIsSet_TextGen();
       case LanguageConceptSwitch.Ryce:
         return new Ryce_TextGen();
       case LanguageConceptSwitch.Style:

@@ -36,7 +36,7 @@ function Header() {
                                 <span className="icon-text">Images</span>
                             </Link>
                         </li>
-                        {user && (
+                        {user ? (
                             <>
                                 <li className="nav-item">
                                     <Link className="nav-link icon-link" to="/AddPhoto">
@@ -51,6 +51,8 @@ function Header() {
                                     </Link>
                                 </li>
                             </>
+                        ) : (
+                            <></>
                         )}
                     </ul>
                     {styles.user_display && (

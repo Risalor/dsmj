@@ -20,6 +20,12 @@
       <concept id="4163925112968762428" name="Ryce.structure.Icon" flags="ng" index="k7uZC">
         <property id="4163925112968762429" name="iconName" index="k7uZD" />
       </concept>
+      <concept id="4163925112969633984" name="Ryce.structure.MenuOptionIsNotSet" flags="ng" index="kaLGk">
+        <child id="4163925112969633985" name="options" index="kaLGl" />
+      </concept>
+      <concept id="4163925112969633957" name="Ryce.structure.MenuOptionIsSet" flags="ng" index="kaLHL">
+        <child id="4163925112969633958" name="options" index="kaLHM" />
+      </concept>
       <concept id="4163925112970906362" name="Ryce.structure.Footer" flags="ng" index="kfb4I">
         <property id="4163925112970906363" name="text" index="kfb4J" />
       </concept>
@@ -28,6 +34,8 @@
       </concept>
       <concept id="6882320668103848216" name="Ryce.structure.Menu" flags="ng" index="2za_GQ">
         <child id="6882320668103848229" name="options" index="2za_Gb" />
+        <child id="5431886404993061615" name="options_IsSet" index="2AwRO8" />
+        <child id="5431886404993061616" name="options_NotSet" index="2AwROn" />
         <child id="6944420385105675533" name="title_option" index="1LqKM1" />
       </concept>
       <concept id="6882320668104559056" name="Ryce.structure.MenuOptionElement" flags="ng" index="2zcmfY">
@@ -91,6 +99,34 @@
           <property role="2zcmfX" value="2" />
           <node concept="k7uZC" id="61vyoKhObiI" role="k7uZE">
             <property role="k7uZD" value="2" />
+          </node>
+        </node>
+      </node>
+      <node concept="kaLHL" id="5OWvfJaCDBN" role="2AwRO8">
+        <node concept="2zcmfY" id="5OWvfJaCDBO" role="kaLHM">
+          <property role="TrG5h" value="asas" />
+          <property role="2zcmfW" value="ALllllllllllllllll" />
+          <property role="2zcmfX" value="Kurwa" />
+          <node concept="k7uZC" id="5OWvfJaCDBP" role="k7uZE">
+            <property role="k7uZD" value="Bitch" />
+          </node>
+        </node>
+      </node>
+      <node concept="kaLGk" id="5OWvfJaIgPo" role="2AwROn">
+        <node concept="2zcmfY" id="5OWvfJaIgPp" role="kaLGl">
+          <property role="TrG5h" value="asassa" />
+          <property role="2zcmfW" value="aaa" />
+          <property role="2zcmfX" value="sdsd" />
+          <node concept="k7uZC" id="5OWvfJaIgPq" role="k7uZE">
+            <property role="k7uZD" value="asdasdads" />
+          </node>
+        </node>
+        <node concept="2zcmfY" id="5OWvfJaIgPr" role="kaLGl">
+          <property role="TrG5h" value="ssss" />
+          <property role="2zcmfW" value="aaaaaaaaaaaaaaaaaaa" />
+          <property role="2zcmfX" value="aaaaaaaaaaaaaaaaaaa" />
+          <node concept="k7uZC" id="5OWvfJaIgPs" role="k7uZE">
+            <property role="k7uZD" value="aaaaaaaaaaaaaaaaaaaaaaaaaa" />
           </node>
         </node>
       </node>

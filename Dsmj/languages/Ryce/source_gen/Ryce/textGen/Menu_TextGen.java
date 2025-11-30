@@ -76,12 +76,54 @@ public class Menu_TextGen extends TextGenDescriptorBase {
       ctx.getBuffer().area().increaseIndent();
       tgs.indent();
       tgs.append("<ul className=\"navbar-nav me-auto align-items-center\">");
+      tgs.newLine();
       ctx.getBuffer().area().increaseIndent();
       tgs.indent();
       if ((SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.options$ZNrU) != null)) {
         tgs.appendNode(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.options$ZNrU));
         tgs.newLine();
+        tgs.indent();
       }
+      tgs.newLine();
+      tgs.indent();
+      tgs.append("{user ? (");
+      tgs.newLine();
+      ctx.getBuffer().area().increaseIndent();
+      tgs.indent();
+      tgs.append("<>");
+      tgs.newLine();
+      ctx.getBuffer().area().increaseIndent();
+      tgs.indent();
+      if ((SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.options_IsSet$2m8f) != null)) {
+        tgs.appendNode(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.options_IsSet$2m8f));
+        tgs.newLine();
+      }
+      ctx.getBuffer().area().decreaseIndent();
+      tgs.indent();
+      tgs.append("</>");
+      tgs.newLine();
+      ctx.getBuffer().area().decreaseIndent();
+      tgs.indent();
+      tgs.append(") : (");
+      tgs.newLine();
+      ctx.getBuffer().area().increaseIndent();
+      tgs.indent();
+      tgs.append("<>");
+      tgs.newLine();
+      ctx.getBuffer().area().increaseIndent();
+      tgs.indent();
+      if ((SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.options_NotSet$2mng) != null)) {
+        tgs.appendNode(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.options_NotSet$2mng));
+        tgs.newLine();
+      }
+      ctx.getBuffer().area().decreaseIndent();
+      tgs.indent();
+      tgs.append("</>");
+      tgs.newLine();
+      ctx.getBuffer().area().decreaseIndent();
+      tgs.indent();
+      tgs.append(")}");
+      tgs.newLine();
       ctx.getBuffer().area().decreaseIndent();
       tgs.indent();
       tgs.append("</ul>");
@@ -103,5 +145,7 @@ public class Menu_TextGen extends TextGenDescriptorBase {
   private static final class LINKS {
     /*package*/ static final SContainmentLink title_option$Cz$y = MetaAdapterFactory.getContainmentLink(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x5f82ea2efca8b118L, 0x605f898c1134850dL, "title_option");
     /*package*/ static final SContainmentLink options$ZNrU = MetaAdapterFactory.getContainmentLink(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x5f82ea2efca8b118L, 0x5f82ea2efca8b125L, "options");
+    /*package*/ static final SContainmentLink options_IsSet$2m8f = MetaAdapterFactory.getContainmentLink(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x5f82ea2efca8b118L, 0x4b61efe7ede292efL, "options_IsSet");
+    /*package*/ static final SContainmentLink options_NotSet$2mng = MetaAdapterFactory.getContainmentLink(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x5f82ea2efca8b118L, 0x4b61efe7ede292f0L, "options_NotSet");
   }
 }
