@@ -642,9 +642,40 @@
                                   </node>
                                   <node concept="l8MVK" id="61vyoKhNvs4" role="lcghm" />
                                 </node>
+                                <node concept="3clFbJ" id="7oIOnsEiUGU" role="3cqZAp">
+                                  <node concept="3clFbS" id="7oIOnsEiUGW" role="3clFbx">
+                                    <node concept="1bpajm" id="7oIOnsEiXyY" role="3cqZAp" />
+                                    <node concept="lc7rE" id="7oIOnsEiXu6" role="3cqZAp">
+                                      <node concept="la8eA" id="7oIOnsEiXuy" role="lcghm">
+                                        <property role="lacIc" value="&lt;UserDisplay /&gt;" />
+                                      </node>
+                                      <node concept="l8MVK" id="7oIOnsEiXyd" role="lcghm" />
+                                    </node>
+                                  </node>
+                                  <node concept="2OqwBi" id="7oIOnsEiVak" role="3clFbw">
+                                    <node concept="117lpO" id="7oIOnsEiV22" role="2Oq$k0" />
+                                    <node concept="3TrcHB" id="7oIOnsEiX7V" role="2OqNvi">
+                                      <ref role="3TsBF5" to="qmra:7oIOnsEhTtT" resolve="user_display" />
+                                    </node>
+                                  </node>
+                                </node>
                               </node>
                             </node>
+                            <node concept="1bpajm" id="7oIOnsEjHma" role="3cqZAp" />
+                            <node concept="lc7rE" id="7oIOnsEjHOE" role="3cqZAp">
+                              <node concept="la8eA" id="7oIOnsEjHRP" role="lcghm">
+                                <property role="lacIc" value="&lt;/div&gt;" />
+                              </node>
+                              <node concept="l8MVK" id="7oIOnsEjHT0" role="lcghm" />
+                            </node>
                           </node>
+                        </node>
+                        <node concept="1bpajm" id="7oIOnsEjIQl" role="3cqZAp" />
+                        <node concept="lc7rE" id="7oIOnsEjJr1" role="3cqZAp">
+                          <node concept="la8eA" id="7oIOnsEjJQu" role="lcghm">
+                            <property role="lacIc" value="&lt;/div&gt;" />
+                          </node>
+                          <node concept="l8MVK" id="7oIOnsEkxY7" role="lcghm" />
                         </node>
                       </node>
                       <node concept="2OqwBi" id="61vyoKhDF$_" role="3clFbw">
@@ -677,10 +708,23 @@
                         <node concept="3clFbS" id="61vyoKhDFPS" role="3eOfB_" />
                       </node>
                     </node>
+                    <node concept="3clFbH" id="7oIOnsEjJRg" role="3cqZAp" />
                   </node>
                 </node>
-                <node concept="3clFbH" id="61vyoKhd8Oe" role="3cqZAp" />
+                <node concept="1bpajm" id="7oIOnsEjKj4" role="3cqZAp" />
+                <node concept="lc7rE" id="7oIOnsEjKMs" role="3cqZAp">
+                  <node concept="la8eA" id="7oIOnsEjKQ3" role="lcghm">
+                    <property role="lacIc" value=");" />
+                  </node>
+                  <node concept="l8MVK" id="7oIOnsEjKRe" role="lcghm" />
+                </node>
               </node>
+            </node>
+            <node concept="lc7rE" id="7oIOnsEjLQk" role="3cqZAp">
+              <node concept="la8eA" id="7oIOnsEjMad" role="lcghm">
+                <property role="lacIc" value="}" />
+              </node>
+              <node concept="l8MVK" id="7oIOnsEjMb3" role="lcghm" />
             </node>
           </node>
         </node>

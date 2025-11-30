@@ -452,6 +452,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.origin("r:6f21ea0b-8f9f-4069-8bcc-6c3e23fc8fea(Ryce.structure)/6882320668103848216");
     b.version(3);
     b.property("type", 0x605f898c118a05aeL).type(MetaIdFactory.dataTypeId(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x5f82ea2efcb96886L)).origin("6944420385111279022").done();
+    b.property("user_display", 0x762ed1772a479779L).type(PrimitiveTypeId.BOOLEAN).origin("8515974255144834937").done();
     b.aggregate("title_option", 0x605f898c1134850dL).target(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x605f898c115e3b2dL).optional(true).ordered(true).multiple(false).origin("6944420385105675533").done();
     b.aggregate("options", 0x5f82ea2efca8b125L).target(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x5f82ea2efca8b121L).optional(true).ordered(true).multiple(false).origin("6882320668103848229").done();
     b.aggregate("style", 0x5f82ea2efca9754dL).target(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x5f82ea2efca8b139L).optional(true).ordered(true).multiple(false).origin("6882320668103898445").done();

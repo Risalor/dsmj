@@ -99,6 +99,11 @@
       <property role="TrG5h" value="type" />
       <ref role="AX2Wp" node="5Y2UyVWImy6" resolve="MenuTypes" />
     </node>
+    <node concept="1TJgyi" id="7oIOnsEhTtT" role="1TKVEl">
+      <property role="IQ2nx" value="8515974255144834937" />
+      <property role="TrG5h" value="user_display" />
+      <ref role="AX2Wp" to="tpck:fKAQMTB" resolve="boolean" />
+    </node>
   </node>
   <node concept="1TIwiD" id="5Y2UyVWEb4x">
     <property role="EcuMT" value="6882320668103848225" />

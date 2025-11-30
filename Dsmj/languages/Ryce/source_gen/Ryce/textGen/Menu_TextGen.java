@@ -128,18 +128,35 @@ public class Menu_TextGen extends TextGenDescriptorBase {
       tgs.indent();
       tgs.append("</ul>");
       tgs.newLine();
+      if (SPropertyOperations.getBoolean(ctx.getPrimaryInput(), PROPS.user_display$BPl$)) {
+        tgs.indent();
+        tgs.append("<UserDisplay />");
+        tgs.newLine();
+      }
       ctx.getBuffer().area().decreaseIndent();
+      tgs.indent();
+      tgs.append("</div>");
+      tgs.newLine();
       ctx.getBuffer().area().decreaseIndent();
+      tgs.indent();
+      tgs.append("</div>");
+      tgs.newLine();
     } else if (SEnumOperations.isMember(SPropertyOperations.getEnum(ctx.getPrimaryInput(), PROPS.type$SqYo), 0x5f82ea2efcb9688aL)) {
     }
-    ctx.getBuffer().area().decreaseIndent();
 
     ctx.getBuffer().area().decreaseIndent();
+    tgs.indent();
+    tgs.append(");");
+    tgs.newLine();
+    ctx.getBuffer().area().decreaseIndent();
+    tgs.append("}");
+    tgs.newLine();
     ctx.getBuffer().area().decreaseIndent();
   }
 
   private static final class PROPS {
     /*package*/ static final SProperty type$SqYo = MetaAdapterFactory.getProperty(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x5f82ea2efca8b118L, 0x605f898c118a05aeL, "type");
+    /*package*/ static final SProperty user_display$BPl$ = MetaAdapterFactory.getProperty(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x5f82ea2efca8b118L, 0x762ed1772a479779L, "user_display");
   }
 
   private static final class LINKS {

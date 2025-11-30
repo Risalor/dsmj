@@ -33,6 +33,7 @@
         <child id="6882320668104559063" name="options" index="2zcmfT" />
       </concept>
       <concept id="6882320668103848216" name="Ryce.structure.Menu" flags="ng" index="2za_GQ">
+        <property id="8515974255144834937" name="user_display" index="1sqkoe" />
         <child id="6882320668103848229" name="options" index="2za_Gb" />
         <child id="5431886404993061615" name="options_IsSet" index="2AwRO8" />
         <child id="5431886404993061616" name="options_NotSet" index="2AwROn" />
@@ -66,6 +67,7 @@
     </node>
     <node concept="2za_GQ" id="61vyoKhzjmz" role="9Maul">
       <property role="TrG5h" value="aasdasd" />
+      <property role="1sqkoe" value="true" />
       <node concept="1L0rax" id="61vyoKhzjm$" role="1LqKM1">
         <node concept="2zcmfY" id="61vyoKhzjm_" role="1L0ray">
           <property role="TrG5h" value="asdasd" />
