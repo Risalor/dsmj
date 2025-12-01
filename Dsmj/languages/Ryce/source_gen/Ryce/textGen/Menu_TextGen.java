@@ -41,6 +41,14 @@ public class Menu_TextGen extends TextGenDescriptorBase {
     tgs.append("function Header() {");
     tgs.newLine();
     ctx.getBuffer().area().increaseIndent();
+    if (SEnumOperations.isMember(SPropertyOperations.getEnum(ctx.getPrimaryInput(), PROPS.type$SqYo), 0x5f82ea2efcb9688aL)) {
+      tgs.indent();
+      tgs.append("const [isCollapsed, setIsCollapsed] = useState(false);");
+      tgs.newLine();
+      tgs.indent();
+      tgs.append("const location = useLocation();");
+      tgs.newLine();
+    }
     tgs.indent();
     tgs.append("const { user } = useContext(UserContext);");
     tgs.newLine();
@@ -128,9 +136,9 @@ public class Menu_TextGen extends TextGenDescriptorBase {
       tgs.indent();
       tgs.append("</ul>");
       tgs.newLine();
-      if (SPropertyOperations.getBoolean(ctx.getPrimaryInput(), PROPS.user_display$BPl$)) {
+      if (SPropertyOperations.getBoolean(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.user_display$xcYV), PROPS.enabled$qIki)) {
         tgs.indent();
-        tgs.append("<UserDisplay />");
+        tgs.appendNode(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.user_display$xcYV));
         tgs.newLine();
       }
       ctx.getBuffer().area().decreaseIndent();
@@ -142,8 +150,121 @@ public class Menu_TextGen extends TextGenDescriptorBase {
       tgs.append("</div>");
       tgs.newLine();
     } else if (SEnumOperations.isMember(SPropertyOperations.getEnum(ctx.getPrimaryInput(), PROPS.type$SqYo), 0x5f82ea2efcb9688aL)) {
+      tgs.append("<div className={`sidebar bg-dark ${isCollapsed ? 'collapsed' : ''}`}>");
+      tgs.newLine();
+      ctx.getBuffer().area().increaseIndent();
+      tgs.indent();
+      tgs.append("<div className=\"sidebar-brand\">");
+      tgs.newLine();
+      ctx.getBuffer().area().increaseIndent();
+      tgs.indent();
+      tgs.append("{");
+      tgs.newLine();
+      ctx.getBuffer().area().increaseIndent();
+      tgs.indent();
+      tgs.append("!isCollapsed &&");
+      tgs.newLine();
+      ctx.getBuffer().area().increaseIndent();
+      tgs.indent();
+      tgs.append("<>");
+      tgs.newLine();
+      ctx.getBuffer().area().increaseIndent();
+      tgs.indent();
+      tgs.appendNode(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.title_option$Cz$y));
+      tgs.newLine();
+      ctx.getBuffer().area().decreaseIndent();
+      tgs.indent();
+      tgs.append("</>");
+      tgs.newLine();
+      ctx.getBuffer().area().decreaseIndent();
+      ctx.getBuffer().area().decreaseIndent();
+      tgs.indent();
+      tgs.append("}");
+      tgs.newLine();
+      tgs.indent();
+      tgs.append("<button className=\"sidebar-toggle\" onClick={() => setIsCollapsed(!isCollapsed)}>");
+      tgs.newLine();
+      ctx.getBuffer().area().increaseIndent();
+      tgs.indent();
+      tgs.append("{isCollapsed ? '→' : '←'}");
+      tgs.newLine();
+      ctx.getBuffer().area().decreaseIndent();
+      tgs.indent();
+      tgs.append("</button>");
+      tgs.newLine();
+      ctx.getBuffer().area().decreaseIndent();
+      tgs.indent();
+      tgs.append("</div>");
+      tgs.newLine();
+      tgs.indent();
+      tgs.append("<div className=\"sidebar-nav\">");
+      tgs.newLine();
+      ctx.getBuffer().area().increaseIndent();
+      tgs.indent();
+      tgs.append("<ul className=\"nav-list\">");
+      tgs.newLine();
+      ctx.getBuffer().area().increaseIndent();
+      tgs.indent();
+      if ((SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.options$ZNrU) != null)) {
+        tgs.appendNode(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.options$ZNrU));
+        tgs.newLine();
+        tgs.indent();
+      }
+      tgs.newLine();
+      tgs.indent();
+      tgs.append("{user ? (");
+      tgs.newLine();
+      ctx.getBuffer().area().increaseIndent();
+      tgs.indent();
+      tgs.append("<>");
+      tgs.newLine();
+      ctx.getBuffer().area().increaseIndent();
+      tgs.indent();
+      if ((SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.options_IsSet$2m8f) != null)) {
+        tgs.appendNode(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.options_IsSet$2m8f));
+        tgs.newLine();
+      }
+      ctx.getBuffer().area().decreaseIndent();
+      tgs.indent();
+      tgs.append("</>");
+      tgs.newLine();
+      ctx.getBuffer().area().decreaseIndent();
+      tgs.indent();
+      tgs.append(") : (");
+      tgs.newLine();
+      ctx.getBuffer().area().increaseIndent();
+      tgs.indent();
+      tgs.append("<>");
+      tgs.newLine();
+      ctx.getBuffer().area().increaseIndent();
+      tgs.indent();
+      if ((SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.options_NotSet$2mng) != null)) {
+        tgs.appendNode(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.options_NotSet$2mng));
+        tgs.newLine();
+      }
+      ctx.getBuffer().area().decreaseIndent();
+      tgs.indent();
+      tgs.append("</>");
+      tgs.newLine();
+      ctx.getBuffer().area().decreaseIndent();
+      tgs.indent();
+      tgs.append(")}");
+      tgs.newLine();
+      ctx.getBuffer().area().decreaseIndent();
+      tgs.indent();
+      tgs.append("</ul>");
+      tgs.newLine();
+      if (SPropertyOperations.getBoolean(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.user_display$xcYV), PROPS.enabled$qIki)) {
+        tgs.indent();
+        tgs.appendNode(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.user_display$xcYV));
+        tgs.newLine();
+      }
+      ctx.getBuffer().area().decreaseIndent();
+      tgs.indent();
+      tgs.append("</div>");
+      tgs.newLine();
+      ctx.getBuffer().area().decreaseIndent();
     }
-
     ctx.getBuffer().area().decreaseIndent();
     tgs.indent();
     tgs.append(");");
@@ -156,7 +277,7 @@ public class Menu_TextGen extends TextGenDescriptorBase {
 
   private static final class PROPS {
     /*package*/ static final SProperty type$SqYo = MetaAdapterFactory.getProperty(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x5f82ea2efca8b118L, 0x605f898c118a05aeL, "type");
-    /*package*/ static final SProperty user_display$BPl$ = MetaAdapterFactory.getProperty(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x5f82ea2efca8b118L, 0x762ed1772a479779L, "user_display");
+    /*package*/ static final SProperty enabled$qIki = MetaAdapterFactory.getProperty(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x40381b488ec39511L, 0x40381b488ec39516L, "enabled");
   }
 
   private static final class LINKS {
@@ -164,5 +285,6 @@ public class Menu_TextGen extends TextGenDescriptorBase {
     /*package*/ static final SContainmentLink options$ZNrU = MetaAdapterFactory.getContainmentLink(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x5f82ea2efca8b118L, 0x5f82ea2efca8b125L, "options");
     /*package*/ static final SContainmentLink options_IsSet$2m8f = MetaAdapterFactory.getContainmentLink(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x5f82ea2efca8b118L, 0x4b61efe7ede292efL, "options_IsSet");
     /*package*/ static final SContainmentLink options_NotSet$2mng = MetaAdapterFactory.getContainmentLink(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x5f82ea2efca8b118L, 0x4b61efe7ede292f0L, "options_NotSet");
+    /*package*/ static final SContainmentLink user_display$xcYV = MetaAdapterFactory.getContainmentLink(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x5f82ea2efca8b118L, 0x40381b488ec3956dL, "user_display");
   }
 }

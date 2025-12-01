@@ -60,11 +60,13 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptStyle = createDescriptorForStyle();
   /*package*/ final ConceptDescriptor myConceptStyleElement = createDescriptorForStyleElement();
   /*package*/ final ConceptDescriptor myConceptTitleMenuOption = createDescriptorForTitleMenuOption();
+  /*package*/ final ConceptDescriptor myConceptUserDisplay = createDescriptorForUserDisplay();
   /*package*/ final EnumerationDescriptor myEnumerationComponentEnum = new EnumerationDescriptor_ComponentEnum();
   /*package*/ final EnumerationDescriptor myEnumerationImageLayouts = new EnumerationDescriptor_ImageLayouts();
   /*package*/ final EnumerationDescriptor myEnumerationMenuTypes = new EnumerationDescriptor_MenuTypes();
   /*package*/ final EnumerationDescriptor myEnumerationPositionEnum = new EnumerationDescriptor_PositionEnum();
   /*package*/ final EnumerationDescriptor myEnumerationSortingOptions = new EnumerationDescriptor_SortingOptions();
+  /*package*/ final EnumerationDescriptor myEnumerationUserDisplayTypes = new EnumerationDescriptor_UserDisplayTypes();
   private final LanguageConceptSwitch myIndexSwitch;
 
   public StructureAspectDescriptor() {
@@ -79,7 +81,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
 
   @Override
   public Collection<ConceptDescriptor> getDescriptors() {
-    return Arrays.asList(myConceptApi, myConceptBaseUrl, myConceptClickActions, myConceptClickEndpoint, myConceptComponent, myConceptComponents, myConceptContent, myConceptContentSource, myConceptContents, myConceptDislike, myConceptDislikeClickAction, myConceptEnable, myConceptEnableComponents, myConceptEndpoint, myConceptEndpoints, myConceptFavorite, myConceptFavoriteClickAction, myConceptFooter, myConceptForEach, myConceptIcon, myConceptImageLayout, myConceptImageLink, myConceptImages, myConceptItemsPerPage, myConceptLike, myConceptLikeClickAction, myConceptLoadAction, myConceptLoadElement, myConceptMenu, myConceptMenuOption, myConceptMenuOptionElement, myConceptMenuOptionIsNotSet, myConceptMenuOptionIsSet, myConceptMenuType, myConceptParameter, myConceptPayload, myConceptPayloadElement, myConceptPosition, myConceptRyce, myConceptSet, myConceptSorting, myConceptStyle, myConceptStyleElement, myConceptTitleMenuOption);
+    return Arrays.asList(myConceptApi, myConceptBaseUrl, myConceptClickActions, myConceptClickEndpoint, myConceptComponent, myConceptComponents, myConceptContent, myConceptContentSource, myConceptContents, myConceptDislike, myConceptDislikeClickAction, myConceptEnable, myConceptEnableComponents, myConceptEndpoint, myConceptEndpoints, myConceptFavorite, myConceptFavoriteClickAction, myConceptFooter, myConceptForEach, myConceptIcon, myConceptImageLayout, myConceptImageLink, myConceptImages, myConceptItemsPerPage, myConceptLike, myConceptLikeClickAction, myConceptLoadAction, myConceptLoadElement, myConceptMenu, myConceptMenuOption, myConceptMenuOptionElement, myConceptMenuOptionIsNotSet, myConceptMenuOptionIsSet, myConceptMenuType, myConceptParameter, myConceptPayload, myConceptPayloadElement, myConceptPosition, myConceptRyce, myConceptSet, myConceptSorting, myConceptStyle, myConceptStyleElement, myConceptTitleMenuOption, myConceptUserDisplay);
   }
 
   @Override
@@ -174,6 +176,8 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
         return myConceptStyleElement;
       case LanguageConceptSwitch.TitleMenuOption:
         return myConceptTitleMenuOption;
+      case LanguageConceptSwitch.UserDisplay:
+        return myConceptUserDisplay;
       default:
         return null;
     }
@@ -181,7 +185,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
 
   @Override
   public Collection<DataTypeDescriptor> getDataTypeDescriptors() {
-    return Arrays.asList(myEnumerationComponentEnum, myEnumerationImageLayouts, myEnumerationMenuTypes, myEnumerationPositionEnum, myEnumerationSortingOptions);
+    return Arrays.asList(myEnumerationComponentEnum, myEnumerationImageLayouts, myEnumerationMenuTypes, myEnumerationPositionEnum, myEnumerationSortingOptions, myEnumerationUserDisplayTypes);
   }
 
   /*package*/ int internalIndex(SAbstractConcept c) {
@@ -452,13 +456,13 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.origin("r:6f21ea0b-8f9f-4069-8bcc-6c3e23fc8fea(Ryce.structure)/6882320668103848216");
     b.version(3);
     b.property("type", 0x605f898c118a05aeL).type(MetaIdFactory.dataTypeId(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x5f82ea2efcb96886L)).origin("6944420385111279022").done();
-    b.property("user_display", 0x762ed1772a479779L).type(PrimitiveTypeId.BOOLEAN).origin("8515974255144834937").done();
     b.aggregate("title_option", 0x605f898c1134850dL).target(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x605f898c115e3b2dL).optional(true).ordered(true).multiple(false).origin("6944420385105675533").done();
     b.aggregate("options", 0x5f82ea2efca8b125L).target(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x5f82ea2efca8b121L).optional(true).ordered(true).multiple(false).origin("6882320668103848229").done();
     b.aggregate("style", 0x5f82ea2efca9754dL).target(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x5f82ea2efca8b139L).optional(true).ordered(true).multiple(false).origin("6882320668103898445").done();
     b.aggregate("set", 0x4b61efe7ede0c75cL).target(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x4b61efe7ede0c75aL).optional(true).ordered(true).multiple(false).origin("5431886404992943964").done();
     b.aggregate("options_IsSet", 0x4b61efe7ede292efL).target(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x39c93bd42de220a5L).optional(true).ordered(true).multiple(false).origin("5431886404993061615").done();
     b.aggregate("options_NotSet", 0x4b61efe7ede292f0L).target(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x39c93bd42de220c0L).optional(true).ordered(true).multiple(false).origin("5431886404993061616").done();
+    b.aggregate("user_display", 0x40381b488ec3956dL).target(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x40381b488ec39511L).optional(false).ordered(true).multiple(false).origin("4627478615569962349").done();
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForMenuOption() {
@@ -591,6 +595,15 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.origin("r:6f21ea0b-8f9f-4069-8bcc-6c3e23fc8fea(Ryce.structure)/6944420385108409133");
     b.version(3);
     b.aggregate("option", 0x605f898c115e3b2eL).target(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x5f82ea2efcb389d0L).optional(true).ordered(true).multiple(true).origin("6944420385108409134").done();
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForUserDisplay() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("Ryce", "UserDisplay", 0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x40381b488ec39511L);
+    b.class_(false, false, false);
+    b.origin("r:6f21ea0b-8f9f-4069-8bcc-6c3e23fc8fea(Ryce.structure)/4627478615569962257");
+    b.version(3);
+    b.property("enabled", 0x40381b488ec39516L).type(PrimitiveTypeId.BOOLEAN).origin("4627478615569962262").done();
+    b.property("display_type", 0x40381b488ec39517L).type(MetaIdFactory.dataTypeId(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x40381b488ec39512L)).origin("4627478615569962263").done();
     return b.create();
   }
 }

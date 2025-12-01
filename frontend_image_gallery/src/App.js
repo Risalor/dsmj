@@ -15,7 +15,7 @@ function App() {
   const [user, setUser] = useState(localStorage.user ? JSON.parse(localStorage.user) : null);
 
   const [currStyle, setCurrStyle] = useState({
-    layout: 'grid',
+    layout: 'masonry',
     menu: 'sidebar',
     like: true,
     dislike: true,
@@ -33,6 +33,7 @@ function App() {
     footer: false,
     footer_content: "2025 KrisGallery. All rights reserved.",
     user_display: true,
+    user_display_type: 'dropdown',
 
     
     base_api: 'http://localhost:3001/',
@@ -59,10 +60,10 @@ function App() {
         <div className="App" style={{ 
           minHeight: '100vh', 
           display: 'flex', 
-          flexDirection: 'column' 
+          flexDirection: currStyle.menu === 'sidebar' ? 'row' : 'column'
         }}>
           <Header />
-          <main style={{ flex: 1 }}>
+          <main style={{ flex: 1, marginLeft: currStyle.layout === 'masonry' ? '250px' : '0' }}>
             <Routes>
               <Route path="/" exact element={<Photos />}></Route>
               <Route path="/Register" element={<Register />}></Route>

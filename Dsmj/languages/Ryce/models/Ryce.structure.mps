@@ -94,15 +94,17 @@
       <property role="20kJfa" value="options_NotSet" />
       <ref role="20lvS9" node="3B9eXgHSy30" resolve="MenuOptionIsNotSet" />
     </node>
+    <node concept="1TJgyj" id="40S6OyeKTlH" role="1TKVEi">
+      <property role="IQ2ns" value="4627478615569962349" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="user_display" />
+      <property role="20lbJX" value="fLJekj4/_1" />
+      <ref role="20lvS9" node="40S6OyeKTkh" resolve="UserDisplay" />
+    </node>
     <node concept="1TJgyi" id="61vyoKhywmI" role="1TKVEl">
       <property role="IQ2nx" value="6944420385111279022" />
       <property role="TrG5h" value="type" />
       <ref role="AX2Wp" node="5Y2UyVWImy6" resolve="MenuTypes" />
-    </node>
-    <node concept="1TJgyi" id="7oIOnsEhTtT" role="1TKVEl">
-      <property role="IQ2nx" value="8515974255144834937" />
-      <property role="TrG5h" value="user_display" />
-      <ref role="AX2Wp" to="tpck:fKAQMTB" resolve="boolean" />
     </node>
   </node>
   <node concept="1TIwiD" id="5Y2UyVWEb4x">
@@ -930,6 +932,33 @@
       <property role="20kJfa" value="option" />
       <property role="20lbJX" value="fLJekj5/_0__n" />
       <ref role="20lvS9" node="5Y2UyVWGSBg" resolve="MenuOptionElement" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="40S6OyeKTkh">
+    <property role="EcuMT" value="4627478615569962257" />
+    <property role="TrG5h" value="UserDisplay" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="1TJgyi" id="40S6OyeKTkm" role="1TKVEl">
+      <property role="IQ2nx" value="4627478615569962262" />
+      <property role="TrG5h" value="enabled" />
+      <ref role="AX2Wp" to="tpck:fKAQMTB" resolve="boolean" />
+    </node>
+    <node concept="1TJgyi" id="40S6OyeKTkn" role="1TKVEl">
+      <property role="IQ2nx" value="4627478615569962263" />
+      <property role="TrG5h" value="display_type" />
+      <ref role="AX2Wp" node="40S6OyeKTki" resolve="UserDisplayTypes" />
+    </node>
+  </node>
+  <node concept="25R3W" id="40S6OyeKTki">
+    <property role="3F6X1D" value="4627478615569962258" />
+    <property role="TrG5h" value="UserDisplayTypes" />
+    <node concept="25R33" id="40S6OyeKTkj" role="25R1y">
+      <property role="3tVfz5" value="4627478615569962259" />
+      <property role="TrG5h" value="standard" />
+    </node>
+    <node concept="25R33" id="40S6OyeKTkk" role="25R1y">
+      <property role="3tVfz5" value="4627478615569962260" />
+      <property role="TrG5h" value="dropdown" />
     </node>
   </node>
 </model>

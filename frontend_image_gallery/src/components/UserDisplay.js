@@ -8,17 +8,17 @@ function UserDisplay() {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
     useEffect(() => {
-        if (styles.menu === 'topbar') {
+        if (styles.user_display_type === 'normal') {
             import('../styles/Headerv1.css');
         } else if (styles.ver2) {
             import('../styles/Headerv2.css');
-        } else if (styles.menu === 'sidebar') {
+        } else if (styles.user_display_type === 'dropdown') {
             import('../styles/Headerv3.css');
         }
     }, [styles]);
 
     useEffect(() => {
-        if (styles.ver2) {
+        if (styles.user_display_type === 'dropdown') {
             const handleClickOutside = (event) => {
                 if (!event.target.closest('.user-dropdown')) {
                     setIsDropdownOpen(false);
@@ -36,7 +36,7 @@ function UserDisplay() {
         setIsDropdownOpen(!isDropdownOpen);
     };
 
-    if (styles.menu === 'sidebar') {
+    if (styles.user_display_type === 'dropdown') {
         return (
             <div className="sidebar-user-display">
                 {user ? (
@@ -110,51 +110,53 @@ function UserDisplay() {
         );
     }
 
-    return (
-        <div className="user-display d-flex align-items-center">
-            {user ? (
-                <div className="d-flex align-items-center">
-                    <div className="user-info d-flex align-items-center me-3">
-                        {user.ProfileImage ? (
-                            <img
-                                src={"http://localhost:3001" + user.ProfileImage}
-                                alt={user.ProfileName}
-                                className="user-avatar me-2"
-                            />
-                        ) : (
-                            <div className="user-avatar placeholder me-2">
-                                {user.ProfileName ? user.ProfileName.charAt(0).toUpperCase() : 'U'}
-                            </div>
-                        )}
-                        <span className="user-name text-white">
-                            {user.ProfileName}
-                        </span>
+    if (styles.user_display_type === 'normal') {
+        return (
+            <div className="user-display d-flex align-items-center">
+                {user ? (
+                    <div className="d-flex align-items-center">
+                        <div className="user-info d-flex align-items-center me-3">
+                            {user.ProfileImage ? (
+                                <img
+                                    src={"http://localhost:3001" + user.ProfileImage}
+                                    alt={user.ProfileName}
+                                    className="user-avatar me-2"
+                                />
+                            ) : (
+                                <div className="user-avatar placeholder me-2">
+                                    {user.ProfileName ? user.ProfileName.charAt(0).toUpperCase() : 'U'}
+                                </div>
+                            )}
+                            <span className="user-name text-white">
+                                {user.ProfileName}
+                            </span>
+                        </div>
+                        <li className="nav-item">
+                            <Link className="nav-link icon-link" to="/Logout" data-tooltip="Logout">
+                                <LogOut className="header-icon" size={28} />
+                                <span className="icon-text d-none d-md-inline">Logout</span>
+                            </Link>
+                        </li>
                     </div>
-                    <li className="nav-item">
-                        <Link className="nav-link icon-link" to="/Logout" data-tooltip="Logout">
-                            <LogOut className="header-icon" size={28} />
-                            <span className="icon-text d-none d-md-inline">Logout</span>
-                        </Link>
-                    </li>
-                </div>
-            ) : (
-                <div className="d-flex align-items-center">
-                    <li className="nav-item">
-                        <Link className="nav-link icon-link me-2" to="/Login" data-tooltip="Login">
-                            <LogIn className="header-icon" size={28} />
-                            <span className="icon-text d-none d-md-inline">Login</span>
-                        </Link>
-                    </li>
-                    <li className="nav-item">
-                        <Link className="nav-link icon-link" to="/Register" data-tooltip="Register">
-                            <UserPlus className="header-icon" size={28} />
-                            <span className="icon-text d-none d-md-inline">Register</span>
-                        </Link>
-                    </li>
-                </div>
-            )}
-        </div>
-    );
+                ) : (
+                    <div className="d-flex align-items-center">
+                        <li className="nav-item">
+                            <Link className="nav-link icon-link me-2" to="/Login" data-tooltip="Login">
+                                <LogIn className="header-icon" size={28} />
+                                <span className="icon-text d-none d-md-inline">Login</span>
+                            </Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link className="nav-link icon-link" to="/Register" data-tooltip="Register">
+                                <UserPlus className="header-icon" size={28} />
+                                <span className="icon-text d-none d-md-inline">Register</span>
+                            </Link>
+                        </li>
+                    </div>
+                )}
+            </div>
+        );
+    }
 }
 
 export default UserDisplay;

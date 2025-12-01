@@ -56,9 +56,17 @@ function Header() {
                         )}
                     </ul>
                     {styles.user_display && (
-                        <div>
-                            <UserDisplay />
-                        </div>
+                        <>
+                            {styles.user_display_type === 'normal' ? (
+                                <div>
+                                    <UserDisplay />
+                                </div>
+                            ) : (
+                                <div className="sidebar-user">
+                                    <UserDisplay />
+                                </div>
+                            )}
+                        </>
                     )}
                 </div>
             </div>
@@ -77,10 +85,7 @@ function Header() {
                         </Link>
                     </>
                 }
-                <button
-                    className="sidebar-toggle"
-                    onClick={() => setIsCollapsed(!isCollapsed)}
-                >
+                <button className="sidebar-toggle" onClick={() => setIsCollapsed(!isCollapsed)}>
                     {isCollapsed ? '→' : '←'}
                 </button>
             </div>
@@ -112,9 +117,17 @@ function Header() {
                 </ul>
             </div>
             {styles.user_display && (
-                <div className="sidebar-user">
-                    <UserDisplay />
-                </div>
+                <>
+                    {styles.user_display_type === 'normal' ? (
+                        <div>
+                            <UserDisplay />
+                        </div>
+                    ) : (
+                        <div className="sidebar-user">
+                            <UserDisplay />
+                        </div>
+                    )}
+                </>
             )}
         </div>
     );

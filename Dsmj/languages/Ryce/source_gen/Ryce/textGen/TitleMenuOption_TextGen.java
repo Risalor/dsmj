@@ -47,46 +47,30 @@ public class TitleMenuOption_TextGen extends TextGenDescriptorBase {
         }
         tgs.indent();
       } else if (SEnumOperations.isMember(SPropertyOperations.getEnum(SNodeOperations.cast(SNodeOperations.getParent(ctx.getPrimaryInput()), CONCEPTS.Menu$SI), PROPS.type$SqYo), 0x5f82ea2efcb9688aL)) {
-        tgs.append("{");
+        tgs.append("<Link className=\"brand-link\" to=\"");
+        tgs.append(SPropertyOperations.getString(option, PROPS.url$4eWq));
+        tgs.append("\">");
         tgs.newLine();
         ctx.getBuffer().area().increaseIndent();
         tgs.indent();
-        tgs.append("!isCollapsed &&");
-        tgs.newLine();
-        tgs.indent();
-        tgs.append("<>");
-        tgs.newLine();
-        for (SNode options : ListSequence.fromList(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.option$u6cp))) {
-          ctx.getBuffer().area().increaseIndent();
-          tgs.indent();
-          tgs.append("<Link className=\"brand-link\" to=\"");
-          tgs.append(SPropertyOperations.getString(options, PROPS.url$4eWq));
-          tgs.append("\">");
+        if ((SLinkOperations.getTarget(option, LINKS.icon$KTkR) != null)) {
+          tgs.append("<");
+          tgs.appendNode(SLinkOperations.getTarget(option, LINKS.icon$KTkR));
+          tgs.append(" className=\"brand-icon\" />");
           tgs.newLine();
-          ctx.getBuffer().area().increaseIndent();
           tgs.indent();
-          if ((SLinkOperations.getTarget(options, LINKS.icon$KTkR) != null)) {
-            tgs.append("<");
-            tgs.appendNode(SLinkOperations.getTarget(options, LINKS.icon$KTkR));
-            tgs.append(" className=\"brand-icon\" />");
-            tgs.newLine();
-            tgs.indent();
-          }
-          tgs.append("<span className=\"brand-text\">");
-          tgs.append(SPropertyOperations.getString(options, PROPS.text$4fbr));
-          tgs.append("</span>");
-          tgs.newLine();
-          ctx.getBuffer().area().decreaseIndent();
-          tgs.indent();
-          tgs.append("</Link>");
-          tgs.newLine();
-          ctx.getBuffer().area().decreaseIndent();
         }
-        tgs.indent();
-        tgs.append("</>");
+        tgs.append("<span className=\"brand-text\">");
+        tgs.append(SPropertyOperations.getString(option, PROPS.url$4eWq));
+        tgs.append("</span>");
         tgs.newLine();
         ctx.getBuffer().area().decreaseIndent();
-        break;
+        tgs.indent();
+        tgs.append("</Link>");
+        if (ListSequence.fromList(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.option$u6cp)).last() != option) {
+          tgs.newLine();
+        }
+        tgs.indent();
       }
     }
   }

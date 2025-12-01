@@ -43,6 +43,8 @@ public class TextGenAspectDescriptor extends TextGenAspectBase {
         return new Style_TextGen();
       case LanguageConceptSwitch.TitleMenuOption:
         return new TitleMenuOption_TextGen();
+      case LanguageConceptSwitch.UserDisplay:
+        return new UserDisplay_TextGen();
     }
     return null;
   }

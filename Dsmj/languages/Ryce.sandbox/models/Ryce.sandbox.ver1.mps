@@ -34,9 +34,11 @@
       </concept>
       <concept id="6882320668103848216" name="Ryce.structure.Menu" flags="ng" index="2za_GQ">
         <property id="8515974255144834937" name="user_display" index="1sqkoe" />
+        <property id="6944420385111279022" name="type" index="1LPoKy" />
         <child id="6882320668103848229" name="options" index="2za_Gb" />
         <child id="5431886404993061615" name="options_IsSet" index="2AwRO8" />
         <child id="5431886404993061616" name="options_NotSet" index="2AwROn" />
+        <child id="4627478615569962349" name="user_display" index="3eYSS_" />
         <child id="6944420385105675533" name="title_option" index="1LqKM1" />
       </concept>
       <concept id="6882320668104559056" name="Ryce.structure.MenuOptionElement" flags="ng" index="2zcmfY">
@@ -49,6 +51,10 @@
       <concept id="5431886404993128062" name="Ryce.structure.Api" flags="ng" index="2AwBAp">
         <child id="5431886404993128210" name="endpoints" index="2AwBzP" />
         <child id="5431886404993128094" name="base_url" index="2AwB_T" />
+      </concept>
+      <concept id="4627478615569962257" name="Ryce.structure.UserDisplay" flags="ng" index="3eYSTp">
+        <property id="4627478615569962262" name="enabled" index="3eYSTu" />
+        <property id="4627478615569962263" name="display_type" index="3eYSTv" />
       </concept>
       <concept id="6944420385108409133" name="Ryce.structure.TitleMenuOption" flags="ng" index="1L0rax">
         <child id="6944420385108409134" name="option" index="1L0ray" />
@@ -68,6 +74,7 @@
     <node concept="2za_GQ" id="61vyoKhzjmz" role="9Maul">
       <property role="TrG5h" value="aasdasd" />
       <property role="1sqkoe" value="true" />
+      <property role="1LPoKy" value="5Y2UyVWImya/sidebar" />
       <node concept="1L0rax" id="61vyoKhzjm$" role="1LqKM1">
         <node concept="2zcmfY" id="61vyoKhzjm_" role="1L0ray">
           <property role="TrG5h" value="asdasd" />
@@ -131,6 +138,10 @@
             <property role="k7uZD" value="aaaaaaaaaaaaaaaaaaaaaaaaaa" />
           </node>
         </node>
+      </node>
+      <node concept="3eYSTp" id="40S6OyeLXqM" role="3eYSS_">
+        <property role="3eYSTv" value="40S6OyeKTkj/standard" />
+        <property role="3eYSTu" value="true" />
       </node>
     </node>
   </node>

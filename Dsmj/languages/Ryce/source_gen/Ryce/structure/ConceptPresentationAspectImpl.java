@@ -53,6 +53,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_Style;
   private ConceptPresentation props_StyleElement;
   private ConceptPresentation props_TitleMenuOption;
+  private ConceptPresentation props_UserDisplay;
 
   @Override
   @Nullable
@@ -367,6 +368,13 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_TitleMenuOption = cpb.create();
         }
         return props_TitleMenuOption;
+      case LanguageConceptSwitch.UserDisplay:
+        if (props_UserDisplay == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("UserDisplay");
+          props_UserDisplay = cpb.create();
+        }
+        return props_UserDisplay;
     }
     return null;
   }
