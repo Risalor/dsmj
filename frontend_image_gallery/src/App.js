@@ -16,7 +16,7 @@ function App() {
 
   const [currStyle, setCurrStyle] = useState({
     layout: 'masonry',
-    menu: 'sidebar',
+    menu: 'topbar',
     like: true,
     dislike: true,
     favorite: true,
@@ -57,11 +57,7 @@ function App() {
         setUserContext: updateUserData,
         styles: currStyle
       }}>
-        <div className="App" style={{ 
-          minHeight: '100vh', 
-          display: 'flex', 
-          flexDirection: currStyle.menu === 'sidebar' ? 'row' : 'column'
-        }}>
+        <div className="App" style={{ minHeight: '100vh', display: 'flex', flexDirection: currStyle.menu === 'sidebar' ? 'row' : 'column'}}>
           <Header />
           <main style={{ flex: 1, marginLeft: currStyle.layout === 'masonry' ? '250px' : '0' }}>
             <Routes>

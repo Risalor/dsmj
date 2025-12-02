@@ -56,6 +56,40 @@ public class MenuOptionIsNotSet_TextGen extends TextGenDescriptorBase {
         tgs.indent();
       }
     } else if (SEnumOperations.isMember(SPropertyOperations.getEnum(SNodeOperations.cast(SNodeOperations.getParent(ctx.getPrimaryInput()), CONCEPTS.Menu$SI), PROPS.type$SqYo), 0x5f82ea2efcb9688aL)) {
+      for (SNode option : ListSequence.fromList(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.options$S4sT))) {
+        tgs.append("<li className=\"nav-item\">");
+        tgs.newLine();
+        ctx.getBuffer().area().increaseIndent();
+        tgs.indent();
+        tgs.append("<Link className={`nav-link ${location.pathname === '/Profile' ? 'active' : ''}`} to=\"");
+        tgs.append(SPropertyOperations.getString(option, PROPS.url$4eWq));
+        tgs.append("\">");
+        tgs.newLine();
+        ctx.getBuffer().area().increaseIndent();
+        tgs.indent();
+        if ((SLinkOperations.getTarget(option, LINKS.icon$KTkR) != null)) {
+          tgs.append("<");
+          tgs.appendNode(SLinkOperations.getTarget(option, LINKS.icon$KTkR));
+          tgs.append(" size={20} />");
+          tgs.newLine();
+          tgs.indent();
+        }
+        tgs.append("{!isCollapsed && <span>");
+        tgs.append(SPropertyOperations.getString(option, PROPS.text$4fbr));
+        tgs.append("</span>");
+        tgs.newLine();
+        ctx.getBuffer().area().decreaseIndent();
+        tgs.indent();
+        tgs.append("</Link>");
+        tgs.newLine();
+        ctx.getBuffer().area().decreaseIndent();
+        tgs.indent();
+        tgs.append("</li>");
+        if (option != ListSequence.fromList(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.options$S4sT)).last()) {
+          tgs.newLine();
+        }
+        tgs.indent();
+      }
     }
   }
 

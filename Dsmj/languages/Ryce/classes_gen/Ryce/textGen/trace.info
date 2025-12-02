@@ -605,35 +605,72 @@
       <node id="6718382165009262522" at="51,21,52,28" concept="1" />
       <node id="6718382165009304450" at="53,125,54,24" concept="1" />
       <node id="6718382165009304691" at="55,9,56,21" concept="1" />
-      <node id="6718382165009225564" at="63,0,64,0" concept="8" trace="Menu$SI" />
-      <node id="6718382165009225564" at="67,0,68,0" concept="8" trace="type$SqYo" />
-      <node id="6718382165009225564" at="68,0,69,0" concept="8" trace="url$4eWq" />
-      <node id="6718382165009225564" at="69,0,70,0" concept="8" trace="text$4fbr" />
-      <node id="6718382165009225564" at="73,0,74,0" concept="8" trace="icon$KTkR" />
-      <node id="6718382165009225564" at="74,0,75,0" concept="8" trace="options$S4sT" />
+      <node id="2025003580748723614" at="59,122,60,50" concept="1" />
+      <node id="2025003580748723689" at="60,50,61,22" concept="1" />
+      <node id="2025003580748721830" at="61,22,62,48" concept="1" />
+      <node id="2025003580748723762" at="62,48,63,21" concept="1" />
+      <node id="2025003580748723837" at="63,21,64,109" concept="1" />
+      <node id="2025003580748724099" at="64,109,65,74" concept="1" />
+      <node id="2025003580748727190" at="65,74,66,26" concept="1" />
+      <node id="2025003580748727264" at="66,26,67,22" concept="1" />
+      <node id="2025003580748721830" at="67,22,68,48" concept="1" />
+      <node id="2025003580748727337" at="68,48,69,21" concept="1" />
+      <node id="2025003580748733940" at="70,75,71,26" concept="1" />
+      <node id="2025003580748733994" at="71,26,72,77" concept="1" />
+      <node id="2025003580748738013" at="72,77,73,38" concept="1" />
+      <node id="2025003580748738111" at="73,38,74,24" concept="1" />
+      <node id="2025003580748738159" at="74,24,75,23" concept="1" />
+      <node id="2025003580748738235" at="76,9,77,46" concept="1" />
+      <node id="2025003580748738310" at="77,46,78,75" concept="1" />
+      <node id="2025003580748742383" at="78,75,79,30" concept="1" />
+      <node id="2025003580748742503" at="79,30,80,22" concept="1" />
+      <node id="2025003580748721830" at="80,22,81,48" concept="1" />
+      <node id="2025003580748742552" at="81,48,82,21" concept="1" />
+      <node id="2025003580748742628" at="82,21,83,30" concept="1" />
+      <node id="2025003580748742748" at="83,30,84,22" concept="1" />
+      <node id="2025003580748721830" at="84,22,85,48" concept="1" />
+      <node id="2025003580748742796" at="85,48,86,21" concept="1" />
+      <node id="2025003580748742872" at="86,21,87,28" concept="1" />
+      <node id="2025003580748778525" at="88,125,89,24" concept="1" />
+      <node id="2025003580748778766" at="90,9,91,21" concept="1" />
+      <node id="6718382165009225564" at="97,0,98,0" concept="8" trace="Menu$SI" />
+      <node id="6718382165009225564" at="101,0,102,0" concept="8" trace="type$SqYo" />
+      <node id="6718382165009225564" at="102,0,103,0" concept="8" trace="url$4eWq" />
+      <node id="6718382165009225564" at="103,0,104,0" concept="8" trace="text$4fbr" />
+      <node id="6718382165009225564" at="107,0,108,0" concept="8" trace="icon$KTkR" />
+      <node id="6718382165009225564" at="108,0,109,0" concept="8" trace="options$S4sT" />
       <node id="6718382165009262735" at="52,28,55,9" concept="3" />
+      <node id="2025003580748743013" at="87,28,90,9" concept="3" />
       <node id="6718382165009246677" at="34,21,41,9" concept="3" />
+      <node id="2025003580748727530" at="69,21,76,9" concept="3" />
       <node id="6718382165009240832" at="23,192,57,7" concept="2" />
-      <node id="6718382165009227312" at="22,55,59,5" concept="3" />
-      <node id="6718382165009225564" at="20,0,61,0" concept="4" trace="generateText#(Ljetbrains/mps/text/rt/TextGenContext;)V" />
-      <scope id="6718382165009234389" at="58,199,58,199" />
+      <node id="2025003580748721827" at="58,199,92,7" concept="2" />
+      <node id="6718382165009227312" at="22,55,93,5" concept="3" />
+      <node id="6718382165009225564" at="20,0,95,0" concept="4" trace="generateText#(Ljetbrains/mps/text/rt/TextGenContext;)V" />
       <scope id="6718382165009262737" at="53,125,54,24" />
+      <scope id="2025003580748743015" at="88,125,89,24" />
       <scope id="6718382165009246679" at="35,75,40,23" />
+      <scope id="2025003580748727532" at="70,75,75,23" />
       <scope id="6718382165009240835" at="24,122,56,21" />
+      <scope id="2025003580748721830" at="59,122,91,21" />
       <scope id="6718382165009227314" at="23,192,57,7" />
       <scope id="6718382165009240832" at="23,192,57,7">
         <var name="option" id="6718382165009240833" />
       </scope>
-      <scope id="6718382165009225564" at="21,54,59,5">
+      <scope id="2025003580748721827" at="58,199,92,7">
+        <var name="option" id="2025003580748721828" />
+      </scope>
+      <scope id="6718382165009234389" at="58,199,92,7" />
+      <scope id="6718382165009225564" at="21,54,93,5">
         <var name="tgs" id="6718382165009225564" />
       </scope>
-      <scope id="6718382165009225564" at="20,0,61,0">
+      <scope id="6718382165009225564" at="20,0,95,0">
         <var name="ctx" id="6718382165009225564" />
       </scope>
-      <unit id="6718382165009225564" at="62,0,65,0" name="Ryce.textGen.MenuOptionIsNotSet_TextGen$CONCEPTS" />
-      <unit id="6718382165009225564" at="72,0,76,0" name="Ryce.textGen.MenuOptionIsNotSet_TextGen$LINKS" />
-      <unit id="6718382165009225564" at="66,0,71,0" name="Ryce.textGen.MenuOptionIsNotSet_TextGen$PROPS" />
-      <unit id="6718382165009225564" at="19,0,77,0" name="Ryce.textGen.MenuOptionIsNotSet_TextGen" />
+      <unit id="6718382165009225564" at="96,0,99,0" name="Ryce.textGen.MenuOptionIsNotSet_TextGen$CONCEPTS" />
+      <unit id="6718382165009225564" at="106,0,110,0" name="Ryce.textGen.MenuOptionIsNotSet_TextGen$LINKS" />
+      <unit id="6718382165009225564" at="100,0,105,0" name="Ryce.textGen.MenuOptionIsNotSet_TextGen$PROPS" />
+      <unit id="6718382165009225564" at="19,0,111,0" name="Ryce.textGen.MenuOptionIsNotSet_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
       <node id="6718382165009225564" at="36,52,37,48" concept="6" />
@@ -856,35 +893,72 @@
       <node id="6718382165008247586" at="51,21,52,28" concept="1" />
       <node id="6718382165008285836" at="53,125,54,24" concept="1" />
       <node id="6718382165008287683" at="55,9,56,21" concept="1" />
-      <node id="6944420385116277467" at="63,0,64,0" concept="8" trace="Menu$SI" />
-      <node id="6944420385116277467" at="67,0,68,0" concept="8" trace="type$SqYo" />
-      <node id="6944420385116277467" at="68,0,69,0" concept="8" trace="url$4eWq" />
-      <node id="6944420385116277467" at="69,0,70,0" concept="8" trace="text$4fbr" />
-      <node id="6944420385116277467" at="73,0,74,0" concept="8" trace="icon$KTkR" />
-      <node id="6944420385116277467" at="74,0,75,0" concept="8" trace="options$RIDT" />
+      <node id="2025003580748657890" at="59,122,60,50" concept="1" />
+      <node id="2025003580748657965" at="60,50,61,22" concept="1" />
+      <node id="2025003580748649311" at="61,22,62,48" concept="1" />
+      <node id="2025003580748658038" at="62,48,63,21" concept="1" />
+      <node id="2025003580748658113" at="63,21,64,109" concept="1" />
+      <node id="2025003580748658326" at="64,109,65,74" concept="1" />
+      <node id="2025003580748661537" at="65,74,66,24" concept="1" />
+      <node id="2025003580748661591" at="66,24,67,22" concept="1" />
+      <node id="2025003580748649311" at="67,22,68,48" concept="1" />
+      <node id="2025003580748661664" at="68,48,69,21" concept="1" />
+      <node id="2025003580748668181" at="70,75,71,26" concept="1" />
+      <node id="2025003580748668235" at="71,26,72,77" concept="1" />
+      <node id="2025003580748671753" at="72,77,73,38" concept="1" />
+      <node id="2025003580748671851" at="73,38,74,24" concept="1" />
+      <node id="2025003580748671921" at="74,24,75,23" concept="1" />
+      <node id="2025003580748671976" at="76,9,77,46" concept="1" />
+      <node id="2025003580748672030" at="77,46,78,75" concept="1" />
+      <node id="2025003580748676103" at="78,75,79,30" concept="1" />
+      <node id="2025003580748676180" at="79,30,80,22" concept="1" />
+      <node id="2025003580748649311" at="80,22,81,48" concept="1" />
+      <node id="2025003580748676229" at="81,48,82,21" concept="1" />
+      <node id="2025003580748676305" at="82,21,83,30" concept="1" />
+      <node id="2025003580748676425" at="83,30,84,22" concept="1" />
+      <node id="2025003580748649311" at="84,22,85,48" concept="1" />
+      <node id="2025003580748676473" at="85,48,86,21" concept="1" />
+      <node id="2025003580748676549" at="86,21,87,28" concept="1" />
+      <node id="2025003580748717745" at="88,125,89,24" concept="1" />
+      <node id="2025003580748717986" at="90,9,91,21" concept="1" />
+      <node id="6944420385116277467" at="97,0,98,0" concept="8" trace="Menu$SI" />
+      <node id="6944420385116277467" at="101,0,102,0" concept="8" trace="type$SqYo" />
+      <node id="6944420385116277467" at="102,0,103,0" concept="8" trace="url$4eWq" />
+      <node id="6944420385116277467" at="103,0,104,0" concept="8" trace="text$4fbr" />
+      <node id="6944420385116277467" at="107,0,108,0" concept="8" trace="icon$KTkR" />
+      <node id="6944420385116277467" at="108,0,109,0" concept="8" trace="options$RIDT" />
       <node id="6718382165008249554" at="52,28,55,9" concept="3" />
+      <node id="2025003580748676739" at="87,28,90,9" concept="3" />
       <node id="6718382165007745689" at="34,21,41,9" concept="3" />
+      <node id="2025003580748661891" at="69,21,76,9" concept="3" />
       <node id="6718382165007739851" at="23,192,57,7" concept="2" />
-      <node id="6718382165007681346" at="22,55,59,5" concept="3" />
-      <node id="6944420385116277467" at="20,0,61,0" concept="4" trace="generateText#(Ljetbrains/mps/text/rt/TextGenContext;)V" />
-      <scope id="6718382165007704506" at="58,199,58,199" />
+      <node id="2025003580748649308" at="58,199,92,7" concept="2" />
+      <node id="6718382165007681346" at="22,55,93,5" concept="3" />
+      <node id="6944420385116277467" at="20,0,95,0" concept="4" trace="generateText#(Ljetbrains/mps/text/rt/TextGenContext;)V" />
       <scope id="6718382165008249556" at="53,125,54,24" />
+      <scope id="2025003580748676741" at="88,125,89,24" />
       <scope id="6718382165007745691" at="35,75,40,23" />
+      <scope id="2025003580748661893" at="70,75,75,23" />
       <scope id="6718382165007739854" at="24,122,56,21" />
+      <scope id="2025003580748649311" at="59,122,91,21" />
       <scope id="6718382165007681348" at="23,192,57,7" />
       <scope id="6718382165007739851" at="23,192,57,7">
         <var name="option" id="6718382165007739852" />
       </scope>
-      <scope id="6944420385116277467" at="21,54,59,5">
+      <scope id="2025003580748649308" at="58,199,92,7">
+        <var name="option" id="2025003580748649309" />
+      </scope>
+      <scope id="6718382165007704506" at="58,199,92,7" />
+      <scope id="6944420385116277467" at="21,54,93,5">
         <var name="tgs" id="6944420385116277467" />
       </scope>
-      <scope id="6944420385116277467" at="20,0,61,0">
+      <scope id="6944420385116277467" at="20,0,95,0">
         <var name="ctx" id="6944420385116277467" />
       </scope>
-      <unit id="6944420385116277467" at="62,0,65,0" name="Ryce.textGen.MenuOptionIsSet_TextGen$CONCEPTS" />
-      <unit id="6944420385116277467" at="72,0,76,0" name="Ryce.textGen.MenuOptionIsSet_TextGen$LINKS" />
-      <unit id="6944420385116277467" at="66,0,71,0" name="Ryce.textGen.MenuOptionIsSet_TextGen$PROPS" />
-      <unit id="6944420385116277467" at="19,0,77,0" name="Ryce.textGen.MenuOptionIsSet_TextGen" />
+      <unit id="6944420385116277467" at="96,0,99,0" name="Ryce.textGen.MenuOptionIsSet_TextGen$CONCEPTS" />
+      <unit id="6944420385116277467" at="106,0,110,0" name="Ryce.textGen.MenuOptionIsSet_TextGen$LINKS" />
+      <unit id="6944420385116277467" at="100,0,105,0" name="Ryce.textGen.MenuOptionIsSet_TextGen$PROPS" />
+      <unit id="6944420385116277467" at="19,0,111,0" name="Ryce.textGen.MenuOptionIsSet_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
       <node id="6944420385116277467" at="38,49,39,45" concept="6" />

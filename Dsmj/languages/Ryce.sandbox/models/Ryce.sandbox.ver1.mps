@@ -34,7 +34,6 @@
       </concept>
       <concept id="6882320668103848216" name="Ryce.structure.Menu" flags="ng" index="2za_GQ">
         <property id="8515974255144834937" name="user_display" index="1sqkoe" />
-        <property id="6944420385111279022" name="type" index="1LPoKy" />
         <child id="6882320668103848229" name="options" index="2za_Gb" />
         <child id="5431886404993061615" name="options_IsSet" index="2AwRO8" />
         <child id="5431886404993061616" name="options_NotSet" index="2AwROn" />
@@ -46,7 +45,10 @@
         <property id="6882320668104559059" name="text" index="2zcmfX" />
         <child id="4163925112968762430" name="icon" index="k7uZE" />
       </concept>
-      <concept id="5431886404993128107" name="Ryce.structure.Endpoints" flags="ng" index="2AwB_c" />
+      <concept id="5431886404993128097" name="Ryce.structure.Endpoint" flags="ng" index="2AwB_6" />
+      <concept id="5431886404993128107" name="Ryce.structure.Endpoints" flags="ng" index="2AwB_c">
+        <child id="5431886404993128108" name="endpoints" index="2AwB_b" />
+      </concept>
       <concept id="5431886404993128066" name="Ryce.structure.BaseUrl" flags="ng" index="2AwB__" />
       <concept id="5431886404993128062" name="Ryce.structure.Api" flags="ng" index="2AwBAp">
         <child id="5431886404993128210" name="endpoints" index="2AwBzP" />
@@ -65,7 +67,9 @@
     <property role="TrG5h" value="Prog" />
     <node concept="2AwBAp" id="4f_8f$MBWxc" role="9Mauk">
       <node concept="2AwB__" id="4f_8f$MBWxd" role="2AwB_T" />
-      <node concept="2AwB_c" id="4f_8f$MBWxe" role="2AwBzP" />
+      <node concept="2AwB_c" id="4f_8f$MBWxe" role="2AwBzP">
+        <node concept="2AwB_6" id="1KqgwsrqDeq" role="2AwB_b" />
+      </node>
     </node>
     <node concept="kfb4I" id="4f_8f$MBWxf" role="9Maun">
       <property role="TrG5h" value="footer" />
@@ -74,7 +78,6 @@
     <node concept="2za_GQ" id="61vyoKhzjmz" role="9Maul">
       <property role="TrG5h" value="aasdasd" />
       <property role="1sqkoe" value="true" />
-      <property role="1LPoKy" value="5Y2UyVWImya/sidebar" />
       <node concept="1L0rax" id="61vyoKhzjm$" role="1LqKM1">
         <node concept="2zcmfY" id="61vyoKhzjm_" role="1L0ray">
           <property role="TrG5h" value="asdasd" />
@@ -140,7 +143,7 @@
         </node>
       </node>
       <node concept="3eYSTp" id="40S6OyeLXqM" role="3eYSS_">
-        <property role="3eYSTv" value="40S6OyeKTkj/standard" />
+        <property role="3eYSTv" value="40S6OyeKTkk/dropdown" />
         <property role="3eYSTu" value="true" />
       </node>
     </node>

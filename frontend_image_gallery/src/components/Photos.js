@@ -50,46 +50,6 @@ function Photos() {
         return displayNames[sortValue] || sortValue;
     };
 
-    if (!styles.sorting_options_display) {
-        return (
-            <div>
-                <div className={styles.layout === 'grid' ? "container mt-4" : styles.layout === 'list' ? "container mt-4" : "masonry-container"}>
-                    <div className={styles.layout === 'grid' ? "row" : styles.layout === 'list' ? "photos-list" : "masonry-grid"}>
-                        {photos.map(photo => (
-                            <div className={styles.layout === 'grid' ? "col-md-4" : styles.layout === 'list' ? "photo-list-item" : "masonry-item"} key={photo._id}>
-                                <Photo photo={photo} />
-                            </div>
-                        ))}
-                    </div>
-                </div>
-
-                {pagination.totalPages > 1 && (
-                    <div className="pagination-controls mt-4 text-center">
-                        <div className="btn-group" role="group">
-                            <button
-                                className="btn pagination-btn pagination-prev"
-                                onClick={handlePrevPage}
-                                disabled={currentPage === 1}
-                            >
-                                ← Previous
-                            </button>
-                            <span className="pagination-info">
-                                Page {currentPage} of {pagination.totalPages}
-                            </span>
-                            <button
-                                className="btn pagination-btn pagination-next"
-                                onClick={handleNextPage}
-                                disabled={currentPage === pagination.totalPages}
-                            >
-                                Next →
-                            </button>
-                        </div>
-                    </div>
-                )}
-            </div>
-        );
-    }
-
     return (
         <div>
             {styles.sorting_options_display && (

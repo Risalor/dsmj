@@ -243,3 +243,24 @@
     font-weight: bold;
     font-size: 14px;
 }
+
+.navbar .user-dropdown {
+    position: relative;
+}
+
+.navbar .user-dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    min-width: 200px;
+    z-index: 1000;
+}
+
+.navbar .sidebar-user-display {
+    position: relative;
+}
+
+.navbar .user-dropdown-trigger {
+    padding: 8px 12px;
+}

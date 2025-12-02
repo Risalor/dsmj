@@ -16,7 +16,7 @@ function Header() {
         } else if (styles.menu === 'sidebar') {
             import('../styles/Headerv3.css');
         }
-    }, [styles]);
+    }, [styles.menu]);
 
     if (styles.menu === 'topbar') {
         return (
@@ -27,6 +27,10 @@ function Header() {
                         <span className="icon-text">KrisGallery</span>
                     </Link>
                 </div>
+
+                <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span className="navbar-toggler-icon"></span>
+                </button>
 
                 <div className="collapse navbar-collapse" id="navbarNav">
                     <ul className="navbar-nav me-auto align-items-center">
@@ -56,17 +60,9 @@ function Header() {
                         )}
                     </ul>
                     {styles.user_display && (
-                        <>
-                            {styles.user_display_type === 'normal' ? (
-                                <div>
-                                    <UserDisplay />
-                                </div>
-                            ) : (
-                                <div className="sidebar-user">
-                                    <UserDisplay />
-                                </div>
-                            )}
-                        </>
+                        <div className="navbar-user-display">
+                            <UserDisplay isCollapsed={false} isTopbar={true} />
+                        </div>
                     )}
                 </div>
             </div>
@@ -117,17 +113,9 @@ function Header() {
                 </ul>
             </div>
             {styles.user_display && (
-                <>
-                    {styles.user_display_type === 'normal' ? (
-                        <div>
-                            <UserDisplay />
-                        </div>
-                    ) : (
-                        <div className="sidebar-user">
-                            <UserDisplay />
-                        </div>
-                    )}
-                </>
+                <div className="sidebar-user">
+                    <UserDisplay isCollapsed={isCollapsed} isTopbar={false} />
+                </div>
             )}
         </div>
     );
