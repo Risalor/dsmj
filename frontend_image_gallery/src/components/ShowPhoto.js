@@ -9,13 +9,14 @@ import { UserContext } from '../userContexts';
 import "../styles/ShowImage.css"
 import { FaThumbsUp, FaThumbsDown } from "react-icons/fa";
 import "../styles/combined.css"
+import config from '../config.json';
 
 function ShowPhoto() {
     const { state } = useLocation();
     const photo = state?.photo;
     const [photoState, setPhoto] = useState(photo);
     const [reloadComments, setReloadComments] = useState(0);
-    const { user, cont, styles } = useContext(UserContext);
+    const { user } = useContext(UserContext);
 
     const handleCommentPosted = () => {
         setReloadComments(prev => prev + 1);
@@ -41,10 +42,10 @@ function ShowPhoto() {
                         className="photo-detail-image"
                     />
                     
-                    <div className={`${styles.action_buttons_layout}`}>
-                        {styles.like && (<LikePhoto photo={photo} setPhoto={setPhoto} />)}
-                        {styles.favorite && (<AddToFavoritesButton photoId={photo._id} currentUserId={user._id}/>)}
-                        {styles.dislike && (<DislikePhoto photo={photo} setPhoto={setPhoto} />)}
+                    <div className={`${config.action_buttons_layout}`}>
+                        {config.like && (<LikePhoto photo={photo} setPhoto={setPhoto} />)}
+                        {config.favorite && (<AddToFavoritesButton photoId={photo._id} currentUserId={user._id}/>)}
+                        {config.dislike && (<DislikePhoto photo={photo} setPhoto={setPhoto} />)}
                     </div>
                 </div>
 

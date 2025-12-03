@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import { Star } from 'feather-icons-react';
 
 function AddToFavoritesButton({ photoId, currentUserId }) {
-    const [isLoading, setIsLoading] = useState(false);
     const [isFavorited, setIsFavorited] = useState(false);
     const navigate = useNavigate();
 
@@ -32,7 +31,6 @@ function AddToFavoritesButton({ photoId, currentUserId }) {
     }, [photoId, currentUserId]);
 
     const handleToggleFavorite = async () => {
-        setIsLoading(true);
         setIsFavorited(!isFavorited);
         try {
             const res = await fetch(`http://localhost:3001/users/addToFavorites`, {
@@ -55,19 +53,12 @@ function AddToFavoritesButton({ photoId, currentUserId }) {
             }
         } catch (err) {
             console.error('Toggle favorite error:', err);
-        } finally {
-            setIsLoading(false);
         }
     };
 
     return (
-        <button
-            onClick={handleToggleFavorite}
-            className={`favorite-btn ${isFavorited ? 'favorited' : ''}`}
-            disabled={isLoading}
-            title={isFavorited ? "Remove from favorites" : "Add to favorites"}
-        >
-            {isLoading ? '...' : <Star size={18} fill={isFavorited ? "currentColor" : "none"} />}
+        <button onClick={handleToggleFavorite} className={`favorite-btn ${isFavorited ? 'favorited' : ''}`} title={isFavorited ? "Remove from favorites" : "Add to favorites"}>
+            <Star size={18} fill={isFavorited ? "currentColor" : "none"} />
         </button>
     );
 }

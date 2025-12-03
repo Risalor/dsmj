@@ -7,7 +7,7 @@ function Comment({ comment }) {
                 <p className="comment-text">{comment.Text}</p>
                 <div className="comment-meta">
                     <span className="comment-author">
-                        {comment.PostedBy?.ProfileName || 'Anonymous'}
+                        {comment.PostedBy?.ProfileName || ''}
                     </span>
                     <span className="comment-date">
                         {new Date(comment.DatePosted).toLocaleDateString('en-US', {

@@ -2,23 +2,23 @@ import { useState, useEffect, useContext } from 'react';
 import Photo from './Photo';
 import { UserContext } from "../userContexts";
 import '../styles/combined.css'
+import config from '../config.json';
 
 function Photos() {
     const [photos, setPhotos] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [pagination, setPagination] = useState({});
-    const { user, cont, styles } = useContext(UserContext);
-    const [currentSort, setCurrentSort] = useState(styles.default_sorting || 'newest_asc');
+    const [currentSort, setCurrentSort] = useState(config.default_sorting || 'newest_asc');
 
     useEffect(() => {
         const getPhotos = async () => {
-            const res = await fetch(styles.images_api_endpoint(currentPage.toString(), styles.images_per_page.toString(), currentSort));
+            const res = await fetch(config.base_api + 'images/?page=' + currentPage + "&limit=" + config.images_per_page + "&sort=" + currentSort);
             const data = await res.json();
             setPhotos(data.photos);
             setPagination(data.pagination);
         };
         getPhotos();
-    }, [currentPage, currentSort]);
+    }, [currentPage, currentSort, config.base_api]);
 
     const handleNextPage = () => {
         if (currentPage < pagination.totalPages) {
@@ -52,7 +52,7 @@ function Photos() {
 
     return (
         <div>
-            {styles.sorting_options_display && (
+            {config.sorting_options_display && (
                 <div className="sorting-dropdown-container container mt-3">
                     <div className="row justify-content-end">
                         <div className="col-auto">
@@ -66,7 +66,7 @@ function Photos() {
                                     value={currentSort}
                                     onChange={handleSortChange}
                                 >
-                                    {styles.sorting_options.map(sortOption => (
+                                    {config.sorting_options.map(sortOption => (
                                         <option key={sortOption} value={sortOption}>
                                             {getSortDisplayName(sortOption)}
                                         </option>
@@ -78,10 +78,10 @@ function Photos() {
                 </div>
             )}
 
-            <div className={styles.layout === 'grid' ? "container mt-4" : styles.layout === 'list' ? "container mt-4" : "masonry-container"}>
-                <div className={styles.layout === 'grid' ? "row" : styles.layout === 'list' ? "photos-list" : "masonry-grid"}>
+            <div className={config.layout === 'grid' ? "container mt-4" : config.layout === 'list' ? "container mt-4" : "masonry-container"}>
+                <div className={config.layout === 'grid' ? "row" : config.layout === 'list' ? "photos-list" : "masonry-grid"}>
                     {photos.map(photo => (
-                        <div className={styles.layout === 'grid' ? "col-md-4" : styles.layout === 'list' ? "photo-list-item" : "masonry-item"} key={photo._id}>
+                        <div className={config.layout === 'grid' ? "col-md-4" : config.layout === 'list' ? "photo-list-item" : "masonry-item"} key={photo._id}>
                             <Photo photo={photo} />
                         </div>
                     ))}

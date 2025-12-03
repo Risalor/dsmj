@@ -6,41 +6,42 @@ import AddToFavoritesButton from "./AddToFavoritesButton";
 import { UserContext } from "../userContexts";
 import { FaThumbsUp, FaThumbsDown } from "react-icons/fa";
 import "../styles/combined.css"
+import config from '../config.json';
 
 function Photo({ photo: initialPhoto }) {
     const [photo, setPhoto] = useState(initialPhoto);
-    const { user, cont, styles } = useContext(UserContext);
+    const { user } = useContext(UserContext);
     const [showOverlay, setShowOverlay] = useState(false);
 
     useEffect(() => {
-        if (styles.layout === 'grid') {
+        if (config.layout === 'grid') {
             import('../styles/Imagev1.css');
-        } else if (styles.layout === 'list') {
+        } else if (config.layout === 'list') {
             import('../styles/Imagev2.css');
-        } else if (styles.layout === 'masonry') {
+        } else if (config.layout === 'masonry') {
             import('../styles/Imagev3.css');
         }
-    }, [styles]);
+    }, [config]);
 
-    if (styles.layout === 'grid') {
+    if (config.layout === 'grid') {
         return (
             <div className="photo-card card text-white bg-dark mb-3 border-secondary">
                 <div className="image-container" onMouseEnter={() => setShowOverlay(true)} onMouseLeave={() => setShowOverlay(false)} >
                     <Link to="/ShowPhoto" state={{ photo }} className="image-link">
-                        <img className="card-img-top full-size-image" src={`${styles.base_api}${photo.Path}`} alt={photo.Title} />
+                        <img className="card-img-top full-size-image" src={`${config.base_api}${photo.Path}`} alt={photo.Title} />
                     </Link>
                     {!showOverlay && (
-                        <div className={`stats ${styles.display_stats_layout}`}>
-                            {styles.like_display && (<span className="display-likes"><FaThumbsUp/> {photo.Likes || 0}</span>)}
-                            {styles.dislike_display && (<span className="display-dislikes"><FaThumbsDown/> {photo.Dislikes || 0}</span>)}
+                        <div className={`stats ${config.display_stats_layout}`}>
+                            {config.like_display && (<span className="display-likes"><FaThumbsUp/> {photo.Likes || 0}</span>)}
+                            {config.dislike_display && (<span className="display-dislikes"><FaThumbsDown/> {photo.Dislikes || 0}</span>)}
                         </div>
                     )}
                     {showOverlay && (
                         <>
-                            <div className={`${styles.action_buttons_layout}`}>
-                                {styles.like && (<LikePhoto photo={photo} setPhoto={setPhoto} />)}
-                                {styles.favorite && (<AddToFavoritesButton photoId={photo._id} currentUserId={user._id}/>)}
-                                {styles.dislike && (<DislikePhoto photo={photo} setPhoto={setPhoto} />)}
+                            <div className={`${config.action_buttons_layout}`}>
+                                {config.like && (<LikePhoto photo={photo} setPhoto={setPhoto} />)}
+                                {config.favorite && (<AddToFavoritesButton photoId={photo._id} currentUserId={user._id}/>)}
+                                {config.dislike && (<DislikePhoto photo={photo} setPhoto={setPhoto} />)}
                             </div>
                             <Link to="/ShowPhoto" state={{ photo }} className="image-link">
                                 <div className="content-overlay">
@@ -61,25 +62,25 @@ function Photo({ photo: initialPhoto }) {
         );
     }
 
-    if (styles.layout === 'list') {
+    if (config.layout === 'list') {
         return (
             <div className="photo-list-card">
                 <div className="photo-list-content">
                     <div className="photo-list-image" onMouseEnter={() => setShowOverlay(true)} onMouseLeave={() => setShowOverlay(false)}>
                         <Link to="/ShowPhoto" state={{ photo }} className="image-link">
-                            <img className="list-image" src={`${styles.base_api}${photo.Path}`} alt={photo.Title}/>
+                            <img className="list-image" src={`${config.base_api}${photo.Path}`} alt={photo.Title}/>
                         </Link>
                         {showOverlay && (
-                            <div className={`${styles.action_buttons_layout}`}>
-                                {styles.like && (<LikePhoto photo={photo} setPhoto={setPhoto} />)}
-                                {styles.favorite && (<AddToFavoritesButton photoId={photo._id} currentUserId={user._id}/>)}
-                                {styles.dislike && (<DislikePhoto photo={photo} setPhoto={setPhoto} />)}
+                            <div className={`${config.action_buttons_layout}`}>
+                                {config.like && (<LikePhoto photo={photo} setPhoto={setPhoto} />)}
+                                {config.favorite && (<AddToFavoritesButton photoId={photo._id} currentUserId={user._id}/>)}
+                                {config.dislike && (<DislikePhoto photo={photo} setPhoto={setPhoto} />)}
                             </div>
                         )}
                         {!showOverlay && (
-                            <div className={`stats ${styles.display_stats_layout}`}>
-                                {styles.like_display && (<span className="display-likes"><FaThumbsUp/> {photo.Likes || 0}</span>)}
-                                {styles.dislike_display && (<span className="display-dislikes"><FaThumbsDown/> {photo.Dislikes || 0}</span>)}
+                            <div className={`stats ${config.display_stats_layout}`}>
+                                {config.like_display && (<span className="display-likes"><FaThumbsUp/> {photo.Likes || 0}</span>)}
+                                {config.dislike_display && (<span className="display-dislikes"><FaThumbsDown/> {photo.Dislikes || 0}</span>)}
                             </div>
                         )}
                     </div>
@@ -103,7 +104,7 @@ function Photo({ photo: initialPhoto }) {
         <div className="photo-masonry-card">
             <div className="masonry-image-container" onMouseEnter={() => setShowOverlay(true)} onMouseLeave={() => setShowOverlay(false)}>
                 <Link to="/ShowPhoto" state={{ photo }} className="masonry-image-link">
-                    <img className="masonry-image" src={`${styles.base_api}${photo.Path}`} alt={photo.Title}/>
+                    <img className="masonry-image" src={`${config.base_api}${photo.Path}`} alt={photo.Title}/>
                 </Link>
                 {!showOverlay && (
                 <div className="masonry-info-bar">
@@ -111,19 +112,19 @@ function Photo({ photo: initialPhoto }) {
                         <h4 className="masonry-title">{photo.Title}</h4>
                         <p className="masonry-author">by {photo.PostedBy?.ProfileName}</p>
                     </div>
-                    <div className={`stats ${styles.display_stats_layout}`}>
-                        {styles.like_display && (<span className="display-likes"><FaThumbsUp/> {photo.Likes || 0}</span>)}
-                        {styles.dislike_display && (<span className="display-dislikes"><FaThumbsDown/> {photo.Dislikes || 0}</span>)}
+                    <div className={`stats ${config.display_stats_layout}`}>
+                        {config.like_display && (<span className="display-likes"><FaThumbsUp/> {photo.Likes || 0}</span>)}
+                        {config.dislike_display && (<span className="display-dislikes"><FaThumbsDown/> {photo.Dislikes || 0}</span>)}
                     </div>
                 </div>
                 )}
 
                 {showOverlay && (
                     <div className="masonry-overlay">
-                        <div className={`${styles.action_buttons_layout}`}>
-                            {styles.like && (<LikePhoto photo={photo} setPhoto={setPhoto} />)}
-                            {styles.favorite && (<AddToFavoritesButton photoId={photo._id} currentUserId={user._id}/>)}
-                            {styles.dislike && (<DislikePhoto photo={photo} setPhoto={setPhoto} />)}
+                        <div className={`${config.action_buttons_layout}`}>
+                            {config.like && (<LikePhoto photo={photo} setPhoto={setPhoto} />)}
+                            {config.favorite && (<AddToFavoritesButton photoId={photo._id} currentUserId={user._id}/>)}
+                            {config.dislike && (<DislikePhoto photo={photo} setPhoto={setPhoto} />)}
                         </div>
                         <Link to="/ShowPhoto" state={{ photo }} className="masonry-details-link">
                             <div className="masonry-full-info">

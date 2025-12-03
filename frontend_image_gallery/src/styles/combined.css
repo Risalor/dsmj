@@ -1,4 +1,3 @@
-/* Base button styles */
 .action-buttons button {
     width: 40px;
     height: 40px;
@@ -19,13 +18,11 @@
     transform: scale(1.1);
 }
 
-/* Small variant */
 .action-buttons.small button {
     width: 36px;
     height: 36px;
 }
 
-/* Positioning classes */
 .action-buttons.top {
     top: 10px;
 }
@@ -52,7 +49,6 @@
     transform: translateY(-50%);
 }
 
-/* Layout direction classes */
 .action-buttons.vertical {
     display: flex;
     flex-direction: column;
@@ -64,13 +60,11 @@
     gap: 8px;
 }
 
-/* Position absolute for all action buttons */
 .action-buttons {
     position: absolute;
     z-index: 20;
 }
 
-/* Specific combinations for common use cases */
 .action-buttons.vertical.top.right {
     top: 10px;
     right: 10px;
@@ -109,7 +103,6 @@
     bottom: auto;
 }
 
-/* Masonry specific */
 .masonry-actions {
     display: flex;
     justify-content: center;
@@ -136,7 +129,6 @@
     transform: scale(1.1);
 }
 
-/* State styles for all button types */
 .action-buttons .like-btn.liked,
 .masonry-actions .like-btn.liked {
     background: rgba(0, 0, 0, 0.9);

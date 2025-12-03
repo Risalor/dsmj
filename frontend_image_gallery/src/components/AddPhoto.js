@@ -62,45 +62,20 @@ function AddPhoto() {
                 <form onSubmit={onSubmit} className="add-photo-form">
                     <div className="form-group">
                         <label className="form-label">Photo Title *</label>
-                        <input 
-                            type="text" 
-                            className="form-input" 
-                            value={Title} 
-                            onChange={(e) => setTitle(e.target.value)}
-                            placeholder="Enter a title for your photo"
-                            required
-                        />
+                        <input type="text" className="form-input" value={Title} onChange={(e) => setTitle(e.target.value)} placeholder="Enter a title for your photo"required/>
                     </div>
                     
                     <div className="form-group">
                         <label className="form-label">Photo Description</label>
-                        <textarea 
-                            className="form-textarea" 
-                            value={Text} 
-                            onChange={(e) => setText(e.target.value)}
-                            placeholder="Describe your photo (optional)"
-                            rows="3"
-                        />
+                        <textarea className="form-textarea" value={Text} onChange={(e) => setText(e.target.value)}placeholder="Describe your photo (optional)" rows="3"/>
                     </div>
                     
                     <div className="form-group">
                         <label className="form-label">Choose Image *</label>
-                        <input 
-                            type="file" 
-                            className="form-file" 
-                            onChange={(e) => setPath(e.target.files[0])}
-                            accept="image/*"
-                            required
-                        />
+                        <input type="file" className="form-file" onChange={(e) => setPath(e.target.files[0])}accept="image/*"required/>
                     </div>
                     
-                    <button 
-                        type="submit" 
-                        className={`submit-btn ${isLoading ? 'loading' : ''}`}
-                        disabled={isLoading}
-                    >
-                        {isLoading ? 'Uploading...' : 'Upload Photo'}
-                    </button>
+                    <button type="submit" className={`submit-btn ${isLoading ? 'loading' : ''}`} disabled={isLoading}>Upload Photo</button>
                 </form>
             </div>
         </div>

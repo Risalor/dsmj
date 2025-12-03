@@ -10,40 +10,12 @@ import { UserContext } from './userContexts';
 import Logout from './components/Logout';
 import ShowPhoto from './components/ShowPhoto';
 import Profile from './components/Profile';
+import config from './config.json';
+
+import "./styles/variables.css"
 
 function App() {
   const [user, setUser] = useState(localStorage.user ? JSON.parse(localStorage.user) : null);
-
-  const [currStyle, setCurrStyle] = useState({
-    layout: 'masonry',
-    menu: 'topbar',
-    like: true,
-    dislike: true,
-    favorite: true,
-    like_display: true,
-    dislike_display: true,
-    action_buttons_layout: 'action-buttons horizontal top left',
-    action_buttons_layout_show: 'action-buttons horizontal top left',
-    display_stats_layout: 'action-buttons horizontal bottom right',
-    images_per_page: 3,
-    comments_per_page: 3,
-    default_sorting: 'newest_asc',
-    sorting_options_display: true,
-    sorting_options: ['newest_asc', 'newest_dsc', 'likes_asc', 'likes_dsc', 'title_asc', 'title_dsc'],
-    footer: false,
-    footer_content: "2025 KrisGallery. All rights reserved.",
-    user_display: true,
-    user_display_type: 'dropdown',
-
-    
-    base_api: 'http://localhost:3001/',
-    images_api_endpoint(currentPage, images_per_page, sorting) {
-      return "http://localhost:3001/images/?page=" + currentPage + "&limit=" + images_per_page + "&sort=" + sorting;
-    },
-    post_comment_api_endpoint(imageId) {
-      return "images/" + imageId + "/comments";
-    }
-  });
 
   const updateUserData = (userInfo) => {
     localStorage.setItem("user", JSON.stringify(userInfo));
@@ -55,11 +27,10 @@ function App() {
       <UserContext.Provider value={{
         user: user,
         setUserContext: updateUserData,
-        styles: currStyle
       }}>
-        <div className="App" style={{ minHeight: '100vh', display: 'flex', flexDirection: currStyle.menu === 'sidebar' ? 'row' : 'column'}}>
+        <div className="App" style={{ minHeight: '100vh', display: 'flex', flexDirection: config.menu === 'sidebar' ? 'row' : 'column'}}>
           <Header />
-          <main style={{ flex: 1, marginLeft: currStyle.layout === 'masonry' ? '250px' : '0' }}>
+          <main style={{ flex: 1, marginLeft: config.layout === 'masonry' ? '250px' : '0' }}>
             <Routes>
               <Route path="/" exact element={<Photos />}></Route>
               <Route path="/Register" element={<Register />}></Route>
@@ -70,7 +41,7 @@ function App() {
               <Route path="/Profile" element={<Profile />}></Route>
             </Routes>
           </main>
-          {currStyle.footer ? <Footer /> : <></>}
+          {config.footer ? <Footer /> : <></>}
         </div>
       </UserContext.Provider>
     </BrowserRouter>

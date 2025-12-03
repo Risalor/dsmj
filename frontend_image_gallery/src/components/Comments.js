@@ -2,6 +2,7 @@ import { useEffect, useState, useContext } from 'react';
 import Comment from './Comment';
 import { UserContext } from "../userContexts";
 import "../styles/ShowImage.css"
+import config from '../config.json';
 
 function Comments({ photoId }) {
     const [comments, setComments] = useState([]);
@@ -9,13 +10,12 @@ function Comments({ photoId }) {
     const [error, setError] = useState(null);
     const [currentPage, setCurrentPage] = useState(1);
     const [pagination, setPagination] = useState({});
-    const { user, cont, styles } = useContext(UserContext);
 
     useEffect(() => {
         async function fetchComments() {
             try {
                 setLoading(true);
-                const res = await fetch(`http://localhost:3001/images/${photoId}/comments?page=${currentPage}&limit=${styles.comments_per_page}`);
+                const res = await fetch(`http://localhost:3001/images/${photoId}/comments?page=${currentPage}&limit=${config.comments_per_page}`);
                 if (!res.ok) throw new Error("Failed to fetch comments");
                 const data = await res.json();
                 setComments(data.comments);
@@ -82,21 +82,13 @@ function Comments({ photoId }) {
                     {pagination.totalPages > 1 && (
                         <div className="comments-pagination mt-3">
                             <div className="btn-group" role="group">
-                                <button
-                                    className="btn pagination-btn pagination-prev"
-                                    onClick={handlePrevPage}
-                                    disabled={currentPage === 1}
-                                >
+                                <button className="btn pagination-btn pagination-prev" onClick={handlePrevPage} disabled={currentPage === 1}>
                                     ← Previous
                                 </button>
                                 <span className="pagination-info">
                                     Page {currentPage} of {pagination.totalPages}
                                 </span>
-                                <button
-                                    className="btn pagination-btn pagination-next"
-                                    onClick={handleNextPage}
-                                    disabled={currentPage === pagination.totalPages}
-                                >
+                                <button className="btn pagination-btn pagination-next" onClick={handleNextPage} disabled={currentPage === pagination.totalPages}>
                                     Next →
                                 </button>
                             </div>

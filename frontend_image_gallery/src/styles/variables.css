@@ -1,0 +1,47 @@
+:root {
+  /* Primary Colors */
+  --primary-color: rgb(0, 174, 3);
+  --primary-dark: rgb(0, 150, 3);
+  --primary-light: rgba(255, 255, 255, 0.1);
+  --primary-accent: rgb(20, 79, 34);
+  
+  /* Background Colors */
+  --bg-darkest: #0f1419;
+  --bg-darker: #1a202c;
+  --bg-dark: #2d3748;
+  --bg-medium: #4a5568;
+  --bg-light: #5a6578;
+  
+  /* Text Colors */
+  --text-primary: white;
+  --text-secondary: #e2e8f0;
+  --text-muted: #a0aec0;
+  --text-disabled: #718096;
+  --text-meta: #cbd5e0;
+  
+  /* Border Colors */
+  --border-dark: #4a5568;
+  --border-medium: #6b7280;
+  --border-light: #9ca3af;
+  
+  /* Semantic Colors */
+  --error-color: #feb2b2;
+  --error-bg: rgba(254, 215, 215, 0.1);
+  --error-border: rgba(254, 178, 178, 0.3);
+  --error-dark: #c53030;
+  
+  --success-color: #68d391;
+  --success-bg: rgba(104, 211, 145, 0.1);
+  
+  --warning-color: #f6ad55;
+  --warning-bg: rgba(246, 173, 85, 0.1);
+  
+  /* Overlay & Shadow Colors */
+  --overlay-dark: rgba(0, 0, 0, 0.7);
+  --overlay-darker: rgba(0, 0, 0, 0.9);
+  --overlay-gradient: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+  
+  /* Button States */
+  --btn-bg-hover: rgba(0, 0, 0, 0.9);
+  --btn-bg-disabled: rgba(0, 0, 0, 0.7);
+}
