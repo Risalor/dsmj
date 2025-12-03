@@ -1,34 +1,105 @@
-Identifier = letter, { letter | digit | "_" } ;
-String = '"', { character }, '"' ;
-number = digit, { digit } ;
-boolean = "true" | "false" ;
-letter = "a" | "b" | ... | "z" | "A" | "B" | ... | "Z" ;
-digit = "0" | "1" | ... | "9" ;
+Document = "Ryce" "<=" "{" Sections "}" ;
+Sections = Section { ","? Section } ;
+Section = MenuSection | ApiSection | ImagesSection | FooterSection ;
 
-"Ryce" "<=" "{" 
-    Menu,
-    Api,
-    Images,
-    Footer?
-"}"
+MenuSection = "menu" ":" "<Menu>" "<=" "{" MenuProperties "}" ;
+MenuProperties = MenuProperty { ","? MenuProperty } ;
+MenuProperty = TitleProperty 
+               | OptionsProperty 
+               | OptionsIsSetProperty 
+               | OptionsIsNotSetProperty 
+               | UserDisplayProperty
+               | TypeProperty
+               | SetCheckProperty ;
 
-Menu:
-    Identifier ":" "<Menu>" "<=" "{"
-        "title" "<=" "{"
-            { Option "," }+
-        "}" ","
-        "options" "<=" "{"
-            { Option "," }+
-        "}" ","
-        ("set_check" ":" String ",")?
-        ("options_is_set" "<=" "{"
-            { Option "," }+
-        "}" ",")?
-        ("options_not_set" "<=" "{"
-            { Option "," }+
-        "}" ",")?
-        "type" ":" Type
-"}"
+TitleProperty = "title" "<=" "{" MenuItem "}" ;
+MenuItem = Identifier "<=" "{" MenuItemProperties "}" ;
+MenuItemProperties = UrlProperty "," TextProperty "," IconProperty ;
 
-Type:
-    "topbar" | "sidebar"
+OptionsProperty = "options" "<=" "{" MenuItem "}" ;
+OptionsIsSetProperty = "options_is_set" "<=" "{" MenuItemList "}" ;
+OptionsIsNotSetProperty = "options_is_not_set" "<=" "{" MenuItemList "}" ;
+MenuItemList = MenuItem { ","? MenuItem } ;
+
+UserDisplayProperty = "user_display" "<=" "{" UserDisplayConfig "}" ;
+UserDisplayConfig = "enabled" ":" Boolean "," "type" ":" DisplayType ;
+DisplayType = "dropdown" | "sidebar" | "inline" ;
+
+TypeProperty = "type" ":" MenuType ;
+MenuType = "topbar" | "sidebar" | "bottom" ;
+SetCheckProperty = "set_check" ":" VariableReference ;
+
+ApiSection = "api" "<=" "{" ApiProperties "}" ;
+ApiProperties = BaseUrlProperty "," EndpointsProperty ;
+BaseUrlProperty = "base_url" ":" StringLiteral ;
+EndpointsProperty = "endpoints" "<=" "{" EndpointList "}" ;
+EndpointList = Endpoint { ","? Endpoint } ;
+Endpoint = SimpleEndpoint | ParameterizedEndpoint ;
+SimpleEndpoint = Identifier ":" HttpMethod Path ;
+ParameterizedEndpoint = Identifier "( " Identifier ")" ":" HttpMethod Path ;
+HttpMethod = "GET" | "POST" | "PUT" | "DELETE" | "PATCH" ;
+Path = "/" { PathSegment } ;
+PathSegment = Identifier | "(" Identifier ")" ;
+
+ImagesSection = "images" "<=" "{" ImagesProperties "}" ;
+ImagesProperties = LoadActionsProperty "," LayoutProperty "," 
+                   EnabledComponentsProperty "," ClickActionsProperty ;
+
+LoadActionsProperty = "load_actions" ":" "{" LoadActionConfig "}" ;
+LoadActionConfig = "contents" ":" PathReference "," "for_each" "<=" "{" ForEachMapping "}" ;
+PathReference = Identifier "." Identifier ;
+ForEachMapping = Mapping { ","? Mapping } ;
+Mapping = Identifier ":" PathExpression ;
+PathExpression = Identifier "[]." Identifier ;
+
+LayoutProperty = "layout" "<=" "{" LayoutConfig "}" ;
+LayoutConfig = "type" ":" LayoutType "," 
+               "items_per_page" ":" Integer "," 
+               "sorting" ":" SortOption "," 
+               "sorting_options" ":" SortOptionList ;
+LayoutType = "grid" | "list" | "carousel" ;
+SortOption = "newest_first" | "oldest_first" | "like_count" ;
+SortOptionList = SortOption { "|" SortOption } ;
+
+EnabledComponentsProperty = "enabled_components" "<=" "{" ComponentList "}" ;
+ComponentList = Component { ","? Component } ;
+Component = LikesComponent | DislikesComponent | FavoriteComponent | PositionComponent ;
+LikesComponent = "likes" "<=" "{" ComponentConfig "}" ;
+DislikesComponent = "dislikes" "<=" "{" ComponentConfig "}" ;
+FavoriteComponent = "favorite" "<=" "{" ComponentConfig "}" ;
+ComponentConfig = "enabled" ":" Boolean "," "icon" "<=" "{" IconConfig "}" ;
+PositionComponent = "position" ":" Position ;
+Position = "top-right" | "top-left" | "bottom-right" | "bottom-left" ;
+
+ClickActionsProperty = "click_actions" "<=" "{" ActionList "}" ;
+ActionList = Action { ","? Action } ;
+Action = LikesAction | DislikesAction | FavoriteAction ;
+LikesAction = "likes" "<=" "{" ActionConfig "}" ;
+DislikesAction = "dislikes" "<=" "{" ActionConfig "}" ;
+FavoriteAction = "favorite" "<=" "{" ActionConfig "}" ;
+ActionConfig = "endpoint" ":" EndpointCall "," "payload" "<=" "{" Payload "}" ;
+EndpointCall = Identifier "(" Argument ")" ;
+Argument = Identifier ;
+Payload = Field { ","? Field } ;
+Field = Identifier ":" ValueExpression ;
+
+FooterSection = "footer" "<=" "{" FooterProperties "}" ;
+FooterProperties = "content" "<=" "{" FooterContent "}" ;
+FooterContent = "text" ":" StringLiteral ;
+
+IconProperty = "icon" "<=" "{" IconConfig "}" ;
+IconConfig = "type" ":" Identifier "," "size" ":" Integer ;
+
+UrlProperty = "url" ":" Path ;
+TextProperty = "text" ":" StringLiteral ;
+
+ValueExpression = StringLiteral | Integer | Boolean | VariableReference | Identifier ;
+VariableReference = "$" Identifier { "." Identifier } ;
+Boolean = "true" | "false" ;
+Integer = Digit { Digit } ;
+StringLiteral = '"' { Character } '"' ;
+
+Identifier = Letter { Letter | Digit | "_" } ;
+Letter = "A"---"Z" and "a"..."z"
+Digit = "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" ;
+Character = ? any printable ASCII character except double quote ? ;
