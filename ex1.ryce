@@ -1,152 +1,145 @@
-
-components <= {
-    menu: <Menu>
-    api: <Api>
-    images: <ImageDisplay>
-    footer: <Footer>
-    login: <Menu>
-}
-
-menu <= {
-    title <= {
-        KRISGALERY <= {
-            url: /,
-            text: "KrisGallery",
-            icon: FaPaintBrush
-        }
-    }
-    options <= {
-        IMAGES <= {
-            url: /,
-            text: "Images"
-            icon <= {
-                type: Image,
-                size: 20
+Ryce <= {
+    menu : <Menu> <= {
+        title <= {
+            KRISGALERY <= {
+                url: /,
+                text: "KrisGallery",
+                icon: FaPaintBrush
             }
         }
-    },
-    set_check: $userId
-    options_is_set <= {
-        ADD_IMAGE <= {
-            url: /AddPhoto,
-            text: "Add Image",
-            icon <= {
-                type: Plus,
-                size: 20
+        options <= {
+            IMAGES <= {
+                url: /,
+                text: "Images"
+                icon <= {
+                    type: Image,
+                    size: 20
+                }
             }
         },
-        PROFILE <= {
-            url: /profile,
-            text: "Profile",
-            icon <= {
-                type: User,
-                size: 20
-            }
-        }
-    },
-    options_is_not_set <= {
-        LOGIN <= {
-            url: /login,
-            text: "Login",
-            icon <= {
-                type: Login,
-                size: 20
-            }
-        },
-        REGISTER <= {
-            url: /register,
-            text: "Register",
-            icon <= {
-                type: Plus,
-                size: 20
-            }
-        }
-    },
-    user_display <= {
-        enabled: true,
-        type: dropdown
-    },
-    type: topbar
-}
-
-api <= {
-    base_url: "http://localhost:3001/",
-    endpoints <= {
-        images: GET /images
-        is_favorite(imageId): GET users/checkFavorite/(imageId)
-        users: GET /users,
-        profile(id): GET users/(id)/profile,
-        like_image(imageId): POST /images/(imageId)/like,
-        dislike_image(imageId): POST /images/(imageId)/dislike,
-        add_to_favorite: POST /users/addToFavorites,
-    }
-}
-
-images <= {
-    load_actions: {
-        contents: api.images,
-        for_each <= {
-            imageId: contents[]._id,
-            userName: contents[].PostedBy.ProfileName,
-            date: contents[].DatePosted,
-            title: contents[].Title,
-            dascription: contents[].text
-        }
-    },
-    layout <= {
-        type: grid,
-        items_per_page: 10,
-        sorting: newest_first,
-        sorting_options: newest_first | oldest_first | like_count
-    },
-    enabled_components <= {
-        likes <= {
-            enabled: true,
-            icon <= {
-                type: ThumbUp,
-                size: 20
-            }
-        },
-        dislikes <= {
-            enabled: true,
-            icon <= {
-                type: ThumbDown,
-                size: 20
-            }
-        },
-        favorite <= {
-            enabled: true,
-            icon <= {
-                type: Star,
-                size: 20
-            }
-        },
-        position: top-right
-    },
-    click_actions <= {
-        likes <= {
-            endpoint: api.like_image(imageId),
-            payload <= {
-                user_id: $user._id
+        set_check: $userId
+        options_is_set <= {
+            ADD_IMAGE <= {
+                url: /AddPhoto,
+                text: "Add Image",
+                icon <= {
+                    type: Plus,
+                    size: 20
+                }
             },
+            PROFILE <= {
+                url: /profile,
+                text: "Profile",
+                icon <= {
+                    type: User,
+                    size: 20
+                }
+            }
         },
-        dislikes <= {
-            endpoint: api.dislike_image(imageId),
-            payload <= {
-                user_id: $user._id
+        options_is_not_set <= {
+            LOGIN <= {
+                url: /login,
+                text: "Login",
+                icon <= {
+                    type: Login,
+                    size: 20
+                }
             },
+            REGISTER <= {
+                url: /register,
+                text: "Register",
+                icon <= {
+                    type: Plus,
+                    size: 20
+                }
+            }
         },
-        favorite <= {
-            endpoint: api.add_to_favorite,
-            payload <= {
-                image_id: imageId
+        user_display <= {
+            enabled: true,
+            type: dropdown
+        },
+        type: topbar
+    }
+
+    api <= {
+        base_url: "http://localhost:3001/",
+        endpoints <= {
+            images: GET /images
+            is_favorite(imageId): GET users/checkFavorite/(imageId)
+            users: GET /users,
+            profile(id): GET users/(id)/profile,
+            like_image(imageId): POST /images/(imageId)/like,
+            dislike_image(imageId): POST /images/(imageId)/dislike,
+            add_to_favorite: POST /users/addToFavorites,
+        }
+    }
+
+    images <= {
+        load_actions: {
+            contents: api.images,
+            for_each <= {
+                imageId: contents[]._id,
+                userName: contents[].PostedBy.ProfileName,
+                date: contents[].DatePosted,
+                title: contents[].Title,
+                dascription: contents[].text
+            }
+        },
+        layout <= {
+            type: grid,
+            items_per_page: 10,
+            sorting: newest_first,
+            sorting_options: newest_first | oldest_first | like_count
+        },
+        enabled_components <= {
+            likes <= {
+                enabled: true,
+                icon <= {
+                    type: ThumbUp,
+                    size: 20
+                }
+            },
+            dislikes <= {
+                enabled: true,
+                icon <= {
+                    type: ThumbDown,
+                    size: 20
+                }
+            },
+            favorite <= {
+                enabled: true,
+                icon <= {
+                    type: Star,
+                    size: 20
+                }
+            },
+            position: top-right
+        },
+        click_actions <= {
+            likes <= {
+                endpoint: api.like_image(imageId),
+                payload <= {
+                    user_id: $user._id
+                },
+            },
+            dislikes <= {
+                endpoint: api.dislike_image(imageId),
+                payload <= {
+                    user_id: $user._id
+                },
+            },
+            favorite <= {
+                endpoint: api.add_to_favorite,
+                payload <= {
+                    image_id: imageId
+                }
             }
         }
     }
-}
 
-footer <= {
-    content <= {
-        text: "2025 KrisGallery. All rights reserved."
+    footer <= {
+        content <= {
+            text: "2025 KrisGallery. All rights reserved."
+        }
     }
 }
