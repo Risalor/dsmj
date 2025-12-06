@@ -302,6 +302,227 @@
     </node>
     <node concept="11bSqf" id="4f_8f$MC5xI" role="11c4hB">
       <node concept="3clFbS" id="4f_8f$MC5xJ" role="2VODD2">
+        <node concept="lc7rE" id="3fKhni2Pt59" role="3cqZAp">
+          <node concept="la8eA" id="3fKhni2PtMt" role="lcghm">
+            <property role="lacIc" value="import { useContext, useEffect, useState } from &quot;react&quot;;" />
+          </node>
+          <node concept="l8MVK" id="3fKhni2PtNC" role="lcghm" />
+        </node>
+        <node concept="lc7rE" id="3fKhni2PtWr" role="3cqZAp">
+          <node concept="la8eA" id="3fKhni2PuDJ" role="lcghm">
+            <property role="lacIc" value="import { UserContext } from &quot;../userContexts&quot;;" />
+          </node>
+        </node>
+        <node concept="lc7rE" id="3fKhni2PuMU" role="3cqZAp">
+          <node concept="la8eA" id="3fKhni2Pvwe" role="lcghm">
+            <property role="lacIc" value="import { Link } from &quot;react-router-dom&quot;;" />
+          </node>
+          <node concept="l8MVK" id="3fKhni2Pvxp" role="lcghm" />
+        </node>
+        <node concept="lc7rE" id="3fKhni2Pwf2" role="3cqZAp">
+          <node concept="la8eA" id="3fKhni2Pwnx" role="lcghm">
+            <property role="lacIc" value="import { LogOut, LogIn, UserPlus, User, Settings } from 'feather-icons-react';" />
+          </node>
+          <node concept="l8MVK" id="3fKhni2PwoG" role="lcghm" />
+        </node>
+        <node concept="lc7rE" id="3fKhni2Px6k" role="3cqZAp">
+          <node concept="la8eA" id="3fKhni2PxeN" role="lcghm">
+            <property role="lacIc" value="import &quot;../styles/UserDisplay.css&quot;;" />
+          </node>
+          <node concept="l8MVK" id="3fKhni2PxfY" role="lcghm" />
+        </node>
+        <node concept="lc7rE" id="3fKhni2PxXA" role="3cqZAp">
+          <node concept="la8eA" id="3fKhni2PyEU" role="lcghm">
+            <property role="lacIc" value="import config from '../config.json';" />
+          </node>
+          <node concept="l8MVK" id="3fKhni2PyG5" role="lcghm" />
+          <node concept="l8MVK" id="3fKhni2PyGS" role="lcghm" />
+        </node>
+        <node concept="3clFbH" id="3fKhni2PyHj" role="3cqZAp" />
+        <node concept="3clFbJ" id="3fKhni2PkFw" role="3cqZAp">
+          <node concept="3clFbS" id="3fKhni2PkFy" role="3clFbx">
+            <node concept="lc7rE" id="3fKhni2PzwW" role="3cqZAp">
+              <node concept="la8eA" id="3fKhni2PzxY" role="lcghm">
+                <property role="lacIc" value="function UserDisplay({ isCollapsed = false, isTopbar = false }) {" />
+              </node>
+              <node concept="l8MVK" id="3fKhni2Pzz9" role="lcghm" />
+            </node>
+            <node concept="3izx1p" id="3fKhni2PzP_" role="3cqZAp">
+              <node concept="3clFbS" id="3fKhni2PzPB" role="3izTki">
+                <node concept="1bpajm" id="3fKhni2PzPY" role="3cqZAp" />
+                <node concept="lc7rE" id="3fKhni2PzQH" role="3cqZAp">
+                  <node concept="la8eA" id="3fKhni2PzR9" role="lcghm">
+                    <property role="lacIc" value="const { user } = useContext(UserContext);" />
+                  </node>
+                  <node concept="l8MVK" id="3fKhni2PzSk" role="lcghm" />
+                </node>
+                <node concept="1bpajm" id="3fKhni2PzT4" role="3cqZAp" />
+                <node concept="lc7rE" id="3fKhni2PzTO" role="3cqZAp">
+                  <node concept="la8eA" id="3fKhni2PzUg" role="lcghm">
+                    <property role="lacIc" value="const [isDropdownOpen, setIsDropdownOpen] = useState(false);" />
+                  </node>
+                  <node concept="l8MVK" id="3fKhni2PzVr" role="lcghm" />
+                </node>
+                <node concept="3clFbH" id="3fKhni2PzVP" role="3cqZAp" />
+                <node concept="3clFbJ" id="3fKhni2P$3B" role="3cqZAp">
+                  <node concept="3clFbS" id="3fKhni2P$3D" role="3clFbx">
+                    <node concept="1bpajm" id="3fKhni2P_uD" role="3cqZAp" />
+                    <node concept="lc7rE" id="3fKhni2P_vp" role="3cqZAp">
+                      <node concept="la8eA" id="3fKhni2P_vP" role="lcghm">
+                        <property role="lacIc" value="useEffect(() =&gt; {" />
+                      </node>
+                      <node concept="l8MVK" id="3fKhni2P_x0" role="lcghm" />
+                    </node>
+                    <node concept="3izx1p" id="3fKhni2P_xK" role="3cqZAp">
+                      <node concept="3clFbS" id="3fKhni2P_xM" role="3izTki">
+                        <node concept="1bpajm" id="3fKhni2P_y9" role="3cqZAp" />
+                        <node concept="lc7rE" id="3fKhni2P_yS" role="3cqZAp">
+                          <node concept="la8eA" id="3fKhni2P_zk" role="lcghm">
+                            <property role="lacIc" value="const handleClickOutside = (event) =&gt; {" />
+                          </node>
+                          <node concept="l8MVK" id="3fKhni2P_$v" role="lcghm" />
+                        </node>
+                        <node concept="3izx1p" id="3fKhni2P__f" role="3cqZAp">
+                          <node concept="3clFbS" id="3fKhni2P__h" role="3izTki">
+                            <node concept="1bpajm" id="3fKhni2P__C" role="3cqZAp" />
+                            <node concept="lc7rE" id="3fKhni2P_An" role="3cqZAp">
+                              <node concept="la8eA" id="3fKhni2P_AO" role="lcghm">
+                                <property role="lacIc" value="if (!event.target.closest('.user-dropdown')) {" />
+                              </node>
+                              <node concept="l8MVK" id="3fKhni2P_BE" role="lcghm" />
+                            </node>
+                            <node concept="3izx1p" id="3fKhni2P_Cq" role="3cqZAp">
+                              <node concept="3clFbS" id="3fKhni2P_Cs" role="3izTki">
+                                <node concept="1bpajm" id="3fKhni2P_CN" role="3cqZAp" />
+                                <node concept="lc7rE" id="3fKhni2P_Dy" role="3cqZAp">
+                                  <node concept="la8eA" id="3fKhni2P_DY" role="lcghm">
+                                    <property role="lacIc" value="setIsDropdownOpen(false);" />
+                                  </node>
+                                  <node concept="l8MVK" id="3fKhni2P_F9" role="lcghm" />
+                                </node>
+                              </node>
+                            </node>
+                            <node concept="1bpajm" id="3fKhni2P_G$" role="3cqZAp" />
+                            <node concept="lc7rE" id="3fKhni2P_Hk" role="3cqZAp">
+                              <node concept="la8eA" id="3fKhni2P_HK" role="lcghm">
+                                <property role="lacIc" value="}" />
+                              </node>
+                              <node concept="l8MVK" id="3fKhni2P_IV" role="lcghm" />
+                            </node>
+                          </node>
+                        </node>
+                        <node concept="1bpajm" id="3fKhni2P_JF" role="3cqZAp" />
+                        <node concept="lc7rE" id="3fKhni2P_Kr" role="3cqZAp">
+                          <node concept="la8eA" id="3fKhni2P_KR" role="lcghm">
+                            <property role="lacIc" value="};" />
+                          </node>
+                          <node concept="l8MVK" id="3fKhni2P_M1" role="lcghm" />
+                          <node concept="l8MVK" id="3fKhni2P_MO" role="lcghm" />
+                        </node>
+                        <node concept="3clFbH" id="3fKhni2P_Ne" role="3cqZAp" />
+                        <node concept="1bpajm" id="3fKhni2P_RH" role="3cqZAp" />
+                        <node concept="lc7rE" id="3fKhni2P_OF" role="3cqZAp">
+                          <node concept="la8eA" id="3fKhni2P_P7" role="lcghm">
+                            <property role="lacIc" value="document.addEventListener('click', handleClickOutside);" />
+                          </node>
+                          <node concept="l8MVK" id="3fKhni2P_Qi" role="lcghm" />
+                        </node>
+                        <node concept="1bpajm" id="3fKhni2P_St" role="3cqZAp" />
+                        <node concept="lc7rE" id="3fKhni2P_Td" role="3cqZAp">
+                          <node concept="la8eA" id="3fKhni2P_TD" role="lcghm">
+                            <property role="lacIc" value="return () =&gt; {" />
+                          </node>
+                          <node concept="l8MVK" id="3fKhni2P_UO" role="lcghm" />
+                        </node>
+                        <node concept="3izx1p" id="3fKhni2P_V$" role="3cqZAp">
+                          <node concept="3clFbS" id="3fKhni2P_VA" role="3izTki">
+                            <node concept="1bpajm" id="3fKhni2P_VX" role="3cqZAp" />
+                            <node concept="lc7rE" id="3fKhni2P_WG" role="3cqZAp">
+                              <node concept="la8eA" id="3fKhni2P_X8" role="lcghm">
+                                <property role="lacIc" value="document.removeEventListener('click', handleClickOutside);" />
+                              </node>
+                              <node concept="l8MVK" id="3fKhni2P_Yj" role="lcghm" />
+                            </node>
+                          </node>
+                        </node>
+                        <node concept="1bpajm" id="3fKhni2P_Z3" role="3cqZAp" />
+                        <node concept="lc7rE" id="3fKhni2PA0x" role="3cqZAp">
+                          <node concept="la8eA" id="3fKhni2PA0X" role="lcghm">
+                            <property role="lacIc" value="};" />
+                          </node>
+                          <node concept="l8MVK" id="3fKhni2PA5_" role="lcghm" />
+                        </node>
+                      </node>
+                    </node>
+                    <node concept="1bpajm" id="3fKhni2PA25" role="3cqZAp" />
+                    <node concept="lc7rE" id="3fKhni2PA2P" role="3cqZAp">
+                      <node concept="la8eA" id="3fKhni2PA3h" role="lcghm">
+                        <property role="lacIc" value="});" />
+                      </node>
+                      <node concept="l8MVK" id="3fKhni2PA4M" role="lcghm" />
+                      <node concept="l8MVK" id="3fKhni2PA6L" role="lcghm" />
+                    </node>
+                    <node concept="1bpajm" id="3fKhni2PA7x" role="3cqZAp" />
+                    <node concept="lc7rE" id="3fKhni2PA8h" role="3cqZAp">
+                      <node concept="la8eA" id="3fKhni2PA8H" role="lcghm">
+                        <property role="lacIc" value="const toggleDropdown = () =&gt; {" />
+                      </node>
+                      <node concept="l8MVK" id="3fKhni2PA9$" role="lcghm" />
+                    </node>
+                    <node concept="3izx1p" id="3fKhni2PAak" role="3cqZAp">
+                      <node concept="3clFbS" id="3fKhni2PAam" role="3izTki">
+                        <node concept="1bpajm" id="3fKhni2PAaH" role="3cqZAp" />
+                        <node concept="lc7rE" id="3fKhni2PAbs" role="3cqZAp">
+                          <node concept="la8eA" id="3fKhni2PAbS" role="lcghm">
+                            <property role="lacIc" value="setIsDropdownOpen(!isDropdownOpen);" />
+                          </node>
+                          <node concept="l8MVK" id="3fKhni2PAd3" role="lcghm" />
+                        </node>
+                      </node>
+                    </node>
+                    <node concept="1bpajm" id="3fKhni2PAdN" role="3cqZAp" />
+                    <node concept="lc7rE" id="3fKhni2PAez" role="3cqZAp">
+                      <node concept="la8eA" id="3fKhni2PAeZ" role="lcghm">
+                        <property role="lacIc" value="};" />
+                      </node>
+                      <node concept="l8MVK" id="3fKhni2PAga" role="lcghm" />
+                    </node>
+                  </node>
+                  <node concept="2OqwBi" id="3fKhni2P_8Y" role="3clFbw">
+                    <node concept="2OqwBi" id="3fKhni2P$EC" role="2Oq$k0">
+                      <node concept="2OqwBi" id="3fKhni2P$cp" role="2Oq$k0">
+                        <node concept="117lpO" id="3fKhni2P$47" role="2Oq$k0" />
+                        <node concept="3TrEf2" id="3fKhni2P$vS" role="2OqNvi">
+                          <ref role="3Tt5mk" to="qmra:40S6OyeKTlH" resolve="user_display" />
+                        </node>
+                      </node>
+                      <node concept="3TrcHB" id="3fKhni2P$Y7" role="2OqNvi">
+                        <ref role="3TsBF5" to="qmra:40S6OyeKTkn" resolve="display_type" />
+                      </node>
+                    </node>
+                    <node concept="21noJN" id="3fKhni2P_tf" role="2OqNvi">
+                      <node concept="21nZrQ" id="3fKhni2P_th" role="21noJM">
+                        <ref role="21nZrZ" to="qmra:40S6OyeKTkk" resolve="dropdown" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="2OqwBi" id="3fKhni2PpbV" role="3clFbw">
+            <node concept="2OqwBi" id="3fKhni2Po_1" role="2Oq$k0">
+              <node concept="117lpO" id="3fKhni2PkNd" role="2Oq$k0" />
+              <node concept="3TrEf2" id="3fKhni2PoSw" role="2OqNvi">
+                <ref role="3Tt5mk" to="qmra:40S6OyeKTlH" resolve="user_display" />
+              </node>
+            </node>
+            <node concept="3TrcHB" id="3fKhni2Ppvq" role="2OqNvi">
+              <ref role="3TsBF5" to="qmra:40S6OyeKTkm" resolve="enabled" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbH" id="3fKhni2PjR$" role="3cqZAp" />
         <node concept="lc7rE" id="4f_8f$MLp9B" role="3cqZAp">
           <node concept="la8eA" id="4f_8f$MLpa1" role="lcghm">
             <property role="lacIc" value="import { useContext, useEffect, useState } from &quot;react&quot;;" />
