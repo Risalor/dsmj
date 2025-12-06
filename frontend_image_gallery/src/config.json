@@ -1,6 +1,6 @@
 {
   "layout": "masonry",
-  "menu": "topbar",
+  "menu": "sidebar",
   "like": true,
   "dislike": true,
   "favorite": true,
@@ -9,7 +9,7 @@
   "action_buttons_layout": "action-buttons horizontal top left",
   "action_buttons_layout_show": "action-buttons horizontal top left",
   "display_stats_layout": "action-buttons horizontal bottom right",
-  "images_per_page": 3,
+  "images_per_page": 30,
   "comments_per_page": 3,
   "default_sorting": "newest_asc",
   "sorting_options_display": true,
@@ -17,7 +17,7 @@
   "footer": false,
   "footer_content": "2025 KrisGallery. All rights reserved.",
   "user_display": true,
-  "user_display_type": "normal",
+  "user_display_type": "dropdown",
   "title_icon_size": 40,
   "icons_size": 25,
   "base_api": "http://localhost:3001/"

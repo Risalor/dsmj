@@ -7,7 +7,7 @@
 .image-container {
     position: relative;
     width: 100%;
-    height: var(--image-height);
+    height: 300px;
     overflow: hidden;
 }
 
@@ -21,7 +21,7 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform var(--transition-normal);
+    transition: transform 0.3s ease;
 }
 
 .image-container:hover .full-size-image {
@@ -33,8 +33,8 @@
     bottom: 0;
     left: 0;
     right: 0;
-    background: var(--overlay-gradient);
-    color: var(--text-primary);
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+    color: white;
     padding: 20px 15px 15px 15px;
     z-index: 15;
 }
@@ -42,21 +42,21 @@
 .content-wrapper {
     display: flex;
     flex-direction: column;
-    gap: var(--spacing-sm);
+    gap: 8px;
 }
 
 .photo-title {
     margin: 0;
     font-size: 1.2rem;
     font-weight: bold;
-    color: var(--text-primary);
+    color: white;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
 }
 
 .photo-description {
     margin: 0;
     font-size: 0.9rem;
-    color: var(--text-secondary);
+    color: #e0e0e0;
     line-height: 1.4;
     display: -webkit-box;
     -webkit-line-clamp: 2;
@@ -72,7 +72,7 @@
 }
 
 .photo-meta small {
-    color: var(--text-muted);
+    color: #b0b0b0;
     font-size: 0.8rem;
     text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.8);
 }

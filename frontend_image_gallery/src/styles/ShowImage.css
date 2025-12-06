@@ -5,11 +5,11 @@
 }
 
 .photo-detail-card {
-    background: #2d3748;
+    background: var(--color-bg-darker);
     border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    border: 1px solid #4a5568;
+    box-shadow: 0 4px 6px var(--color-shadow);
+    border: 1px solid var(--color-text-dark);
     margin-bottom: 2rem;
     position: relative;
 }
@@ -44,51 +44,15 @@
     align-items: center;
     justify-content: center;
     border: none;
-    background: rgba(0, 0, 0, 0.7);
-    color: white;
+    background: var(--color-overlay);
+    color: var(--color-text-white);
     transition: all 0.3s ease;
     backdrop-filter: blur(5px);
 }
 
 .showphoto-actions button:hover {
-    background: rgba(0, 0, 0, 0.9);
+    background: var(--color-overlay);
     transform: scale(1.1);
-}
-
-.showphoto-actions .like-btn {
-    color: white;
-}
-
-.showphoto-actions .like-btn.liked {
-    color: white; 
-}
-
-.showphoto-actions .like-btn.liked svg {
-    fill: currentColor;
-}
-
-.showphoto-actions .dislike-btn {
-    color: white;
-}
-
-.showphoto-actions .dislike-btn.disliked {
-    color: white;
-}
-
-.showphoto-actions .dislike-btn.disliked svg {
-    fill: currentColor;
-}
-
-.showphoto-actions .favorite-btn {
-    color: white;
-}
-
-.showphoto-actions .favorite-btn.favorited {
-    color: white;
-}
-
-.showphoto-actions .favorite-btn.favorited svg {
-    fill: currentColor;
 }
 
 .showphoto-actions button:disabled {
@@ -98,7 +62,7 @@
 }
 
 .showphoto-actions button:disabled:hover {
-    background: rgba(0, 0, 0, 0.7);
+    background: var(--color-overlay);
     transform: none;
 }
 
@@ -106,15 +70,20 @@
     padding: 1.5rem;
 }
 
+.photo-title,
+.comments-section h5,
+.post-comment-title {
+    color: var(--color-text-white);
+}
+
 .photo-title {
-    color: white;
     font-size: 1.5rem;
     font-weight: 600;
     margin-bottom: 1rem;
 }
 
 .photo-description {
-    color: #e2e8f0;
+    color: var(--color-text-white);
     line-height: 1.6;
     margin-bottom: 1.5rem;
 }
@@ -126,38 +95,43 @@
 }
 
 .meta-item {
-    color: #a0aec0;
+    color: var(--color-text-medium);
     font-size: 0.9rem;
 }
 
-.comments-section-wrapper {
-    background: #2d3748;
+.comments-section-wrapper,
+.login-prompt {
+    background: var(--color-bg-darker);
     border-radius: 12px;
     padding: 1.5rem;
-    border: 1px solid #4a5568;
+    border: 1px solid var(--color-text-dark);
 }
 
 .comments-section h5 {
-    color: white;
     margin-bottom: 1rem;
     font-size: 1.25rem;
 }
 
-.comment-card {
-    background: #1a202c;
+.comment-card,
+.no-comments,
+.post-comment-wrapper {
+    background: var(--color-bg-dark);
     border-radius: 8px;
+    border: 1px solid var(--color-text-dark);
+}
+
+.comment-card {
     padding: 1rem;
     margin-bottom: 1rem;
-    border: 1px solid #4a5568;
     transition: border-color 0.2s ease;
 }
 
 .comment-card:hover {
-    border-color: rgb(0, 174, 3);
+    border-color: var(--color-primary-green);
 }
 
 .comment-text {
-    color: #e2e8f0;
+    color: var(--color-text-light);
     line-height: 1.5;
     margin-bottom: 0.75rem;
 }
@@ -170,120 +144,55 @@
 }
 
 .comment-author {
-    color: rgb(0, 174, 3);
+    color: var(--color-primary-green);
     font-weight: 500;
 }
 
 .comment-date {
-    color: #718096;
+    color: var(--color-text-muted);
 }
 
-.loading-comments {
-    color: #a0aec0;
+.loading-comments,
+.no-comments,
+.login-prompt {
+    color: var(--color-text-medium);
     text-align: center;
     padding: 2rem;
     font-style: italic;
 }
 
 .no-comments {
-    color: #a0aec0;
-    text-align: center;
+    border: 1px dashed var(--color-text-dark);
+}
+
+.comments-error,
+.error-message {
+    background: var(--color-error-bg);
+    color: var(--color-error-text);
     padding: 2rem;
-    font-style: italic;
-    background: #1a202c;
     border-radius: 8px;
-    border: 1px dashed #4a5568;
+    border: 1px solid var(--color-error-border);
+    text-align: center;
 }
 
 .comments-error {
-    background: #fed7d7;
-    color: #c53030;
     padding: 1rem;
-    border-radius: 8px;
-    border: 1px solid #feb2b2;
 }
 
 .login-prompt {
-    background: #2d3748;
-    color: #a0aec0;
-    padding: 1rem;
-    border-radius: 8px;
-    border: 1px solid #4a5568;
-    text-align: center;
     margin-bottom: 1.5rem;
-}
-
-.error-message {
-    background: #fed7d7;
-    color: #c53030;
-    padding: 2rem;
-    border-radius: 8px;
-    text-align: center;
-    border: 1px solid #feb2b2;
-}
-
-@media (max-width: 768px) {
-    .show-photo-container {
-        padding: 1rem 0.5rem;
-    }
-    
-    .photo-info {
-        padding: 1rem;
-    }
-    
-    .photo-meta {
-        flex-direction: column;
-        gap: 0.5rem;
-    }
-    
-    .showphoto-actions {
-        top: 10px;
-        right: 10px;
-    }
-    
-    .showphoto-actions button {
-        width: 36px;
-        height: 36px;
-    }
-    
-    .comment-meta {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.25rem;
-    }
-    
-    .comments-section-wrapper {
-        padding: 1rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .showphoto-actions {
-        top: 8px;
-        right: 8px;
-    }
-    
-    .showphoto-actions button {
-        width: 32px;
-        height: 32px;
-    }
-    
-    .showphoto-actions button svg {
-        width: 16px;
-        height: 16px;
-    }
 }
 
 .comments-pagination {
     margin-top: 20px;
     padding-top: 15px;
-    border-top: 1px solid #444;
+    border-top: 1px solid var(--color-border-muted);
 }
 
 .comments-pagination .btn-group {
     display: inline-flex;
     align-items: center;
-    background-color: #2d3748;
+    background-color: var(--color-bg-darker);
     border-radius: 8px;
     padding: 4px;
     gap: 4px;
@@ -291,8 +200,8 @@
 
 .comments-pagination .pagination-btn {
     background-color: transparent;
-    color: rgb(0, 174, 3);
-    border: 1px solid rgb(0, 174, 3);
+    color: var(--color-primary-green);
+    border: 1px solid var(--color-primary-green);
     border-radius: 6px !important;
     padding: 6px 12px;
     font-weight: 500;
@@ -302,20 +211,20 @@
 }
 
 .comments-pagination .pagination-btn:hover:not(:disabled) {
-    background-color: rgb(0, 174, 3);
-    color: white;
-    border-color: rgb(0, 174, 3);
+    background-color: var(--color-primary-green);
+    color: var(--color-text-white);
+    border-color: var(--color-primary-green);
 }
 
 .comments-pagination .pagination-btn:disabled {
-    color: #6b7280;
-    border-color: #4b5563;
+    color: var(--color-text-muted);
+    border-color: var(--color-border-disabled);
     cursor: not-allowed;
     opacity: 0.6;
 }
 
 .comments-pagination .pagination-info {
-    color: #d1d5db;
+    color: var(--color-text-light);
     padding: 6px 12px;
     font-weight: 500;
     min-width: 120px;
@@ -323,44 +232,17 @@
     font-size: 14px;
 }
 
-@media (max-width: 768px) {
-    .comments-pagination .btn-group {
-        flex-direction: column;
-        gap: 8px;
-        padding: 8px;
-    }
-    
-    .comments-pagination .pagination-btn {
-        min-width: 100px;
-        width: 100%;
-    }
-    
-    .comments-pagination .pagination-info {
-        order: -1;
-        padding: 8px 0;
-    }
-}
-
-.comments-list-loading {
-    opacity: 0.7;
-    pointer-events: none;
-}
-
 .post-comment-wrapper {
-    background: #1a202c;
-    border-radius: 12px;
     padding: 1.5rem;
-    border: 1px solid #4a5568;
     margin-bottom: 1.5rem;
     transition: border-color 0.3s ease;
 }
 
 .post-comment-wrapper:focus-within {
-    border-color: rgb(0, 174, 3);
+    border-color: var(--color-primary-green);
 }
 
 .post-comment-title {
-    color: white;
     font-size: 1.1rem;
     font-weight: 600;
     margin-bottom: 1rem;
@@ -374,16 +256,16 @@
     display: inline-block;
     width: 4px;
     height: 16px;
-    background: rgb(0, 174, 3);
+    background: var(--color-primary-green);
     border-radius: 2px;
 }
 
 .post-comment-error {
-    background: rgba(254, 215, 215, 0.1);
-    color: #feb2b2;
+    background: var(--color-error-light);
+    color: var(--color-error-border);
     padding: 0.75rem 1rem;
     border-radius: 8px;
-    border: 1px solid rgba(254, 178, 178, 0.3);
+    border: 1px solid var(--color-error-border-light);
     margin-bottom: 1rem;
     display: flex;
     align-items: center;
@@ -392,34 +274,13 @@
     animation: slideIn 0.3s ease;
 }
 
-@keyframes slideIn {
-    from {
-        opacity: 0;
-        transform: translateY(-10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.post-comment-form {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-}
-
-.form-group {
-    position: relative;
-}
-
 .post-comment-textarea {
     width: 100%;
-    background: #2d3748;
-    border: 2px solid #4a5568;
+    background: var(--color-bg-darker);
+    border: 2px solid var(--color-text-dark);
     border-radius: 8px;
     padding: 1rem;
-    color: white;
+    color: var(--color-text-white);
     font-size: 0.95rem;
     line-height: 1.5;
     resize: vertical;
@@ -430,12 +291,12 @@
 
 .post-comment-textarea:focus {
     outline: none;
-    border-color: rgb(0, 174, 3);
-    box-shadow: 0 0 0 3px rgba(0, 174, 3, 0.1);
+    border-color: var(--color-primary-green);
+    box-shadow: 0 0 0 3px var(--color-green-glow);
 }
 
 .post-comment-textarea::placeholder {
-    color: #a0aec0;
+    color: var(--color-text-medium);
 }
 
 .post-comment-textarea:disabled {
@@ -452,17 +313,12 @@
 }
 
 .character-count {
-    color: #a0aec0;
+    color: var(--color-text-medium);
     transition: color 0.3s ease;
 }
 
 .post-comment-textarea:focus + .post-comment-hint .character-count {
-    color: rgb(0, 174, 3);
-}
-
-.hint-text {
-    color: #718096;
-    font-style: italic;
+    color: var(--color-primary-green);
 }
 
 .post-comment-actions {
@@ -472,8 +328,8 @@
 }
 
 .post-comment-btn {
-    background: rgb(0, 174, 3);
-    color: white;
+    background: var(--color-primary-green);
+    color: var(--color-text-white);
     border: none;
     border-radius: 8px;
     padding: 0.75rem 1.5rem;
@@ -489,9 +345,9 @@
 }
 
 .post-comment-btn:hover:not(:disabled) {
-    background: rgb(0, 150, 3);
+    background: var(--color-primary-green-darker);
     transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(0, 174, 3, 0.2);
+    box-shadow: 0 4px 12px var(--color-green-glow);
 }
 
 .post-comment-btn:active:not(:disabled) {
@@ -508,22 +364,16 @@
 .spinner {
     width: 16px;
     height: 16px;
-    border: 2px solid rgba(255, 255, 255, 0.3);
+    border: 2px solid var(--color-spinner-border);
     border-radius: 50%;
-    border-top-color: white;
+    border-top-color: var(--color-text-white);
     animation: spin 0.8s linear infinite;
-}
-
-@keyframes spin {
-    to {
-        transform: rotate(360deg);
-    }
 }
 
 .post-comment-cancel {
     background: transparent;
-    color: #a0aec0;
-    border: 1px solid #4a5568;
+    color: var(--color-text-medium);
+    border: 1px solid var(--color-text-dark);
     border-radius: 8px;
     padding: 0.75rem 1.5rem;
     font-weight: 500;
@@ -533,9 +383,9 @@
 }
 
 .post-comment-cancel:hover:not(:disabled) {
-    background: rgba(254, 178, 178, 0.1);
-    color: #feb2b2;
-    border-color: #feb2b2;
+    background: var(--color-error-light);
+    color: var(--color-error-border);
+    border-color: var(--color-error-border);
 }
 
 .post-comment-cancel:disabled {
@@ -544,34 +394,36 @@
 }
 
 @media (max-width: 768px) {
-    .post-comment-wrapper {
-        padding: 1rem;
-    }
-    
-    .post-comment-actions {
-        flex-direction: column;
-    }
-    
+    .show-photo-container { padding: 1rem 0.5rem; }
+    .photo-info { padding: 1rem; }
+    .photo-meta { flex-direction: column; gap: 0.5rem; }
+    .showphoto-actions { top: 10px; right: 10px; }
+    .showphoto-actions button { width: 36px; height: 36px; }
+    .comment-meta { flex-direction: column; align-items: flex-start; gap: 0.25rem; }
+    .comments-section-wrapper,
+    .post-comment-wrapper { padding: 1rem; }
+    .comments-pagination .btn-group { flex-direction: column; gap: 8px; padding: 8px; }
+    .comments-pagination .pagination-btn { min-width: 100px; width: 100%; }
+    .comments-pagination .pagination-info { order: -1; padding: 8px 0; }
+    .post-comment-actions { flex-direction: column; }
     .post-comment-btn,
-    .post-comment-cancel {
-        width: 100%;
-        justify-content: center;
-    }
-    
-    .post-comment-hint {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.25rem;
-    }
+    .post-comment-cancel { width: 100%; justify-content: center; }
+    .post-comment-hint { flex-direction: column; align-items: flex-start; gap: 0.25rem; }
 }
 
 @media (max-width: 480px) {
-    .post-comment-title {
-        font-size: 1rem;
-    }
-    
-    .post-comment-textarea {
-        padding: 0.75rem;
-        font-size: 0.9rem;
-    }
+    .showphoto-actions { top: 8px; right: 8px; }
+    .showphoto-actions button { width: 32px; height: 32px; }
+    .showphoto-actions button svg { width: 16px; height: 16px; }
+    .post-comment-title { font-size: 1rem; }
+    .post-comment-textarea { padding: 0.75rem; font-size: 0.9rem; }
+}
+
+@keyframes slideIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
 }

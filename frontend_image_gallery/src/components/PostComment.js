@@ -37,7 +37,7 @@ function PostComment({ photoId, onCommentPosted }) {
     return (
         <div className="post-comment-wrapper">
             <h6 className="post-comment-title">Add a Comment</h6>
-            
+
             {error && (
                 <div className="post-comment-error">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -48,50 +48,25 @@ function PostComment({ photoId, onCommentPosted }) {
                     {error}
                 </div>
             )}
-            
+
             <form onSubmit={handleSubmit} className="post-comment-form">
                 <div className="form-group">
-                    <textarea 
-                        className="post-comment-textarea" 
-                        rows="3" 
-                        value={text} 
-                        onChange={(e) => setText(e.target.value)} 
-                        placeholder="Share your thoughts about this photo..."
-                        disabled={isLoading}
-                    />
+                    <textarea className="post-comment-textarea" rows="3" value={text} onChange={(e) => setText(e.target.value)} placeholder="Share your thoughts about this photo..." disabled={isLoading}/>
                     <div className="post-comment-hint">
                         <span className="character-count">{text.length}/500</span>
-                        <span className="hint-text">Press Enter + Ctrl to submit</span>
                     </div>
                 </div>
-                
+
                 <div className="post-comment-actions">
-                    <button 
-                        className="post-comment-btn" 
-                        type="submit" 
-                        disabled={isLoading || !text.trim()}
-                    >
-                        {isLoading ? (
-                            <>
-                                <span className="spinner"></span>
-                                Posting...
-                            </>
-                        ) : (
-                            <>
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                                    <path d="M12 19V5M5 12l7-7 7 7"/>
-                                </svg>
-                                Post Comment
-                            </>
-                        )}
+                    <button className="post-comment-btn" type="submit" disabled={isLoading || !text.trim()}>
+
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                            <path d="M12 19V5M5 12l7-7 7 7" />
+                        </svg>
+                        Post Comment
                     </button>
-                    
-                    <button 
-                        type="button" 
-                        className="post-comment-cancel"
-                        onClick={() => setText('')}
-                        disabled={isLoading || !text}
-                    >
+
+                    <button type="button" className="post-comment-cancel" onClick={() => setText('')} disabled={isLoading || !text}>
                         Clear
                     </button>
                 </div>

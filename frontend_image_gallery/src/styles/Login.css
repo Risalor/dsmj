@@ -1,71 +1,72 @@
 .login-card {
-    background-color: rgb(33, 37, 41) !important;
+    background-color: var(--color-bg-card) !important;  /* rgb(33, 37, 41) → --color-bg-card */
     border: none !important;
 }
 
 .form-control:focus {
-    border-color: rgb(0, 174, 3) !important;
-    box-shadow: 0 0 0 0.2rem rgba(0, 174, 3, 0.25) !important;
-    background-color: rgb(33, 37, 41) !important;
-    color: white !important;
+    border-color: var(--color-primary-green) !important;        /* rgb(0, 174, 3) */
+    box-shadow: 0 0 0 0.2rem var(--color-green-glow) !important; /* rgba(0, 174, 3, 0.25) */
+    background-color: var(--color-bg-card) !important;
+    color: var(--color-text-white) !important;
 }
 
 .input-group-text {
-    background-color: rgb(33, 37, 41) !important;
-    border-color: #6c757d !important;
-    color: #6c757d !important;
+    background-color: var(--color-bg-card) !important;          /* rgb(33, 37, 41) */
+    border-color: var(--color-border-input) !important;         /* rgb(108, 117, 125) */
+    color: var(--color-border-input) !important;                /* same gray */
 }
 
 .btn-primary-custom {
-    background-color: rgb(0, 174, 3) !important;
+    background-color: var(--color-primary-green) !important;
     border: none !important;
     transition: all 0.3s ease !important;
 }
 
 .btn-primary-custom:hover {
-    background-color: rgb(20, 79, 34) !important;
+    background-color: var(--color-primary-green-hover) !important; /* rgb(20, 79, 34) */
     transform: translateY(-1px);
 }
 
 .alert-danger {
-    background-color: rgba(220, 53, 69, 0.1) !important;
-    border-color: rgba(220, 53, 69, 0.3) !important;
-    color: #f8d7da !important;
+    background-color: var(--color-error-light) !important;      /* rgba(220, 53, 69, 0.1) */
+    border-color: var(--color-error-border-light) !important;   /* rgba(220, 53, 69, 0.3) */
+    color: var(--color-error-text) !important;                  /* close enough to rgb(248, 215, 218) */
 }
 
 .text-accent {
-    color: rgb(0, 174, 3) !important;
+    color: var(--color-primary-green) !important;
     transition: color 0.3s ease !important;
 }
 
 .text-accent:hover {
-    color: rgb(20, 79, 34) !important;
+    color: var(--color-primary-green-hover) !important;
 }
 
 .card {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08) !important;
+    /* Kept rgba shadows as-is – you can replace with var(--color-shadow) if you prefer */
 }
 
 .btn-register {
-    background-color: rgb(108, 117, 125) !important;
+    background-color: var(--color-btn-gray) !important;         /* rgb(108, 117, 125) */
     border: none !important;
     transition: all 0.3s ease !important;
 }
 
 .btn-register:hover {
-    background-color: rgb(73, 80, 87) !important;
+    background-color: var(--color-btn-gray-hover) !important;   /* rgb(73, 80, 87) */
     transform: translateY(-1px);
 }
 
 .btn-outline-accent {
     background-color: transparent !important;
-    border: 2px solid rgb(0, 174, 3) !important;
-    color: rgb(0, 174, 3) !important;
+    border: 2px solid var(--color-primary-green) !important;
+    color: var(--color-primary-green) !important;
     transition: all 0.3s ease !important;
 }
 
 .btn-outline-accent:hover {
-    background-color: rgb(0, 174, 3) !important;
-    color: white !important;
+    background-color: var(--color-primary-green) !important;
+    color: var(--color-text-white) !important;
     transform: translateY(-1px);
 }

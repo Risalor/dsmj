@@ -110,20 +110,20 @@ function UserDisplay({ isCollapsed = false, isTopbar = false }) {
                     {!isCollapsed && (
                         <Link className="nav-link icon-link ms-2" to="/Logout" title="Logout">
                             <LogOut className="header-icon" size={28} />
-                            <span className="d-none d-md-inline ms-2">Logout</span>
+                            <span className="d-none d-md-inline ms-2 text-white">Logout</span>
                         </Link>
                     )}
                 </div>
             ) : (
                 <div className="d-flex align-items-center">
-                    <Link className="nav-link icon-link me-2" to="/Login"title="Login">
+                    <Link className="nav-link icon-link me-2" to="/Login" title="Login">
                         <LogIn className="header-icon" size={28} />
-                        {!isCollapsed && <span className="d-none d-md-inline ms-2">Login</span>}
+                        {!isCollapsed && <span className="text-white d-none d-md-inline ms-2">Login</span>}
                     </Link>
                     {!isCollapsed && (
                         <Link className="nav-link icon-link" to="/Register" title="Register">
                             <UserPlus className="header-icon" size={28} />
-                            <span className="d-none d-md-inline ms-2">Register</span>
+                            <span className="text-white d-none d-md-inline ms-2">Register</span>
                         </Link>
                     )}
                 </div>

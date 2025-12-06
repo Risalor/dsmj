@@ -1,8 +1,8 @@
 .photos-list {
     display: flex;
     flex-direction: column;
-    gap: var(--spacing-lg);
-    max-width: var(--container-max);
+    gap: 1.5rem;
+    max-width: 800px;
     margin: 0 auto;
 }
 
@@ -11,18 +11,18 @@
 }
 
 .photo-list-card {
-    background: var(--bg-dark);
-    border-radius: var(--radius-lg);
-    border: 1px solid var(--border-dark);
+    background: #2d3748;
+    border-radius: 12px;
+    border: 1px solid #4a5568;
     overflow: hidden;
-    transition: all var(--transition-normal);
-    box-shadow: var(--shadow-sm);
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
 .photo-list-card:hover {
     transform: translateY(-2px);
-    box-shadow: var(--shadow-md);
-    border-color: var(--primary-color);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+    border-color: #63b3ed;
 }
 
 .photo-list-content {
@@ -43,7 +43,7 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform var(--transition-normal);
+    transition: transform 0.3s ease;
 }
 
 .photo-list-image:hover .list-image {
@@ -52,7 +52,7 @@
 
 .photo-list-info {
     flex: 1;
-    padding: var(--spacing-lg);
+    padding: 1.5rem;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -74,14 +74,14 @@
     margin: 0 0 0.75rem 0;
     font-size: 1.4rem;
     font-weight: bold;
-    color: var(--text-primary);
+    color: white;
     line-height: 1.3;
 }
 
 .photo-list-description {
-    margin: 0 0 var(--spacing-md) 0;
+    margin: 0 0 1rem 0;
     font-size: 0.95rem;
-    color: var(--text-secondary);
+    color: #e2e8f0;
     line-height: 1.5;
     flex: 1;
 }
@@ -90,30 +90,30 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-top: var(--spacing-md);
-    border-top: 1px solid var(--border-dark);
+    padding-top: 1rem;
+    border-top: 1px solid #4a5568;
     margin-top: auto;
 }
 
 .photo-author {
     font-size: 0.9rem;
-    color: var(--text-muted);
+    color: #a0aec0;
     font-weight: 500;
 }
 
 .photo-date {
     font-size: 0.85rem;
-    color: var(--text-disabled);
+    color: #718096;
 }
 
 .favorite-btn {
-    transition: all var(--transition-normal) !important;
+    transition: all 0.3s ease !important;
 }
 
 .favorite-btn.favorited {
-    color: var(--text-primary) !important;
+    color: #ffffff !important;
 }
 
 .favorite-btn:hover {
-    color: var(--text-primary) !important;
+    color: #ffffff !important;
 }
