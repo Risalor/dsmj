@@ -143,7 +143,7 @@
         </node>
       </node>
       <node concept="3eYSTp" id="40S6OyeLXqM" role="3eYSS_">
-        <property role="3eYSTv" value="40S6OyeKTkk/dropdown" />
+        <property role="3eYSTv" value="40S6OyeKTkj/standard" />
         <property role="3eYSTu" value="true" />
       </node>
     </node>

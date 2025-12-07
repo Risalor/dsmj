@@ -61,7 +61,6 @@ function UserDisplay({ isCollapsed = false, isTopbar = false }) {
                                     <Settings size={18} />
                                     <span>Settings</span>
                                 </Link>
-                                <div className="dropdown-divider"></div>
                                 <Link className="dropdown-item" to="/Logout" onClick={() => setIsDropdownOpen(false)}>
                                     <LogOut size={18} />
                                     <span>Logout</span>
@@ -91,11 +90,7 @@ function UserDisplay({ isCollapsed = false, isTopbar = false }) {
                 <div className="d-flex align-items-center">
                     <div className="user-info">
                         {user.ProfileImage ? (
-                            <img 
-                                src={"http://localhost:3001" + user.ProfileImage} 
-                                alt={user.ProfileName} 
-                                className="user-avatar me-2" 
-                            />
+                            <img src={"http://localhost:3001" + user.ProfileImage} alt={user.ProfileName} className="user-avatar me-2" />
                         ) : (
                             <div className="user-avatar placeholder me-2">
                                 {user.ProfileName ? user.ProfileName.charAt(0).toUpperCase() : 'U'}

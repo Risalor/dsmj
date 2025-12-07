@@ -22,16 +22,6 @@ function ShowPhoto() {
         setReloadComments(prev => prev + 1);
     };
 
-    if (!photo) {
-        return (
-            <div className="container mt-4">
-                <div className="error-message">
-                    No photo data available. Please go back and select a photo.
-                </div>
-            </div>
-        );
-    }
-
     return (
         <div className="show-photo-container">
             <div className="photo-detail-card">
