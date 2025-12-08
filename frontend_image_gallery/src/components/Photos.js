@@ -1,6 +1,5 @@
-import { useState, useEffect, useContext } from 'react';
+import { useState, useEffect } from 'react';
 import Photo from './Photo';
-import { UserContext } from "../userContexts";
 import '../styles/combined.css'
 import config from '../config.json';
 
@@ -60,12 +59,7 @@ function Photos() {
                                 <label htmlFor="sort-select" className="sorting-label me-2">
                                     Sort by:
                                 </label>
-                                <select 
-                                    id="sort-select"
-                                    className="sort-select"
-                                    value={currentSort}
-                                    onChange={handleSortChange}
-                                >
+                                <select id="sort-select" className="sort-select" value={currentSort} onChange={handleSortChange}>
                                     {config.sorting_options.map(sortOption => (
                                         <option key={sortOption} value={sortOption}>
                                             {getSortDisplayName(sortOption)}
@@ -91,21 +85,13 @@ function Photos() {
             {pagination.totalPages > 1 && (
                 <div className="pagination-controls mt-4 text-center">
                     <div className="btn-group" role="group">
-                        <button
-                            className="btn pagination-btn pagination-prev"
-                            onClick={handlePrevPage}
-                            disabled={currentPage === 1}
-                        >
+                        <button className="btn pagination-btn pagination-prev" onClick={handlePrevPage} disabled={currentPage === 1}>
                             ← Previous
                         </button>
                         <span className="pagination-info">
                             Page {currentPage} of {pagination.totalPages}
                         </span>
-                        <button
-                            className="btn pagination-btn pagination-next"
-                            onClick={handleNextPage}
-                            disabled={currentPage === pagination.totalPages}
-                        >
+                        <button className="btn pagination-btn pagination-next" onClick={handleNextPage} disabled={currentPage === pagination.totalPages}>
                             Next →
                         </button>
                     </div>

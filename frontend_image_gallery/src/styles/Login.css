@@ -1,19 +1,19 @@
 .login-card {
-    background-color: var(--color-bg-card) !important;  /* rgb(33, 37, 41) → --color-bg-card */
+    background-color: var(--color-bg-card) !important;
     border: none !important;
 }
 
 .form-control:focus {
-    border-color: var(--color-primary-green) !important;        /* rgb(0, 174, 3) */
-    box-shadow: 0 0 0 0.2rem var(--color-green-glow) !important; /* rgba(0, 174, 3, 0.25) */
+    border-color: var(--color-primary-green) !important;
+    box-shadow: 0 0 0 0.2rem var(--color-green-glow) !important;
     background-color: var(--color-bg-card) !important;
     color: var(--color-text-white) !important;
 }
 
 .input-group-text {
-    background-color: var(--color-bg-card) !important;          /* rgb(33, 37, 41) */
-    border-color: var(--color-border-input) !important;         /* rgb(108, 117, 125) */
-    color: var(--color-border-input) !important;                /* same gray */
+    background-color: var(--color-bg-card) !important;
+    border-color: var(--color-border-input) !important;
+    color: var(--color-border-input) !important;
 }
 
 .btn-primary-custom {
@@ -23,14 +23,14 @@
 }
 
 .btn-primary-custom:hover {
-    background-color: var(--color-primary-green-hover) !important; /* rgb(20, 79, 34) */
+    background-color: var(--color-primary-green-hover) !important;
     transform: translateY(-1px);
 }
 
 .alert-danger {
-    background-color: var(--color-error-light) !important;      /* rgba(220, 53, 69, 0.1) */
-    border-color: var(--color-error-border-light) !important;   /* rgba(220, 53, 69, 0.3) */
-    color: var(--color-error-text) !important;                  /* close enough to rgb(248, 215, 218) */
+    background-color: var(--color-error-light) !important;
+    border-color: var(--color-error-border-light) !important;
+    color: var(--color-error-text) !important;
 }
 
 .text-accent {
@@ -44,17 +44,16 @@
 
 .card {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08) !important;
-    /* Kept rgba shadows as-is – you can replace with var(--color-shadow) if you prefer */
 }
 
 .btn-register {
-    background-color: var(--color-btn-gray) !important;         /* rgb(108, 117, 125) */
+    background-color: var(--color-btn-gray) !important;
     border: none !important;
     transition: all 0.3s ease !important;
 }
 
 .btn-register:hover {
-    background-color: var(--color-btn-gray-hover) !important;   /* rgb(73, 80, 87) */
+    background-color: var(--color-btn-gray-hover) !important;
     transform: translateY(-1px);
 }
 

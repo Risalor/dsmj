@@ -260,11 +260,16 @@
     <node concept="1TJgyi" id="4HxVYvHSTq$" role="1TKVEl">
       <property role="IQ2nx" value="5431886404993128100" />
       <property role="TrG5h" value="http_method" />
-      <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
+      <ref role="AX2Wp" node="5NZVkH3xTFh" resolve="HttpMethod" />
     </node>
     <node concept="1TJgyi" id="4HxVYvHSTq_" role="1TKVEl">
       <property role="IQ2nx" value="5431886404993128101" />
-      <property role="TrG5h" value="path" />
+      <property role="TrG5h" value="path_first" />
+      <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
+    </node>
+    <node concept="1TJgyi" id="5NZVkH3yGUf" role="1TKVEl">
+      <property role="IQ2nx" value="6701335678062087823" />
+      <property role="TrG5h" value="path_second" />
       <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
     </node>
     <node concept="1TJgyj" id="4HxVYvHSTqE" role="1TKVEi">
@@ -379,6 +384,13 @@
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="PrWs8" id="7Xz8pK3nbQe" role="PzmwI">
       <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
+    </node>
+    <node concept="1TJgyj" id="5NZVkH3x6pL" role="1TKVEi">
+      <property role="IQ2ns" value="6701335678061667953" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="api" />
+      <property role="20lbJX" value="fLJekj4/_1" />
+      <ref role="20lvS9" node="4HxVYvHSTpY" resolve="Api" />
     </node>
     <node concept="1TJgyj" id="7Xz8pK3nbQf" role="1TKVEi">
       <property role="IQ2ns" value="9179217419466227087" />
@@ -959,6 +971,18 @@
     <node concept="25R33" id="40S6OyeKTkk" role="25R1y">
       <property role="3tVfz5" value="4627478615569962260" />
       <property role="TrG5h" value="dropdown" />
+    </node>
+  </node>
+  <node concept="25R3W" id="5NZVkH3xTFh">
+    <property role="3F6X1D" value="6701335678061877969" />
+    <property role="TrG5h" value="HttpMethod" />
+    <node concept="25R33" id="5NZVkH3xTFj" role="25R1y">
+      <property role="3tVfz5" value="6701335678061877971" />
+      <property role="TrG5h" value="GET" />
+    </node>
+    <node concept="25R33" id="5NZVkH3xTFi" role="25R1y">
+      <property role="3tVfz5" value="6701335678061877970" />
+      <property role="TrG5h" value="POST" />
     </node>
   </node>
 </model>

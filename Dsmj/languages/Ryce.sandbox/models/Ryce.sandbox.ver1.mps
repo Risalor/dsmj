@@ -15,6 +15,7 @@
       <concept id="3091478719646106638" name="Ryce.structure.Ryce" flags="ng" index="9Maua">
         <child id="3091478719646106640" name="api" index="9Mauk" />
         <child id="3091478719646106641" name="menu" index="9Maul" />
+        <child id="3091478719646106642" name="images" index="9Maum" />
         <child id="3091478719646106643" name="footer" index="9Maun" />
       </concept>
       <concept id="4163925112968762428" name="Ryce.structure.Icon" flags="ng" index="k7uZC">
@@ -45,11 +46,21 @@
         <property id="6882320668104559059" name="text" index="2zcmfX" />
         <child id="4163925112968762430" name="icon" index="k7uZE" />
       </concept>
-      <concept id="5431886404993128097" name="Ryce.structure.Endpoint" flags="ng" index="2AwB_6" />
+      <concept id="5431886404993128103" name="Ryce.structure.Parameter" flags="ng" index="2AwB_0">
+        <property id="5431886404993128105" name="name" index="2AwB_e" />
+      </concept>
+      <concept id="5431886404993128097" name="Ryce.structure.Endpoint" flags="ng" index="2AwB_6">
+        <property id="6701335678062087823" name="path_second" index="vtif4" />
+        <property id="5431886404993128101" name="path_first" index="2AwB_2" />
+        <property id="5431886404993128100" name="http_method" index="2AwB_3" />
+        <child id="5431886404993128106" name="parameter" index="2AwB_d" />
+      </concept>
       <concept id="5431886404993128107" name="Ryce.structure.Endpoints" flags="ng" index="2AwB_c">
         <child id="5431886404993128108" name="endpoints" index="2AwB_b" />
       </concept>
-      <concept id="5431886404993128066" name="Ryce.structure.BaseUrl" flags="ng" index="2AwB__" />
+      <concept id="5431886404993128066" name="Ryce.structure.BaseUrl" flags="ng" index="2AwB__">
+        <property id="5431886404993128068" name="url" index="2AwB_z" />
+      </concept>
       <concept id="5431886404993128062" name="Ryce.structure.Api" flags="ng" index="2AwBAp">
         <child id="5431886404993128210" name="endpoints" index="2AwBzP" />
         <child id="5431886404993128094" name="base_url" index="2AwB_T" />
@@ -61,14 +72,46 @@
       <concept id="6944420385108409133" name="Ryce.structure.TitleMenuOption" flags="ng" index="1L0rax">
         <child id="6944420385108409134" name="option" index="1L0ray" />
       </concept>
+      <concept id="9179217419466083560" name="Ryce.structure.ContentSource" flags="ng" index="1WeqPO" />
+      <concept id="9179217419466083554" name="Ryce.structure.Contents" flags="ng" index="1WeqPY">
+        <child id="9179217419466083559" name="content_source" index="1WeqPV" />
+      </concept>
+      <concept id="9179217419466227097" name="Ryce.structure.ImageLayout" flags="ng" index="1WfTK5" />
+      <concept id="9179217419466227085" name="Ryce.structure.Images" flags="ng" index="1WfTKh">
+        <child id="6701335678061667953" name="api" index="vuSGU" />
+        <child id="9179217419466227096" name="layout" index="1WfTK4" />
+        <child id="9179217419466227087" name="load_action" index="1WfTKj" />
+        <child id="9179217419466227131" name="items_per_page" index="1WfTKB" />
+        <child id="9179217419466227590" name="enable_components" index="1WfTSq" />
+        <child id="9179217419466227204" name="sorting" index="1WfTYo" />
+      </concept>
+      <concept id="9179217419466227134" name="Ryce.structure.ItemsPerPage" flags="ng" index="1WfTKy" />
+      <concept id="9179217419466227166" name="Ryce.structure.Sorting" flags="ng" index="1WfTL2" />
+      <concept id="9179217419466226949" name="Ryce.structure.ForEach" flags="ng" index="1WfTMp" />
+      <concept id="9179217419466226997" name="Ryce.structure.LoadAction" flags="ng" index="1WfTMD">
+        <child id="9179217419466226998" name="contents" index="1WfTME" />
+        <child id="9179217419466226999" name="for_each" index="1WfTMF" />
+      </concept>
+      <concept id="9179217419466227420" name="Ryce.structure.EnableComponents" flags="ng" index="1WfTX0" />
     </language>
   </registry>
   <node concept="9Maua" id="4f_8f$MBWxb">
     <property role="TrG5h" value="Prog" />
     <node concept="2AwBAp" id="4f_8f$MBWxc" role="9Mauk">
-      <node concept="2AwB__" id="4f_8f$MBWxd" role="2AwB_T" />
+      <property role="TrG5h" value="api" />
+      <node concept="2AwB__" id="4f_8f$MBWxd" role="2AwB_T">
+        <property role="2AwB_z" value="hallo" />
+      </node>
       <node concept="2AwB_c" id="4f_8f$MBWxe" role="2AwBzP">
-        <node concept="2AwB_6" id="1KqgwsrqDeq" role="2AwB_b" />
+        <node concept="2AwB_6" id="5NZVkH3$lBw" role="2AwB_b">
+          <property role="TrG5h" value="imlin" />
+          <property role="2AwB_3" value="5NZVkH3xTFj/GET" />
+          <property role="2AwB_2" value="sulu/" />
+          <property role="vtif4" value="/images" />
+          <node concept="2AwB_0" id="5NZVkH3$lBx" role="2AwB_d">
+            <property role="2AwB_e" value="imageId" />
+          </node>
+        </node>
       </node>
     </node>
     <node concept="kfb4I" id="4f_8f$MBWxf" role="9Maun">
@@ -146,6 +189,22 @@
         <property role="3eYSTv" value="40S6OyeKTkj/standard" />
         <property role="3eYSTu" value="true" />
       </node>
+    </node>
+    <node concept="1WfTKh" id="5NZVkH3xTF5" role="9Maum">
+      <node concept="2AwBAp" id="5NZVkH3xTF6" role="vuSGU">
+        <node concept="2AwB__" id="5NZVkH3xTF7" role="2AwB_T" />
+        <node concept="2AwB_c" id="5NZVkH3xTF8" role="2AwBzP" />
+      </node>
+      <node concept="1WfTMD" id="5NZVkH3xTF9" role="1WfTKj">
+        <node concept="1WeqPY" id="5NZVkH3xTFa" role="1WfTME">
+          <node concept="1WeqPO" id="5NZVkH3xTFb" role="1WeqPV" />
+        </node>
+        <node concept="1WfTMp" id="5NZVkH3xTFc" role="1WfTMF" />
+      </node>
+      <node concept="1WfTK5" id="5NZVkH3xTFd" role="1WfTK4" />
+      <node concept="1WfTKy" id="5NZVkH3xTFe" role="1WfTKB" />
+      <node concept="1WfTL2" id="5NZVkH3xTFf" role="1WfTYo" />
+      <node concept="1WfTX0" id="5NZVkH3xTFg" role="1WfTSq" />
     </node>
   </node>
 </model>

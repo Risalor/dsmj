@@ -62,6 +62,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptTitleMenuOption = createDescriptorForTitleMenuOption();
   /*package*/ final ConceptDescriptor myConceptUserDisplay = createDescriptorForUserDisplay();
   /*package*/ final EnumerationDescriptor myEnumerationComponentEnum = new EnumerationDescriptor_ComponentEnum();
+  /*package*/ final EnumerationDescriptor myEnumerationHttpMethod = new EnumerationDescriptor_HttpMethod();
   /*package*/ final EnumerationDescriptor myEnumerationImageLayouts = new EnumerationDescriptor_ImageLayouts();
   /*package*/ final EnumerationDescriptor myEnumerationMenuTypes = new EnumerationDescriptor_MenuTypes();
   /*package*/ final EnumerationDescriptor myEnumerationPositionEnum = new EnumerationDescriptor_PositionEnum();
@@ -185,7 +186,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
 
   @Override
   public Collection<DataTypeDescriptor> getDataTypeDescriptors() {
-    return Arrays.asList(myEnumerationComponentEnum, myEnumerationImageLayouts, myEnumerationMenuTypes, myEnumerationPositionEnum, myEnumerationSortingOptions, myEnumerationUserDisplayTypes);
+    return Arrays.asList(myEnumerationComponentEnum, myEnumerationHttpMethod, myEnumerationImageLayouts, myEnumerationMenuTypes, myEnumerationPositionEnum, myEnumerationSortingOptions, myEnumerationUserDisplayTypes);
   }
 
   /*package*/ int internalIndex(SAbstractConcept c) {
@@ -315,8 +316,9 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L);
     b.origin("r:6f21ea0b-8f9f-4069-8bcc-6c3e23fc8fea(Ryce.structure)/5431886404993128097");
     b.version(3);
-    b.property("http_method", 0x4b61efe7ede396a4L).type(PrimitiveTypeId.STRING).origin("5431886404993128100").done();
-    b.property("path", 0x4b61efe7ede396a5L).type(PrimitiveTypeId.STRING).origin("5431886404993128101").done();
+    b.property("http_method", 0x4b61efe7ede396a4L).type(MetaIdFactory.dataTypeId(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x5cffed4b43879ad1L)).origin("5431886404993128100").done();
+    b.property("path_first", 0x4b61efe7ede396a5L).type(PrimitiveTypeId.STRING).origin("5431886404993128101").done();
+    b.property("path_second", 0x5cffed4b438ace8fL).type(PrimitiveTypeId.STRING).origin("6701335678062087823").done();
     b.aggregate("parameter", 0x4b61efe7ede396aaL).target(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x4b61efe7ede396a7L).optional(true).ordered(true).multiple(false).origin("5431886404993128106").done();
     return b.create();
   }
@@ -395,6 +397,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L);
     b.origin("r:6f21ea0b-8f9f-4069-8bcc-6c3e23fc8fea(Ryce.structure)/9179217419466227085");
     b.version(3);
+    b.aggregate("api", 0x5cffed4b43846671L).target(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x4b61efe7ede3967eL).optional(false).ordered(true).multiple(false).origin("6701335678061667953").done();
     b.aggregate("load_action", 0x7f63219c035cbd8fL).target(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x7f63219c035cbd35L).optional(false).ordered(true).multiple(false).origin("9179217419466227087").done();
     b.aggregate("layout", 0x7f63219c035cbd98L).target(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x7f63219c035cbd99L).optional(false).ordered(true).multiple(false).origin("9179217419466227096").done();
     b.aggregate("items_per_page", 0x7f63219c035cbdbbL).target(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x7f63219c035cbdbeL).optional(false).ordered(true).multiple(false).origin("9179217419466227131").done();
