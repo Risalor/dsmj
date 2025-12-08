@@ -3458,7 +3458,67 @@
   <node concept="WtQ9Q" id="7oHTGVzq_l_">
     <ref role="WuzLi" to="qmra:7Xz8pK3nbQd" resolve="Images" />
     <node concept="11bSqf" id="7oHTGVzq_lA" role="11c4hB">
-      <node concept="3clFbS" id="7oHTGVzq_lB" role="2VODD2" />
+      <node concept="3clFbS" id="7oHTGVzq_lB" role="2VODD2">
+        <node concept="lc7rE" id="8DcD6IYzCn" role="3cqZAp">
+          <node concept="la8eA" id="8DcD6IYzCL" role="lcghm">
+            <property role="lacIc" value="import { useState, useEffect } from 'react';" />
+          </node>
+          <node concept="l8MVK" id="8DcD6IYzDW" role="lcghm" />
+        </node>
+        <node concept="lc7rE" id="8DcD6IYzEG" role="3cqZAp">
+          <node concept="la8eA" id="8DcD6IYzF8" role="lcghm">
+            <property role="lacIc" value="import Photo from './Photo';" />
+          </node>
+          <node concept="l8MVK" id="8DcD6IYzGj" role="lcghm" />
+        </node>
+        <node concept="lc7rE" id="8DcD6IYzH3" role="3cqZAp">
+          <node concept="la8eA" id="8DcD6IYzHv" role="lcghm">
+            <property role="lacIc" value="import '../styles/combined.css'" />
+          </node>
+          <node concept="l8MVK" id="8DcD6IYzIE" role="lcghm" />
+          <node concept="l8MVK" id="8DcD6IYzJt" role="lcghm" />
+        </node>
+        <node concept="3clFbH" id="8DcD6IYzJR" role="3cqZAp" />
+        <node concept="lc7rE" id="8DcD6IYzKf" role="3cqZAp">
+          <node concept="la8eA" id="8DcD6IYzKF" role="lcghm">
+            <property role="lacIc" value="function Photos() {" />
+          </node>
+          <node concept="l8MVK" id="8DcD6IYzLQ" role="lcghm" />
+        </node>
+        <node concept="3izx1p" id="8DcD6IYzMA" role="3cqZAp">
+          <node concept="3clFbS" id="8DcD6IYzMC" role="3izTki">
+            <node concept="1bpajm" id="8DcD6IYzMZ" role="3cqZAp" />
+            <node concept="lc7rE" id="8DcD6IYzNI" role="3cqZAp">
+              <node concept="la8eA" id="8DcD6IYzOa" role="lcghm">
+                <property role="lacIc" value="const [photos, setPhotos] = useState([]);" />
+              </node>
+              <node concept="l8MVK" id="8DcD6IYzPl" role="lcghm" />
+            </node>
+            <node concept="1bpajm" id="8DcD6IYXut" role="3cqZAp" />
+            <node concept="lc7rE" id="8DcD6IYzQ5" role="3cqZAp">
+              <node concept="la8eA" id="8DcD6IYzQx" role="lcghm">
+                <property role="lacIc" value="const [currentPage, setCurrentPage] = useState(1);" />
+              </node>
+              <node concept="l8MVK" id="8DcD6IYXvg" role="lcghm" />
+            </node>
+            <node concept="1bpajm" id="8DcD6J0ewB" role="3cqZAp" />
+            <node concept="lc7rE" id="8DcD6J0exn" role="3cqZAp">
+              <node concept="la8eA" id="8DcD6J0exN" role="lcghm">
+                <property role="lacIc" value="const [pagination, setPagination] = useState({});" />
+              </node>
+              <node concept="l8MVK" id="8DcD6J0eyY" role="lcghm" />
+            </node>
+            <node concept="1bpajm" id="8DcD6J0ezI" role="3cqZAp" />
+            <node concept="lc7rE" id="8DcD6J0e$u" role="3cqZAp">
+              <node concept="la8eA" id="8DcD6J0e$U" role="lcghm">
+                <property role="lacIc" value="const [currentSort, setCurrentSort] = useState(config.default_sorting || 'newest_asc');" />
+              </node>
+              <node concept="l8MVK" id="8DcD6J0eA5" role="lcghm" />
+              <node concept="l8MVK" id="8DcD6J0eAS" role="lcghm" />
+            </node>
+          </node>
+        </node>
+      </node>
     </node>
   </node>
 </model>

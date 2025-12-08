@@ -572,6 +572,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.origin("r:6f21ea0b-8f9f-4069-8bcc-6c3e23fc8fea(Ryce.structure)/9179217419466227166");
     b.version(3);
     b.property("sorting", 0x7f63219c035cbde4L).type(MetaIdFactory.dataTypeId(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x7f63219c035cbddfL)).origin("9179217419466227172").done();
+    b.property("enabled", 0x2293291aefbe71dL).type(PrimitiveTypeId.BOOLEAN).origin("155711263408383773").done();
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForStyle() {
