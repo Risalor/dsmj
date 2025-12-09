@@ -404,7 +404,7 @@
       <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="layout" />
       <property role="20lbJX" value="fLJekj4/_1" />
-      <ref role="20lvS9" node="7Xz8pK3nbQp" resolve="ImageLayout" />
+      <ref role="20lvS9" node="4ijdOWy_EWI" resolve="Layout" />
     </node>
     <node concept="1TJgyj" id="7Xz8pK3nbQV" role="1TKVEi">
       <property role="IQ2ns" value="9179217419466227131" />
@@ -412,13 +412,6 @@
       <property role="20kJfa" value="items_per_page" />
       <property role="20lbJX" value="fLJekj4/_1" />
       <ref role="20lvS9" node="7Xz8pK3nbQY" resolve="ItemsPerPage" />
-    </node>
-    <node concept="1TJgyj" id="7Xz8pK3nbS4" role="1TKVEi">
-      <property role="IQ2ns" value="9179217419466227204" />
-      <property role="20lmBu" value="fLJjDmT/aggregation" />
-      <property role="20kJfa" value="sorting" />
-      <property role="20lbJX" value="fLJekj4/_1" />
-      <ref role="20lvS9" node="7Xz8pK3nbRu" resolve="Sorting" />
     </node>
     <node concept="1TJgyj" id="7Xz8pK3nbY6" role="1TKVEi">
       <property role="IQ2ns" value="9179217419466227590" />
@@ -454,8 +447,8 @@
     <property role="EcuMT" value="9179217419466227097" />
     <property role="TrG5h" value="ImageLayout" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
-    <node concept="1TJgyi" id="7Xz8pK3nbQq" role="1TKVEl">
-      <property role="IQ2nx" value="9179217419466227098" />
+    <node concept="1TJgyi" id="4ijdOWy_EWP" role="1TKVEl">
+      <property role="IQ2nx" value="4941354029177810741" />
       <property role="TrG5h" value="layout" />
       <ref role="AX2Wp" node="7Xz8pK3nbQi" resolve="ImageLayouts" />
     </node>
@@ -478,11 +471,6 @@
       <property role="IQ2nx" value="9179217419466227172" />
       <property role="TrG5h" value="sorting" />
       <ref role="AX2Wp" node="7Xz8pK3nbRv" resolve="SortingOptions" />
-    </node>
-    <node concept="1TJgyi" id="8DcD6IYYst" role="1TKVEl">
-      <property role="IQ2nx" value="155711263408383773" />
-      <property role="TrG5h" value="enabled" />
-      <ref role="AX2Wp" to="tpck:fKAQMTB" resolve="boolean" />
     </node>
   </node>
   <node concept="25R3W" id="7Xz8pK3nbRv">
@@ -988,6 +976,33 @@
     <node concept="25R33" id="5NZVkH3xTFi" role="25R1y">
       <property role="3tVfz5" value="6701335678061877970" />
       <property role="TrG5h" value="POST" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="4ijdOWy_EWI">
+    <property role="EcuMT" value="4941354029177810734" />
+    <property role="TrG5h" value="Layout" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="1TJgyj" id="4ijdOWy_EWN" role="1TKVEi">
+      <property role="IQ2ns" value="4941354029177810739" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20lbJX" value="fLJekj6/_1__n" />
+      <property role="20kJfa" value="sorting_options" />
+      <ref role="20lvS9" node="7Xz8pK3nbRu" resolve="Sorting" />
+    </node>
+    <node concept="1TJgyi" id="4ijdOWy_EWJ" role="1TKVEl">
+      <property role="IQ2nx" value="4941354029177810735" />
+      <property role="TrG5h" value="type" />
+      <ref role="AX2Wp" node="7Xz8pK3nbQi" resolve="ImageLayouts" />
+    </node>
+    <node concept="1TJgyi" id="4ijdOWy_EWK" role="1TKVEl">
+      <property role="IQ2nx" value="4941354029177810736" />
+      <property role="TrG5h" value="items_per_page" />
+      <ref role="AX2Wp" to="tpck:fKAQMTA" resolve="integer" />
+    </node>
+    <node concept="1TJgyi" id="4ijdOWy_EWL" role="1TKVEl">
+      <property role="IQ2nx" value="4941354029177810737" />
+      <property role="TrG5h" value="sorting" />
+      <ref role="AX2Wp" node="7Xz8pK3nbRv" resolve="SortingOptions" />
     </node>
   </node>
 </model>

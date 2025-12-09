@@ -69,6 +69,12 @@
         <property id="4627478615569962262" name="enabled" index="3eYSTu" />
         <property id="4627478615569962263" name="display_type" index="3eYSTv" />
       </concept>
+      <concept id="4941354029177810734" name="Ryce.structure.Layout" flags="ng" index="1A1pxx">
+        <property id="4941354029177810735" name="type" index="1A1pxw" />
+        <property id="4941354029177810737" name="sorting" index="1A1pxY" />
+        <property id="4941354029177810736" name="items_per_page" index="1A1pxZ" />
+        <child id="4941354029177810739" name="layouts" index="1A1pxW" />
+      </concept>
       <concept id="6944420385108409133" name="Ryce.structure.TitleMenuOption" flags="ng" index="1L0rax">
         <child id="6944420385108409134" name="option" index="1L0ray" />
       </concept>
@@ -76,17 +82,17 @@
       <concept id="9179217419466083554" name="Ryce.structure.Contents" flags="ng" index="1WeqPY">
         <child id="9179217419466083559" name="content_source" index="1WeqPV" />
       </concept>
-      <concept id="9179217419466227097" name="Ryce.structure.ImageLayout" flags="ng" index="1WfTK5" />
       <concept id="9179217419466227085" name="Ryce.structure.Images" flags="ng" index="1WfTKh">
         <child id="6701335678061667953" name="api" index="vuSGU" />
         <child id="9179217419466227096" name="layout" index="1WfTK4" />
         <child id="9179217419466227087" name="load_action" index="1WfTKj" />
         <child id="9179217419466227131" name="items_per_page" index="1WfTKB" />
         <child id="9179217419466227590" name="enable_components" index="1WfTSq" />
-        <child id="9179217419466227204" name="sorting" index="1WfTYo" />
       </concept>
       <concept id="9179217419466227134" name="Ryce.structure.ItemsPerPage" flags="ng" index="1WfTKy" />
-      <concept id="9179217419466227166" name="Ryce.structure.Sorting" flags="ng" index="1WfTL2" />
+      <concept id="9179217419466227166" name="Ryce.structure.Sorting" flags="ng" index="1WfTL2">
+        <property id="9179217419466227172" name="sorting" index="1WfTLS" />
+      </concept>
       <concept id="9179217419466226949" name="Ryce.structure.ForEach" flags="ng" index="1WfTMp" />
       <concept id="9179217419466226997" name="Ryce.structure.LoadAction" flags="ng" index="1WfTMD">
         <child id="9179217419466226998" name="contents" index="1WfTME" />
@@ -190,21 +196,30 @@
         <property role="3eYSTu" value="true" />
       </node>
     </node>
-    <node concept="1WfTKh" id="8DcD6IYYts" role="9Maum">
-      <node concept="2AwBAp" id="8DcD6IYYtt" role="vuSGU">
-        <node concept="2AwB__" id="8DcD6IYYtu" role="2AwB_T" />
-        <node concept="2AwB_c" id="8DcD6IYYtv" role="2AwBzP" />
+    <node concept="1WfTKh" id="4ijdOWyAUsV" role="9Maum">
+      <node concept="2AwBAp" id="4ijdOWyAUsW" role="vuSGU">
+        <node concept="2AwB__" id="4ijdOWyAUsX" role="2AwB_T" />
+        <node concept="2AwB_c" id="4ijdOWyAUsY" role="2AwBzP" />
       </node>
-      <node concept="1WfTMD" id="8DcD6IYYtw" role="1WfTKj">
-        <node concept="1WeqPY" id="8DcD6IYYtx" role="1WfTME">
-          <node concept="1WeqPO" id="8DcD6IYYty" role="1WeqPV" />
+      <node concept="1WfTMD" id="4ijdOWyAUsZ" role="1WfTKj">
+        <node concept="1WeqPY" id="4ijdOWyAUt0" role="1WfTME">
+          <node concept="1WeqPO" id="4ijdOWyAUt1" role="1WeqPV" />
         </node>
-        <node concept="1WfTMp" id="8DcD6IYYtz" role="1WfTMF" />
+        <node concept="1WfTMp" id="4ijdOWyAUt2" role="1WfTMF" />
       </node>
-      <node concept="1WfTK5" id="8DcD6IYYt$" role="1WfTK4" />
-      <node concept="1WfTKy" id="8DcD6IYYt_" role="1WfTKB" />
-      <node concept="1WfTL2" id="8DcD6IYYtA" role="1WfTYo" />
-      <node concept="1WfTX0" id="8DcD6IYYtB" role="1WfTSq" />
+      <node concept="1A1pxx" id="4ijdOWyAUt3" role="1WfTK4">
+        <property role="1A1pxw" value="7Xz8pK3nbQj/Grid" />
+        <property role="1A1pxZ" value="20" />
+        <property role="1A1pxY" value="7Xz8pK3nbRw/newest_first" />
+        <node concept="1WfTL2" id="4ijdOWyAUt7" role="1A1pxW">
+          <property role="1WfTLS" value="7Xz8pK3nbRw/newest_first" />
+        </node>
+        <node concept="1WfTL2" id="4ijdOWyAUt9" role="1A1pxW">
+          <property role="1WfTLS" value="7Xz8pK3nbRy/oldest_first" />
+        </node>
+      </node>
+      <node concept="1WfTKy" id="4ijdOWyAUt5" role="1WfTKB" />
+      <node concept="1WfTX0" id="4ijdOWyAUt6" role="1WfTSq" />
     </node>
   </node>
 </model>

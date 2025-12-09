@@ -33,6 +33,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_ImageLink;
   private ConceptPresentation props_Images;
   private ConceptPresentation props_ItemsPerPage;
+  private ConceptPresentation props_Layout;
   private ConceptPresentation props_Like;
   private ConceptPresentation props_LikeClickAction;
   private ConceptPresentation props_LoadAction;
@@ -228,6 +229,13 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_ItemsPerPage = cpb.create();
         }
         return props_ItemsPerPage;
+      case LanguageConceptSwitch.Layout:
+        if (props_Layout == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("Layout");
+          props_Layout = cpb.create();
+        }
+        return props_Layout;
       case LanguageConceptSwitch.Like:
         if (props_Like == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
