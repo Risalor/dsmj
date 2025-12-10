@@ -40,7 +40,7 @@ function Photo({ photo: initialPhoto }) {
                         <>
                             <div className={`${config.action_buttons_layout}`}>
                                 {config.like && (<LikePhoto photo={photo} setPhoto={setPhoto} />)}
-                                {config.favorite && (<AddToFavoritesButton photoId={photo._id} currentUserId={user._id}/>)}
+                                {config.favorite && (<AddToFavoritesButton photoId={photo._id} currentUserId={user?._id}/>)}
                                 {config.dislike && (<DislikePhoto photo={photo} setPhoto={setPhoto} />)}
                             </div>
                             <Link to="/ShowPhoto" state={{ photo }} className="image-link">
@@ -73,7 +73,7 @@ function Photo({ photo: initialPhoto }) {
                         {showOverlay && (
                             <div className={`${config.action_buttons_layout}`}>
                                 {config.like && (<LikePhoto photo={photo} setPhoto={setPhoto} />)}
-                                {config.favorite && (<AddToFavoritesButton photoId={photo._id} currentUserId={user._id}/>)}
+                                {config.favorite && (<AddToFavoritesButton photoId={photo._id} currentUserId={user?._id}/>)}
                                 {config.dislike && (<DislikePhoto photo={photo} setPhoto={setPhoto} />)}
                             </div>
                         )}

@@ -26,7 +26,7 @@ UserDisplayConfig = "enabled" ":" Boolean "," "type" ":" DisplayType ;
 DisplayType = "dropdown" | "sidebar" | "inline" ;
 
 TypeProperty = "type" ":" MenuType ;
-MenuType = "topbar" | "sidebar" | "bottom" ;
+MenuType = "topbar" | "sidebar" ;
 SetCheckProperty = "set_check" ":" VariableReference ;
 
 ApiSection = "api" "<=" "{" ApiProperties "}" ;
@@ -37,7 +37,7 @@ EndpointList = Endpoint { ","? Endpoint } ;
 Endpoint = SimpleEndpoint | ParameterizedEndpoint ;
 SimpleEndpoint = Identifier ":" HttpMethod Path ;
 ParameterizedEndpoint = Identifier "( " Identifier ")" ":" HttpMethod Path ;
-HttpMethod = "GET" | "POST" | "PUT" | "DELETE" | "PATCH" ;
+HttpMethod = "GET" | "POST" ;
 Path = "/" { PathSegment } ;
 PathSegment = Identifier | "(" Identifier ")" ;
 

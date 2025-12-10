@@ -1,6 +1,7 @@
 import { useState, useEffect, useContext } from 'react';
 import { Navigate } from 'react-router-dom';
 import { UserContext } from '../userContexts';
+import '../styles/Profile.css';
 
 function Profile() {
     const { user } = useContext(UserContext);
@@ -41,8 +42,8 @@ function Profile() {
 
     if (loading) {
         return (
-            <div className="d-flex justify-content-center align-items-center vh-100">
-                <div className="spinner-border text-primary" role="status">
+            <div className="loading-container">
+                <div className="spinner-border" role="status">
                     <span className="visually-hidden">Loading...</span>
                 </div>
             </div>
@@ -51,48 +52,37 @@ function Profile() {
 
     if (error) {
         return (
-            <div className="container mt-5">
-                <div className="alert alert-danger text-center">{error}</div>
+            <div className="profile-container">
+                <div className="alert-danger">{error}</div>
             </div>
         );
     }
 
     return (
-        <div className="container py-5">
-            <div className="row justify-content-center">
-                <div className="col-md-8 col-lg-6">
-                    <div className="card shadow">
-                        <div className="card-body p-4">
-                            <div className="text-center mb-4">
-                                <img
-                                    src={"http://localhost:3001/" + profile.profileImage}
-                                    alt="Profile"
-                                    className="rounded-circle border border-3 border-primary"
-                                    style={{ width: '150px', height: '150px', objectFit: 'cover' }}
-                                    referrerPolicy="no-referrer"
-                                />
-                                <h2 className="mt-3 mb-0">{profile.profileName}</h2>
-                            </div>
-                            
-                            <div className="list-group list-group-flush">
-                                <div className="list-group-item d-flex justify-content-between align-items-center">
-                                    <span className="fw-bold">Email:</span>
-                                    <span>{profile.email}</span>
-                                </div>
-                                <div className="list-group-item d-flex justify-content-between align-items-center">
-                                    <span className="fw-bold">Total Likes Received:</span>
-                                    <span className="badge bg-primary rounded-pill">{profile.totalLikes}</span>
-                                </div>
-                                <div className="list-group-item d-flex justify-content-between align-items-center">
-                                    <span className="fw-bold">Photos Posted:</span>
-                                    <span className="badge bg-success rounded-pill">{profile.photoCount}</span>
-                                </div>
-                                <div className="list-group-item d-flex justify-content-between align-items-center">
-                                    <span className="fw-bold">Comments Made:</span>
-                                    <span className="badge bg-info rounded-pill">{profile.commentCount}</span>
-                                </div>
-                            </div>
-                        </div>
+        <div className="profile-container">
+            <div className="profile-card">
+                <div className="profile-card-body">
+                    <div className="profile-header">
+                        <img src={"http://localhost:3001/" + profile.profileImage} alt="Profile" className="profile-avatar" referrerPolicy="no-referrer"/>
+                        <h2 className="profile-name">{profile.profileName}</h2>
+                        <p className="profile-email">{profile.email}</p>
+                    </div>
+                    
+                    <div className="profile-stats">
+                        <ul className="stats-list">
+                            <li className="stats-item">
+                                <span className="stat-label">Total Likes Received:</span>
+                                <span className="stat-badge likes">{profile.totalLikes}</span>
+                            </li>
+                            <li className="stats-item">
+                                <span className="stat-label">Photos Posted:</span>
+                                <span className="stat-badge photos">{profile.photoCount}</span>
+                            </li>
+                            <li className="stats-item">
+                                <span className="stat-label">Comments Made:</span>
+                                <span className="stat-badge comments">{profile.commentCount}</span>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>

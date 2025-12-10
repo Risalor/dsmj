@@ -61,19 +61,20 @@ Ryce <= {
         type: topbar
     }
 
+    api <= {
+        base_url: "http://localhost:3001/",
+        endpoints <= {
+            images: GET /images
+            is_favorite(imageId): GET users/checkFavorite/(imageId)
+            users: GET /users,
+            profile(id): GET users/(id)/profile,
+            like_image(imageId): POST /images/(imageId)/like,
+            dislike_image(imageId): POST /images/(imageId)/dislike,
+            add_to_favorite: POST /users/addToFavorites,
+        }
+    }
+
     images <= {
-        api <= {
-            base_url: "http://localhost:3001/",
-            endpoints <= {
-                images: GET /images
-                is_favorite(imageId): GET users/checkFavorite/(imageId)
-                users: GET /users,
-                profile(id): GET users/(id)/profile,
-                like_image(imageId): POST /images/(imageId)/like,
-                dislike_image(imageId): POST /images/(imageId)/dislike,
-                add_to_favorite: POST /users/addToFavorites,
-            }
-        },
         load_actions: {
             contents: api.images,
             for_each <= {
