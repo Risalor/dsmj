@@ -298,17 +298,17 @@ import org.jetbrains.mps.openapi.language.SConcept;
     return editorCell;
   }
   private EditorCell createRefNodeList_0() {
-    AbstractCellListHandler handler = new layoutsListHandler_ybaf4h_d4a(myNode, getEditorContext());
+    AbstractCellListHandler handler = new sorting_optionsListHandler_ybaf4h_d4a(myNode, getEditorContext());
     EditorCell_Collection editorCell = handler.createCells(new CellLayout_Indent(), false);
-    editorCell.setCellId("refNodeList_layouts");
+    editorCell.setCellId("refNodeList_sorting_options");
     editorCell.setSRole(handler.getElementSRole());
     return editorCell;
   }
-  private static class layoutsListHandler_ybaf4h_d4a extends RefNodeListHandler {
+  private static class sorting_optionsListHandler_ybaf4h_d4a extends RefNodeListHandler {
     @NotNull
     private SNode myNode;
 
-    public layoutsListHandler_ybaf4h_d4a(SNode ownerNode, EditorContext context) {
+    public sorting_optionsListHandler_ybaf4h_d4a(SNode ownerNode, EditorContext context) {
       super(context, false);
       myNode = ownerNode;
     }
@@ -318,7 +318,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return myNode;
     }
     public SContainmentLink getSLink() {
-      return LINKS.layouts$b88X;
+      return LINKS.sorting_options$b88X;
     }
     public SAbstractConcept getChildSConcept() {
       return CONCEPTS.Sorting$4E;
@@ -331,7 +331,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(layoutsListHandler_ybaf4h_d4a.this.getNode(), LINKS.layouts$b88X));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(sorting_optionsListHandler_ybaf4h_d4a.this.getNode(), LINKS.sorting_options$b88X));
       try {
         EditorCell emptyCell = null;
         emptyCell = super.createEmptyCell();
@@ -406,6 +406,6 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink layouts$b88X = MetaAdapterFactory.getContainmentLink(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x4493374f2296af2eL, 0x4493374f2296af33L, "layouts");
+    /*package*/ static final SContainmentLink sorting_options$b88X = MetaAdapterFactory.getContainmentLink(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x4493374f2296af2eL, 0x4493374f2296af33L, "sorting_options");
   }
 }

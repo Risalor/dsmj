@@ -19,10 +19,14 @@ public class Ryce_TextGen extends TextGenDescriptorBase {
       tgs.newLine();
     }
     tgs.appendNode(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.footer$qiVi));
+    tgs.newLine();
+    tgs.newLine();
+    tgs.appendNode(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.images$qiGh));
   }
 
   private static final class LINKS {
     /*package*/ static final SContainmentLink menu$qitg = MetaAdapterFactory.getContainmentLink(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x2ae72384232f840eL, 0x2ae72384232f8411L, "menu");
     /*package*/ static final SContainmentLink footer$qiVi = MetaAdapterFactory.getContainmentLink(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x2ae72384232f840eL, 0x2ae72384232f8413L, "footer");
+    /*package*/ static final SContainmentLink images$qiGh = MetaAdapterFactory.getContainmentLink(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x2ae72384232f840eL, 0x2ae72384232f8412L, "images");
   }
 }

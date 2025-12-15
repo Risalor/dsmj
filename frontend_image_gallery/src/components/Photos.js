@@ -72,7 +72,6 @@ function Photos() {
                 </div>
             )}
 
-            {/*WHERE I LEFT OFF*/} 
             <div className={config.layout === 'grid' ? "container mt-4" : config.layout === 'list' ? "container mt-4" : "masonry-container"}>
                 <div className={config.layout === 'grid' ? "row" : config.layout === 'list' ? "photos-list" : "masonry-grid"}>
                     {photos.map(photo => (

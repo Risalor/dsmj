@@ -57,10 +57,6 @@ function UserDisplay({ isCollapsed = false, isTopbar = false }) {
                                     <User size={18} />
                                     <span>Profile</span>
                                 </Link>
-                                <Link className="dropdown-item" to="/Settings" onClick={() => setIsDropdownOpen(false)}>
-                                    <Settings size={18} />
-                                    <span>Settings</span>
-                                </Link>
                                 <Link className="dropdown-item" to="/Logout" onClick={() => setIsDropdownOpen(false)}>
                                     <LogOut size={18} />
                                     <span>Logout</span>

@@ -20,6 +20,8 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_Contents;
   private ConceptPresentation props_Dislike;
   private ConceptPresentation props_DislikeClickAction;
+  private ConceptPresentation props_DisplayDislikes;
+  private ConceptPresentation props_DisplayLikes;
   private ConceptPresentation props_Enable;
   private ConceptPresentation props_EnableComponents;
   private ConceptPresentation props_Endpoint;
@@ -138,6 +140,20 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_DislikeClickAction = cpb.create();
         }
         return props_DislikeClickAction;
+      case LanguageConceptSwitch.DisplayDislikes:
+        if (props_DisplayDislikes == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("DisplayDislikes");
+          props_DisplayDislikes = cpb.create();
+        }
+        return props_DisplayDislikes;
+      case LanguageConceptSwitch.DisplayLikes:
+        if (props_DisplayLikes == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("DisplayLikes");
+          props_DisplayLikes = cpb.create();
+        }
+        return props_DisplayLikes;
       case LanguageConceptSwitch.Enable:
         if (props_Enable == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();

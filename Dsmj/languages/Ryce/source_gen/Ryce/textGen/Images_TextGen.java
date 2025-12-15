@@ -5,6 +5,12 @@ package Ryce.textGen;
 import jetbrains.mps.text.rt.TextGenDescriptorBase;
 import jetbrains.mps.text.rt.TextGenContext;
 import jetbrains.mps.text.impl.TextGenSupport;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import org.jetbrains.mps.openapi.language.SContainmentLink;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SProperty;
 
 public class Images_TextGen extends TextGenDescriptorBase {
   @Override
@@ -31,8 +37,9 @@ public class Images_TextGen extends TextGenDescriptorBase {
     tgs.append("const [pagination, setPagination] = useState({});");
     tgs.newLine();
     tgs.indent();
-    // replace default sort config and correct
     tgs.append("const [currentSort, setCurrentSort] = useState(");
+    tgs.append(SPropertyOperations.getEnum(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.layout$KYXS), PROPS.sorting$b7EV).toString());
+    tgs.append(");");
     tgs.newLine();
     tgs.newLine();
     tgs.indent();
@@ -137,6 +144,7 @@ public class Images_TextGen extends TextGenDescriptorBase {
     tgs.indent();
     tgs.append("const displayNames = {");
     tgs.newLine();
+    // Handle display and adding of the options
     ctx.getBuffer().area().increaseIndent();
     tgs.indent();
     tgs.append("'newest_asc': 'Oldest First',");
@@ -169,8 +177,221 @@ public class Images_TextGen extends TextGenDescriptorBase {
     tgs.newLine();
     tgs.newLine();
 
+    tgs.indent();
     tgs.append("return (");
     tgs.newLine();
+    ctx.getBuffer().area().increaseIndent();
+    tgs.indent();
+    tgs.append("<div>");
+    tgs.newLine();
+    if (ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.layout$KYXS), LINKS.sorting_options$b88X)).count() >= 1) {
+      tgs.indent();
+      tgs.append("<div className=\"sorting-dropdown-container container mt-3\">");
+      tgs.newLine();
+      ctx.getBuffer().area().increaseIndent();
+      tgs.indent();
+      tgs.append("<div className=\"row justify-content-end\">");
+      tgs.newLine();
+      ctx.getBuffer().area().increaseIndent();
+      tgs.indent();
+      tgs.append("<div className=\"col-auto\">");
+      tgs.newLine();
+      ctx.getBuffer().area().increaseIndent();
+      tgs.indent();
+      tgs.append("<div className=\"sorting-dropdown-wrapper\">");
+      tgs.newLine();
+      ctx.getBuffer().area().increaseIndent();
+      tgs.indent();
+      tgs.append("<label htmlFor=\"sort-select\" className=\"sorting-label me-2\">Sort by:</label>");
+      tgs.newLine();
+      tgs.indent();
+      tgs.append("<select id=\"sort-select\" className=\"sort-select\" value={currentSort} onChange={handleSortChange}>");
+      tgs.newLine();
+      ctx.getBuffer().area().increaseIndent();
+      tgs.indent();
+      // Handle the sorting options
+      tgs.append("{sorting_options.map(sortOption => (");
+      tgs.newLine();
+      ctx.getBuffer().area().increaseIndent();
+      tgs.indent();
+      tgs.append("<option key={sortOption} value={sortOption}>{getSortDisplayName(sortOption)}</option>");
+      tgs.newLine();
+      ctx.getBuffer().area().decreaseIndent();
+      tgs.indent();
+      tgs.append("))}");
+      tgs.newLine();
+      ctx.getBuffer().area().decreaseIndent();
+      tgs.indent();
+      tgs.append("</select>");
+      tgs.newLine();
+      ctx.getBuffer().area().decreaseIndent();
+      tgs.indent();
+      tgs.append("</div>");
+      tgs.newLine();
+      ctx.getBuffer().area().decreaseIndent();
+      tgs.indent();
+      tgs.append("</div>");
+      tgs.newLine();
+      ctx.getBuffer().area().decreaseIndent();
+      tgs.indent();
+      tgs.append("</div>");
+      tgs.newLine();
+      ctx.getBuffer().area().decreaseIndent();
+      tgs.indent();
+      tgs.append("</div>");
+      tgs.newLine();
+    }
+
+    // if hell begins
+    tgs.indent();
+    tgs.append("<div className={config.layout === 'grid' ? \"container mt-4\" : config.layout === 'list' ? \"container mt-4\" : \"masonry-container\"}>");
+    tgs.newLine();
+    ctx.getBuffer().area().increaseIndent();
+    tgs.indent();
+    tgs.append("<div className={config.layout === 'grid' ? \"row\" : config.layout === 'list' ? \"photos-list\" : \"masonry-grid\"}>");
+    tgs.newLine();
+    ctx.getBuffer().area().increaseIndent();
+    tgs.indent();
+    tgs.append("photos.map(photo => (");
+    tgs.newLine();
+    ctx.getBuffer().area().increaseIndent();
+    tgs.indent();
+    tgs.append("<div className={config.layout === 'grid' ? \"col-md-4\" : config.layout === 'list' ? \"photo-list-item\" : \"masonry-item\"} key={photo._id}>");
+    tgs.newLine();
+    ctx.getBuffer().area().increaseIndent();
+    tgs.indent();
+    tgs.append("<Photo photo={photo} />");
+    tgs.newLine();
     ctx.getBuffer().area().decreaseIndent();
+    tgs.indent();
+    tgs.append("</div>");
+    tgs.newLine();
+    ctx.getBuffer().area().decreaseIndent();
+    tgs.indent();
+    tgs.append("))}");
+    tgs.newLine();
+    ctx.getBuffer().area().decreaseIndent();
+    tgs.indent();
+    tgs.append("</div>");
+    tgs.newLine();
+    ctx.getBuffer().area().decreaseIndent();
+    tgs.indent();
+    tgs.append("</div>");
+    tgs.newLine();
+    tgs.newLine();
+
+    tgs.indent();
+    tgs.append("{pagination.totalPages > 1 && (");
+    tgs.newLine();
+    ctx.getBuffer().area().increaseIndent();
+    tgs.indent();
+    tgs.append("<div className=\"pagination-controls mt-4 text-center\">");
+    tgs.newLine();
+    ctx.getBuffer().area().increaseIndent();
+    tgs.indent();
+    tgs.append("<div className=\"btn-group\" role=\"group\">");
+    tgs.newLine();
+    ctx.getBuffer().area().increaseIndent();
+    tgs.indent();
+    tgs.append("<button className=\"btn pagination-btn pagination-prev\" onClick={handlePrevPage} disabled={currentPage === 1}>");
+    tgs.newLine();
+    ctx.getBuffer().area().increaseIndent();
+    tgs.indent();
+    tgs.append("← Previous");
+    tgs.newLine();
+    ctx.getBuffer().area().decreaseIndent();
+    tgs.indent();
+    tgs.append("</button>");
+    tgs.newLine();
+    tgs.indent();
+    tgs.append("<span className=\"pagination-info\">");
+    tgs.newLine();
+    ctx.getBuffer().area().increaseIndent();
+    tgs.indent();
+    tgs.append("Page {currentPage} of {pagination.totalPages}");
+    tgs.newLine();
+    ctx.getBuffer().area().decreaseIndent();
+    tgs.indent();
+    tgs.append("</span>");
+    tgs.newLine();
+    tgs.indent();
+    tgs.append("<button className=\"btn pagination-btn pagination-next\" onClick={handleNextPage} disabled={currentPage === pagination.totalPages}>");
+    tgs.newLine();
+    ctx.getBuffer().area().increaseIndent();
+    tgs.indent();
+    tgs.append("Next →");
+    tgs.newLine();
+    ctx.getBuffer().area().decreaseIndent();
+    tgs.indent();
+    tgs.append("</button>");
+    tgs.newLine();
+    ctx.getBuffer().area().decreaseIndent();
+    tgs.indent();
+    tgs.append("</div>");
+    tgs.newLine();
+    ctx.getBuffer().area().decreaseIndent();
+    tgs.indent();
+    tgs.append("</div>");
+    tgs.newLine();
+    ctx.getBuffer().area().decreaseIndent();
+    tgs.indent();
+    tgs.append(")}");
+    tgs.newLine();
+    tgs.indent();
+    tgs.append("</div>");
+    tgs.newLine();
+    ctx.getBuffer().area().decreaseIndent();
+    tgs.indent();
+    tgs.append(");");
+    tgs.newLine();
+    ctx.getBuffer().area().decreaseIndent();
+    tgs.append("}");
+    tgs.newLine();
+    tgs.newLine();
+    tgs.append("export default Photos;");
+    tgs.newLine();
+    tgs.newLine();
+    tgs.newLine();
+    tgs.newLine();
+    tgs.newLine();
+
+    // Photo ----------------------------------------------
+
+    tgs.append("import { useContext, useEffect, useState } from \"react\";");
+    tgs.newLine();
+    tgs.append("import { Link } from \"react-router-dom\";");
+    tgs.newLine();
+    if (SPropertyOperations.getBoolean(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.enable_components$2$TR), LINKS.like$YGpT), LINKS.enable$UX7q), PROPS.value$RdAp)) {
+      tgs.append("import LikePhoto from \"./LikePhoto\";");
+      tgs.newLine();
+    }
+    if (SPropertyOperations.getBoolean(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.enable_components$2$TR), LINKS.dislike$YGCU), LINKS.enable$RuaT), PROPS.value$RdAp)) {
+      tgs.append("import DislikePhoto from \"./DislikePhoto\";");
+      tgs.newLine();
+    }
+    if (SPropertyOperations.getBoolean(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.enable_components$2$TR), LINKS.favorite$YGRV), LINKS.enable$YHBp), PROPS.value$RdAp)) {
+      tgs.append("import AddToFavoritesButton from \"./AddToFavoritesButton\";");
+      tgs.newLine();
+    }
+    tgs.append("import { UserContext } from \"../userContexts\";");
+    tgs.newLine();
+    tgs.append("");
+  }
+
+  private static final class LINKS {
+    /*package*/ static final SContainmentLink layout$KYXS = MetaAdapterFactory.getContainmentLink(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x7f63219c035cbd8dL, 0x7f63219c035cbd98L, "layout");
+    /*package*/ static final SContainmentLink sorting_options$b88X = MetaAdapterFactory.getContainmentLink(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x4493374f2296af2eL, 0x4493374f2296af33L, "sorting_options");
+    /*package*/ static final SContainmentLink enable_components$2$TR = MetaAdapterFactory.getContainmentLink(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x7f63219c035cbd8dL, 0x7f63219c035cbf86L, "enable_components");
+    /*package*/ static final SContainmentLink like$YGpT = MetaAdapterFactory.getContainmentLink(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x7f63219c035cbedcL, 0x7f63219c035cbeddL, "like");
+    /*package*/ static final SContainmentLink enable$UX7q = MetaAdapterFactory.getContainmentLink(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x7f63219c035cbe71L, 0x7f63219c035cbe73L, "enable");
+    /*package*/ static final SContainmentLink dislike$YGCU = MetaAdapterFactory.getContainmentLink(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x7f63219c035cbedcL, 0x7f63219c035cbedeL, "dislike");
+    /*package*/ static final SContainmentLink enable$RuaT = MetaAdapterFactory.getContainmentLink(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x39c93bd42de5bf0bL, 0x39c93bd42de5bf0cL, "enable");
+    /*package*/ static final SContainmentLink favorite$YGRV = MetaAdapterFactory.getContainmentLink(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x7f63219c035cbedcL, 0x7f63219c035cbedfL, "favorite");
+    /*package*/ static final SContainmentLink enable$YHBp = MetaAdapterFactory.getContainmentLink(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x7f63219c035cbee1L, 0x7f63219c035cbee2L, "enable");
+  }
+
+  private static final class PROPS {
+    /*package*/ static final SProperty sorting$b7EV = MetaAdapterFactory.getProperty(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x4493374f2296af2eL, 0x4493374f2296af31L, "sorting");
+    /*package*/ static final SProperty value$RdAp = MetaAdapterFactory.getProperty(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x7f63219c035cbe07L, 0x7f63219c035cbe08L, "value");
   }
 }

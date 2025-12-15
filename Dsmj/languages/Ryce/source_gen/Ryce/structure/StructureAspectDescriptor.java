@@ -27,6 +27,8 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptContents = createDescriptorForContents();
   /*package*/ final ConceptDescriptor myConceptDislike = createDescriptorForDislike();
   /*package*/ final ConceptDescriptor myConceptDislikeClickAction = createDescriptorForDislikeClickAction();
+  /*package*/ final ConceptDescriptor myConceptDisplayDislikes = createDescriptorForDisplayDislikes();
+  /*package*/ final ConceptDescriptor myConceptDisplayLikes = createDescriptorForDisplayLikes();
   /*package*/ final ConceptDescriptor myConceptEnable = createDescriptorForEnable();
   /*package*/ final ConceptDescriptor myConceptEnableComponents = createDescriptorForEnableComponents();
   /*package*/ final ConceptDescriptor myConceptEndpoint = createDescriptorForEndpoint();
@@ -83,7 +85,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
 
   @Override
   public Collection<ConceptDescriptor> getDescriptors() {
-    return Arrays.asList(myConceptApi, myConceptBaseUrl, myConceptClickActions, myConceptClickEndpoint, myConceptComponent, myConceptComponents, myConceptContent, myConceptContentSource, myConceptContents, myConceptDislike, myConceptDislikeClickAction, myConceptEnable, myConceptEnableComponents, myConceptEndpoint, myConceptEndpoints, myConceptFavorite, myConceptFavoriteClickAction, myConceptFooter, myConceptForEach, myConceptIcon, myConceptImageLayout, myConceptImageLink, myConceptImages, myConceptItemsPerPage, myConceptLayout, myConceptLike, myConceptLikeClickAction, myConceptLoadAction, myConceptLoadElement, myConceptMenu, myConceptMenuOption, myConceptMenuOptionElement, myConceptMenuOptionIsNotSet, myConceptMenuOptionIsSet, myConceptMenuType, myConceptParameter, myConceptPayload, myConceptPayloadElement, myConceptPosition, myConceptRyce, myConceptSet, myConceptSorting, myConceptStyle, myConceptStyleElement, myConceptTitleMenuOption, myConceptUserDisplay);
+    return Arrays.asList(myConceptApi, myConceptBaseUrl, myConceptClickActions, myConceptClickEndpoint, myConceptComponent, myConceptComponents, myConceptContent, myConceptContentSource, myConceptContents, myConceptDislike, myConceptDislikeClickAction, myConceptDisplayDislikes, myConceptDisplayLikes, myConceptEnable, myConceptEnableComponents, myConceptEndpoint, myConceptEndpoints, myConceptFavorite, myConceptFavoriteClickAction, myConceptFooter, myConceptForEach, myConceptIcon, myConceptImageLayout, myConceptImageLink, myConceptImages, myConceptItemsPerPage, myConceptLayout, myConceptLike, myConceptLikeClickAction, myConceptLoadAction, myConceptLoadElement, myConceptMenu, myConceptMenuOption, myConceptMenuOptionElement, myConceptMenuOptionIsNotSet, myConceptMenuOptionIsSet, myConceptMenuType, myConceptParameter, myConceptPayload, myConceptPayloadElement, myConceptPosition, myConceptRyce, myConceptSet, myConceptSorting, myConceptStyle, myConceptStyleElement, myConceptTitleMenuOption, myConceptUserDisplay);
   }
 
   @Override
@@ -112,6 +114,10 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
         return myConceptDislike;
       case LanguageConceptSwitch.DislikeClickAction:
         return myConceptDislikeClickAction;
+      case LanguageConceptSwitch.DisplayDislikes:
+        return myConceptDisplayDislikes;
+      case LanguageConceptSwitch.DisplayLikes:
+        return myConceptDisplayLikes;
       case LanguageConceptSwitch.Enable:
         return myConceptEnable;
       case LanguageConceptSwitch.EnableComponents:
@@ -280,7 +286,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.origin("r:6f21ea0b-8f9f-4069-8bcc-6c3e23fc8fea(Ryce.structure)/4163925112969871115");
     b.version(3);
     b.aggregate("enable", 0x39c93bd42de5bf0cL).target(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x7f63219c035cbe07L).optional(false).ordered(true).multiple(false).origin("4163925112969871116").done();
-    b.aggregate("content", 0x39c93bd42de5bf0dL).target(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x7f63219c035cbe27L).optional(true).ordered(true).multiple(false).origin("4163925112969871117").done();
+    b.aggregate("icon", 0x50366596986f0e70L).target(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x39c93bd42dd4d43cL).optional(true).ordered(true).multiple(false).origin("5779918869253525104").done();
     b.aggregate("position", 0x39c93bd42de5bf0eL).target(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x7f63219c035cbe49L).optional(true).ordered(true).multiple(false).origin("4163925112969871118").done();
     b.aggregate("style", 0x39c93bd42de5bf0fL).target(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x5f82ea2efca8b139L).optional(true).ordered(true).multiple(false).origin("4163925112969871119").done();
     return b.create();
@@ -292,6 +298,30 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.version(3);
     b.aggregate("endpoint", 0x39c93bd42deb43bbL).target(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x39c93bd42df15e62L).optional(false).ordered(true).multiple(false).origin("4163925112970232763").done();
     b.aggregate("payload", 0x39c93bd42deb43bcL).target(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x39c93bd42deb4352L).optional(true).ordered(true).multiple(false).origin("4163925112970232764").done();
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForDisplayDislikes() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("Ryce", "DisplayDislikes", 0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x503665969856bcc6L);
+    b.class_(false, false, false);
+    b.origin("r:6f21ea0b-8f9f-4069-8bcc-6c3e23fc8fea(Ryce.structure)/5779918869251931334");
+    b.version(3);
+    b.aggregate("enable", 0x503665969856bcc7L).target(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x7f63219c035cbe07L).optional(false).ordered(true).multiple(false).origin("5779918869251931335").done();
+    b.aggregate("icon", 0x50366596986f0eb2L).target(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x39c93bd42dd4d43cL).optional(true).ordered(true).multiple(false).origin("5779918869253525170").done();
+    b.aggregate("content", 0x503665969856bcc8L).target(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x7f63219c035cbe27L).optional(true).ordered(true).multiple(false).origin("5779918869251931336").done();
+    b.aggregate("position", 0x503665969856bcc9L).target(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x7f63219c035cbe49L).optional(true).ordered(true).multiple(false).origin("5779918869251931337").done();
+    b.aggregate("style", 0x503665969856bccaL).target(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x5f82ea2efca8b139L).optional(true).ordered(true).multiple(false).origin("5779918869251931338").done();
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForDisplayLikes() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("Ryce", "DisplayLikes", 0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x503665969856bc6aL);
+    b.class_(false, false, false);
+    b.origin("r:6f21ea0b-8f9f-4069-8bcc-6c3e23fc8fea(Ryce.structure)/5779918869251931242");
+    b.version(3);
+    b.aggregate("enable", 0x503665969856bc6cL).target(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x7f63219c035cbe07L).optional(false).ordered(true).multiple(false).origin("5779918869251931244").done();
+    b.aggregate("icon", 0x50366596986f0ea0L).target(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x39c93bd42dd4d43cL).optional(true).ordered(true).multiple(false).origin("5779918869253525152").done();
+    b.aggregate("content", 0x503665969856bc6dL).target(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x7f63219c035cbe27L).optional(true).ordered(true).multiple(false).origin("5779918869251931245").done();
+    b.aggregate("position", 0x503665969856bc6fL).target(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x7f63219c035cbe49L).optional(true).ordered(true).multiple(false).origin("5779918869251931247").done();
+    b.aggregate("style", 0x503665969856bc70L).target(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x5f82ea2efca8b139L).optional(true).ordered(true).multiple(false).origin("5779918869251931248").done();
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForEnable() {
@@ -310,6 +340,8 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.aggregate("like", 0x7f63219c035cbeddL).target(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x7f63219c035cbe71L).optional(true).ordered(true).multiple(false).origin("9179217419466227421").done();
     b.aggregate("dislike", 0x7f63219c035cbedeL).target(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x39c93bd42de5bf0bL).optional(true).ordered(true).multiple(false).origin("9179217419466227422").done();
     b.aggregate("favorite", 0x7f63219c035cbedfL).target(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x7f63219c035cbee1L).optional(true).ordered(true).multiple(false).origin("9179217419466227423").done();
+    b.aggregate("display_likes", 0x503665969856bd2aL).target(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x503665969856bc6aL).optional(true).ordered(true).multiple(false).origin("5779918869251931434").done();
+    b.aggregate("display_dislikes", 0x503665969856bd2bL).target(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x503665969856bcc6L).optional(true).ordered(true).multiple(false).origin("5779918869251931435").done();
     b.aggregate("position", 0x39c93bd42dd9788eL).target(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x7f63219c035cbe49L).optional(true).ordered(true).multiple(false).origin("4163925112969066638").done();
     return b.create();
   }
@@ -339,6 +371,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.origin("r:6f21ea0b-8f9f-4069-8bcc-6c3e23fc8fea(Ryce.structure)/9179217419466227425");
     b.version(3);
     b.aggregate("enable", 0x7f63219c035cbee2L).target(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x7f63219c035cbe07L).optional(false).ordered(true).multiple(false).origin("9179217419466227426").done();
+    b.aggregate("icon", 0x50366596986f0e88L).target(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x39c93bd42dd4d43cL).optional(true).ordered(true).multiple(false).origin("5779918869253525128").done();
     b.aggregate("position", 0x39c93bd42dd97880L).target(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x7f63219c035cbe49L).optional(true).ordered(true).multiple(false).origin("4163925112969066624").done();
     b.aggregate("style", 0x7f63219c035cbee3L).target(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x5f82ea2efca8b139L).optional(true).ordered(true).multiple(false).origin("9179217419466227427").done();
     return b.create();
@@ -376,6 +409,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.origin("r:6f21ea0b-8f9f-4069-8bcc-6c3e23fc8fea(Ryce.structure)/4163925112968762428");
     b.version(3);
     b.property("iconName", 0x39c93bd42dd4d43dL).type(PrimitiveTypeId.STRING).origin("4163925112968762429").done();
+    b.property("size", 0x503665969865d1dcL).type(PrimitiveTypeId.STRING).origin("5779918869252919772").done();
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForImageLayout() {
@@ -424,7 +458,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.property("type", 0x4493374f2296af2fL).type(MetaIdFactory.dataTypeId(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x7f63219c035cbd92L)).origin("4941354029177810735").done();
     b.property("items_per_page", 0x4493374f2296af30L).type(PrimitiveTypeId.INTEGER).origin("4941354029177810736").done();
     b.property("sorting", 0x4493374f2296af31L).type(MetaIdFactory.dataTypeId(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x7f63219c035cbddfL)).origin("4941354029177810737").done();
-    b.aggregate("layouts", 0x4493374f2296af33L).target(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x7f63219c035cbddeL).optional(false).ordered(true).multiple(true).origin("4941354029177810739").done();
+    b.aggregate("sorting_options", 0x4493374f2296af33L).target(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x7f63219c035cbddeL).optional(false).ordered(true).multiple(true).origin("4941354029177810739").done();
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForLike() {
@@ -433,7 +467,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.origin("r:6f21ea0b-8f9f-4069-8bcc-6c3e23fc8fea(Ryce.structure)/9179217419466227313");
     b.version(3);
     b.aggregate("enable", 0x7f63219c035cbe73L).target(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x7f63219c035cbe07L).optional(false).ordered(true).multiple(false).origin("9179217419466227315").done();
-    b.aggregate("content", 0x7f63219c035cbe74L).target(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x7f63219c035cbe27L).optional(true).ordered(true).multiple(false).origin("9179217419466227316").done();
+    b.aggregate("icon", 0x50366596986236b4L).target(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x39c93bd42dd4d43cL).optional(true).ordered(true).multiple(false).origin("5779918869252683444").done();
     b.aggregate("position", 0x7f63219c035cbe76L).target(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x7f63219c035cbe49L).optional(true).ordered(true).multiple(false).origin("9179217419466227318").done();
     b.aggregate("style", 0x7f63219c035cbe77L).target(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x5f82ea2efca8b139L).optional(true).ordered(true).multiple(false).origin("9179217419466227319").done();
     return b.create();

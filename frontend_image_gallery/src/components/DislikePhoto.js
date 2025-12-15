@@ -33,12 +33,7 @@ function DislikePhoto({ photo, setPhoto }) {
     };
 
     return (
-        <button 
-            onClick={handleDislike} 
-            className={`dislike-btn ${hasDisliked ? 'disliked' : ''}`}
-            disabled={isLoading}
-            title={`Dislikes: ${photo.Dislikes ?? 0}${hasDisliked ? ' (You disliked this)' : ''}`}
-        >
+        <button onClick={handleDislike} className={`dislike-btn ${hasDisliked ? 'disliked' : ''}`}disabled={isLoading}title={`Dislikes: ${photo.Dislikes ?? 0}${hasDisliked ? ' (You disliked this)' : ''}`}>
             {isLoading ? '...' : <ThumbsDown size={18} fill={hasDisliked ? "currentColor" : "none"} />}
         </button>
     );

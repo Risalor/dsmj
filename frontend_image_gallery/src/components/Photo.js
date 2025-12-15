@@ -23,6 +23,7 @@ function Photo({ photo: initialPhoto }) {
         }
     }, [config]);
 
+    //Left off here
     if (config.layout === 'grid') {
         return (
             <div className="photo-card card text-white bg-dark mb-3 border-secondary">

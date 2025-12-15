@@ -20,6 +20,28 @@
       </concept>
       <concept id="4163925112968762428" name="Ryce.structure.Icon" flags="ng" index="k7uZC">
         <property id="4163925112968762429" name="iconName" index="k7uZD" />
+        <property id="5779918869252919772" name="size" index="38kVha" />
+      </concept>
+      <concept id="4163925112970232831" name="Ryce.structure.FavoriteClickAction" flags="ng" index="k8BwF">
+        <child id="4163925112970232834" name="endpoint" index="k8BZm" />
+        <child id="4163925112970232835" name="payload" index="k8BZn" />
+      </concept>
+      <concept id="4163925112970232710" name="Ryce.structure.LikeClickAction" flags="ng" index="k8Bxi">
+        <child id="4163925112970232711" name="endpoint" index="k8Bxj" />
+        <child id="4163925112970232712" name="payload" index="k8Bxs" />
+      </concept>
+      <concept id="4163925112970232762" name="Ryce.structure.DislikeClickAction" flags="ng" index="k8BxI">
+        <child id="4163925112970232764" name="payload" index="k8BxC" />
+        <child id="4163925112970232763" name="endpoint" index="k8BxJ" />
+      </concept>
+      <concept id="4163925112970232658" name="Ryce.structure.Payload" flags="ng" index="k8By6">
+        <child id="4163925112970232659" name="payloads" index="k8By7" />
+      </concept>
+      <concept id="4163925112970232624" name="Ryce.structure.PayloadElement" flags="ng" index="k8Bz$" />
+      <concept id="4163925112970232902" name="Ryce.structure.ClickActions" flags="ng" index="k8BYi">
+        <child id="4163925112970232903" name="like" index="k8BYj" />
+        <child id="4163925112970232904" name="dislike" index="k8BYs" />
+        <child id="4163925112970232905" name="favorite" index="k8BYt" />
       </concept>
       <concept id="4163925112969633984" name="Ryce.structure.MenuOptionIsNotSet" flags="ng" index="kaLGk">
         <child id="4163925112969633985" name="options" index="kaLGl" />
@@ -27,6 +49,11 @@
       <concept id="4163925112969633957" name="Ryce.structure.MenuOptionIsSet" flags="ng" index="kaLHL">
         <child id="4163925112969633958" name="options" index="kaLHM" />
       </concept>
+      <concept id="4163925112969871115" name="Ryce.structure.Dislike" flags="ng" index="kb8jv">
+        <child id="4163925112969871116" name="enable" index="kb8jo" />
+        <child id="4163925112969871118" name="position" index="kb8jq" />
+      </concept>
+      <concept id="4163925112970632802" name="Ryce.structure.ClickEndpoint" flags="ng" index="ke6mQ" />
       <concept id="4163925112970906362" name="Ryce.structure.Footer" flags="ng" index="kfb4I">
         <property id="4163925112970906363" name="text" index="kfb4J" />
       </concept>
@@ -65,6 +92,14 @@
         <child id="5431886404993128210" name="endpoints" index="2AwBzP" />
         <child id="5431886404993128094" name="base_url" index="2AwB_T" />
       </concept>
+      <concept id="5779918869251931334" name="Ryce.structure.DisplayDislikes" flags="ng" index="38od_g">
+        <child id="5779918869253525170" name="icon" index="38mmG$" />
+        <child id="5779918869251931335" name="enable" index="38od_h" />
+        <child id="5779918869251931336" name="content" index="38od_u" />
+      </concept>
+      <concept id="5779918869251931242" name="Ryce.structure.DisplayLikes" flags="ng" index="38odBW">
+        <child id="5779918869251931244" name="enable" index="38odBU" />
+      </concept>
       <concept id="4627478615569962257" name="Ryce.structure.UserDisplay" flags="ng" index="3eYSTp">
         <property id="4627478615569962262" name="enabled" index="3eYSTu" />
         <property id="4627478615569962263" name="display_type" index="3eYSTv" />
@@ -73,16 +108,18 @@
         <property id="4941354029177810735" name="type" index="1A1pxw" />
         <property id="4941354029177810737" name="sorting" index="1A1pxY" />
         <property id="4941354029177810736" name="items_per_page" index="1A1pxZ" />
-        <child id="4941354029177810739" name="layouts" index="1A1pxW" />
+        <child id="4941354029177810739" name="sorting_options" index="1A1pxW" />
       </concept>
       <concept id="6944420385108409133" name="Ryce.structure.TitleMenuOption" flags="ng" index="1L0rax">
         <child id="6944420385108409134" name="option" index="1L0ray" />
       </concept>
+      <concept id="9179217419466083598" name="Ryce.structure.LoadElement" flags="ng" index="1WeqMi" />
       <concept id="9179217419466083560" name="Ryce.structure.ContentSource" flags="ng" index="1WeqPO" />
       <concept id="9179217419466083554" name="Ryce.structure.Contents" flags="ng" index="1WeqPY">
         <child id="9179217419466083559" name="content_source" index="1WeqPV" />
       </concept>
       <concept id="9179217419466227085" name="Ryce.structure.Images" flags="ng" index="1WfTKh">
+        <child id="4163925112970232993" name="click_actions" index="k8BXP" />
         <child id="6701335678061667953" name="api" index="vuSGU" />
         <child id="9179217419466227096" name="layout" index="1WfTK4" />
         <child id="9179217419466227087" name="load_action" index="1WfTKj" />
@@ -93,12 +130,33 @@
       <concept id="9179217419466227166" name="Ryce.structure.Sorting" flags="ng" index="1WfTL2">
         <property id="9179217419466227172" name="sorting" index="1WfTLS" />
       </concept>
-      <concept id="9179217419466226949" name="Ryce.structure.ForEach" flags="ng" index="1WfTMp" />
+      <concept id="9179217419466226949" name="Ryce.structure.ForEach" flags="ng" index="1WfTMp">
+        <child id="9179217419466226953" name="load_elements" index="1WfTMl" />
+      </concept>
       <concept id="9179217419466226997" name="Ryce.structure.LoadAction" flags="ng" index="1WfTMD">
         <child id="9179217419466226998" name="contents" index="1WfTME" />
         <child id="9179217419466226999" name="for_each" index="1WfTMF" />
       </concept>
-      <concept id="9179217419466227420" name="Ryce.structure.EnableComponents" flags="ng" index="1WfTX0" />
+      <concept id="9179217419466227420" name="Ryce.structure.EnableComponents" flags="ng" index="1WfTX0">
+        <child id="4163925112969066638" name="position" index="k44dq" />
+        <child id="5779918869251931434" name="display_likes" index="38odyW" />
+        <child id="5779918869251931435" name="display_dislikes" index="38odyX" />
+        <child id="9179217419466227421" name="like" index="1WfTX1" />
+        <child id="9179217419466227422" name="dislike" index="1WfTX2" />
+        <child id="9179217419466227423" name="favorite" index="1WfTX3" />
+      </concept>
+      <concept id="9179217419466227425" name="Ryce.structure.Favorite" flags="ng" index="1WfTXX">
+        <child id="4163925112969066624" name="position" index="k44dk" />
+        <child id="9179217419466227426" name="enable" index="1WfTXY" />
+      </concept>
+      <concept id="9179217419466227207" name="Ryce.structure.Enable" flags="ng" index="1WfTYr" />
+      <concept id="9179217419466227239" name="Ryce.structure.Content" flags="ng" index="1WfTYV" />
+      <concept id="9179217419466227273" name="Ryce.structure.Position" flags="ng" index="1WfTZl" />
+      <concept id="9179217419466227313" name="Ryce.structure.Like" flags="ng" index="1WfTZH">
+        <child id="5779918869252683444" name="icon" index="38l5cy" />
+        <child id="9179217419466227318" name="position" index="1WfTZE" />
+        <child id="9179217419466227315" name="enable" index="1WfTZJ" />
+      </concept>
     </language>
   </registry>
   <node concept="9Maua" id="4f_8f$MBWxb">
@@ -133,7 +191,7 @@
           <property role="2zcmfW" value="asdasd" />
           <property role="2zcmfX" value="sdsdsddsd" />
           <node concept="k7uZC" id="61vyoKhzjmA" role="k7uZE">
-            <property role="k7uZD" value="asdadasd" />
+            <property role="k7uZD" value="a" />
           </node>
         </node>
         <node concept="2zcmfY" id="61vyoKhCiIL" role="1L0ray">
@@ -142,6 +200,7 @@
           <property role="2zcmfX" value="sdsdd" />
           <node concept="k7uZC" id="61vyoKhCiIM" role="k7uZE">
             <property role="k7uZD" value="ssssssss" />
+            <property role="38kVha" value="20" />
           </node>
         </node>
       </node>
@@ -197,15 +256,23 @@
       </node>
     </node>
     <node concept="1WfTKh" id="4ijdOWyAUsV" role="9Maum">
+      <property role="TrG5h" value="images" />
       <node concept="2AwBAp" id="4ijdOWyAUsW" role="vuSGU">
+        <property role="TrG5h" value="softApi" />
         <node concept="2AwB__" id="4ijdOWyAUsX" role="2AwB_T" />
-        <node concept="2AwB_c" id="4ijdOWyAUsY" role="2AwBzP" />
+        <node concept="2AwB_c" id="4ijdOWyAUsY" role="2AwBzP">
+          <node concept="2AwB_6" id="CFQEwYihvC" role="2AwB_b" />
+          <node concept="2AwB_6" id="CFQEwYihvD" role="2AwB_b" />
+          <node concept="2AwB_6" id="CFQEwYihvE" role="2AwB_b" />
+        </node>
       </node>
       <node concept="1WfTMD" id="4ijdOWyAUsZ" role="1WfTKj">
         <node concept="1WeqPY" id="4ijdOWyAUt0" role="1WfTME">
           <node concept="1WeqPO" id="4ijdOWyAUt1" role="1WeqPV" />
         </node>
-        <node concept="1WfTMp" id="4ijdOWyAUt2" role="1WfTMF" />
+        <node concept="1WfTMp" id="4ijdOWyAUt2" role="1WfTMF">
+          <node concept="1WeqMi" id="CFQEwYihvF" role="1WfTMl" />
+        </node>
       </node>
       <node concept="1A1pxx" id="4ijdOWyAUt3" role="1WfTK4">
         <property role="1A1pxw" value="7Xz8pK3nbQj/Grid" />
@@ -219,7 +286,50 @@
         </node>
       </node>
       <node concept="1WfTKy" id="4ijdOWyAUt5" role="1WfTKB" />
-      <node concept="1WfTX0" id="4ijdOWyAUt6" role="1WfTSq" />
+      <node concept="1WfTX0" id="4ijdOWyAUt6" role="1WfTSq">
+        <node concept="1WfTZH" id="CFQEwYihvG" role="1WfTX1">
+          <node concept="1WfTYr" id="CFQEwYihvH" role="1WfTZJ" />
+          <node concept="1WfTZl" id="CFQEwYihvJ" role="1WfTZE" />
+          <node concept="k7uZC" id="50Qppqopt7r" role="38l5cy" />
+        </node>
+        <node concept="kb8jv" id="CFQEwYihvK" role="1WfTX2">
+          <node concept="1WfTYr" id="CFQEwYihvL" role="kb8jo" />
+          <node concept="1WfTZl" id="CFQEwYihvN" role="kb8jq" />
+        </node>
+        <node concept="1WfTXX" id="CFQEwYihvO" role="1WfTX3">
+          <node concept="1WfTYr" id="CFQEwYihvP" role="1WfTXY" />
+          <node concept="1WfTZl" id="CFQEwYihvQ" role="k44dk" />
+        </node>
+        <node concept="1WfTZl" id="CFQEwYihvR" role="k44dq" />
+        <node concept="38odBW" id="50QppqomJ04" role="38odyW">
+          <node concept="1WfTYr" id="50QppqomJ05" role="38odBU" />
+        </node>
+        <node concept="38od_g" id="50QppqomJ06" role="38odyX">
+          <node concept="1WfTYr" id="50QppqomJ07" role="38od_h" />
+          <node concept="k7uZC" id="50QppqosFYo" role="38mmG$" />
+          <node concept="1WfTYV" id="50QppqosGGm" role="38od_u" />
+        </node>
+      </node>
+      <node concept="k8BYi" id="CFQEwYihvS" role="k8BXP">
+        <node concept="k8Bxi" id="CFQEwYihvT" role="k8BYj">
+          <node concept="ke6mQ" id="CFQEwYihvU" role="k8Bxj" />
+          <node concept="k8By6" id="CFQEwYihvV" role="k8Bxs">
+            <node concept="k8Bz$" id="CFQEwYihvW" role="k8By7" />
+          </node>
+        </node>
+        <node concept="k8BxI" id="CFQEwYihvX" role="k8BYs">
+          <node concept="ke6mQ" id="CFQEwYihvY" role="k8BxJ" />
+          <node concept="k8By6" id="CFQEwYihvZ" role="k8BxC">
+            <node concept="k8Bz$" id="CFQEwYihw0" role="k8By7" />
+          </node>
+        </node>
+        <node concept="k8BwF" id="CFQEwYihw1" role="k8BYt">
+          <node concept="ke6mQ" id="CFQEwYihw2" role="k8BZm" />
+          <node concept="k8By6" id="CFQEwYihw3" role="k8BZn">
+            <node concept="k8Bz$" id="CFQEwYihw4" role="k8By7" />
+          </node>
+        </node>
+      </node>
     </node>
   </node>
 </model>

@@ -34,8 +34,10 @@ public class MenuOptionIsSet_TextGen extends TextGenDescriptorBase {
         tgs.indent();
         if ((SLinkOperations.getTarget(option, LINKS.icon$KTkR) != null)) {
           tgs.append("<");
-          tgs.appendNode(SLinkOperations.getTarget(option, LINKS.icon$KTkR));
-          tgs.append(" className=\"header-icon\" size={28} />");
+          tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(option, LINKS.icon$KTkR), PROPS.iconName$he9p));
+          tgs.append(" className=\"header-icon\" size={");
+          tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(option, LINKS.icon$KTkR), PROPS.size$tFxB));
+          tgs.append("} />");
           tgs.newLine();
           tgs.indent();
         }
@@ -69,8 +71,9 @@ public class MenuOptionIsSet_TextGen extends TextGenDescriptorBase {
         tgs.indent();
         if ((SLinkOperations.getTarget(option, LINKS.icon$KTkR) != null)) {
           tgs.append("<");
-          tgs.appendNode(SLinkOperations.getTarget(option, LINKS.icon$KTkR));
-          tgs.append(" size={20} />");
+          tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(option, LINKS.icon$KTkR), PROPS.iconName$he9p));
+          tgs.append(" size={");
+          tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(option, LINKS.icon$KTkR), PROPS.size$tFxB));
           tgs.newLine();
           tgs.indent();
         }
@@ -100,6 +103,8 @@ public class MenuOptionIsSet_TextGen extends TextGenDescriptorBase {
   private static final class PROPS {
     /*package*/ static final SProperty type$SqYo = MetaAdapterFactory.getProperty(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x5f82ea2efca8b118L, 0x605f898c118a05aeL, "type");
     /*package*/ static final SProperty url$4eWq = MetaAdapterFactory.getProperty(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x5f82ea2efcb389d0L, 0x5f82ea2efcb389d2L, "url");
+    /*package*/ static final SProperty iconName$he9p = MetaAdapterFactory.getProperty(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x39c93bd42dd4d43cL, 0x39c93bd42dd4d43dL, "iconName");
+    /*package*/ static final SProperty size$tFxB = MetaAdapterFactory.getProperty(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x39c93bd42dd4d43cL, 0x503665969865d1dcL, "size");
     /*package*/ static final SProperty text$4fbr = MetaAdapterFactory.getProperty(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x5f82ea2efcb389d0L, 0x5f82ea2efcb389d3L, "text");
   }
 
