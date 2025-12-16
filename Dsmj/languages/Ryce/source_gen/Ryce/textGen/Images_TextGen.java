@@ -8,6 +8,7 @@ import jetbrains.mps.text.impl.TextGenSupport;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -375,7 +376,204 @@ public class Images_TextGen extends TextGenDescriptorBase {
     }
     tgs.append("import { UserContext } from \"../userContexts\";");
     tgs.newLine();
-    tgs.append("");
+    // Import icons that are needed here
+    tgs.append("import \"../styles/combined.css\"");
+    tgs.newLine();
+
+    if (SEnumOperations.isMember(SPropertyOperations.getEnum(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.layout$KYXS), PROPS.type$b7cT), 0x7f63219c035cbd93L)) {
+      tgs.append("import \"../styles/ImageGrid.css\"");
+      tgs.newLine();
+    } else if (SEnumOperations.isMember(SPropertyOperations.getEnum(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.layout$KYXS), PROPS.type$b7cT), 0x7f63219c035cbd94L)) {
+      tgs.append("import \"../styles/ImageList.css\"");
+      tgs.newLine();
+    } else if (SEnumOperations.isMember(SPropertyOperations.getEnum(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.layout$KYXS), PROPS.type$b7cT), 0x39c93bd42dd7ce59L)) {
+      tgs.append("import \"../styles/ImageMasonary.css\"");
+      tgs.newLine();
+    }
+
+    tgs.append("function Photo({ photo: initialPhoto }) {");
+    tgs.newLine();
+    ctx.getBuffer().area().increaseIndent();
+    tgs.indent();
+    tgs.append("const [photo, setPhoto] = useState(initialPhoto);");
+    tgs.newLine();
+    tgs.indent();
+    tgs.append("const { user } = useContext(UserContext);");
+    tgs.newLine();
+    tgs.indent();
+    tgs.append("const [showOverlay, setShowOverlay] = useState(false);");
+    tgs.newLine();
+    tgs.newLine();
+    tgs.newLine();
+
+    if (SEnumOperations.isMember(SPropertyOperations.getEnum(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.layout$KYXS), PROPS.type$b7cT), 0x7f63219c035cbd93L)) {
+      tgs.append("return (");
+      tgs.newLine();
+      ctx.getBuffer().area().increaseIndent();
+      tgs.indent();
+      tgs.append("<div className=\"photo-card card text-white bg-dark mb-3 border-secondary\">");
+      tgs.newLine();
+      ctx.getBuffer().area().increaseIndent();
+      tgs.indent();
+      tgs.append("<div className=\"image-container\" onMouseEnter={() => setShowOverlay(true)} onMouseLeave={() => setShowOverlay(false)} >");
+      tgs.newLine();
+      ctx.getBuffer().area().increaseIndent();
+      tgs.indent();
+      tgs.append("<Link to=\"/ShowPhoto\" state={{ photo }} className=\"image-link\">");
+      tgs.newLine();
+      ctx.getBuffer().area().increaseIndent();
+      tgs.indent();
+      tgs.append("<img className=\"card-img-top full-size-image\" src={`");
+      tgs.appendNode(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.api$sddj), LINKS.base_url$zLxn));
+      tgs.append("${photo.Path}`} alt={photo.Title} />");
+      tgs.newLine();
+      ctx.getBuffer().area().decreaseIndent();
+      tgs.indent();
+      tgs.append("</Link>");
+      tgs.newLine();
+      tgs.indent();
+      tgs.append("{!showOverlay && (");
+      tgs.newLine();
+      ctx.getBuffer().area().increaseIndent();
+      tgs.indent();
+      tgs.append("<div className={`stats ");
+      tgs.append(SEnumOperations.getMemberPresentation(SPropertyOperations.getEnum(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.enable_display_components$58nr), LINKS.position$X46W), PROPS.position$S7Zm)));
+      tgs.append(" ");
+      tgs.append(SEnumOperations.getMemberPresentation(SPropertyOperations.getEnum(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.enable_display_components$58nr), LINKS.position$X46W), PROPS.aligment$KWkS)));
+      tgs.append("`}>");
+      tgs.newLine();
+      if (SPropertyOperations.getBoolean(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.enable_display_components$58nr), LINKS.display_likes$U0rU), LINKS.enable$uttq), PROPS.value$RdAp)) {
+        tgs.indent();
+        tgs.append("<span className=\"display-likes\"><");
+        tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.enable_display_components$58nr), LINKS.display_likes$U0rU), LINKS.icon$nnTR), PROPS.iconName$he9p));
+        tgs.append(" size={");
+        tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.enable_display_components$58nr), LINKS.display_likes$U0rU), LINKS.icon$nnTR), PROPS.size$tFxB));
+        tgs.append("/> {photo.");
+        tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.enable_display_components$58nr), LINKS.display_likes$U0rU), LINKS.content$utGr), PROPS.value$RDye));
+        tgs.append(" || 0}</span>)}");
+        tgs.newLine();
+      }
+
+      if (SPropertyOperations.getBoolean(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.enable_display_components$58nr), LINKS.displayy_dislikes$U0EV), LINKS.enable$xYWp), PROPS.value$RdAp)) {
+        tgs.indent();
+        tgs.append("<span className=\"display-dislikes\"><");
+        tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.enable_display_components$58nr), LINKS.displayy_dislikes$U0EV), LINKS.icon$nH2f), PROPS.iconName$he9p));
+        tgs.append(" size={");
+        tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.enable_display_components$58nr), LINKS.displayy_dislikes$U0EV), LINKS.icon$nH2f), PROPS.size$tFxB));
+        tgs.append("/> {photo.");
+        tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.enable_display_components$58nr), LINKS.displayy_dislikes$U0EV), LINKS.content$xZbq), PROPS.value$RDye));
+        tgs.append(" || 0}</span>)}");
+        tgs.newLine();
+      }
+      tgs.indent();
+      tgs.append("</div>");
+      tgs.newLine();
+      ctx.getBuffer().area().decreaseIndent();
+      tgs.indent();
+      tgs.append(")}");
+      tgs.newLine();
+      tgs.indent();
+      tgs.append("{showOverlay && (");
+      tgs.newLine();
+      ctx.getBuffer().area().increaseIndent();
+      tgs.indent();
+      tgs.append("<>");
+      tgs.newLine();
+      ctx.getBuffer().area().increaseIndent();
+      tgs.indent();
+      tgs.append("<div className={`");
+      tgs.append(SEnumOperations.getMemberPresentation(SPropertyOperations.getEnum(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.enable_components$2$TR), LINKS.position$tGxY), PROPS.aligment$KWkS)));
+      tgs.append(" ");
+      tgs.append(SEnumOperations.getMemberPresentation(SPropertyOperations.getEnum(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.enable_components$2$TR), LINKS.position$tGxY), PROPS.position$S7Zm)));
+      tgs.append("`}>");
+      tgs.newLine();
+      ctx.getBuffer().area().increaseIndent();
+      if (SPropertyOperations.getBoolean(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.enable_components$2$TR), LINKS.like$YGpT), LINKS.enable$UX7q), PROPS.value$RdAp)) {
+        tgs.indent();
+        tgs.append("<LikePhoto photo={photo} setPhoto={setPhoto} />");
+        tgs.newLine();
+      }
+      if (SPropertyOperations.getBoolean(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.enable_components$2$TR), LINKS.dislike$YGCU), LINKS.enable$RuaT), PROPS.value$RdAp)) {
+        tgs.indent();
+        tgs.append("<AddToFavoritesButton photoId={photo._id} currentUserId={user?._id}/>");
+        tgs.newLine();
+      }
+      if (SPropertyOperations.getBoolean(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.enable_components$2$TR), LINKS.favorite$YGRV), LINKS.enable$YHBp), PROPS.value$RdAp)) {
+        tgs.indent();
+        tgs.append("<DislikePhoto photo={photo} setPhoto={setPhoto} />");
+        tgs.newLine();
+      }
+      ctx.getBuffer().area().decreaseIndent();
+      tgs.indent();
+      tgs.append("</div>");
+      tgs.newLine();
+      tgs.indent();
+      tgs.append("<Link to=\"/ShowPhoto\" state={{ photo }} className=\"image-link\">");
+      tgs.newLine();
+      ctx.getBuffer().area().increaseIndent();
+      tgs.indent();
+      tgs.append("<div className=\"content-overlay\">");
+      tgs.newLine();
+      ctx.getBuffer().area().increaseIndent();
+      tgs.indent();
+      tgs.append("<div className=\"content-wrapper\">");
+      tgs.newLine();
+      ctx.getBuffer().area().increaseIndent();
+      tgs.indent();
+      tgs.append("<h5 className=\"photo-title\">{photo.Title}</h5>");
+      tgs.newLine();
+      tgs.indent();
+      tgs.append("<p className=\"photo-description\">{photo.Text}</p>");
+      tgs.newLine();
+      tgs.indent();
+      tgs.append("<div className=\"photo-meta\">");
+      tgs.newLine();
+      ctx.getBuffer().area().increaseIndent();
+      tgs.indent();
+      tgs.append("<small>By: {photo.PostedBy?.ProfileName}</small>");
+      tgs.newLine();
+      tgs.indent();
+      tgs.append("<small>Date: {new Date(photo.DatePosted).toLocaleDateString()}</small>");
+      tgs.newLine();
+      ctx.getBuffer().area().decreaseIndent();
+      tgs.indent();
+      tgs.append("</div>");
+      tgs.newLine();
+      ctx.getBuffer().area().decreaseIndent();
+      tgs.indent();
+      tgs.append("</div>");
+      tgs.newLine();
+      ctx.getBuffer().area().decreaseIndent();
+      tgs.indent();
+      tgs.append("</div>");
+      tgs.newLine();
+      ctx.getBuffer().area().decreaseIndent();
+      tgs.indent();
+      tgs.append("</Link>");
+      tgs.newLine();
+      ctx.getBuffer().area().decreaseIndent();
+      tgs.indent();
+      tgs.append("</>");
+      tgs.newLine();
+      ctx.getBuffer().area().decreaseIndent();
+      tgs.indent();
+      tgs.append(")}");
+      tgs.newLine();
+      ctx.getBuffer().area().decreaseIndent();
+      tgs.indent();
+      tgs.append("</div>");
+      tgs.newLine();
+      ctx.getBuffer().area().decreaseIndent();
+      tgs.indent();
+      tgs.append("</div>");
+      tgs.newLine();
+      ctx.getBuffer().area().decreaseIndent();
+      tgs.indent();
+      tgs.append(");");
+      tgs.newLine();
+    } else if (SEnumOperations.isMember(SPropertyOperations.getEnum(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.layout$KYXS), PROPS.type$b7cT), 0x7f63219c035cbd94L)) {
+    }
+    ctx.getBuffer().area().decreaseIndent();
   }
 
   private static final class LINKS {
@@ -388,10 +586,29 @@ public class Images_TextGen extends TextGenDescriptorBase {
     /*package*/ static final SContainmentLink enable$RuaT = MetaAdapterFactory.getContainmentLink(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x39c93bd42de5bf0bL, 0x39c93bd42de5bf0cL, "enable");
     /*package*/ static final SContainmentLink favorite$YGRV = MetaAdapterFactory.getContainmentLink(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x7f63219c035cbedcL, 0x7f63219c035cbedfL, "favorite");
     /*package*/ static final SContainmentLink enable$YHBp = MetaAdapterFactory.getContainmentLink(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x7f63219c035cbee1L, 0x7f63219c035cbee2L, "enable");
+    /*package*/ static final SContainmentLink api$sddj = MetaAdapterFactory.getContainmentLink(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x7f63219c035cbd8dL, 0x5cffed4b43846671L, "api");
+    /*package*/ static final SContainmentLink base_url$zLxn = MetaAdapterFactory.getContainmentLink(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x4b61efe7ede3967eL, 0x4b61efe7ede3969eL, "base_url");
+    /*package*/ static final SContainmentLink enable_display_components$58nr = MetaAdapterFactory.getContainmentLink(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x7f63219c035cbd8dL, 0x7f5e51ed8fac258eL, "enable_display_components");
+    /*package*/ static final SContainmentLink position$X46W = MetaAdapterFactory.getContainmentLink(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x7f5e51ed8fac2532L, 0x7f5e51ed8fac256dL, "position");
+    /*package*/ static final SContainmentLink display_likes$U0rU = MetaAdapterFactory.getContainmentLink(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x7f5e51ed8fac2532L, 0x7f5e51ed8fac2534L, "display_likes");
+    /*package*/ static final SContainmentLink icon$nnTR = MetaAdapterFactory.getContainmentLink(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x503665969856bc6aL, 0x50366596986f0ea0L, "icon");
+    /*package*/ static final SContainmentLink content$utGr = MetaAdapterFactory.getContainmentLink(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x503665969856bc6aL, 0x503665969856bc6dL, "content");
+    /*package*/ static final SContainmentLink enable$uttq = MetaAdapterFactory.getContainmentLink(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x503665969856bc6aL, 0x503665969856bc6cL, "enable");
+    /*package*/ static final SContainmentLink displayy_dislikes$U0EV = MetaAdapterFactory.getContainmentLink(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x7f5e51ed8fac2532L, 0x7f5e51ed8fac2535L, "displayy_dislikes");
+    /*package*/ static final SContainmentLink icon$nH2f = MetaAdapterFactory.getContainmentLink(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x503665969856bcc6L, 0x50366596986f0eb2L, "icon");
+    /*package*/ static final SContainmentLink content$xZbq = MetaAdapterFactory.getContainmentLink(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x503665969856bcc6L, 0x503665969856bcc8L, "content");
+    /*package*/ static final SContainmentLink enable$xYWp = MetaAdapterFactory.getContainmentLink(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x503665969856bcc6L, 0x503665969856bcc7L, "enable");
+    /*package*/ static final SContainmentLink position$tGxY = MetaAdapterFactory.getContainmentLink(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x7f63219c035cbedcL, 0x39c93bd42dd9788eL, "position");
   }
 
   private static final class PROPS {
     /*package*/ static final SProperty sorting$b7EV = MetaAdapterFactory.getProperty(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x4493374f2296af2eL, 0x4493374f2296af31L, "sorting");
     /*package*/ static final SProperty value$RdAp = MetaAdapterFactory.getProperty(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x7f63219c035cbe07L, 0x7f63219c035cbe08L, "value");
+    /*package*/ static final SProperty type$b7cT = MetaAdapterFactory.getProperty(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x4493374f2296af2eL, 0x4493374f2296af2fL, "type");
+    /*package*/ static final SProperty position$S7Zm = MetaAdapterFactory.getProperty(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x7f63219c035cbe49L, 0x7f63219c035cbe52L, "position");
+    /*package*/ static final SProperty aligment$KWkS = MetaAdapterFactory.getProperty(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x7f63219c035cbe49L, 0x7f5e51ed8fb0ca89L, "aligment");
+    /*package*/ static final SProperty iconName$he9p = MetaAdapterFactory.getProperty(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x39c93bd42dd4d43cL, 0x39c93bd42dd4d43dL, "iconName");
+    /*package*/ static final SProperty size$tFxB = MetaAdapterFactory.getProperty(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x39c93bd42dd4d43cL, 0x503665969865d1dcL, "size");
+    /*package*/ static final SProperty value$RDye = MetaAdapterFactory.getProperty(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x7f63219c035cbe27L, 0x7f63219c035cbe28L, "value");
   }
 }

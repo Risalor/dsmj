@@ -23,7 +23,6 @@ function Photo({ photo: initialPhoto }) {
         }
     }, [config]);
 
-    //Left off here
     if (config.layout === 'grid') {
         return (
             <div className="photo-card card text-white bg-dark mb-3 border-secondary">
@@ -101,6 +100,7 @@ function Photo({ photo: initialPhoto }) {
         );
     }
 
+    //Left off here
     return (
         <div className="photo-masonry-card">
             <div className="masonry-image-container" onMouseEnter={() => setShowOverlay(true)} onMouseLeave={() => setShowOverlay(false)}>
@@ -108,16 +108,16 @@ function Photo({ photo: initialPhoto }) {
                     <img className="masonry-image" src={`${config.base_api}${photo.Path}`} alt={photo.Title}/>
                 </Link>
                 {!showOverlay && (
-                <div className="masonry-info-bar">
-                    <div className="masonry-text-content">
-                        <h4 className="masonry-title">{photo.Title}</h4>
-                        <p className="masonry-author">by {photo.PostedBy?.ProfileName}</p>
+                    <div className="masonry-info-bar">
+                        <div className="masonry-text-content">
+                            <h4 className="masonry-title">{photo.Title}</h4>
+                            <p className="masonry-author">by {photo.PostedBy?.ProfileName}</p>
+                        </div>
+                        <div className={`stats ${config.display_stats_layout}`}>
+                            {config.like_display && (<span className="display-likes"><FaThumbsUp/> {photo.Likes || 0}</span>)}
+                            {config.dislike_display && (<span className="display-dislikes"><FaThumbsDown/> {photo.Dislikes || 0}</span>)}
+                        </div>
                     </div>
-                    <div className={`stats ${config.display_stats_layout}`}>
-                        {config.like_display && (<span className="display-likes"><FaThumbsUp/> {photo.Likes || 0}</span>)}
-                        {config.dislike_display && (<span className="display-dislikes"><FaThumbsDown/> {photo.Dislikes || 0}</span>)}
-                    </div>
-                </div>
                 )}
 
                 {showOverlay && (

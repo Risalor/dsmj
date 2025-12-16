@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-a3vepjynu1uxmontpn00c9v0htqejzs">
-  <files names="ConceptPresentationAspectImpl.java:EnumerationDescriptor_ComponentEnum.java:EnumerationDescriptor_HttpMethod.java:EnumerationDescriptor_ImageLayouts.java:EnumerationDescriptor_MenuTypes.java:EnumerationDescriptor_PositionEnum.java:EnumerationDescriptor_SortingOptions.java:EnumerationDescriptor_UserDisplayTypes.java:LanguageConceptSwitch.java:StructureAspectDescriptor.java" />
+<product version="3" modelHash="-5ry8xwl2mf0u2r6k6r00dx2484pme5u">
+  <files names="ConceptPresentationAspectImpl.java:EnumerationDescriptor_Alighment.java:EnumerationDescriptor_ComponentEnum.java:EnumerationDescriptor_HttpMethod.java:EnumerationDescriptor_ImageLayouts.java:EnumerationDescriptor_MenuTypes.java:EnumerationDescriptor_PositionEnum.java:EnumerationDescriptor_SortingOptions.java:EnumerationDescriptor_UserDisplayTypes.java:LanguageConceptSwitch.java:StructureAspectDescriptor.java" />
 </product>
 

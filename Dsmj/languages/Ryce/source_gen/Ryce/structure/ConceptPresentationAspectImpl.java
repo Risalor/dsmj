@@ -24,6 +24,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_DisplayLikes;
   private ConceptPresentation props_Enable;
   private ConceptPresentation props_EnableComponents;
+  private ConceptPresentation props_EnableDisplayComponents;
   private ConceptPresentation props_Endpoint;
   private ConceptPresentation props_Endpoints;
   private ConceptPresentation props_Favorite;
@@ -168,6 +169,13 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_EnableComponents = cpb.create();
         }
         return props_EnableComponents;
+      case LanguageConceptSwitch.EnableDisplayComponents:
+        if (props_EnableDisplayComponents == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("EnableDisplayComponents");
+          props_EnableDisplayComponents = cpb.create();
+        }
+        return props_EnableDisplayComponents;
       case LanguageConceptSwitch.Endpoint:
         if (props_Endpoint == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();

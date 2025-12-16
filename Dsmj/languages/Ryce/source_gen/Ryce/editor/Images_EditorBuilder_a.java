@@ -64,7 +64,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     setCellContext(editorCell);
     editorCell.addEditorCell(createCollection_1());
     editorCell.addEditorCell(createCollection_2());
-    editorCell.addEditorCell(createCollection_8());
+    editorCell.addEditorCell(createCollection_9());
     return editorCell;
   }
   private EditorCell createCollection_1() {
@@ -129,6 +129,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     editorCell.addEditorCell(createCollection_5());
     editorCell.addEditorCell(createCollection_6());
     editorCell.addEditorCell(createCollection_7());
+    editorCell.addEditorCell(createCollection_8());
     return editorCell;
   }
   private EditorCell createCollection_3() {
@@ -422,14 +423,83 @@ import org.jetbrains.mps.openapi.language.SConcept;
     return editorCell;
   }
   private EditorCell createRefNode_4() {
-    SingleRoleCellProvider provider = new click_actionsSingleRoleHandler_9gsosq_b4b0(myNode, LINKS.click_actions$JWIK, getEditorContext());
+    SingleRoleCellProvider provider = new enable_display_componentsSingleRoleHandler_9gsosq_b4b0(myNode, LINKS.enable_display_components$58nr, getEditorContext());
     return provider.createCell();
   }
-  private static class click_actionsSingleRoleHandler_9gsosq_b4b0 extends SingleRoleCellProvider {
+  private static class enable_display_componentsSingleRoleHandler_9gsosq_b4b0 extends SingleRoleCellProvider {
     @NotNull
     private SNode myNode;
 
-    public click_actionsSingleRoleHandler_9gsosq_b4b0(SNode ownerNode, SContainmentLink containmentLink, EditorContext context) {
+    public enable_display_componentsSingleRoleHandler_9gsosq_b4b0(SNode ownerNode, SContainmentLink containmentLink, EditorContext context) {
+      super(containmentLink, context);
+      myNode = ownerNode;
+    }
+
+    @Override
+    @NotNull
+    public SNode getNode() {
+      return myNode;
+    }
+
+    protected EditorCell createChildCell(SNode child) {
+      EditorCell editorCell = getUpdateSession().updateChildNodeCell(child);
+      editorCell.setAction(CellActionType.DELETE, new CellAction_DeleteSmart(getNode(), LINKS.enable_display_components$58nr, child));
+      editorCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteSmart(getNode(), LINKS.enable_display_components$58nr, child));
+      installCellInfo(child, editorCell, false);
+      return editorCell;
+    }
+
+
+
+    private void installCellInfo(SNode child, EditorCell editorCell, boolean isEmpty) {
+      if (editorCell.getSubstituteInfo() == null || editorCell.getSubstituteInfo() instanceof DefaultSubstituteInfo) {
+        editorCell.setSubstituteInfo((isEmpty ? new SEmptyContainmentSubstituteInfo(editorCell) : new SChildSubstituteInfo(editorCell)));
+      }
+      if (editorCell.getSRole() == null) {
+        editorCell.setSRole(LINKS.enable_display_components$58nr);
+      }
+    }
+    @Override
+    protected EditorCell createEmptyCell() {
+      getCellFactory().pushCellContext();
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(getNode(), LINKS.enable_display_components$58nr));
+      try {
+        EditorCell editorCell = super.createEmptyCell();
+        editorCell.setCellId("empty_enable_display_components");
+        installCellInfo(null, editorCell, true);
+        setCellContext(editorCell);
+        return editorCell;
+      } finally {
+        getCellFactory().popCellContext();
+      }
+    }
+    protected String getNoTargetText() {
+      return "<no enable_display_components>";
+    }
+  }
+  private EditorCell createCollection_8() {
+    EditorCell_Collection editorCell = new EditorCell_Collection(getEditorContext(), myNode, new CellLayout_Indent());
+    editorCell.setCellId("Collection_9gsosq_f1a");
+    Style style = new StyleImpl();
+    style.set(StyleAttributes.SELECTABLE, false);
+    editorCell.getStyle().putAll(style);
+    editorCell.addEditorCell(createIndentCell_5());
+    editorCell.addEditorCell(createRefNode_5());
+    return editorCell;
+  }
+  private EditorCell createIndentCell_5() {
+    EditorCell_Indent editorCell = new EditorCell_Indent(getEditorContext(), myNode);
+    return editorCell;
+  }
+  private EditorCell createRefNode_5() {
+    SingleRoleCellProvider provider = new click_actionsSingleRoleHandler_9gsosq_b5b0(myNode, LINKS.click_actions$JWIK, getEditorContext());
+    return provider.createCell();
+  }
+  private static class click_actionsSingleRoleHandler_9gsosq_b5b0 extends SingleRoleCellProvider {
+    @NotNull
+    private SNode myNode;
+
+    public click_actionsSingleRoleHandler_9gsosq_b5b0(SNode ownerNode, SContainmentLink containmentLink, EditorContext context) {
       super(containmentLink, context);
       myNode = ownerNode;
     }
@@ -476,7 +546,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return "<no click_actions>";
     }
   }
-  private EditorCell createCollection_8() {
+  private EditorCell createCollection_9() {
     EditorCell_Collection editorCell = new EditorCell_Collection(getEditorContext(), myNode, new CellLayout_Indent());
     editorCell.setCellId("Collection_9gsosq_c0");
     Style style = new StyleImpl();
@@ -512,6 +582,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     /*package*/ static final SContainmentLink load_action$KRVq = MetaAdapterFactory.getContainmentLink(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x7f63219c035cbd8dL, 0x7f63219c035cbd8fL, "load_action");
     /*package*/ static final SContainmentLink layout$KYXS = MetaAdapterFactory.getContainmentLink(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x7f63219c035cbd8dL, 0x7f63219c035cbd98L, "layout");
     /*package*/ static final SContainmentLink enable_components$2$TR = MetaAdapterFactory.getContainmentLink(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x7f63219c035cbd8dL, 0x7f63219c035cbf86L, "enable_components");
+    /*package*/ static final SContainmentLink enable_display_components$58nr = MetaAdapterFactory.getContainmentLink(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x7f63219c035cbd8dL, 0x7f5e51ed8fac258eL, "enable_display_components");
     /*package*/ static final SContainmentLink click_actions$JWIK = MetaAdapterFactory.getContainmentLink(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x7f63219c035cbd8dL, 0x39c93bd42deb44a1L, "click_actions");
   }
 }
