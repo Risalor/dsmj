@@ -1,7 +1,6 @@
 import { useLocation } from 'react-router-dom';
 import { useState, useContext } from "react";
-import DislikePhoto from "./DislikePhoto";
-import LikePhoto from "./LikePhoto";
+import ReactionButton from "./ReactionButton";
 import Comments from './Comments';
 import PostComment from './PostComment';
 import AddToFavoritesButton from "./AddToFavoritesButton";
@@ -10,6 +9,7 @@ import "../styles/ShowImage.css"
 import { FaThumbsUp, FaThumbsDown } from "react-icons/fa";
 import "../styles/combined.css"
 import config from '../config.json';
+import { ThumbsUp, ThumbsDown, Heart } from 'feather-icons-react';
 
 function ShowPhoto() {
     const { state } = useLocation();
@@ -26,16 +26,18 @@ function ShowPhoto() {
         <div className="show-photo-container">
             <div className="photo-detail-card">
                 <div className="photo-image-container">
-                    <img
-                        src={`http://localhost:3001/${photo.Path}`}
-                        alt={photo.Title}
-                        className="photo-detail-image"
-                    />
+                    <img src={`http://localhost:3001/${photo.Path}`} alt={photo.Title} className="photo-detail-image"/>
                     
                     <div className={`${config.action_buttons_layout}`}>
-                        {config.like && (<LikePhoto photo={photo} setPhoto={setPhoto} />)}
-                        {config.favorite && (<AddToFavoritesButton photoId={photo._id} currentUserId={user._id}/>)}
-                        {config.dislike && (<DislikePhoto photo={photo} setPhoto={setPhoto} />)}
+                        {config.like && (
+                            <ReactionButton photo={photoState} setPhoto={setPhoto} type="like" icon={ThumbsUp} apiEndpoint={`http://localhost:3001/images/${photo._id}/like`}/>
+                        )}
+                        {config.favorite && (
+                            <AddToFavoritesButton photoId={photo._id} currentUserId={user?._id} icon={Heart} addFavoriteEndpoint="http://localhost:3001/users/addToFavorites"/>
+                        )}
+                        {config.dislike && (
+                            <ReactionButton photo={photoState} setPhoto={setPhoto} type="dislike" icon={ThumbsDown} apiEndpoint={`http://localhost:3001/images/${photo._id}/dislike`}/>
+                        )}
                     </div>
                 </div>
 

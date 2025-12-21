@@ -2,9 +2,11 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Star } from 'feather-icons-react';
 
-function AddToFavoritesButton({ photoId, currentUserId }) {
+function AddToFavoritesButton({ photoId, currentUserId, icon: Icon = Star, size = 18,addFavoriteEndpoint}) {
     const [isFavorited, setIsFavorited] = useState(false);
     const navigate = useNavigate();
+
+    const checkFavoriteEndpoint = `http://localhost:3001/users/checkFavorite/${photoId}`;
 
     useEffect(() => {
         const checkFavoriteStatus = async () => {
@@ -13,7 +15,7 @@ function AddToFavoritesButton({ photoId, currentUserId }) {
             }
 
             try {
-                const res = await fetch(`http://localhost:3001/users/checkFavorite/${photoId}`, {
+                const res = await fetch(checkFavoriteEndpoint, {
                     method: 'GET',
                     credentials: 'include',
                 });
@@ -31,9 +33,14 @@ function AddToFavoritesButton({ photoId, currentUserId }) {
     }, [photoId, currentUserId]);
 
     const handleToggleFavorite = async () => {
+        if (!addFavoriteEndpoint) {
+            console.error('addFavoriteEndpoint is required');
+            return;
+        }
+        
         setIsFavorited(!isFavorited);
         try {
-            const res = await fetch(`http://localhost:3001/users/addToFavorites`, {
+            const res = await fetch(addFavoriteEndpoint, {
                 method: 'POST',
                 credentials: 'include',
                 headers: {
@@ -58,7 +65,7 @@ function AddToFavoritesButton({ photoId, currentUserId }) {
 
     return (
         <button onClick={handleToggleFavorite} className={`favorite-btn ${isFavorited ? 'favorited' : ''}`} title={isFavorited ? "Remove from favorites" : "Add to favorites"}>
-            <Star size={18} fill={isFavorited ? "currentColor" : "none"} />
+            <Icon size={size} fill={isFavorited ? "currentColor" : "none"} />
         </button>
     );
 }

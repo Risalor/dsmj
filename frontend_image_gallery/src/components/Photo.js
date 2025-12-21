@@ -1,12 +1,12 @@
 import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import DislikePhoto from "./DislikePhoto";
-import LikePhoto from "./LikePhoto";
+import ReactionButton from "./ReactionButton";
 import AddToFavoritesButton from "./AddToFavoritesButton";
 import { UserContext } from "../userContexts";
 import { FaThumbsUp, FaThumbsDown } from "react-icons/fa";
 import "../styles/combined.css"
 import config from '../config.json';
+import { ThumbsUp, ThumbsDown, Heart } from 'feather-icons-react';
 
 function Photo({ photo: initialPhoto }) {
     const [photo, setPhoto] = useState(initialPhoto);
@@ -39,9 +39,15 @@ function Photo({ photo: initialPhoto }) {
                     {showOverlay && (
                         <>
                             <div className={`${config.action_buttons_layout}`}>
-                                {config.like && (<LikePhoto photo={photo} setPhoto={setPhoto} />)}
-                                {config.favorite && (<AddToFavoritesButton photoId={photo._id} currentUserId={user?._id}/>)}
-                                {config.dislike && (<DislikePhoto photo={photo} setPhoto={setPhoto} />)}
+                                {config.like && (
+                                    <ReactionButton icon={ThumbsUp} photo={photo} setPhoto={setPhoto} type="like"apiEndpoint={`http://localhost:3001/images/${photo._id}/like`}/>
+                                )}
+                                {config.favorite && (
+                                    <AddToFavoritesButton photoId={photo._id} currentUserId={user?._id}icon={Heart}size={20}addFavoriteEndpoint="http://localhost:3001/users/addToFavorites"/>
+                                )}
+                                {config.dislike && (
+                                    <ReactionButton icon={ThumbsDown} photo={photo} setPhoto={setPhoto} type="dislike"apiEndpoint={`http://localhost:3001/images/${photo._id}/dislike`}/>
+                                )}
                             </div>
                             <Link to="/ShowPhoto" state={{ photo }} className="image-link">
                                 <div className="content-overlay">
@@ -72,9 +78,15 @@ function Photo({ photo: initialPhoto }) {
                         </Link>
                         {showOverlay && (
                             <div className={`${config.action_buttons_layout}`}>
-                                {config.like && (<LikePhoto photo={photo} setPhoto={setPhoto} />)}
-                                {config.favorite && (<AddToFavoritesButton photoId={photo._id} currentUserId={user?._id}/>)}
-                                {config.dislike && (<DislikePhoto photo={photo} setPhoto={setPhoto} />)}
+                                {config.like && (
+                                    <ReactionButton photo={photo} setPhoto={setPhoto} type="like" apiEndpoint={`http://localhost:3001/images/${photo._id}/like`}/>
+                                )}
+                                {config.favorite && (
+                                    <AddToFavoritesButton photoId={photo._id} currentUserId={user?._id} icon={Heart} size={20} addFavoriteEndpoint="http://localhost:3001/users/addToFavorites"/>
+                                )}
+                                {config.dislike && (
+                                    <ReactionButton photo={photo} setPhoto={setPhoto} type="dislike"apiEndpoint={`http://localhost:3001/images/${photo._id}/dislike`}/>
+                                )}
                             </div>
                         )}
                         {!showOverlay && (
@@ -100,7 +112,6 @@ function Photo({ photo: initialPhoto }) {
         );
     }
 
-    //Left off here
     return (
         <div className="photo-masonry-card">
             <div className="masonry-image-container" onMouseEnter={() => setShowOverlay(true)} onMouseLeave={() => setShowOverlay(false)}>
@@ -123,9 +134,15 @@ function Photo({ photo: initialPhoto }) {
                 {showOverlay && (
                     <div className="masonry-overlay">
                         <div className={`${config.action_buttons_layout}`}>
-                            {config.like && (<LikePhoto photo={photo} setPhoto={setPhoto} />)}
-                            {config.favorite && (<AddToFavoritesButton photoId={photo._id} currentUserId={user._id}/>)}
-                            {config.dislike && (<DislikePhoto photo={photo} setPhoto={setPhoto} />)}
+                            {config.like && (
+                                <ReactionButton photo={photo} setPhoto={setPhoto} type="like" apiEndpoint={`http://localhost:3001/images/${photo._id}/like`}/>
+                            )}
+                            {config.favorite && (
+                                <AddToFavoritesButton photoId={photo._id} currentUserId={user?._id}icon={Heart}size={20}addFavoriteEndpoint="http://localhost:3001/users/addToFavorites"/>
+                            )}
+                            {config.dislike && (
+                                <ReactionButton photo={photo} setPhoto={setPhoto} type="dislike"apiEndpoint={`http://localhost:3001/images/${photo._id}/dislike`}/>
+                            )}
                         </div>
                         <Link to="/ShowPhoto" state={{ photo }} className="masonry-details-link">
                             <div className="masonry-full-info">
