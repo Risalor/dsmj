@@ -634,7 +634,22 @@ public class Images_TextGen extends TextGenDescriptorBase {
       ctx.getBuffer().area().increaseIndent();
       if (SPropertyOperations.getBoolean(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.enable_components$2$TR), LINKS.like$YGpT), LINKS.enable$UX7q), PROPS.value$RdAp)) {
         tgs.indent();
-        tgs.append("<LikePhoto photo={photo} setPhoto={setPhoto} />");
+        tgs.append(" <ReactionButton icon={");
+        tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.enable_components$2$TR), LINKS.like$YGpT), LINKS.icon$QPwn), PROPS.iconName$he9p));
+        tgs.append("} size={");
+        tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.enable_components$2$TR), LINKS.like$YGpT), LINKS.icon$QPwn), PROPS.size$tFxB));
+        tgs.append(" photo={photo} setPhoto={setPhoto} type=\"like\" apiEndpoint={");
+        tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.api$sddj), LINKS.base_url$zLxn), PROPS.url$zsEU));
+        for (SNode api_end : ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.api$sddj), LINKS.endpoints$DTlt), LINKS.endpoints$AonT))) {
+          if (SPropertyOperations.getString(api_end, PROPS.name$MnvL) == SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.click_actions$JWIK), LINKS.like$dPcp), LINKS.endpoint$6EIT), PROPS.endpoint$hAHU)) {
+            tgs.append(SPropertyOperations.getString(api_end, PROPS.path_first$Ah$s));
+            tgs.append("${");
+            tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.click_actions$JWIK), LINKS.like$dPcp), LINKS.endpoint$6EIT), PROPS.parameter$T0O9));
+            tgs.append("}");
+            tgs.append(SPropertyOperations.getString(api_end, PROPS.path_second$cpiZ));
+          }
+        }
+        tgs.append("}/>");
         tgs.newLine();
       }
       if (SPropertyOperations.getBoolean(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.enable_components$2$TR), LINKS.dislike$YGCU), LINKS.enable$RuaT), PROPS.value$RdAp)) {
@@ -937,158 +952,7 @@ public class Images_TextGen extends TextGenDescriptorBase {
     ctx.getBuffer().area().decreaseIndent();
 
     // End of Photo
-    // Start of LikePhoto
-    tgs.append("import { useState, useContext } from 'react';");
-    tgs.newLine();
-    tgs.append("import { useNavigate } from 'react-router-dom';");
-    tgs.newLine();
-    tgs.append("import { ThumbsUp } from 'feather-icons-react';");
-    tgs.newLine();
-    tgs.append("import { UserContext } from '../userContexts';");
-    tgs.newLine();
-    tgs.newLine();
-
-    tgs.append("function LikePhoto({ photo, setPhoto }) {");
-    tgs.newLine();
-    ctx.getBuffer().area().increaseIndent();
-    tgs.indent();
-    tgs.append("const [isLoading, setIsLoading] = useState(false);");
-    tgs.newLine();
-    tgs.indent();
-    tgs.append("const navigate = useNavigate();");
-    tgs.newLine();
-    tgs.indent();
-    tgs.append("const { user } = useContext(UserContext);");
-    tgs.newLine();
-    tgs.newLine();
-
-    tgs.indent();
-    tgs.append("const hasLiked = photo.LikedBy?.includes(user?._id);");
-    tgs.newLine();
-
-    tgs.indent();
-    tgs.append("const handleLike = async () => {");
-    tgs.newLine();
-    ctx.getBuffer().area().increaseIndent();
-    tgs.indent();
-    tgs.append("setIsLoading(true);");
-    tgs.newLine();
-    tgs.indent();
-    tgs.append("try {");
-    tgs.newLine();
-    ctx.getBuffer().area().increaseIndent();
-    tgs.indent();
-    tgs.append("const res = await fetch('");
-    tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.api$sddj), LINKS.base_url$zLxn), PROPS.url$zsEU));
-    for (SNode endpoint : ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.api$sddj), LINKS.endpoints$DTlt), LINKS.endpoints$AonT))) {
-      if (SPropertyOperations.getString(endpoint, PROPS.name$MnvL) == SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.click_actions$JWIK), LINKS.like$dPcp), LINKS.endpoint$6EIT), PROPS.endpoint$hAHU)) {
-        tgs.append(SPropertyOperations.getString(endpoint, PROPS.path_first$Ah$s));
-        tgs.append("${photo.");
-        tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.load_action$KRVq), LINKS.for_each$wZ_U), LINKS.image_id$pPQl), PROPS.api_source$7BWq));
-        tgs.append("}");
-        tgs.append(SPropertyOperations.getString(endpoint, PROPS.path_second$cpiZ));
-        tgs.append("', {");
-        tgs.newLine();
-      }
-    }
-    ctx.getBuffer().area().increaseIndent();
-    tgs.indent();
-    tgs.append("method: ");
-    for (SNode endpoint : ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.api$sddj), LINKS.endpoints$DTlt), LINKS.endpoints$AonT))) {
-      if (SPropertyOperations.getString(endpoint, PROPS.name$MnvL) == SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.click_actions$JWIK), LINKS.like$dPcp), LINKS.endpoint$6EIT), PROPS.endpoint$hAHU)) {
-        tgs.append(SPropertyOperations.getEnum(endpoint, PROPS.http_method$Ahlr).toString());
-        tgs.append(",");
-        tgs.newLine();
-      }
-    }
-    tgs.indent();
-    tgs.append("credentials: 'include',");
-    tgs.newLine();
-    ctx.getBuffer().area().decreaseIndent();
-    tgs.indent();
-    tgs.append("});");
-    tgs.newLine();
-    tgs.newLine();
-
-    tgs.indent();
-    tgs.append("if (res.status === 401) {");
-    tgs.newLine();
-    ctx.getBuffer().area().increaseIndent();
-    tgs.indent();
-    tgs.append("navigate('/Login');");
-    tgs.newLine();
-    tgs.indent();
-    tgs.append("return;");
-    tgs.newLine();
-    ctx.getBuffer().area().decreaseIndent();
-    tgs.indent();
-    tgs.append("}");
-    tgs.newLine();
-    tgs.newLine();
-    tgs.indent();
-    tgs.append("const updatedPhoto = await res.json();");
-    tgs.newLine();
-    tgs.indent();
-    tgs.append("setPhoto(updatedPhoto);");
-    tgs.newLine();
-    ctx.getBuffer().area().decreaseIndent();
-    tgs.indent();
-    tgs.append("} catch (err) {");
-    tgs.newLine();
-    ctx.getBuffer().area().increaseIndent();
-    tgs.indent();
-    tgs.append("console.error('Like error:', err);");
-    tgs.newLine();
-    ctx.getBuffer().area().decreaseIndent();
-    tgs.indent();
-    tgs.append("} finally {");
-    tgs.newLine();
-    ctx.getBuffer().area().increaseIndent();
-    tgs.indent();
-    tgs.append("setIsLoading(false);");
-    tgs.newLine();
-    ctx.getBuffer().area().decreaseIndent();
-    tgs.indent();
-    tgs.append("}");
-    tgs.newLine();
-    ctx.getBuffer().area().decreaseIndent();
-    tgs.indent();
-    tgs.append("};");
-    tgs.newLine();
-    tgs.newLine();
-
-    tgs.indent();
-    tgs.append("return (");
-    tgs.newLine();
-    ctx.getBuffer().area().increaseIndent();
-    tgs.indent();
-    tgs.append("<button onClick={handleLike} className={`like-btn ${hasLiked ? 'liked' : ''}`}disabled={isLoading}title={`Likes: ${photo.Likes ?? 0}${hasLiked ? ' (You liked this)' : ''}`}>");
-    tgs.newLine();
-    ctx.getBuffer().area().increaseIndent();
-    tgs.indent();
-    tgs.append("{isLoading ? '...' : <");
-    tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.enable_components$2$TR), LINKS.like$YGpT), LINKS.icon$QPwn), PROPS.iconName$he9p));
-    tgs.append("size={");
-    tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.enable_components$2$TR), LINKS.like$YGpT), LINKS.icon$QPwn), PROPS.size$tFxB));
-    tgs.append("} fill={hasLiked ? \"currentColor\" : \"none\"} />}");
-    tgs.newLine();
-    ctx.getBuffer().area().decreaseIndent();
-    tgs.indent();
-    tgs.append("</button>");
-    tgs.newLine();
-    ctx.getBuffer().area().decreaseIndent();
-    tgs.indent();
-    tgs.append(");");
-    tgs.newLine();
-    ctx.getBuffer().area().decreaseIndent();
-    tgs.append("}");
-    tgs.newLine();
-    tgs.newLine();
-
-    tgs.append("export default LikePhoto;");
-    tgs.newLine();
-    tgs.newLine();
-    tgs.newLine();
+    // Rest 
   }
   private static boolean isNotEmptyString(String str) {
     return str != null && str.length() > 0;
@@ -1123,12 +987,10 @@ public class Images_TextGen extends TextGenDescriptorBase {
     /*package*/ static final SContainmentLink content$xZbq = MetaAdapterFactory.getContainmentLink(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x503665969856bcc6L, 0x503665969856bcc8L, "content");
     /*package*/ static final SContainmentLink enable$xYWp = MetaAdapterFactory.getContainmentLink(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x503665969856bcc6L, 0x503665969856bcc7L, "enable");
     /*package*/ static final SContainmentLink position$tGxY = MetaAdapterFactory.getContainmentLink(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x7f63219c035cbedcL, 0x39c93bd42dd9788eL, "position");
+    /*package*/ static final SContainmentLink icon$QPwn = MetaAdapterFactory.getContainmentLink(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x7f63219c035cbe71L, 0x50366596986236b4L, "icon");
     /*package*/ static final SContainmentLink click_actions$JWIK = MetaAdapterFactory.getContainmentLink(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x7f63219c035cbd8dL, 0x39c93bd42deb44a1L, "click_actions");
     /*package*/ static final SContainmentLink like$dPcp = MetaAdapterFactory.getContainmentLink(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x39c93bd42deb4446L, 0x39c93bd42deb4447L, "like");
     /*package*/ static final SContainmentLink endpoint$6EIT = MetaAdapterFactory.getContainmentLink(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x39c93bd42deb4386L, 0x39c93bd42deb4387L, "endpoint");
-    /*package*/ static final SContainmentLink for_each$wZ_U = MetaAdapterFactory.getContainmentLink(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x7f63219c035cbd35L, 0x7f63219c035cbd37L, "for_each");
-    /*package*/ static final SContainmentLink image_id$pPQl = MetaAdapterFactory.getContainmentLink(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x7f63219c035cbd05L, 0x7e0d89be9616ea8dL, "image_id");
-    /*package*/ static final SContainmentLink icon$QPwn = MetaAdapterFactory.getContainmentLink(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x7f63219c035cbe71L, 0x50366596986236b4L, "icon");
   }
 
   private static final class PROPS {
@@ -1147,7 +1009,6 @@ public class Images_TextGen extends TextGenDescriptorBase {
     /*package*/ static final SProperty size$tFxB = MetaAdapterFactory.getProperty(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x39c93bd42dd4d43cL, 0x503665969865d1dcL, "size");
     /*package*/ static final SProperty value$RDye = MetaAdapterFactory.getProperty(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x7f63219c035cbe27L, 0x7f63219c035cbe28L, "value");
     /*package*/ static final SProperty endpoint$hAHU = MetaAdapterFactory.getProperty(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x39c93bd42df15e62L, 0x39c93bd42df15e64L, "endpoint");
-    /*package*/ static final SProperty api_source$7BWq = MetaAdapterFactory.getProperty(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x7f63219c035a8d0eL, 0x7f63219c035a8d10L, "api_source");
-    /*package*/ static final SProperty http_method$Ahlr = MetaAdapterFactory.getProperty(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x4b61efe7ede396a1L, 0x4b61efe7ede396a4L, "http_method");
+    /*package*/ static final SProperty parameter$T0O9 = MetaAdapterFactory.getProperty(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x39c93bd42df15e62L, 0x7e0d89be961bd221L, "parameter");
   }
 }
