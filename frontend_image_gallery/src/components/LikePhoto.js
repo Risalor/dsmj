@@ -33,12 +33,7 @@ function LikePhoto({ photo, setPhoto }) {
     };
 
     return (
-        <button 
-            onClick={handleLike} 
-            className={`like-btn ${hasLiked ? 'liked' : ''}`}
-            disabled={isLoading}
-            title={`Likes: ${photo.Likes ?? 0}${hasLiked ? ' (You liked this)' : ''}`}
-        >
+        <button onClick={handleLike} className={`like-btn ${hasLiked ? 'liked' : ''}`}disabled={isLoading}title={`Likes: ${photo.Likes ?? 0}${hasLiked ? ' (You liked this)' : ''}`}>
             {isLoading ? '...' : <ThumbsUp size={18} fill={hasLiked ? "currentColor" : "none"} />}
         </button>
     );

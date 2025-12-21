@@ -78,11 +78,11 @@ Ryce <= {
         load_actions: {
             contents: api.images,
             for_each <= {
-                imageId: contents[]._id,
-                userName: contents[].PostedBy.ProfileName,
-                date: contents[].DatePosted,
-                title: contents[].Title,
-                dascription: contents[].text
+                imageId: _id,
+                userName: PostedBy.ProfileName,
+                date: DatePosted,
+                title: Title,
+                dascription: text
             }
         },
         layout <= {

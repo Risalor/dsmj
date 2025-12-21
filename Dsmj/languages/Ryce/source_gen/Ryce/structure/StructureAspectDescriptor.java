@@ -240,6 +240,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.origin("r:6f21ea0b-8f9f-4069-8bcc-6c3e23fc8fea(Ryce.structure)/4163925112970632802");
     b.version(3);
     b.property("endpoint", 0x39c93bd42df15e64L).type(PrimitiveTypeId.STRING).origin("4163925112970632804").done();
+    b.property("parameter", 0x7e0d89be961bd221L).type(PrimitiveTypeId.STRING).origin("9083067475131355681").done();
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForComponent() {
@@ -412,7 +413,12 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.origin("r:6f21ea0b-8f9f-4069-8bcc-6c3e23fc8fea(Ryce.structure)/9179217419466226949");
     b.version(3);
     b.property("name", 0x7f63219c035cbd08L).type(PrimitiveTypeId.STRING).origin("9179217419466226952").done();
-    b.aggregate("load_elements", 0x7f63219c035cbd09L).target(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x7f63219c035a8d0eL).optional(true).ordered(true).multiple(true).origin("9179217419466226953").done();
+    b.aggregate("image_id", 0x7e0d89be9616ea8dL).target(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x7f63219c035a8d0eL).optional(true).ordered(true).multiple(false).origin("9083067475131034253").done();
+    b.aggregate("user_name", 0x7e0d89be9616ea98L).target(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x7f63219c035a8d0eL).optional(true).ordered(true).multiple(false).origin("9083067475131034264").done();
+    b.aggregate("date", 0x7e0d89be9616ea99L).target(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x7f63219c035a8d0eL).optional(true).ordered(true).multiple(false).origin("9083067475131034265").done();
+    b.aggregate("title", 0x7e0d89be9616ea9aL).target(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x7f63219c035a8d0eL).optional(true).ordered(true).multiple(false).origin("9083067475131034266").done();
+    b.aggregate("description", 0x7e0d89be9616ea9bL).target(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x7f63219c035a8d0eL).optional(true).ordered(true).multiple(false).origin("9083067475131034267").done();
+    b.aggregate("image", 0x7e0d89be9616ea9cL).target(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x7f63219c035a8d0eL).optional(true).ordered(true).multiple(false).origin("9083067475131034268").done();
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForIcon() {
