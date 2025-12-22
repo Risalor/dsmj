@@ -40,13 +40,13 @@ function Photo({ photo: initialPhoto }) {
                         <>
                             <div className={`${config.action_buttons_layout}`}>
                                 {config.like && (
-                                    <ReactionButton icon={ThumbsUp} photo={photo} setPhoto={setPhoto} type="like"apiEndpoint={`http://localhost:3001/images/${photo._id}/like`}/>
+                                    <ReactionButton icon={ThumbsUp} size={18} photo={photo} setPhoto={setPhoto} type="like" apiEndpoint={`http://localhost:3001/images/${photo._id}/like`}/>
                                 )}
                                 {config.favorite && (
-                                    <AddToFavoritesButton photoId={photo._id} currentUserId={user?._id}icon={Heart}size={20}addFavoriteEndpoint="http://localhost:3001/users/addToFavorites"/>
+                                    <AddToFavoritesButton icon={Heart} size={18} photoId={photo._id} currentUserId={user?._id} addFavoriteEndpoint="http://localhost:3001/users/addToFavorites"/>
                                 )}
                                 {config.dislike && (
-                                    <ReactionButton icon={ThumbsDown} photo={photo} setPhoto={setPhoto} type="dislike"apiEndpoint={`http://localhost:3001/images/${photo._id}/dislike`}/>
+                                    <ReactionButton icon={ThumbsDown} size={18} photo={photo} setPhoto={setPhoto} type="dislike" apiEndpoint={`http://localhost:3001/images/${photo._id}/dislike`}/>
                                 )}
                             </div>
                             <Link to="/ShowPhoto" state={{ photo }} className="image-link">

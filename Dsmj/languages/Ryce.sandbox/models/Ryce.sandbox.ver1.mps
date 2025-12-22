@@ -24,19 +24,13 @@
       </concept>
       <concept id="4163925112970232831" name="Ryce.structure.FavoriteClickAction" flags="ng" index="k8BwF">
         <child id="4163925112970232834" name="endpoint" index="k8BZm" />
-        <child id="4163925112970232835" name="payload" index="k8BZn" />
       </concept>
       <concept id="4163925112970232710" name="Ryce.structure.LikeClickAction" flags="ng" index="k8Bxi">
         <child id="4163925112970232711" name="endpoint" index="k8Bxj" />
       </concept>
       <concept id="4163925112970232762" name="Ryce.structure.DislikeClickAction" flags="ng" index="k8BxI">
-        <child id="4163925112970232764" name="payload" index="k8BxC" />
         <child id="4163925112970232763" name="endpoint" index="k8BxJ" />
       </concept>
-      <concept id="4163925112970232658" name="Ryce.structure.Payload" flags="ng" index="k8By6">
-        <child id="4163925112970232659" name="payloads" index="k8By7" />
-      </concept>
-      <concept id="4163925112970232624" name="Ryce.structure.PayloadElement" flags="ng" index="k8Bz$" />
       <concept id="4163925112970232902" name="Ryce.structure.ClickActions" flags="ng" index="k8BYi">
         <child id="4163925112970232903" name="like" index="k8BYj" />
         <child id="4163925112970232904" name="dislike" index="k8BYs" />
@@ -364,16 +358,13 @@
           </node>
         </node>
         <node concept="k8BxI" id="CFQEwYihvX" role="k8BYs">
-          <node concept="ke6mQ" id="CFQEwYihvY" role="k8BxJ" />
-          <node concept="k8By6" id="CFQEwYihvZ" role="k8BxC">
-            <node concept="k8Bz$" id="CFQEwYihw0" role="k8By7" />
+          <node concept="ke6mQ" id="CFQEwYihvY" role="k8BxJ">
+            <property role="ke6mK" value="2" />
+            <property role="3C5_Iv" value="qw" />
           </node>
         </node>
         <node concept="k8BwF" id="CFQEwYihw1" role="k8BYt">
           <node concept="ke6mQ" id="CFQEwYihw2" role="k8BZm" />
-          <node concept="k8By6" id="CFQEwYihw3" role="k8BZn">
-            <node concept="k8Bz$" id="CFQEwYihw4" role="k8By7" />
-          </node>
         </node>
       </node>
       <node concept="3KWBjv" id="7XukuQfG83G" role="3KWBhz">
