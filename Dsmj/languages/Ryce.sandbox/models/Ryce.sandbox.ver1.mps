@@ -153,6 +153,7 @@
         <child id="9179217419466227423" name="favorite" index="1WfTX3" />
       </concept>
       <concept id="9179217419466227425" name="Ryce.structure.Favorite" flags="ng" index="1WfTXX">
+        <child id="4163925112969066624" name="position" index="k44dk" />
         <child id="5779918869253525128" name="icon" index="38mmGu" />
         <child id="9179217419466227426" name="enable" index="1WfTXY" />
       </concept>
@@ -336,6 +337,7 @@
             <property role="k7uZD" value="213" />
             <property role="38kVha" value="212" />
           </node>
+          <node concept="1WfTZl" id="4Np8pVBoNWa" role="k44dk" />
         </node>
         <node concept="1WfTZl" id="CFQEwYihvR" role="k44dq">
           <property role="1WfTZe" value="7Xz8pK3nbTe/top_left" />
