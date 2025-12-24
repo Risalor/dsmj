@@ -18,9 +18,11 @@ public class Ryce_TextGen extends TextGenDescriptorBase {
       tgs.newLine();
       tgs.newLine();
     }
-    tgs.appendNode(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.footer$qiVi));
-    tgs.newLine();
-    tgs.newLine();
+    if ((SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.footer$qiVi) != null)) {
+      tgs.appendNode(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.footer$qiVi));
+      tgs.newLine();
+      tgs.newLine();
+    }
     tgs.appendNode(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.images$qiGh));
   }
 

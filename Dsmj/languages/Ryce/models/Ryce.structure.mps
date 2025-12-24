@@ -515,15 +515,27 @@
     <property role="TrG5h" value="SortingOptions" />
     <node concept="25R33" id="7Xz8pK3nbRw" role="25R1y">
       <property role="3tVfz5" value="9179217419466227168" />
-      <property role="TrG5h" value="newest_first" />
+      <property role="TrG5h" value="newest_asc" />
+    </node>
+    <node concept="25R33" id="5M0zVYx4Kt_" role="25R1y">
+      <property role="3tVfz5" value="6665485501712238437" />
+      <property role="TrG5h" value="newest_dsc" />
     </node>
     <node concept="25R33" id="7Xz8pK3nbRx" role="25R1y">
       <property role="3tVfz5" value="9179217419466227169" />
-      <property role="TrG5h" value="most_populat" />
+      <property role="TrG5h" value="likes_asc" />
+    </node>
+    <node concept="25R33" id="5M0zVYx4KtA" role="25R1y">
+      <property role="3tVfz5" value="6665485501712238438" />
+      <property role="TrG5h" value="likes_dsc" />
     </node>
     <node concept="25R33" id="7Xz8pK3nbRy" role="25R1y">
       <property role="3tVfz5" value="9179217419466227170" />
-      <property role="TrG5h" value="oldest_first" />
+      <property role="TrG5h" value="title_asc" />
+    </node>
+    <node concept="25R33" id="5M0zVYx4KtB" role="25R1y">
+      <property role="3tVfz5" value="6665485501712238439" />
+      <property role="TrG5h" value="title_dsc" />
     </node>
   </node>
   <node concept="1TIwiD" id="7Xz8pK3nbS7">
@@ -1043,7 +1055,7 @@
     <node concept="1TJgyi" id="4ijdOWy_EWK" role="1TKVEl">
       <property role="IQ2nx" value="4941354029177810736" />
       <property role="TrG5h" value="items_per_page" />
-      <ref role="AX2Wp" to="tpck:fKAQMTA" resolve="integer" />
+      <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
     </node>
     <node concept="1TJgyi" id="4ijdOWy_EWL" role="1TKVEl">
       <property role="IQ2nx" value="4941354029177810737" />

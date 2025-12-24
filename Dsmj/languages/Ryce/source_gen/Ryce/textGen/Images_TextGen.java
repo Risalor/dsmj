@@ -7,9 +7,9 @@ import jetbrains.mps.text.rt.TextGenContext;
 import jetbrains.mps.text.impl.TextGenSupport;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -39,12 +39,27 @@ public class Images_TextGen extends TextGenDescriptorBase {
     tgs.append("const [pagination, setPagination] = useState({});");
     tgs.newLine();
     tgs.indent();
-    tgs.append("const [currentSort, setCurrentSort] = useState(");
+    tgs.append("const [currentSort, setCurrentSort] = useState('");
     tgs.append(SPropertyOperations.getEnum(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.layout$KYXS), PROPS.sorting$b7EV).toString());
-    tgs.append(");");
+    tgs.append("');");
     tgs.newLine();
     tgs.newLine();
     tgs.indent();
+
+    if (SEnumOperations.isMember(SPropertyOperations.getEnum(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.layout$KYXS), PROPS.type$b7cT), 0x7f63219c035cbd93L)) {
+      tgs.indent();
+      tgs.append("const LAYOUT = { c1: 'container mt-4', c2: 'row', c3: 'col-md-4'};");
+      tgs.newLine();
+    } else if (SEnumOperations.isMember(SPropertyOperations.getEnum(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.layout$KYXS), PROPS.type$b7cT), 0x7f63219c035cbd94L)) {
+      tgs.indent();
+      tgs.append("const LAYOUT = { c1: 'container mt-4', c2: 'photos-list', c3: 'photo-list-item'};");
+      tgs.newLine();
+    } else if (SEnumOperations.isMember(SPropertyOperations.getEnum(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.layout$KYXS), PROPS.type$b7cT), 0x39c93bd42dd7ce59L)) {
+      tgs.indent();
+      tgs.append("const LAYOUT = { c1: 'masonry-container', c2: 'masonry-grid', c3: 'masonry-item'};");
+      tgs.newLine();
+    }
+
     tgs.append("useEffect(() => {");
     tgs.newLine();
     ctx.getBuffer().area().increaseIndent();
@@ -68,10 +83,10 @@ public class Images_TextGen extends TextGenDescriptorBase {
           tgs.append(SPropertyOperations.getString(content, PROPS.path_second$cpiZ));
         }
       }
-      tgs.append("/?page=' + currentPage + \"&limit=\" + config.images_per_page + \"&sort=\" + currentSort);");
-      tgs.newLine();
     }
-    tgs.append("const res = await fetch(config.base_api + 'images/?page=' + currentPage + \"&limit=\" + config.images_per_page + \"&sort=\" + currentSort);");
+    tgs.append("/?page=' + currentPage + '&limit=");
+    tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.layout$KYXS), PROPS.items_per_page$b7rU));
+    tgs.append("&sort=' + currentSort);");
     tgs.newLine();
     tgs.indent();
     tgs.append("const data = await res.json();");
@@ -197,6 +212,20 @@ public class Images_TextGen extends TextGenDescriptorBase {
     tgs.newLine();
 
     tgs.indent();
+    tgs.append("const sorting_options = [");
+    for (SNode option : ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.layout$KYXS), LINKS.sorting_options$b88X))) {
+      tgs.append("'");
+      tgs.append(SPropertyOperations.getEnum(option, PROPS.sorting$OnKN).toString());
+      tgs.append("'");
+      if (option != ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.layout$KYXS), LINKS.sorting_options$b88X)).last()) {
+        tgs.append(", ");
+      }
+    }
+    tgs.append("];");
+    tgs.newLine();
+    tgs.newLine();
+
+    tgs.indent();
     tgs.append("return (");
     tgs.newLine();
     ctx.getBuffer().area().increaseIndent();
@@ -263,19 +292,19 @@ public class Images_TextGen extends TextGenDescriptorBase {
 
     // if hell begins
     tgs.indent();
-    tgs.append("<div className={config.layout === 'grid' ? \"container mt-4\" : config.layout === 'list' ? \"container mt-4\" : \"masonry-container\"}>");
+    tgs.append("<div className={LAYOUT.c1}>");
     tgs.newLine();
     ctx.getBuffer().area().increaseIndent();
     tgs.indent();
-    tgs.append("<div className={config.layout === 'grid' ? \"row\" : config.layout === 'list' ? \"photos-list\" : \"masonry-grid\"}>");
+    tgs.append("<div className={LAYOUT.c2}>");
     tgs.newLine();
     ctx.getBuffer().area().increaseIndent();
     tgs.indent();
-    tgs.append("photos.map(photo => (");
+    tgs.append("{photos.map(photo => (");
     tgs.newLine();
     ctx.getBuffer().area().increaseIndent();
     tgs.indent();
-    tgs.append("<div className={config.layout === 'grid' ? \"col-md-4\" : config.layout === 'list' ? \"photo-list-item\" : \"masonry-item\"} key={photo._id}>");
+    tgs.append("<div className={LAYOUT.c3} key={photo._id}>");
     tgs.newLine();
     ctx.getBuffer().area().increaseIndent();
     tgs.indent();
@@ -399,13 +428,13 @@ public class Images_TextGen extends TextGenDescriptorBase {
     tgs.newLine();
 
     if (SEnumOperations.isMember(SPropertyOperations.getEnum(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.layout$KYXS), PROPS.type$b7cT), 0x7f63219c035cbd93L)) {
-      tgs.append("import \"../styles/ImageGrid.css\"");
+      tgs.append("import \"../styles/Imagev1.css\"");
       tgs.newLine();
     } else if (SEnumOperations.isMember(SPropertyOperations.getEnum(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.layout$KYXS), PROPS.type$b7cT), 0x7f63219c035cbd94L)) {
-      tgs.append("import \"../styles/ImageList.css\"");
+      tgs.append("import \"../styles/Imagev2.css\"");
       tgs.newLine();
     } else if (SEnumOperations.isMember(SPropertyOperations.getEnum(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.layout$KYXS), PROPS.type$b7cT), 0x39c93bd42dd7ce59L)) {
-      tgs.append("import \"../styles/ImageMasonary.css\"");
+      tgs.append("import \"../styles/Imagev3.css\"");
       tgs.newLine();
     }
 
@@ -423,6 +452,65 @@ public class Images_TextGen extends TextGenDescriptorBase {
     tgs.newLine();
     tgs.newLine();
     tgs.newLine();
+
+    // Difined variables for Button APIS
+    if (SPropertyOperations.getBoolean(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.enable_components$2$TR), LINKS.like$YGpT), LINKS.enable$UX7q), PROPS.value$RdAp)) {
+      tgs.indent();
+      tgs.append("const SET_LIKE = { api: `");
+      tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.api$sddj), LINKS.base_url$zLxn), PROPS.url$zsEU));
+      for (SNode api_end : ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.api$sddj), LINKS.endpoints$DTlt), LINKS.endpoints$AonT))) {
+        if (SPropertyOperations.getString(api_end, PROPS.name$MnvL) == SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.click_actions$JWIK), LINKS.like$dPcp), LINKS.endpoint$6EIT), PROPS.endpoint$hAHU)) {
+          tgs.append(SPropertyOperations.getString(api_end, PROPS.path_first$Ah$s));
+          tgs.append("${Photo.");
+          tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.click_actions$JWIK), LINKS.like$dPcp), LINKS.endpoint$6EIT), PROPS.parameter$T0O9));
+          tgs.append("}");
+          tgs.append(SPropertyOperations.getString(api_end, PROPS.path_second$cpiZ));
+        }
+      }
+      tgs.append("`, size: ");
+      tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.enable_components$2$TR), LINKS.like$YGpT), LINKS.icon$QPwn), PROPS.size$tFxB));
+      tgs.append(", icon: ");
+      tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.enable_components$2$TR), LINKS.like$YGpT), LINKS.icon$QPwn), PROPS.iconName$he9p));
+      tgs.append("};");
+      tgs.newLine();
+    }
+
+    if (SPropertyOperations.getBoolean(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.enable_components$2$TR), LINKS.favorite$YGRV), LINKS.enable$YHBp), PROPS.value$RdAp)) {
+      tgs.indent();
+      tgs.append("const SET_FAVORITE = { api: `");
+      tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.api$sddj), LINKS.base_url$zLxn), PROPS.url$zsEU));
+      for (SNode api_end : ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.api$sddj), LINKS.endpoints$DTlt), LINKS.endpoints$AonT))) {
+        if (SPropertyOperations.getString(api_end, PROPS.name$MnvL) == SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.click_actions$JWIK), LINKS.favorite$dPEr), LINKS.endpoint$azcV), PROPS.endpoint$hAHU)) {
+          tgs.append(SPropertyOperations.getString(api_end, PROPS.path_first$Ah$s));
+        }
+      }
+
+      tgs.append("`, size: ");
+      tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.enable_components$2$TR), LINKS.favorite$YGRV), LINKS.icon$640i), PROPS.size$tFxB));
+      tgs.append(", icon: ");
+      tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.enable_components$2$TR), LINKS.favorite$YGRV), LINKS.icon$640i), PROPS.iconName$he9p));
+      tgs.append("};");
+      tgs.newLine();
+    }
+
+    if (SPropertyOperations.getBoolean(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.enable_components$2$TR), LINKS.dislike$YGCU), LINKS.enable$RuaT), PROPS.value$RdAp)) {
+      tgs.indent();
+      tgs.append("const SET_DISLIKE = { api: `");
+      tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.api$sddj), LINKS.base_url$zLxn), PROPS.url$zsEU));
+      for (SNode api_end : ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.api$sddj), LINKS.endpoints$DTlt), LINKS.endpoints$AonT))) {
+        if (SPropertyOperations.getString(api_end, PROPS.name$MnvL) == SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.click_actions$JWIK), LINKS.dislike$dPrq), LINKS.endpoint$7gKp), PROPS.endpoint$hAHU)) {
+          tgs.append(SPropertyOperations.getString(api_end, PROPS.path_first$Ah$s));
+          tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.click_actions$JWIK), LINKS.dislike$dPrq), LINKS.endpoint$7gKp), PROPS.parameter$T0O9));
+          tgs.append(SPropertyOperations.getString(api_end, PROPS.path_second$cpiZ));
+        }
+      }
+      tgs.append("`, size: ");
+      tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.enable_components$2$TR), LINKS.dislike$YGCU), LINKS.icon$nA2n), PROPS.size$tFxB));
+      tgs.append(", icon: ");
+      tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.enable_components$2$TR), LINKS.dislike$YGCU), LINKS.icon$nA2n), PROPS.iconName$he9p));
+      tgs.append("};");
+      tgs.newLine();
+    }
 
     if (SEnumOperations.isMember(SPropertyOperations.getEnum(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.layout$KYXS), PROPS.type$b7cT), 0x7f63219c035cbd93L)) {
       tgs.indent();
@@ -469,7 +557,7 @@ public class Images_TextGen extends TextGenDescriptorBase {
         tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.enable_display_components$58nr), LINKS.display_likes$U0rU), LINKS.icon$nnTR), PROPS.size$tFxB));
         tgs.append("/> {photo.");
         tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.enable_display_components$58nr), LINKS.display_likes$U0rU), LINKS.content$utGr), PROPS.value$RDye));
-        tgs.append(" || 0}</span>)}");
+        tgs.append(" || 0}</span>");
         tgs.newLine();
       }
 
@@ -481,7 +569,7 @@ public class Images_TextGen extends TextGenDescriptorBase {
         tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.enable_display_components$58nr), LINKS.displayy_dislikes$U0EV), LINKS.icon$nH2f), PROPS.size$tFxB));
         tgs.append("/> {photo.");
         tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.enable_display_components$58nr), LINKS.displayy_dislikes$U0EV), LINKS.content$xZbq), PROPS.value$RDye));
-        tgs.append(" || 0}</span>)}");
+        tgs.append(" || 0}</span>");
         tgs.newLine();
       }
       tgs.indent();
@@ -509,54 +597,17 @@ public class Images_TextGen extends TextGenDescriptorBase {
       ctx.getBuffer().area().increaseIndent();
       if (SPropertyOperations.getBoolean(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.enable_components$2$TR), LINKS.like$YGpT), LINKS.enable$UX7q), PROPS.value$RdAp)) {
         tgs.indent();
-        tgs.append("<ReactionButton icon={");
-        tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.enable_components$2$TR), LINKS.like$YGpT), LINKS.icon$QPwn), PROPS.iconName$he9p));
-        tgs.append("} size={");
-        tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.enable_components$2$TR), LINKS.like$YGpT), LINKS.icon$QPwn), PROPS.size$tFxB));
-        tgs.append("} photo={photo} setPhoto={setPhoto} type=\"like\" apiEndpoint={`");
-        tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.api$sddj), LINKS.base_url$zLxn), PROPS.url$zsEU));
-        for (SNode api_end : ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.api$sddj), LINKS.endpoints$DTlt), LINKS.endpoints$AonT))) {
-          if (SPropertyOperations.getString(api_end, PROPS.name$MnvL) == SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.click_actions$JWIK), LINKS.like$dPcp), LINKS.endpoint$6EIT), PROPS.endpoint$hAHU)) {
-            tgs.append(SPropertyOperations.getString(api_end, PROPS.path_first$Ah$s));
-            tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.click_actions$JWIK), LINKS.like$dPcp), LINKS.endpoint$6EIT), PROPS.parameter$T0O9));
-            tgs.append(SPropertyOperations.getString(api_end, PROPS.path_second$cpiZ));
-          }
-        }
-        tgs.append("`}/>");
-        tgs.newLine();
-      }
-      if (SPropertyOperations.getBoolean(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.enable_components$2$TR), LINKS.dislike$YGCU), LINKS.enable$RuaT), PROPS.value$RdAp)) {
-        tgs.indent();
-        tgs.append("<ReactionButton icon={");
-        tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.enable_components$2$TR), LINKS.dislike$YGCU), LINKS.icon$nA2n), PROPS.iconName$he9p));
-        tgs.append("} size={");
-        tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.enable_components$2$TR), LINKS.dislike$YGCU), LINKS.icon$nA2n), PROPS.size$tFxB));
-        tgs.append("} photo={photo} setPhoto={setPhoto} type=\"dislike\" apiEndpoint={`");
-        tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.api$sddj), LINKS.base_url$zLxn), PROPS.url$zsEU));
-        for (SNode api_end : ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.api$sddj), LINKS.endpoints$DTlt), LINKS.endpoints$AonT))) {
-          if (SPropertyOperations.getString(api_end, PROPS.name$MnvL) == SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.click_actions$JWIK), LINKS.dislike$dPrq), LINKS.endpoint$7gKp), PROPS.endpoint$hAHU)) {
-            tgs.append(SPropertyOperations.getString(api_end, PROPS.path_first$Ah$s));
-            tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.click_actions$JWIK), LINKS.dislike$dPrq), LINKS.endpoint$7gKp), PROPS.parameter$T0O9));
-            tgs.append(SPropertyOperations.getString(api_end, PROPS.path_second$cpiZ));
-          }
-        }
-        tgs.append("`}/>");
+        tgs.append("<ReactionButton icon={LIKE_SET.icon} size={LIKE_SET.size} photo={photo} setPhoto={setPhoto} type=\"like\" apiEndpoint={LIKE_SET.api}/>");
         tgs.newLine();
       }
       if (SPropertyOperations.getBoolean(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.enable_components$2$TR), LINKS.favorite$YGRV), LINKS.enable$YHBp), PROPS.value$RdAp)) {
         tgs.indent();
-        tgs.append("<AddToFavoritesButton icon={");
-        tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.enable_components$2$TR), LINKS.favorite$YGRV), LINKS.icon$640i), PROPS.iconName$he9p));
-        tgs.append("} size={");
-        tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.enable_components$2$TR), LINKS.favorite$YGRV), LINKS.icon$640i), PROPS.size$tFxB));
-        tgs.append("} photoId={photo._id} currentUserId={user?._id} addFavoriteEndpoint=\"");
-        tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.api$sddj), LINKS.base_url$zLxn), PROPS.url$zsEU));
-        for (SNode end_api : ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.api$sddj), LINKS.endpoints$DTlt), LINKS.endpoints$AonT))) {
-          if (SPropertyOperations.getString(end_api, PROPS.name$MnvL) == SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.click_actions$JWIK), LINKS.favorite$dPEr), LINKS.endpoint$azcV), PROPS.endpoint$hAHU)) {
-            tgs.append(SPropertyOperations.getString(end_api, PROPS.path_first$Ah$s));
-          }
-        }
-        tgs.append("\"/>");
+        tgs.append("<AddToFavoritesButton icon={SET_FAVORITE.icon} size={SET_FAVORITE.size} photoId={photo._id} currentUserId={user?._id} addFavoriteEndpoint={SET_FAVORITE.api}/>");
+        tgs.newLine();
+      }
+      if (SPropertyOperations.getBoolean(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.enable_components$2$TR), LINKS.dislike$YGCU), LINKS.enable$RuaT), PROPS.value$RdAp)) {
+        tgs.indent();
+        tgs.append("<ReactionButton icon={SET_DISLIKE.icon} size={SET_DISLIKE.size} photo={photo} setPhoto={setPhoto} type=\"dislike\" apiEndpoint={SET_DISLIKE.api}/>");
         tgs.newLine();
       }
       ctx.getBuffer().area().decreaseIndent();
@@ -671,58 +722,17 @@ public class Images_TextGen extends TextGenDescriptorBase {
       ctx.getBuffer().area().increaseIndent();
       if (SPropertyOperations.getBoolean(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.enable_components$2$TR), LINKS.like$YGpT), LINKS.enable$UX7q), PROPS.value$RdAp)) {
         tgs.indent();
-        tgs.append(" <ReactionButton icon={");
-        tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.enable_components$2$TR), LINKS.like$YGpT), LINKS.icon$QPwn), PROPS.iconName$he9p));
-        tgs.append("} size={");
-        tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.enable_components$2$TR), LINKS.like$YGpT), LINKS.icon$QPwn), PROPS.size$tFxB));
-        tgs.append("} photo={photo} setPhoto={setPhoto} type=\"like\" apiEndpoint={");
-        tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.api$sddj), LINKS.base_url$zLxn), PROPS.url$zsEU));
-        for (SNode api_end : ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.api$sddj), LINKS.endpoints$DTlt), LINKS.endpoints$AonT))) {
-          if (SPropertyOperations.getString(api_end, PROPS.name$MnvL) == SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.click_actions$JWIK), LINKS.like$dPcp), LINKS.endpoint$6EIT), PROPS.endpoint$hAHU)) {
-            tgs.append(SPropertyOperations.getString(api_end, PROPS.path_first$Ah$s));
-            tgs.append("${");
-            tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.click_actions$JWIK), LINKS.like$dPcp), LINKS.endpoint$6EIT), PROPS.parameter$T0O9));
-            tgs.append("}");
-            tgs.append(SPropertyOperations.getString(api_end, PROPS.path_second$cpiZ));
-          }
-        }
-        tgs.append("}/>");
-        tgs.newLine();
-      }
-      if (SPropertyOperations.getBoolean(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.enable_components$2$TR), LINKS.dislike$YGCU), LINKS.enable$RuaT), PROPS.value$RdAp)) {
-        tgs.indent();
-        tgs.append("<ReactionButton icon={");
-        tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.enable_components$2$TR), LINKS.dislike$YGCU), LINKS.icon$nA2n), PROPS.iconName$he9p));
-        tgs.append("} size={");
-        tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.enable_components$2$TR), LINKS.dislike$YGCU), LINKS.icon$nA2n), PROPS.size$tFxB));
-        tgs.append("} photo={photo} setPhoto={setPhoto} type=\"dislike\" apiEndpoint={");
-        tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.api$sddj), LINKS.base_url$zLxn), PROPS.url$zsEU));
-        for (SNode api_end : ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.api$sddj), LINKS.endpoints$DTlt), LINKS.endpoints$AonT))) {
-          if (SPropertyOperations.getString(api_end, PROPS.name$MnvL) == SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.click_actions$JWIK), LINKS.dislike$dPrq), LINKS.endpoint$7gKp), PROPS.endpoint$hAHU)) {
-            tgs.append(SPropertyOperations.getString(api_end, PROPS.path_first$Ah$s));
-            tgs.append("${");
-            tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.click_actions$JWIK), LINKS.dislike$dPrq), LINKS.endpoint$7gKp), PROPS.parameter$T0O9));
-            tgs.append("}");
-            tgs.append(SPropertyOperations.getString(api_end, PROPS.path_second$cpiZ));
-          }
-        }
-        tgs.append("}/>");
+        tgs.append("<ReactionButton icon={SET_LIKE.icon} size={SET_LIKE.size} photo={photo} setPhoto={setPhoto} type=\"like\" apiEndpoint={SET_LIKE.api}/>");
         tgs.newLine();
       }
       if (SPropertyOperations.getBoolean(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.enable_components$2$TR), LINKS.favorite$YGRV), LINKS.enable$YHBp), PROPS.value$RdAp)) {
         tgs.indent();
-        tgs.append("<AddToFavoritesButton icon={");
-        tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.enable_components$2$TR), LINKS.favorite$YGRV), LINKS.icon$640i), PROPS.iconName$he9p));
-        tgs.append("} size={");
-        tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.enable_components$2$TR), LINKS.favorite$YGRV), LINKS.icon$640i), PROPS.size$tFxB));
-        tgs.append("} photoId={photo._id} currentUserId={user?._id} addFavoriteEndpoint=\"");
-        tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.api$sddj), LINKS.base_url$zLxn), PROPS.url$zsEU));
-        for (SNode api_end : ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.api$sddj), LINKS.endpoints$DTlt), LINKS.endpoints$AonT))) {
-          if (SPropertyOperations.getString(api_end, PROPS.name$MnvL) == SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.click_actions$JWIK), LINKS.favorite$dPEr), LINKS.endpoint$azcV), PROPS.endpoint$hAHU)) {
-            tgs.append(SPropertyOperations.getString(api_end, PROPS.path_first$Ah$s));
-          }
-        }
-        tgs.append("\"/>");
+        tgs.append("<AddToFavoritesButton icon={SET_FAVORITE.icon} size={SET_FAVORITE.size} photoId={photo._id} currentUserId={user?._id} addFavoriteEndpoint={SET_FAVORITE.api}/>");
+        tgs.newLine();
+      }
+      if (SPropertyOperations.getBoolean(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.enable_components$2$TR), LINKS.dislike$YGCU), LINKS.enable$RuaT), PROPS.value$RdAp)) {
+        tgs.indent();
+        tgs.append("<ReactionButton icon={SET_DISLIKE.icon} size={SET_DISLIKE.size} photo={photo} setPhoto={setPhoto} type=\"dislike\" apiEndpoint={SET_DISLIKE.api}/>");
         tgs.newLine();
       }
       ctx.getBuffer().area().decreaseIndent();
@@ -756,7 +766,7 @@ public class Images_TextGen extends TextGenDescriptorBase {
       }
       if (SPropertyOperations.getBoolean(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.enable_display_components$58nr), LINKS.display_likes$U0rU), LINKS.enable$uttq), PROPS.value$RdAp)) {
         tgs.indent();
-        tgs.append("<span className=\"display-dislikes\"><FaThumbsDown/>");
+        tgs.append("<span className=\"display-dislikes\"><");
         tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.enable_display_components$58nr), LINKS.displayy_dislikes$U0EV), LINKS.icon$nH2f), PROPS.iconName$he9p));
         tgs.append(" size={");
         tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.enable_display_components$58nr), LINKS.displayy_dislikes$U0EV), LINKS.icon$nH2f), PROPS.size$tFxB));
@@ -887,7 +897,7 @@ public class Images_TextGen extends TextGenDescriptorBase {
         tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.enable_display_components$58nr), LINKS.display_likes$U0rU), LINKS.icon$nnTR), PROPS.iconName$he9p));
         tgs.append(" size={");
         tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.enable_display_components$58nr), LINKS.display_likes$U0rU), LINKS.icon$nnTR), PROPS.size$tFxB));
-        tgs.append("} /> {photo.Likes || 0}</span>)}");
+        tgs.append("} /> {photo.Likes || 0}</span>");
         tgs.newLine();
       }
       if (SPropertyOperations.getBoolean(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.enable_display_components$58nr), LINKS.displayy_dislikes$U0EV), LINKS.enable$xYWp), PROPS.value$RdAp)) {
@@ -896,7 +906,7 @@ public class Images_TextGen extends TextGenDescriptorBase {
         tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.enable_display_components$58nr), LINKS.displayy_dislikes$U0EV), LINKS.icon$nH2f), PROPS.iconName$he9p));
         tgs.append(" size={");
         tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.enable_display_components$58nr), LINKS.displayy_dislikes$U0EV), LINKS.icon$nH2f), PROPS.size$tFxB));
-        tgs.append("} > {photo.Dislikes || 0}</span>)}");
+        tgs.append("} > {photo.Dislikes || 0}</span>");
         tgs.newLine();
       }
       ctx.getBuffer().area().decreaseIndent();
@@ -913,6 +923,7 @@ public class Images_TextGen extends TextGenDescriptorBase {
       tgs.newLine();
       tgs.newLine();
 
+      tgs.indent();
       tgs.append("{showOverlay && (");
       tgs.newLine();
       ctx.getBuffer().area().increaseIndent();
@@ -921,64 +932,26 @@ public class Images_TextGen extends TextGenDescriptorBase {
       tgs.newLine();
       ctx.getBuffer().area().increaseIndent();
       tgs.indent();
-      tgs.append("<div className={`");
+      tgs.append("<div className={`action-buttons ");
       tgs.append(SEnumOperations.getMemberPresentation(SPropertyOperations.getEnum(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.enable_components$2$TR), LINKS.position$tGxY), PROPS.aligment$KWkS)));
       tgs.append(" ");
       tgs.append(SEnumOperations.getMemberPresentation(SPropertyOperations.getEnum(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.enable_components$2$TR), LINKS.position$tGxY), PROPS.position$S7Zm)));
-      tgs.append("}>");
+      tgs.append("`}>");
       tgs.newLine();
       ctx.getBuffer().area().increaseIndent();
       if (SPropertyOperations.getBoolean(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.enable_components$2$TR), LINKS.like$YGpT), LINKS.enable$UX7q), PROPS.value$RdAp)) {
         tgs.indent();
-        tgs.append("<ReactionButton icon={");
-        tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.enable_components$2$TR), LINKS.like$YGpT), LINKS.icon$QPwn), PROPS.iconName$he9p));
-        tgs.append("} size={");
-        tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.enable_components$2$TR), LINKS.like$YGpT), LINKS.icon$QPwn), PROPS.size$tFxB));
-        tgs.append("} photo={photo} setPhoto={setPhoto} type=\"like\" apiEndpoint={`");
-        tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.api$sddj), LINKS.base_url$zLxn), PROPS.url$zsEU));
-        for (SNode api_end : ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.api$sddj), LINKS.endpoints$DTlt), LINKS.endpoints$AonT))) {
-          if (SPropertyOperations.getString(api_end, PROPS.name$MnvL) == SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.click_actions$JWIK), LINKS.like$dPcp), LINKS.endpoint$6EIT), PROPS.endpoint$hAHU)) {
-            tgs.indent();
-            tgs.append(SPropertyOperations.getString(api_end, PROPS.path_first$Ah$s));
-            tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.click_actions$JWIK), LINKS.like$dPcp), LINKS.endpoint$6EIT), PROPS.parameter$T0O9));
-            tgs.append(SPropertyOperations.getString(api_end, PROPS.path_second$cpiZ));
-          }
-        }
-        tgs.append("`}/>");
+        tgs.append("<ReactionButton icon={SET_LIKE.icon} size={SET_LIKE.size} photo={photo} setPhoto={setPhoto} type=\"like\" apiEndpoint={`http://localhost:3001/images/${photo._id}/like`}/>");
         tgs.newLine();
       }
       if (SPropertyOperations.getBoolean(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.enable_components$2$TR), LINKS.favorite$YGRV), LINKS.enable$YHBp), PROPS.value$RdAp)) {
         tgs.indent();
-        tgs.append("<AddToFavoritesButton icon={");
-        tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.enable_components$2$TR), LINKS.favorite$YGRV), LINKS.icon$640i), PROPS.iconName$he9p));
-        tgs.append("} size={");
-        tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.enable_components$2$TR), LINKS.favorite$YGRV), LINKS.icon$640i), PROPS.size$tFxB));
-        tgs.append("} photoId={photo._id} currentUserId={user?._id} addFavoriteEndpoint=\"");
-        tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.api$sddj), LINKS.base_url$zLxn), PROPS.url$zsEU));
-        for (SNode api_end : ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.api$sddj), LINKS.endpoints$DTlt), LINKS.endpoints$AonT))) {
-          if (SPropertyOperations.getString(api_end, PROPS.name$MnvL) == SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.click_actions$JWIK), LINKS.favorite$dPEr), LINKS.endpoint$azcV), PROPS.endpoint$hAHU)) {
-            tgs.append(SPropertyOperations.getString(api_end, PROPS.path_first$Ah$s));
-          }
-        }
-        tgs.append("\"/>");
+        tgs.append("<AddToFavoritesButton icon={SET_FAVORITE.icon} size={SET_FAVORITE.size} photoId={photo._id} currentUserId={user?._id} addFavoriteEndpoint={SET_FAVORITE.api}/>");
         tgs.newLine();
       }
       if (SPropertyOperations.getBoolean(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.enable_components$2$TR), LINKS.dislike$YGCU), LINKS.enable$RuaT), PROPS.value$RdAp)) {
         tgs.indent();
-        tgs.append("<ReactionButton icon={");
-        tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.enable_components$2$TR), LINKS.dislike$YGCU), LINKS.icon$nA2n), PROPS.iconName$he9p));
-        tgs.append("} size={");
-        tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.enable_components$2$TR), LINKS.dislike$YGCU), LINKS.icon$nA2n), PROPS.size$tFxB));
-        tgs.append("} photo={photo} setPhoto={setPhoto} type=\"dislike\" apiEndpoint={`");
-        tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.api$sddj), LINKS.base_url$zLxn), PROPS.url$zsEU));
-        for (SNode api_end : ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.api$sddj), LINKS.endpoints$DTlt), LINKS.endpoints$AonT))) {
-          if (SPropertyOperations.getString(api_end, PROPS.name$MnvL) == SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.click_actions$JWIK), LINKS.dislike$dPrq), LINKS.endpoint$7gKp), PROPS.endpoint$hAHU)) {
-            tgs.append(SPropertyOperations.getString(api_end, PROPS.path_first$Ah$s));
-            tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.click_actions$JWIK), LINKS.dislike$dPrq), LINKS.endpoint$7gKp), PROPS.parameter$T0O9));
-            tgs.append(SPropertyOperations.getString(api_end, PROPS.path_second$cpiZ));
-          }
-        }
-        tgs.append("`}/>");
+        tgs.append("<ReactionButton icon={SET_DISLIKE.icon} size={SET_DISLIKE.size} photo={photo} setPhoto={setPhoto} type=\"dislike\" apiEndpoint={SET_DISLIKE.api}/>");
         tgs.newLine();
       }
       ctx.getBuffer().area().decreaseIndent();
@@ -1078,6 +1051,16 @@ public class Images_TextGen extends TextGenDescriptorBase {
     /*package*/ static final SContainmentLink enable$RuaT = MetaAdapterFactory.getContainmentLink(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x39c93bd42de5bf0bL, 0x39c93bd42de5bf0cL, "enable");
     /*package*/ static final SContainmentLink favorite$YGRV = MetaAdapterFactory.getContainmentLink(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x7f63219c035cbedcL, 0x7f63219c035cbedfL, "favorite");
     /*package*/ static final SContainmentLink enable$YHBp = MetaAdapterFactory.getContainmentLink(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x7f63219c035cbee1L, 0x7f63219c035cbee2L, "enable");
+    /*package*/ static final SContainmentLink click_actions$JWIK = MetaAdapterFactory.getContainmentLink(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x7f63219c035cbd8dL, 0x39c93bd42deb44a1L, "click_actions");
+    /*package*/ static final SContainmentLink like$dPcp = MetaAdapterFactory.getContainmentLink(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x39c93bd42deb4446L, 0x39c93bd42deb4447L, "like");
+    /*package*/ static final SContainmentLink endpoint$6EIT = MetaAdapterFactory.getContainmentLink(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x39c93bd42deb4386L, 0x39c93bd42deb4387L, "endpoint");
+    /*package*/ static final SContainmentLink icon$QPwn = MetaAdapterFactory.getContainmentLink(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x7f63219c035cbe71L, 0x50366596986236b4L, "icon");
+    /*package*/ static final SContainmentLink favorite$dPEr = MetaAdapterFactory.getContainmentLink(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x39c93bd42deb4446L, 0x39c93bd42deb4449L, "favorite");
+    /*package*/ static final SContainmentLink endpoint$azcV = MetaAdapterFactory.getContainmentLink(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x39c93bd42deb43ffL, 0x39c93bd42deb4402L, "endpoint");
+    /*package*/ static final SContainmentLink icon$640i = MetaAdapterFactory.getContainmentLink(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x7f63219c035cbee1L, 0x50366596986f0e88L, "icon");
+    /*package*/ static final SContainmentLink dislike$dPrq = MetaAdapterFactory.getContainmentLink(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x39c93bd42deb4446L, 0x39c93bd42deb4448L, "dislike");
+    /*package*/ static final SContainmentLink endpoint$7gKp = MetaAdapterFactory.getContainmentLink(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x39c93bd42deb43baL, 0x39c93bd42deb43bbL, "endpoint");
+    /*package*/ static final SContainmentLink icon$nA2n = MetaAdapterFactory.getContainmentLink(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x39c93bd42de5bf0bL, 0x50366596986f0e70L, "icon");
     /*package*/ static final SContainmentLink enable_display_components$58nr = MetaAdapterFactory.getContainmentLink(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x7f63219c035cbd8dL, 0x7f5e51ed8fac258eL, "enable_display_components");
     /*package*/ static final SContainmentLink position$X46W = MetaAdapterFactory.getContainmentLink(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x7f5e51ed8fac2532L, 0x7f5e51ed8fac256dL, "position");
     /*package*/ static final SContainmentLink display_likes$U0rU = MetaAdapterFactory.getContainmentLink(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x7f5e51ed8fac2532L, 0x7f5e51ed8fac2534L, "display_likes");
@@ -1089,34 +1072,26 @@ public class Images_TextGen extends TextGenDescriptorBase {
     /*package*/ static final SContainmentLink content$xZbq = MetaAdapterFactory.getContainmentLink(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x503665969856bcc6L, 0x503665969856bcc8L, "content");
     /*package*/ static final SContainmentLink enable$xYWp = MetaAdapterFactory.getContainmentLink(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x503665969856bcc6L, 0x503665969856bcc7L, "enable");
     /*package*/ static final SContainmentLink position$tGxY = MetaAdapterFactory.getContainmentLink(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x7f63219c035cbedcL, 0x39c93bd42dd9788eL, "position");
-    /*package*/ static final SContainmentLink icon$QPwn = MetaAdapterFactory.getContainmentLink(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x7f63219c035cbe71L, 0x50366596986236b4L, "icon");
-    /*package*/ static final SContainmentLink click_actions$JWIK = MetaAdapterFactory.getContainmentLink(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x7f63219c035cbd8dL, 0x39c93bd42deb44a1L, "click_actions");
-    /*package*/ static final SContainmentLink like$dPcp = MetaAdapterFactory.getContainmentLink(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x39c93bd42deb4446L, 0x39c93bd42deb4447L, "like");
-    /*package*/ static final SContainmentLink endpoint$6EIT = MetaAdapterFactory.getContainmentLink(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x39c93bd42deb4386L, 0x39c93bd42deb4387L, "endpoint");
-    /*package*/ static final SContainmentLink icon$nA2n = MetaAdapterFactory.getContainmentLink(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x39c93bd42de5bf0bL, 0x50366596986f0e70L, "icon");
-    /*package*/ static final SContainmentLink dislike$dPrq = MetaAdapterFactory.getContainmentLink(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x39c93bd42deb4446L, 0x39c93bd42deb4448L, "dislike");
-    /*package*/ static final SContainmentLink endpoint$7gKp = MetaAdapterFactory.getContainmentLink(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x39c93bd42deb43baL, 0x39c93bd42deb43bbL, "endpoint");
-    /*package*/ static final SContainmentLink icon$640i = MetaAdapterFactory.getContainmentLink(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x7f63219c035cbee1L, 0x50366596986f0e88L, "icon");
-    /*package*/ static final SContainmentLink favorite$dPEr = MetaAdapterFactory.getContainmentLink(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x39c93bd42deb4446L, 0x39c93bd42deb4449L, "favorite");
-    /*package*/ static final SContainmentLink endpoint$azcV = MetaAdapterFactory.getContainmentLink(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x39c93bd42deb43ffL, 0x39c93bd42deb4402L, "endpoint");
   }
 
   private static final class PROPS {
     /*package*/ static final SProperty sorting$b7EV = MetaAdapterFactory.getProperty(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x4493374f2296af2eL, 0x4493374f2296af31L, "sorting");
+    /*package*/ static final SProperty type$b7cT = MetaAdapterFactory.getProperty(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x4493374f2296af2eL, 0x4493374f2296af2fL, "type");
     /*package*/ static final SProperty url$zsEU = MetaAdapterFactory.getProperty(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x4b61efe7ede39682L, 0x4b61efe7ede39684L, "url");
     /*package*/ static final SProperty source$4L_p = MetaAdapterFactory.getProperty(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x7f63219c035a8ce8L, 0x7f63219c035a8ce9L, "source");
     /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
     /*package*/ static final SProperty path_first$Ah$s = MetaAdapterFactory.getProperty(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x4b61efe7ede396a1L, 0x4b61efe7ede396a5L, "path_first");
     /*package*/ static final SProperty name$AnCU = MetaAdapterFactory.getProperty(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x4b61efe7ede396a7L, 0x4b61efe7ede396a9L, "name");
     /*package*/ static final SProperty path_second$cpiZ = MetaAdapterFactory.getProperty(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x4b61efe7ede396a1L, 0x5cffed4b438ace8fL, "path_second");
+    /*package*/ static final SProperty items_per_page$b7rU = MetaAdapterFactory.getProperty(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x4493374f2296af2eL, 0x4493374f2296af30L, "items_per_page");
+    /*package*/ static final SProperty sorting$OnKN = MetaAdapterFactory.getProperty(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x7f63219c035cbddeL, 0x7f63219c035cbde4L, "sorting");
     /*package*/ static final SProperty value$RdAp = MetaAdapterFactory.getProperty(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x7f63219c035cbe07L, 0x7f63219c035cbe08L, "value");
-    /*package*/ static final SProperty type$b7cT = MetaAdapterFactory.getProperty(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x4493374f2296af2eL, 0x4493374f2296af2fL, "type");
-    /*package*/ static final SProperty position$S7Zm = MetaAdapterFactory.getProperty(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x7f63219c035cbe49L, 0x7f63219c035cbe52L, "position");
-    /*package*/ static final SProperty aligment$KWkS = MetaAdapterFactory.getProperty(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x7f63219c035cbe49L, 0x7f5e51ed8fb0ca89L, "aligment");
-    /*package*/ static final SProperty iconName$he9p = MetaAdapterFactory.getProperty(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x39c93bd42dd4d43cL, 0x39c93bd42dd4d43dL, "iconName");
-    /*package*/ static final SProperty size$tFxB = MetaAdapterFactory.getProperty(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x39c93bd42dd4d43cL, 0x503665969865d1dcL, "size");
-    /*package*/ static final SProperty value$RDye = MetaAdapterFactory.getProperty(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x7f63219c035cbe27L, 0x7f63219c035cbe28L, "value");
     /*package*/ static final SProperty endpoint$hAHU = MetaAdapterFactory.getProperty(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x39c93bd42df15e62L, 0x39c93bd42df15e64L, "endpoint");
     /*package*/ static final SProperty parameter$T0O9 = MetaAdapterFactory.getProperty(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x39c93bd42df15e62L, 0x7e0d89be961bd221L, "parameter");
+    /*package*/ static final SProperty size$tFxB = MetaAdapterFactory.getProperty(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x39c93bd42dd4d43cL, 0x503665969865d1dcL, "size");
+    /*package*/ static final SProperty iconName$he9p = MetaAdapterFactory.getProperty(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x39c93bd42dd4d43cL, 0x39c93bd42dd4d43dL, "iconName");
+    /*package*/ static final SProperty position$S7Zm = MetaAdapterFactory.getProperty(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x7f63219c035cbe49L, 0x7f63219c035cbe52L, "position");
+    /*package*/ static final SProperty aligment$KWkS = MetaAdapterFactory.getProperty(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x7f63219c035cbe49L, 0x7f5e51ed8fb0ca89L, "aligment");
+    /*package*/ static final SProperty value$RDye = MetaAdapterFactory.getProperty(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x7f63219c035cbe27L, 0x7f63219c035cbe28L, "value");
   }
 }

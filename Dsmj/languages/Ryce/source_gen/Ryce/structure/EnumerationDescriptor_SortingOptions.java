@@ -15,12 +15,15 @@ public class EnumerationDescriptor_SortingOptions extends EnumerationDescriptorB
     super(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x7f63219c035cbddfL, "SortingOptions", "r:6f21ea0b-8f9f-4069-8bcc-6c3e23fc8fea(Ryce.structure)/9179217419466227167");
   }
 
-  private final EnumerationDescriptor.MemberDescriptor myMember_newest_first_0 = new EnumerationDescriptor.MemberDescriptor("newest_first", "newest_first", 0x7f63219c035cbde0L, "r:6f21ea0b-8f9f-4069-8bcc-6c3e23fc8fea(Ryce.structure)/9179217419466227168");
-  private final EnumerationDescriptor.MemberDescriptor myMember_most_populat_0 = new EnumerationDescriptor.MemberDescriptor("most_populat", "most_populat", 0x7f63219c035cbde1L, "r:6f21ea0b-8f9f-4069-8bcc-6c3e23fc8fea(Ryce.structure)/9179217419466227169");
-  private final EnumerationDescriptor.MemberDescriptor myMember_oldest_first_0 = new EnumerationDescriptor.MemberDescriptor("oldest_first", "oldest_first", 0x7f63219c035cbde2L, "r:6f21ea0b-8f9f-4069-8bcc-6c3e23fc8fea(Ryce.structure)/9179217419466227170");
+  private final EnumerationDescriptor.MemberDescriptor myMember_newest_asc_0 = new EnumerationDescriptor.MemberDescriptor("newest_asc", "newest_asc", 0x7f63219c035cbde0L, "r:6f21ea0b-8f9f-4069-8bcc-6c3e23fc8fea(Ryce.structure)/9179217419466227168");
+  private final EnumerationDescriptor.MemberDescriptor myMember_newest_dsc_0 = new EnumerationDescriptor.MemberDescriptor("newest_dsc", "newest_dsc", 0x5c808fbfa1130765L, "r:6f21ea0b-8f9f-4069-8bcc-6c3e23fc8fea(Ryce.structure)/6665485501712238437");
+  private final EnumerationDescriptor.MemberDescriptor myMember_likes_asc_0 = new EnumerationDescriptor.MemberDescriptor("likes_asc", "likes_asc", 0x7f63219c035cbde1L, "r:6f21ea0b-8f9f-4069-8bcc-6c3e23fc8fea(Ryce.structure)/9179217419466227169");
+  private final EnumerationDescriptor.MemberDescriptor myMember_likes_dsc_0 = new EnumerationDescriptor.MemberDescriptor("likes_dsc", "likes_dsc", 0x5c808fbfa1130766L, "r:6f21ea0b-8f9f-4069-8bcc-6c3e23fc8fea(Ryce.structure)/6665485501712238438");
+  private final EnumerationDescriptor.MemberDescriptor myMember_title_asc_0 = new EnumerationDescriptor.MemberDescriptor("title_asc", "title_asc", 0x7f63219c035cbde2L, "r:6f21ea0b-8f9f-4069-8bcc-6c3e23fc8fea(Ryce.structure)/9179217419466227170");
+  private final EnumerationDescriptor.MemberDescriptor myMember_title_dsc_0 = new EnumerationDescriptor.MemberDescriptor("title_dsc", "title_dsc", 0x5c808fbfa1130767L, "r:6f21ea0b-8f9f-4069-8bcc-6c3e23fc8fea(Ryce.structure)/6665485501712238439");
 
-  private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x7f63219c035cbddfL, 0x7f63219c035cbde0L, 0x7f63219c035cbde1L, 0x7f63219c035cbde2L);
-  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList0(myIndex, myMember_newest_first_0, myMember_most_populat_0, myMember_oldest_first_0);
+  private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x7f63219c035cbddfL, 0x7f63219c035cbde0L, 0x5c808fbfa1130765L, 0x7f63219c035cbde1L, 0x5c808fbfa1130766L, 0x7f63219c035cbde2L, 0x5c808fbfa1130767L);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList0(myIndex, myMember_newest_asc_0, myMember_newest_dsc_0, myMember_likes_asc_0, myMember_likes_dsc_0, myMember_title_asc_0, myMember_title_dsc_0);
 
   @Nullable
   @Override
@@ -41,12 +44,18 @@ public class EnumerationDescriptor_SortingOptions extends EnumerationDescriptorB
       return null;
     }
     switch (memberName) {
-      case "newest_first":
-        return myMember_newest_first_0;
-      case "most_populat":
-        return myMember_most_populat_0;
-      case "oldest_first":
-        return myMember_oldest_first_0;
+      case "newest_asc":
+        return myMember_newest_asc_0;
+      case "newest_dsc":
+        return myMember_newest_dsc_0;
+      case "likes_asc":
+        return myMember_likes_asc_0;
+      case "likes_dsc":
+        return myMember_likes_dsc_0;
+      case "title_asc":
+        return myMember_title_asc_0;
+      case "title_dsc":
+        return myMember_title_dsc_0;
     }
     return null;
   }

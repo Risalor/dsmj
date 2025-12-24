@@ -3,6 +3,7 @@ import Photo from './Photo';
 import '../styles/combined.css'
 import config from '../config.json';
 
+
 function Photos() {
     const [photos, setPhotos] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
