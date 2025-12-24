@@ -63,9 +63,11 @@ public class MenuOptionIsSet_TextGen extends TextGenDescriptorBase {
         tgs.newLine();
         ctx.getBuffer().area().increaseIndent();
         tgs.indent();
-        tgs.append("<Link className={`nav-link ${location.pathname === '/Profile' ? 'active' : ''}`} to=\"");
+        tgs.append("<Link className={`nav-link ${location.pathname === '");
         tgs.append(SPropertyOperations.getString(option, PROPS.url$4eWq));
-        tgs.append(">");
+        tgs.append("' ? 'active' : ''}`} to=\"");
+        tgs.append(SPropertyOperations.getString(option, PROPS.url$4eWq));
+        tgs.append("\">");
         tgs.newLine();
         ctx.getBuffer().area().increaseIndent();
         tgs.indent();
@@ -79,7 +81,7 @@ public class MenuOptionIsSet_TextGen extends TextGenDescriptorBase {
         }
         tgs.append("{!isCollapsed && <span>");
         tgs.append(SPropertyOperations.getString(option, PROPS.text$4fbr));
-        tgs.append("</span>");
+        tgs.append("</span>}");
         tgs.newLine();
         ctx.getBuffer().area().decreaseIndent();
         tgs.indent();

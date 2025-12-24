@@ -352,7 +352,32 @@ public class Menu_TextGen extends TextGenDescriptorBase {
         tgs.indent();
         tgs.append("</div>");
         tgs.newLine();
+        tgs.indent();
+        tgs.append("{!isCollapsed && (");
+        tgs.newLine();
+        ctx.getBuffer().area().increaseIndent();
+        tgs.indent();
+        tgs.append("<Link className=\"nav-link icon-link ms-2\" to=\"/Logout\" title=\"Logout\">");
+        tgs.newLine();
+        ctx.getBuffer().area().increaseIndent();
+        tgs.indent();
+        tgs.append("<LogOut className=\"header-icon\" size={28} />");
+        tgs.newLine();
+        tgs.indent();
+        tgs.append("<span className=\"d-none d-md-inline ms-2 text-white\">Logout</span>");
+        tgs.newLine();
         ctx.getBuffer().area().decreaseIndent();
+        tgs.indent();
+        tgs.append("</Link>");
+        tgs.newLine();
+        ctx.getBuffer().area().decreaseIndent();
+        tgs.indent();
+        tgs.append(")}");
+        tgs.newLine();
+        ctx.getBuffer().area().decreaseIndent();
+        tgs.indent();
+        tgs.append("</div>");
+        tgs.newLine();
         tgs.indent();
         tgs.append(") : (");
         tgs.newLine();
@@ -399,7 +424,7 @@ public class Menu_TextGen extends TextGenDescriptorBase {
         tgs.newLine();
         ctx.getBuffer().area().decreaseIndent();
         tgs.indent();
-        tgs.append("/div>");
+        tgs.append("</div>");
         tgs.newLine();
         ctx.getBuffer().area().decreaseIndent();
         tgs.indent();
@@ -652,16 +677,19 @@ public class Menu_TextGen extends TextGenDescriptorBase {
       tgs.indent();
       tgs.append("</ul>");
       tgs.newLine();
-      if (SPropertyOperations.getBoolean(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.user_display$xcYV), PROPS.enabled$qIki)) {
-        tgs.indent();
-        tgs.appendNode(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.user_display$xcYV));
-        tgs.newLine();
-      }
       ctx.getBuffer().area().decreaseIndent();
       tgs.indent();
       tgs.append("</div>");
       tgs.newLine();
       ctx.getBuffer().area().decreaseIndent();
+      if (SPropertyOperations.getBoolean(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.user_display$xcYV), PROPS.enabled$qIki)) {
+        tgs.indent();
+        tgs.appendNode(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.user_display$xcYV));
+        tgs.newLine();
+      }
+      tgs.indent();
+      tgs.append("</div>");
+      tgs.newLine();
     }
     ctx.getBuffer().area().decreaseIndent();
     tgs.indent();

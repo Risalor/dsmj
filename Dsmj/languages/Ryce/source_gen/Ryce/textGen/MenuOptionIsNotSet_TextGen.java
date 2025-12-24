@@ -80,7 +80,7 @@ public class MenuOptionIsNotSet_TextGen extends TextGenDescriptorBase {
         }
         tgs.append("{!isCollapsed && <span>");
         tgs.append(SPropertyOperations.getString(option, PROPS.text$4fbr));
-        tgs.append("</span>");
+        tgs.append("</span>}");
         tgs.newLine();
         ctx.getBuffer().area().decreaseIndent();
         tgs.indent();

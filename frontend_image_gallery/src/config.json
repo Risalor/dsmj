@@ -1,6 +1,6 @@
 {
   "layout": "masonry",
-  "menu": "topbar",
+  "menu": "sidebar",
   "like": true,
   "dislike": true,
   "favorite": true,

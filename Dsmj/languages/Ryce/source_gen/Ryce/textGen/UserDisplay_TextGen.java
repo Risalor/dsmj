@@ -7,30 +7,40 @@ import jetbrains.mps.text.rt.TextGenContext;
 import jetbrains.mps.text.impl.TextGenSupport;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import org.jetbrains.mps.openapi.language.SProperty;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SProperty;
 
 public class UserDisplay_TextGen extends TextGenDescriptorBase {
   @Override
   public void generateText(final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
-    if (SEnumOperations.isMember(SPropertyOperations.getEnum(ctx.getPrimaryInput(), PROPS.display_type$qIzj), 0x40381b488ec39513L)) {
+    if (SEnumOperations.isMember(SPropertyOperations.getEnum(SNodeOperations.cast(SNodeOperations.getParent(ctx.getPrimaryInput()), CONCEPTS.Menu$SI), PROPS.type$SqYo), 0x5f82ea2efcb96887L)) {
       tgs.append("<div>");
       tgs.newLine();
-    } else if (SEnumOperations.isMember(SPropertyOperations.getEnum(ctx.getPrimaryInput(), PROPS.display_type$qIzj), 0x40381b488ec39514L)) {
+    } else if (SEnumOperations.isMember(SPropertyOperations.getEnum(SNodeOperations.cast(SNodeOperations.getParent(ctx.getPrimaryInput()), CONCEPTS.Menu$SI), PROPS.type$SqYo), 0x5f82ea2efcb9688aL)) {
       tgs.append("<div className=\"sidebar-user\">");
       tgs.newLine();
     }
     ctx.getBuffer().area().increaseIndent();
     tgs.indent();
-    tgs.append("<UserDisplay />");
-    tgs.newLine();
+    if (SEnumOperations.isMember(SPropertyOperations.getEnum(SNodeOperations.cast(SNodeOperations.getParent(ctx.getPrimaryInput()), CONCEPTS.Menu$SI), PROPS.type$SqYo), 0x5f82ea2efcb96887L)) {
+      tgs.append("<UserDisplay isCollapsed={false} isTopbar={true} />");
+      tgs.newLine();
+    } else if (SEnumOperations.isMember(SPropertyOperations.getEnum(SNodeOperations.cast(SNodeOperations.getParent(ctx.getPrimaryInput()), CONCEPTS.Menu$SI), PROPS.type$SqYo), 0x5f82ea2efcb9688aL)) {
+      tgs.append("<UserDisplay isCollapsed={isCollapsed} isTopbar={false} />");
+    }
     ctx.getBuffer().area().decreaseIndent();
     tgs.indent();
     tgs.append("</div>");
   }
 
+  private static final class CONCEPTS {
+    /*package*/ static final SConcept Menu$SI = MetaAdapterFactory.getConcept(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x5f82ea2efca8b118L, "Ryce.structure.Menu");
+  }
+
   private static final class PROPS {
-    /*package*/ static final SProperty display_type$qIzj = MetaAdapterFactory.getProperty(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x40381b488ec39511L, 0x40381b488ec39517L, "display_type");
+    /*package*/ static final SProperty type$SqYo = MetaAdapterFactory.getProperty(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x5f82ea2efca8b118L, 0x605f898c118a05aeL, "type");
   }
 }

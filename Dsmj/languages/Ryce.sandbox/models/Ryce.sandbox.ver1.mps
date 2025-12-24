@@ -44,6 +44,12 @@
         <child id="4163925112970232904" name="dislike" index="k8BYs" />
         <child id="4163925112970232905" name="favorite" index="k8BYt" />
       </concept>
+      <concept id="4163925112969633984" name="Ryce.structure.MenuOptionIsNotSet" flags="ng" index="kaLGk">
+        <child id="4163925112969633985" name="options" index="kaLGl" />
+      </concept>
+      <concept id="4163925112969633957" name="Ryce.structure.MenuOptionIsSet" flags="ng" index="kaLHL">
+        <child id="4163925112969633958" name="options" index="kaLHM" />
+      </concept>
       <concept id="4163925112969871115" name="Ryce.structure.Dislike" flags="ng" index="kb8jv">
         <child id="4163925112969871116" name="enable" index="kb8jo" />
         <child id="5779918869253525104" name="icon" index="38mmJA" />
@@ -56,12 +62,19 @@
         <property id="4163925112970906363" name="text" index="kfb4J" />
       </concept>
       <concept id="6882320668103848216" name="Ryce.structure.Menu" flags="ng" index="2za_GQ">
+        <child id="5431886404992943964" name="set" index="2AwiyV" />
+        <child id="5431886404993061615" name="options_IsSet" index="2AwRO8" />
+        <child id="5431886404993061616" name="options_NotSet" index="2AwROn" />
         <child id="4627478615569962349" name="user_display" index="3eYSS_" />
         <child id="6944420385105675533" name="title_option" index="1LqKM1" />
       </concept>
       <concept id="6882320668104559056" name="Ryce.structure.MenuOptionElement" flags="ng" index="2zcmfY">
         <property id="6882320668104559058" name="url" index="2zcmfW" />
         <property id="6882320668104559059" name="text" index="2zcmfX" />
+        <child id="4163925112968762430" name="icon" index="k7uZE" />
+      </concept>
+      <concept id="5431886404992943962" name="Ryce.structure.Set" flags="ng" index="2AwiyX">
+        <property id="5431886404992943968" name="set" index="2Awiy7" />
       </concept>
       <concept id="5431886404993128103" name="Ryce.structure.Parameter" flags="ng" index="2AwB_0">
         <property id="5431886404993128105" name="name" index="2AwB_e" />
@@ -93,6 +106,7 @@
         <child id="5779918869251931245" name="content" index="38odBV" />
       </concept>
       <concept id="4627478615569962257" name="Ryce.structure.UserDisplay" flags="ng" index="3eYSTp">
+        <property id="4627478615569962262" name="enabled" index="3eYSTu" />
         <property id="4627478615569962263" name="display_type" index="3eYSTv" />
       </concept>
       <concept id="4941354029177810734" name="Ryce.structure.Layout" flags="ng" index="1A1pxx">
@@ -381,12 +395,34 @@
       <property role="TrG5h" value="main" />
       <node concept="3eYSTp" id="5M0zVYxdctb" role="3eYSS_">
         <property role="3eYSTv" value="40S6OyeKTkj/standard" />
+        <property role="3eYSTu" value="true" />
       </node>
       <node concept="1L0rax" id="5M0zVYxdctc" role="1LqKM1">
         <node concept="2zcmfY" id="5M0zVYxdctd" role="1L0ray">
           <property role="TrG5h" value="MAIN" />
-          <property role="2zcmfW" value="/KrisGal" />
-          <property role="2zcmfX" value="HrisGal" />
+          <property role="2zcmfW" value="/" />
+          <property role="2zcmfX" value="KrisGal" />
+          <node concept="k7uZC" id="1kIIJWZVFHp" role="k7uZE">
+            <property role="k7uZD" value="FaPaintBrush" />
+            <property role="38kVha" value="10" />
+          </node>
+        </node>
+      </node>
+      <node concept="2AwiyX" id="1kIIJWZWUq4" role="2AwiyV">
+        <property role="2Awiy7" value="user" />
+      </node>
+      <node concept="kaLHL" id="1kIIJWZWUq5" role="2AwRO8">
+        <node concept="2zcmfY" id="1kIIJWZWUq6" role="kaLHM">
+          <property role="TrG5h" value="HALL" />
+          <property role="2zcmfW" value="/Hal" />
+          <property role="2zcmfX" value="Mull" />
+        </node>
+      </node>
+      <node concept="kaLGk" id="1kIIJWZWUq7" role="2AwROn">
+        <node concept="2zcmfY" id="1kIIJWZWUq8" role="kaLGl">
+          <property role="TrG5h" value="PIR" />
+          <property role="2zcmfW" value="/Tubb" />
+          <property role="2zcmfX" value="APPPP" />
         </node>
       </node>
     </node>
