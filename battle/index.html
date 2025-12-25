@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html>
-
 <head>
   <meta charset="utf-8">
-  <title>DSMJ example</title>
+  <title>DSMJ Game Visualization</title>
   <script src="./node_modules/blockly/blockly_compressed.js"></script>
   <script src="./node_modules/blockly/blocks_compressed.js"></script>
   <script src="./node_modules/blockly/javascript_compressed.js"></script>
@@ -11,8 +10,9 @@
   <script src="movements.js"></script>
   <script src="movements-gen.js"></script>
   <style>
-    body {
-      background-color: #fff;
+    html, body {
+      height: 100%;
+      margin: 0;
       font-family: sans-serif;
     }
 
@@ -20,25 +20,85 @@
       font-weight: normal;
       font-size: 140%;
     }
+
+    #table {
+      height: 100%;
+      width: 100%;
+    }
+
+    table, tr, td, img {
+      margin: 0;
+      padding: 0;
+      border: none;
+      border-collapse: collapse;
+    }
+
+    #field td {
+      position: relative;
+      width: 50px;
+      height: 50px;
+    }
+
+    #field img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 50px;
+      width: 50px;
+    }
+    
+    #blocklyDiv {
+      height: 600px;
+      width: 100%;
+    }
   </style>
 </head>
 
 <body>
-  <h1>DSMJ example: Moving objects with right command</h1>
-
-  <p>
-    <button onclick="showCode()">Show JavaScript</button>
-    <button onclick="runCode()">Run JavaScript</button>
-  </p>
-
-  <div id="blocklyDiv" style="height: 480px; width: 600px;"></div>
+  <table id="table">
+    <tr>
+      <td colspan="2">
+        <h1>DSMJ Game: Battle Simulation</h1>
+        <p>Program your character to attack enemies with step-by-step visualization</p>
+      </td>
+    </tr>
+    <tr>
+      <td style="padding: 10px;">
+        <button onclick="showCode()">Show JavaScript Code</button>
+        <button onclick="runCode()">Start Visualization</button>
+        <button onclick="resetGame()">Reset Game</button>
+      </td>
+      <td style="padding: 20px; text-align: right;">
+        <div id="status">
+          Player: (0, 0) | Direction: Up | Enemies: 4
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td width="60%" height="100%">
+        <div id="blocklyDiv"></div>
+      </td>
+      <td style="padding: 20px;">
+        <div style="border: 2px solid #333; padding: 10px; background-color: #f5f5f5;">
+          <h3>Game Field</h3>
+          <table id="field"></table>
+          <div style="margin-top: 10px; font-size: 12px;">
+            <div style="display: flex; align-items: center; margin-bottom: 5px;">
+              <img src="WUP.png" style="width: 20px; height: 20px; margin-right: 5px;"> = Player
+            </div>
+            <div style="display: flex; align-items: center;">
+              <img src="Enemy.png" style="width: 20px; height: 20px; margin-right: 5px;"> = Enemy
+            </div>
+          </div>
+        </div>
+      </td>
+    </tr>
+  </table>
 
   <xml xmlns="https://developers.google.com/blockly/xml" id="toolbox" style="display: none">
     <category name="Movements" colour="290">
-      <block type="moveRight"></block>
-      <block type="moveLeft"></block>
-      <block type="moveUp"></block>
-      <block type="moveDown"></block>
+      <block type="moveForward"></block>
+      <block type="moveBackward"></block>
     </category>
     <category name="Turn" colour="290">
       <block type="turnRight"></block>
@@ -48,13 +108,21 @@
       <block type="attack"></block>
     </category>
     <category name="Loops" colour="%{BKY_LOOPS_HUE}">
-      <block type="controls_repeat_ext"></block>
+      <block type="controls_repeat_ext">
+        <value name="TIMES">
+          <block type="math_number">
+            <field name="NUM">3</field>
+          </block>
+        </value>
+      </block>
       <block type="controls_whileUntil"></block>
       <block type="controls_if"></block>
       <block type="controls_if"><mutation else="1"></mutation></block>
       <block type="logic_boolean"></block>
       <block type="logic_compare"></block>
-      <block type="math_number"><field name="NUM">10</field></block>
+      <block type="math_number">
+        <field name="NUM">1</field>
+      </block>
     </category>
     <category name="Variables" colour="290">
       <block type="get_x"></block>
@@ -63,50 +131,211 @@
   </xml>
 
   <xml xmlns="https://developers.google.com/blockly/xml" id="startBlocks" style="display: none">
-
+    <block type="moveForward" x="20" y="20"></block>
+    <block type="moveForward" x="20" y="80"></block>
+    <block type="turnRight" x="20" y="140"></block>
   </xml>
 
   <script>
-    var demoWorkspace = Blockly.inject('blocklyDiv',
-      {
-        media: '../../media/',
-        toolbox: document.getElementById('toolbox')
-      });
-    Blockly.Xml.domToWorkspace(document.getElementById('startBlocks'),
-      demoWorkspace);
+    var demoWorkspace = Blockly.inject('blocklyDiv', {
+      toolbox: document.getElementById('toolbox'),
+      trashcan: true,
+      horizontalLayout: false,
+      toolboxPosition: 'start',
+      css: true,
+      media: './node_modules/blockly/media/'
+    });
+    
+    Blockly.Xml.domToWorkspace(document.getElementById('startBlocks'), demoWorkspace);
+
+    var w = 15;
+    var h = 15;
+    var x = 7;
+    var y = 7;
+    var dir = 0; 
+    var directions = [[0, -1], [1, 0], [0, 1], [-1, 0]]; 
+    var originalEnemies = [
+      {x: 3, y: 3, l: 2},
+      {x: 10, y: 4, l: 3},
+      {x: 5, y: 10, l: 1},
+      {x: 12, y: 8, l: 2}
+    ];
+    var enemys = JSON.parse(JSON.stringify(originalEnemies));
+    
+    var playerImgs = ["WUP.png", "WRIGHT.png", "WDOWN.png", "WLEFT.png"];
+    var enemyImg = "Enemy.png";
+
+    function sleep(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    function draw() {
+      let table = document.getElementById('field');
+      if (!table) return;
+      
+      table.innerHTML = '';
+      
+      let enemyCount = enemys.filter(e => e.l > 0).length;
+      let statusDiv = document.getElementById('status');
+      if (statusDiv) {
+        statusDiv.innerHTML = 
+          `Player: (${x}, ${y}) | Direction: ${['Up', 'Right', 'Down', 'Left'][dir]} | Active Enemies: ${enemyCount}`;
+      }
+      
+      for (let gridY = 0; gridY < h; gridY++) {
+        let row = document.createElement('tr');
+        
+        for (let gridX = 0; gridX < w; gridX++) {
+          let cell = document.createElement('td');
+          cell.style.width = '50px';
+          cell.style.height = '50px';
+          cell.style.border = '1px solid #ddd';
+          cell.style.backgroundColor = (gridX + gridY) % 2 === 0 ? '#f0f8ff' : '#e6f7ff';
+          cell.style.position = 'relative';
+          cell.style.textAlign = 'center';
+          
+          let enemiesHere = enemys.filter(e => e.x === gridX && e.y === gridY && e.l > 0);
+          
+          if (enemiesHere.length > 0) {
+            let enemy = enemiesHere[0];
+            let enemyElement = document.createElement('img');
+            enemyElement.src = enemyImg;
+            enemyElement.style.position = 'absolute';
+            enemyElement.style.top = '0';
+            enemyElement.style.left = '0';
+            enemyElement.style.zIndex = '5';
+            enemyElement.title = `Enemy HP: ${enemy.l}`;
+            cell.appendChild(enemyElement);
+            
+            let healthText = document.createElement('div');
+            healthText.style.position = 'absolute';
+            healthText.style.bottom = '2px';
+            healthText.style.right = '2px';
+            healthText.style.color = 'red';
+            healthText.style.fontWeight = 'bold';
+            healthText.style.fontSize = '12px';
+            healthText.style.zIndex = '15';
+            healthText.style.backgroundColor = 'white';
+            healthText.style.borderRadius = '3px';
+            healthText.style.padding = '1px 3px';
+            healthText.textContent = enemy.l;
+            cell.appendChild(healthText);
+          }
+          
+          if (gridX === x && gridY === y) {
+            let playerElement = document.createElement('img');
+            playerElement.src = playerImgs[dir];
+            playerElement.style.position = 'absolute';
+            playerElement.style.top = '0';
+            playerElement.style.left = '0';
+            playerElement.style.zIndex = '10';
+            cell.appendChild(playerElement);
+            
+            cell.style.backgroundColor = '#ffffcc';
+            cell.style.border = '2px solid #ff9900';
+          }
+          
+          let coordText = document.createElement('div');
+          coordText.style.position = 'absolute';
+          coordText.style.top = '0px';
+          coordText.style.left = '2px';
+          coordText.style.color = '#999';
+          coordText.style.fontSize = '8px';
+          coordText.style.zIndex = '1';
+          coordText.textContent = `${gridX},${gridY}`;
+          cell.appendChild(coordText);
+          
+          row.appendChild(cell);
+        }
+        
+        table.appendChild(row);
+      }
+    }
+
+    function resetGame() {
+      x = 7;
+      y = 7;
+      dir = 0;
+      enemys = JSON.parse(JSON.stringify(originalEnemies));
+      draw();
+      console.log("Game reset to initial state");
+    }
 
     function showCode() {
       Blockly.JavaScript.INFINITE_LOOP_TRAP = null;
-      var code = 'var enemys = [{x: 1, y: 2, l: 3}, {x: 7, y: 3, l: 7}, {x: 12, y: 4, l: 3}, {x: 5, y: 3, l: 1}];\n';
-      code += 'var directions = [[0, 1], [1, 0], [0, -1], [-1, 0]]\n';
-      code += 'var dir=0;\n';
-      code += 'var x=0;\n';
-      code += 'var y=0;\n';
+      var code = '// Game initialization\n';
+      code += 'var enemys = ' + JSON.stringify(originalEnemies) + ';\n';
+      code += 'var directions = [[0, -1], [1, 0], [0, 1], [-1, 0]];\n';
+      code += 'var dir = 0;\n';
+      code += 'var x = 7;\n';
+      code += 'var y = 7;\n\n';
+      code += '// Your Blockly program:\n';
       code += Blockly.JavaScript.workspaceToCode(demoWorkspace);
-      alert(code);
+      
+      alert("Generated Code:\n\n" + code);
     }
 
-    function runCode() {
-      // Generate JavaScript code and run it.
+    async function runCode() {
+      resetGame();
+      
       window.LoopTrap = 1000;
-      Blockly.JavaScript.INFINITE_LOOP_TRAP =
-        'if (--window.LoopTrap == 0) throw "Infinite loop.";\n';
-      var code = 'var enemys = [{x: 1, y: 2, l: 3}, {x: 7, y: 3, l: 7}, {x: 12, y: 4, l: 3}, {x: 5, y: 3, l: 1}];\n';
-      code += 'var directions = [[0, 1], [1, 0], [0, -1], [-1, 0]]\n';
-      code += 'var dir=0;\n';
-      code += 'var x=0;\n';
-      code += 'var y=0;\n';
+      Blockly.JavaScript.INFINITE_LOOP_TRAP = 'if (--window.LoopTrap == 0) throw "Infinite loop detected!";\n';
+      
+      var code = '// Game state initialization\n';
+      code += 'var enemys = ' + JSON.stringify(originalEnemies) + ';\n';
+      code += 'var directions = [[0, -1], [1, 0], [0, 1], [-1, 0]];\n';
+      code += 'var dir = 0;\n';
+      code += 'var x = 7;\n';
+      code += 'var y = 7;\n';
+      
+      code += 'var sleep = ' + sleep.toString() + ';\n';
+      code += 'var draw = ' + draw.toString() + ';\n';
+      
+      code += '// User program execution\n';
       code += Blockly.JavaScript.workspaceToCode(demoWorkspace);
+      
       Blockly.JavaScript.INFINITE_LOOP_TRAP = null;
-      code += 'window.alert(\'x: \' + x + \' y: \' + y + \' dir: \' + dir + \' enemys: \' + JSON.stringify(enemys));';
+      
+      console.log("Generated code:", code);
+      
+      document.querySelectorAll('button').forEach(btn => {
+        if (btn.textContent !== "Reset Game") btn.disabled = true;
+      });
+      
       try {
-        eval(code);
+        const asyncCode = `(async () => {
+          try {
+            ${code}
+            // Final update after execution
+            draw();
+            return "Program completed successfully";
+          } catch (e) {
+            console.error("Execution error:", e);
+            throw e;
+          }
+        })()`;
+        
+        console.log("Executing async code");
+        await eval(asyncCode);
+        
+        let remainingEnemies = enemys.filter(e => e.l > 0).length;
+        if (remainingEnemies === 0) {
+          alert('🎉 Victory! All enemies defeated!');
+        } else {
+          alert(`Program completed! ${remainingEnemies} enemy(ies) remaining.`);
+        }
       } catch (e) {
-        alert(e);
+        console.error("Error:", e);
+        alert('Error during execution: ' + e);
+      } finally {
+        document.querySelectorAll('button').forEach(btn => btn.disabled = false);
       }
     }
+
+    window.addEventListener('load', function() {
+      console.log("Page loaded, initializing game...");
+      draw();
+    });
   </script>
-
 </body>
-
 </html>

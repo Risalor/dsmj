@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Star } from 'feather-icons-react';
 
-function AddToFavoritesButton({ photoId, currentUserId, icon: Icon = Star, size = 18,addFavoriteEndpoint}) {
+function AddToFavoritesButton({ photoId, currentUserId, icon: Icon = Star, size = 18, addFavoriteEndpoint}) {
     const [isFavorited, setIsFavorited] = useState(false);
     const navigate = useNavigate();
 

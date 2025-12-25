@@ -1,19 +1,65 @@
 'use strict';
 
-Blockly.JavaScript['moveRight'] = function(block) {
-  return 'x = x + 1;\n';
+const stepDelayCode = `
+await sleep(300);
+draw();
+`;
+
+Blockly.JavaScript['moveForward'] = function(block) {
+  let code = '';
+  code += '// Move forward\n';
+  code += 'var newX = x + directions[dir][0];\n';
+  code += 'var newY = y + directions[dir][1];\n';
+  code += 'if (newX >= 0 && newX < 15 && newY >= 0 && newY < 15) {\n';
+  code += '  x = newX;\n';
+  code += '  y = newY;\n';
+  code += '}\n';
+  code += stepDelayCode;
+  return code;
 };
 
-Blockly.JavaScript['moveLeft'] = function(block) {
-  return 'x = x - 1;\n';
+Blockly.JavaScript['moveBackward'] = function(block) {
+  let code = '';
+  code += '// Move backward\n';
+  code += 'var newX = x - directions[dir][0];\n';
+  code += 'var newY = y - directions[dir][1];\n';
+  code += 'if (newX >= 0 && newX < 15 && newY >= 0 && newY < 15) {\n';
+  code += '  x = newX;\n';
+  code += '  y = newY;\n';
+  code += '}\n';
+  code += stepDelayCode;
+  return code;
 };
 
-Blockly.JavaScript['moveUp'] = function(block) {
-  return 'y = y + 1;\n';
+Blockly.JavaScript['turnRight'] = function(block) {
+  let code = '';
+  code += '// Turn right\n';
+  code += 'dir = (dir + 1) % 4;\n';
+  code += stepDelayCode;
+  return code;
 };
 
-Blockly.JavaScript['moveDown'] = function(block) {
-  return 'y = y - 1;\n';
+Blockly.JavaScript['turnLeft'] = function(block) {
+  let code = '';
+  code += '// Turn left\n';
+  code += 'dir = (dir + 3) % 4;\n';
+  code += stepDelayCode;
+  return code;
+};
+
+Blockly.JavaScript['attack'] = function(block) {
+  let code = '';
+  code += '// Attack in current direction\n';
+  code += 'var attackX = x + directions[dir][0];\n';
+  code += 'var attackY = y + directions[dir][1];\n';
+  code += 'for (var i = 0; i < enemys.length; i++) {\n';
+  code += '  if (enemys[i].l > 0 && enemys[i].x === attackX && enemys[i].y === attackY) {\n';
+  code += '    enemys[i].l -= 1;\n';
+  code += '    break;\n';
+  code += '  }\n';
+  code += '}\n';
+  code += stepDelayCode;
+  return code;
 };
 
 Blockly.JavaScript['get_x'] = function(block) {
@@ -22,18 +68,4 @@ Blockly.JavaScript['get_x'] = function(block) {
 
 Blockly.JavaScript['get_y'] = function(block) {
   return ['y', Blockly.JavaScript.ORDER_ATOMIC];
-};
-
-Blockly.JavaScript['turnRight'] = function(block) {
-  return 'dir = dir + 1;\n' +
-  'if(dir >= 4) dir = 0;\n';
-};
-
-Blockly.JavaScript['turnLeft'] = function(block) {
-  return 'dir = dir + 1;\n' +
-  'if(dir <= -1) dir = 3\n';
-};
-
-Blockly.JavaScript['attack'] = function(block) {
-  return 'for (var enemy of enemys) { if(enemy.x === (x + directions[dir][0]) && enemy.y === (y +directions[dir][1])) {\n enemy.l -= 1; break;}}\n';
 };

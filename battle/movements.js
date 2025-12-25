@@ -2,43 +2,23 @@
 
 Blockly.defineBlocksWithJsonArray([  
 {
-    "type": "moveRight",
+    "type": "moveForward",
     "lastDummyAlign0": "CENTRE",
-    "message0": "Right",
+    "message0": "Forward",
     "previousStatement": null,
     "nextStatement": null,
     "colour": 300,
-    "tooltip": "Move right",
+    "tooltip": "Move Forward",
     "helpUrl": ""
   },
   {
-    "type": "moveLeft",
+    "type": "moveBackward",
     "lastDummyAlign0": "CENTRE",
-    "message0": "Left",
+    "message0": "Backward",
     "previousStatement": null,
     "nextStatement": null,
     "colour": 300,
-    "tooltip": "Move left",
-    "helpUrl": ""
-  },
-  {
-    "type": "moveUp",
-    "lastDummyAlign0": "CENTRE",
-    "message0": "Up",
-    "previousStatement": null,
-    "nextStatement": null,
-    "colour": 300,
-    "tooltip": "Move up",
-    "helpUrl": ""
-  },
-  {
-    "type": "moveDown",
-    "lastDummyAlign0": "CENTRE",
-    "message0": "Down",
-    "previousStatement": null,
-    "nextStatement": null,
-    "colour": 300,
-    "tooltip": "Move Down",
+    "tooltip": "Move backward",
     "helpUrl": ""
   },
   {
@@ -60,7 +40,7 @@ Blockly.defineBlocksWithJsonArray([
     "colour": 300,
     "tooltip": "Turn Left",
     "helpUrl": ""
-  },,
+  },
   {
     "type": "attack",
     "lastDummyAlign0": "CENTRE",
