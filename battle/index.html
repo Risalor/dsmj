@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>DSMJ example</title>
+  <script src="./node_modules/blockly/blockly_compressed.js"></script>
+  <script src="./node_modules/blockly/blocks_compressed.js"></script>
+  <script src="./node_modules/blockly/javascript_compressed.js"></script>
+  <script src="./node_modules/blockly/msg/en.js"></script>
+  <script src="movements.js"></script>
+  <script src="movements-gen.js"></script>
+  <style>
+    body {
+      background-color: #fff;
+      font-family: sans-serif;
+    }
+
+    h1 {
+      font-weight: normal;
+      font-size: 140%;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>DSMJ example: Moving objects with right command</h1>
+
+  <p>
+    <button onclick="showCode()">Show JavaScript</button>
+    <button onclick="runCode()">Run JavaScript</button>
+  </p>
+
+  <div id="blocklyDiv" style="height: 480px; width: 600px;"></div>
+
+  <xml xmlns="https://developers.google.com/blockly/xml" id="toolbox" style="display: none">
+    <category name="Movements" colour="290">
+      <block type="moveRight"></block>
+      <block type="moveLeft"></block>
+      <block type="moveUp"></block>
+      <block type="moveDown"></block>
+    </category>
+    <category name="Turn" colour="290">
+      <block type="turnRight"></block>
+      <block type="turnLeft"></block>
+    </category>
+    <category name="Attack" colour="290">
+      <block type="attack"></block>
+    </category>
+    <category name="Loops" colour="%{BKY_LOOPS_HUE}">
+      <block type="controls_repeat_ext"></block>
+      <block type="controls_whileUntil"></block>
+      <block type="controls_if"></block>
+      <block type="controls_if"><mutation else="1"></mutation></block>
+      <block type="logic_boolean"></block>
+      <block type="logic_compare"></block>
+      <block type="math_number"><field name="NUM">10</field></block>
+    </category>
+    <category name="Variables" colour="290">
+      <block type="get_x"></block>
+      <block type="get_y"></block>
+    </category>
+  </xml>
+
+  <xml xmlns="https://developers.google.com/blockly/xml" id="startBlocks" style="display: none">
+
+  </xml>
+
+  <script>
+    var demoWorkspace = Blockly.inject('blocklyDiv',
+      {
+        media: '../../media/',
+        toolbox: document.getElementById('toolbox')
+      });
+    Blockly.Xml.domToWorkspace(document.getElementById('startBlocks'),
+      demoWorkspace);
+
+    function showCode() {
+      Blockly.JavaScript.INFINITE_LOOP_TRAP = null;
+      var code = 'var enemys = [{x: 1, y: 2, l: 3}, {x: 7, y: 3, l: 7}, {x: 12, y: 4, l: 3}, {x: 5, y: 3, l: 1}];\n';
+      code += 'var directions = [[0, 1], [1, 0], [0, -1], [-1, 0]]\n';
+      code += 'var dir=0;\n';
+      code += 'var x=0;\n';
+      code += 'var y=0;\n';
+      code += Blockly.JavaScript.workspaceToCode(demoWorkspace);
+      alert(code);
+    }
+
+    function runCode() {
+      // Generate JavaScript code and run it.
+      window.LoopTrap = 1000;
+      Blockly.JavaScript.INFINITE_LOOP_TRAP =
+        'if (--window.LoopTrap == 0) throw "Infinite loop.";\n';
+      var code = 'var enemys = [{x: 1, y: 2, l: 3}, {x: 7, y: 3, l: 7}, {x: 12, y: 4, l: 3}, {x: 5, y: 3, l: 1}];\n';
+      code += 'var directions = [[0, 1], [1, 0], [0, -1], [-1, 0]]\n';
+      code += 'var dir=0;\n';
+      code += 'var x=0;\n';
+      code += 'var y=0;\n';
+      code += Blockly.JavaScript.workspaceToCode(demoWorkspace);
+      Blockly.JavaScript.INFINITE_LOOP_TRAP = null;
+      code += 'window.alert(\'x: \' + x + \' y: \' + y + \' dir: \' + dir + \' enemys: \' + JSON.stringify(enemys));';
+      try {
+        eval(code);
+      } catch (e) {
+        alert(e);
+      }
+    }
+  </script>
+
+</body>
+
+</html>
