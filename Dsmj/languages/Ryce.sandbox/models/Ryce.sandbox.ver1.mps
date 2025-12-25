@@ -62,6 +62,7 @@
         <property id="4163925112970906363" name="text" index="kfb4J" />
       </concept>
       <concept id="6882320668103848216" name="Ryce.structure.Menu" flags="ng" index="2za_GQ">
+        <property id="6944420385111279022" name="type" index="1LPoKy" />
         <child id="5431886404992943964" name="set" index="2AwiyV" />
         <child id="5431886404993061615" name="options_IsSet" index="2AwRO8" />
         <child id="5431886404993061616" name="options_NotSet" index="2AwROn" />
@@ -290,7 +291,7 @@
         </node>
       </node>
       <node concept="1A1pxx" id="4iPGXVBORq_" role="1WfTK4">
-        <property role="1A1pxw" value="3B9eXgHPWTp/Masonary" />
+        <property role="1A1pxw" value="7Xz8pK3nbQj/Grid" />
         <property role="1A1pxZ" value="5" />
         <property role="1A1pxY" value="7Xz8pK3nbRw/newest_first" />
         <node concept="1WfTL2" id="5M0zVYwVNhY" role="1A1pxW">
@@ -393,8 +394,9 @@
     </node>
     <node concept="2za_GQ" id="5M0zVYxdcta" role="9Maul">
       <property role="TrG5h" value="main" />
+      <property role="1LPoKy" value="5Y2UyVWImya/sidebar" />
       <node concept="3eYSTp" id="5M0zVYxdctb" role="3eYSS_">
-        <property role="3eYSTv" value="40S6OyeKTkj/standard" />
+        <property role="3eYSTv" value="40S6OyeKTkk/dropdown" />
         <property role="3eYSTu" value="true" />
       </node>
       <node concept="1L0rax" id="5M0zVYxdctc" role="1LqKM1">

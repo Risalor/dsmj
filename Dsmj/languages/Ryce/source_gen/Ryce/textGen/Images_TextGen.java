@@ -543,7 +543,7 @@ public class Images_TextGen extends TextGenDescriptorBase {
       tgs.newLine();
       ctx.getBuffer().area().increaseIndent();
       tgs.indent();
-      tgs.append("<div className={`stats ");
+      tgs.append("<div className={`stats action-buttons ");
       tgs.append(SEnumOperations.getMemberPresentation(SPropertyOperations.getEnum(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.enable_display_components$58nr), LINKS.position$X46W), PROPS.position$S7Zm)));
       tgs.append(" ");
       tgs.append(SEnumOperations.getMemberPresentation(SPropertyOperations.getEnum(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.enable_display_components$58nr), LINKS.position$X46W), PROPS.aligment$KWkS)));
@@ -555,7 +555,7 @@ public class Images_TextGen extends TextGenDescriptorBase {
         tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.enable_display_components$58nr), LINKS.display_likes$U0rU), LINKS.icon$nnTR), PROPS.iconName$he9p));
         tgs.append(" size={");
         tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.enable_display_components$58nr), LINKS.display_likes$U0rU), LINKS.icon$nnTR), PROPS.size$tFxB));
-        tgs.append("/> {photo.");
+        tgs.append("}/> {photo.");
         tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.enable_display_components$58nr), LINKS.display_likes$U0rU), LINKS.content$utGr), PROPS.value$RDye));
         tgs.append(" || 0}</span>");
         tgs.newLine();
@@ -567,7 +567,7 @@ public class Images_TextGen extends TextGenDescriptorBase {
         tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.enable_display_components$58nr), LINKS.displayy_dislikes$U0EV), LINKS.icon$nH2f), PROPS.iconName$he9p));
         tgs.append(" size={");
         tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.enable_display_components$58nr), LINKS.displayy_dislikes$U0EV), LINKS.icon$nH2f), PROPS.size$tFxB));
-        tgs.append("/> {photo.");
+        tgs.append("}/> {photo.");
         tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.enable_display_components$58nr), LINKS.displayy_dislikes$U0EV), LINKS.content$xZbq), PROPS.value$RDye));
         tgs.append(" || 0}</span>");
         tgs.newLine();
@@ -588,7 +588,7 @@ public class Images_TextGen extends TextGenDescriptorBase {
       tgs.newLine();
       ctx.getBuffer().area().increaseIndent();
       tgs.indent();
-      tgs.append("<div className={`");
+      tgs.append("<div className={`action-buttons ");
       tgs.append(SEnumOperations.getMemberPresentation(SPropertyOperations.getEnum(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.enable_components$2$TR), LINKS.position$tGxY), PROPS.aligment$KWkS)));
       tgs.append(" ");
       tgs.append(SEnumOperations.getMemberPresentation(SPropertyOperations.getEnum(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.enable_components$2$TR), LINKS.position$tGxY), PROPS.position$S7Zm)));
@@ -597,7 +597,7 @@ public class Images_TextGen extends TextGenDescriptorBase {
       ctx.getBuffer().area().increaseIndent();
       if (SPropertyOperations.getBoolean(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.enable_components$2$TR), LINKS.like$YGpT), LINKS.enable$UX7q), PROPS.value$RdAp)) {
         tgs.indent();
-        tgs.append("<ReactionButton icon={LIKE_SET.icon} size={LIKE_SET.size} photo={photo} setPhoto={setPhoto} type=\"like\" apiEndpoint={LIKE_SET.api}/>");
+        tgs.append("<ReactionButton icon={SET_LIKE.icon} size={SET_LIKE.size} photo={photo} setPhoto={setPhoto} type=\"like\" apiEndpoint={SET_LIKE.api}/>");
         tgs.newLine();
       }
       if (SPropertyOperations.getBoolean(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.enable_components$2$TR), LINKS.favorite$YGRV), LINKS.enable$YHBp), PROPS.value$RdAp)) {
@@ -713,7 +713,7 @@ public class Images_TextGen extends TextGenDescriptorBase {
       tgs.newLine();
       ctx.getBuffer().area().increaseIndent();
       tgs.indent();
-      tgs.append("<div className={`");
+      tgs.append("<div className={`action-buttons ");
       tgs.append(SEnumOperations.getMemberPresentation(SPropertyOperations.getEnum(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.enable_components$2$TR), LINKS.position$tGxY), PROPS.aligment$KWkS)));
       tgs.append(" ");
       tgs.append(SEnumOperations.getMemberPresentation(SPropertyOperations.getEnum(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.enable_components$2$TR), LINKS.position$tGxY), PROPS.position$S7Zm)));
@@ -748,7 +748,7 @@ public class Images_TextGen extends TextGenDescriptorBase {
       tgs.newLine();
       ctx.getBuffer().area().increaseIndent();
       tgs.indent();
-      tgs.append("<div className={`stats ");
+      tgs.append("<div className={`stats action-buttons ");
       tgs.append(SEnumOperations.getMemberPresentation(SPropertyOperations.getEnum(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.enable_display_components$58nr), LINKS.position$X46W), PROPS.aligment$KWkS)));
       tgs.append(" ");
       tgs.append(SEnumOperations.getMemberPresentation(SPropertyOperations.getEnum(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.enable_display_components$58nr), LINKS.position$X46W), PROPS.position$S7Zm)));

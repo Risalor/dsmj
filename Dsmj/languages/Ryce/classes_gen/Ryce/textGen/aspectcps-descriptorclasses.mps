@@ -11186,7 +11186,7 @@
                   <ref role="37wK5l" to="kpbf:~TextGenSupport.append(java.lang.CharSequence)" resolve="append" />
                   <uo k="s:originTrace" v="n:9177863171387476567" />
                   <node concept="Xl_RD" id="MT" role="37wK5m">
-                    <property role="Xl_RC" value="&lt;div className={`stats " />
+                    <property role="Xl_RC" value="&lt;div className={`stats action-buttons " />
                     <uo k="s:originTrace" v="n:9177863171387476567" />
                   </node>
                 </node>
@@ -11510,7 +11510,7 @@
                       <ref role="37wK5l" to="kpbf:~TextGenSupport.append(java.lang.CharSequence)" resolve="append" />
                       <uo k="s:originTrace" v="n:9177863171387815125" />
                       <node concept="Xl_RD" id="Om" role="37wK5m">
-                        <property role="Xl_RC" value="/&gt; {photo." />
+                        <property role="Xl_RC" value="}/&gt; {photo." />
                         <uo k="s:originTrace" v="n:9177863171387815125" />
                       </node>
                     </node>
@@ -11809,7 +11809,7 @@
                       <ref role="37wK5l" to="kpbf:~TextGenSupport.append(java.lang.CharSequence)" resolve="append" />
                       <uo k="s:originTrace" v="n:9177863171387864256" />
                       <node concept="Xl_RD" id="PF" role="37wK5m">
-                        <property role="Xl_RC" value="/&gt; {photo." />
+                        <property role="Xl_RC" value="}/&gt; {photo." />
                         <uo k="s:originTrace" v="n:9177863171387864256" />
                       </node>
                     </node>
@@ -12231,7 +12231,7 @@
                   <ref role="37wK5l" to="kpbf:~TextGenSupport.append(java.lang.CharSequence)" resolve="append" />
                   <uo k="s:originTrace" v="n:9177863171387896964" />
                   <node concept="Xl_RD" id="Re" role="37wK5m">
-                    <property role="Xl_RC" value="&lt;div className={`" />
+                    <property role="Xl_RC" value="&lt;div className={`action-buttons " />
                     <uo k="s:originTrace" v="n:9177863171387896964" />
                   </node>
                 </node>
@@ -12482,7 +12482,7 @@
                       <ref role="37wK5l" to="kpbf:~TextGenSupport.append(java.lang.CharSequence)" resolve="append" />
                       <uo k="s:originTrace" v="n:6665485501709032175" />
                       <node concept="Xl_RD" id="Si" role="37wK5m">
-                        <property role="Xl_RC" value="&lt;ReactionButton icon={LIKE_SET.icon} size={LIKE_SET.size} photo={photo} setPhoto={setPhoto} type=&quot;like&quot; apiEndpoint={LIKE_SET.api}/&gt;" />
+                        <property role="Xl_RC" value="&lt;ReactionButton icon={SET_LIKE.icon} size={SET_LIKE.size} photo={photo} setPhoto={setPhoto} type=&quot;like&quot; apiEndpoint={SET_LIKE.api}/&gt;" />
                         <uo k="s:originTrace" v="n:6665485501709032175" />
                       </node>
                     </node>
@@ -14614,7 +14614,7 @@
                     <ref role="37wK5l" to="kpbf:~TextGenSupport.append(java.lang.CharSequence)" resolve="append" />
                     <uo k="s:originTrace" v="n:9177863171388276667" />
                     <node concept="Xl_RD" id="126" role="37wK5m">
-                      <property role="Xl_RC" value="&lt;div className={`" />
+                      <property role="Xl_RC" value="&lt;div className={`action-buttons " />
                       <uo k="s:originTrace" v="n:9177863171388276667" />
                     </node>
                   </node>
@@ -15313,7 +15313,7 @@
                     <ref role="37wK5l" to="kpbf:~TextGenSupport.append(java.lang.CharSequence)" resolve="append" />
                     <uo k="s:originTrace" v="n:9177863171388328439" />
                     <node concept="Xl_RD" id="14T" role="37wK5m">
-                      <property role="Xl_RC" value="&lt;div className={`stats " />
+                      <property role="Xl_RC" value="&lt;div className={`stats action-buttons " />
                       <uo k="s:originTrace" v="n:9177863171388328439" />
                     </node>
                   </node>
@@ -32956,7 +32956,7 @@
                   <ref role="37wK5l" to="kpbf:~TextGenSupport.append(java.lang.CharSequence)" resolve="append" />
                   <uo k="s:originTrace" v="n:6944420385105668335" />
                   <node concept="Xl_RD" id="2iG" role="37wK5m">
-                    <property role="Xl_RC" value="import &quot;HeaderTopbar.css&quot;;" />
+                    <property role="Xl_RC" value="import &quot;Headerv1.css&quot;;" />
                     <uo k="s:originTrace" v="n:6944420385105668335" />
                   </node>
                 </node>
@@ -33059,7 +33059,7 @@
                     <ref role="37wK5l" to="kpbf:~TextGenSupport.append(java.lang.CharSequence)" resolve="append" />
                     <uo k="s:originTrace" v="n:6944420385105675175" />
                     <node concept="Xl_RD" id="2j9" role="37wK5m">
-                      <property role="Xl_RC" value="import &quot;HeaderSidebar.css&quot;;" />
+                      <property role="Xl_RC" value="import &quot;Headerv3.css&quot;;" />
                       <uo k="s:originTrace" v="n:6944420385105675175" />
                     </node>
                   </node>

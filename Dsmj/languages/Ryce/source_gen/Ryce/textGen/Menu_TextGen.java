@@ -451,11 +451,11 @@ public class Menu_TextGen extends TextGenDescriptorBase {
     tgs.append("import UserDisplay from \"./UserDisplay\";");
     tgs.newLine();
     if (SEnumOperations.isMember(SPropertyOperations.getEnum(ctx.getPrimaryInput(), PROPS.type$SqYo), 0x5f82ea2efcb96887L)) {
-      tgs.append("import \"HeaderTopbar.css\";");
+      tgs.append("import \"Headerv1.css\";");
       tgs.newLine();
       tgs.newLine();
     } else if (SEnumOperations.isMember(SPropertyOperations.getEnum(ctx.getPrimaryInput(), PROPS.type$SqYo), 0x5f82ea2efcb9688aL)) {
-      tgs.append("import \"HeaderSidebar.css\";");
+      tgs.append("import \"Headerv3.css\";");
       tgs.newLine();
       tgs.newLine();
     }
