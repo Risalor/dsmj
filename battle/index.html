@@ -9,6 +9,7 @@
   <script src="./node_modules/blockly/msg/en.js"></script>
   <script src="movements.js"></script>
   <script src="movements-gen.js"></script>
+  <script src="game-engine.js" defer></script>
   <style>
     html, body {
       height: 100%;
@@ -51,6 +52,19 @@
       height: 600px;
       width: 100%;
     }
+    
+    button {
+      padding: 8px 16px;
+      margin: 0 5px;
+      cursor: pointer;
+    }
+    
+    #status {
+      padding: 10px;
+      background-color: #f0f0f0;
+      border-radius: 5px;
+      font-weight: bold;
+    }
   </style>
 </head>
 
@@ -87,7 +101,7 @@
               <img src="WUP.png" style="width: 20px; height: 20px; margin-right: 5px;"> = Player
             </div>
             <div style="display: flex; align-items: center;">
-              <img src="Enemy.png" style="width: 20px; height: 20px; margin-right: 5px;"> = Enemy
+              <img src="Enemy.png" style="width: 20px; height: 20px; margin-right: 5px;"> = Enemy (number = health)
             </div>
           </div>
         </div>
@@ -147,195 +161,6 @@
     });
     
     Blockly.Xml.domToWorkspace(document.getElementById('startBlocks'), demoWorkspace);
-
-    var w = 15;
-    var h = 15;
-    var x = 7;
-    var y = 7;
-    var dir = 0; 
-    var directions = [[0, -1], [1, 0], [0, 1], [-1, 0]]; 
-    var originalEnemies = [
-      {x: 3, y: 3, l: 2},
-      {x: 10, y: 4, l: 3},
-      {x: 5, y: 10, l: 1},
-      {x: 12, y: 8, l: 2}
-    ];
-    var enemys = JSON.parse(JSON.stringify(originalEnemies));
-    
-    var playerImgs = ["WUP.png", "WRIGHT.png", "WDOWN.png", "WLEFT.png"];
-    var enemyImg = "Enemy.png";
-
-    function sleep(ms) {
-      return new Promise(resolve => setTimeout(resolve, ms));
-    }
-
-    function draw() {
-      let table = document.getElementById('field');
-      if (!table) return;
-      
-      table.innerHTML = '';
-      
-      let enemyCount = enemys.filter(e => e.l > 0).length;
-      let statusDiv = document.getElementById('status');
-      if (statusDiv) {
-        statusDiv.innerHTML = 
-          `Player: (${x}, ${y}) | Direction: ${['Up', 'Right', 'Down', 'Left'][dir]} | Active Enemies: ${enemyCount}`;
-      }
-      
-      for (let gridY = 0; gridY < h; gridY++) {
-        let row = document.createElement('tr');
-        
-        for (let gridX = 0; gridX < w; gridX++) {
-          let cell = document.createElement('td');
-          cell.style.width = '50px';
-          cell.style.height = '50px';
-          cell.style.border = '1px solid #ddd';
-          cell.style.backgroundColor = (gridX + gridY) % 2 === 0 ? '#f0f8ff' : '#e6f7ff';
-          cell.style.position = 'relative';
-          cell.style.textAlign = 'center';
-          
-          let enemiesHere = enemys.filter(e => e.x === gridX && e.y === gridY && e.l > 0);
-          
-          if (enemiesHere.length > 0) {
-            let enemy = enemiesHere[0];
-            let enemyElement = document.createElement('img');
-            enemyElement.src = enemyImg;
-            enemyElement.style.position = 'absolute';
-            enemyElement.style.top = '0';
-            enemyElement.style.left = '0';
-            enemyElement.style.zIndex = '5';
-            enemyElement.title = `Enemy HP: ${enemy.l}`;
-            cell.appendChild(enemyElement);
-            
-            let healthText = document.createElement('div');
-            healthText.style.position = 'absolute';
-            healthText.style.bottom = '2px';
-            healthText.style.right = '2px';
-            healthText.style.color = 'red';
-            healthText.style.fontWeight = 'bold';
-            healthText.style.fontSize = '12px';
-            healthText.style.zIndex = '15';
-            healthText.style.backgroundColor = 'white';
-            healthText.style.borderRadius = '3px';
-            healthText.style.padding = '1px 3px';
-            healthText.textContent = enemy.l;
-            cell.appendChild(healthText);
-          }
-          
-          if (gridX === x && gridY === y) {
-            let playerElement = document.createElement('img');
-            playerElement.src = playerImgs[dir];
-            playerElement.style.position = 'absolute';
-            playerElement.style.top = '0';
-            playerElement.style.left = '0';
-            playerElement.style.zIndex = '10';
-            cell.appendChild(playerElement);
-            
-            cell.style.backgroundColor = '#ffffcc';
-            cell.style.border = '2px solid #ff9900';
-          }
-          
-          let coordText = document.createElement('div');
-          coordText.style.position = 'absolute';
-          coordText.style.top = '0px';
-          coordText.style.left = '2px';
-          coordText.style.color = '#999';
-          coordText.style.fontSize = '8px';
-          coordText.style.zIndex = '1';
-          coordText.textContent = `${gridX},${gridY}`;
-          cell.appendChild(coordText);
-          
-          row.appendChild(cell);
-        }
-        
-        table.appendChild(row);
-      }
-    }
-
-    function resetGame() {
-      x = 7;
-      y = 7;
-      dir = 0;
-      enemys = JSON.parse(JSON.stringify(originalEnemies));
-      draw();
-      console.log("Game reset to initial state");
-    }
-
-    function showCode() {
-      Blockly.JavaScript.INFINITE_LOOP_TRAP = null;
-      var code = '// Game initialization\n';
-      code += 'var enemys = ' + JSON.stringify(originalEnemies) + ';\n';
-      code += 'var directions = [[0, -1], [1, 0], [0, 1], [-1, 0]];\n';
-      code += 'var dir = 0;\n';
-      code += 'var x = 7;\n';
-      code += 'var y = 7;\n\n';
-      code += '// Your Blockly program:\n';
-      code += Blockly.JavaScript.workspaceToCode(demoWorkspace);
-      
-      alert("Generated Code:\n\n" + code);
-    }
-
-    async function runCode() {
-      resetGame();
-      
-      window.LoopTrap = 1000;
-      Blockly.JavaScript.INFINITE_LOOP_TRAP = 'if (--window.LoopTrap == 0) throw "Infinite loop detected!";\n';
-      
-      var code = '// Game state initialization\n';
-      code += 'var enemys = ' + JSON.stringify(originalEnemies) + ';\n';
-      code += 'var directions = [[0, -1], [1, 0], [0, 1], [-1, 0]];\n';
-      code += 'var dir = 0;\n';
-      code += 'var x = 7;\n';
-      code += 'var y = 7;\n';
-      
-      code += 'var sleep = ' + sleep.toString() + ';\n';
-      code += 'var draw = ' + draw.toString() + ';\n';
-      
-      code += '// User program execution\n';
-      code += Blockly.JavaScript.workspaceToCode(demoWorkspace);
-      
-      Blockly.JavaScript.INFINITE_LOOP_TRAP = null;
-      
-      console.log("Generated code:", code);
-      
-      document.querySelectorAll('button').forEach(btn => {
-        if (btn.textContent !== "Reset Game") btn.disabled = true;
-      });
-      
-      try {
-        const asyncCode = `(async () => {
-          try {
-            ${code}
-            // Final update after execution
-            draw();
-            return "Program completed successfully";
-          } catch (e) {
-            console.error("Execution error:", e);
-            throw e;
-          }
-        })()`;
-        
-        console.log("Executing async code");
-        await eval(asyncCode);
-        
-        let remainingEnemies = enemys.filter(e => e.l > 0).length;
-        if (remainingEnemies === 0) {
-          alert('🎉 Victory! All enemies defeated!');
-        } else {
-          alert(`Program completed! ${remainingEnemies} enemy(ies) remaining.`);
-        }
-      } catch (e) {
-        console.error("Error:", e);
-        alert('Error during execution: ' + e);
-      } finally {
-        document.querySelectorAll('button').forEach(btn => btn.disabled = false);
-      }
-    }
-
-    window.addEventListener('load', function() {
-      console.log("Page loaded, initializing game...");
-      draw();
-    });
   </script>
 </body>
 </html>
