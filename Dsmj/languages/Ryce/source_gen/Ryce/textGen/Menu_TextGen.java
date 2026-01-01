@@ -453,17 +453,21 @@ public class Menu_TextGen extends TextGenDescriptorBase {
     tgs.newLine();
     tgs.append("import { Link, useLocation } from \"react-router-dom\";");
     tgs.newLine();
-    tgs.append("import { User, Image, Plus } from 'feather-icons-react';");
+    tgs.append("import * as IconsFeather from 'feather-icons-react';");
     tgs.append("import { FaPaintBrush } from \"react-icons/fa\";");
     tgs.newLine();
     tgs.append("import UserDisplay from \"./UserDisplay\";");
     tgs.newLine();
     if (SEnumOperations.isMember(SPropertyOperations.getEnum(ctx.getPrimaryInput(), PROPS.type$SqYo), 0x5f82ea2efcb96887L)) {
-      tgs.append("import \"Headerv1.css\";");
+      tgs.append("import \"../styles/Headerv1.css\";");
+      tgs.newLine();
+      tgs.append("export const MENU_TYPE = 'topbar';");
       tgs.newLine();
       tgs.newLine();
     } else if (SEnumOperations.isMember(SPropertyOperations.getEnum(ctx.getPrimaryInput(), PROPS.type$SqYo), 0x5f82ea2efcb9688aL)) {
-      tgs.append("import \"Headerv3.css\";");
+      tgs.append("import \"../styles/Headerv3.css\";");
+      tgs.newLine();
+      tgs.append("export const MENU_TYPE = 'sidebar'");
       tgs.newLine();
       tgs.newLine();
     }

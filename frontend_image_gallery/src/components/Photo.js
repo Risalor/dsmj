@@ -3,162 +3,62 @@ import { Link } from "react-router-dom";
 import ReactionButton from "./ReactionButton";
 import AddToFavoritesButton from "./AddToFavoritesButton";
 import { UserContext } from "../userContexts";
-import { FaThumbsUp, FaThumbsDown } from "react-icons/fa";
+import * as FaIcons from "react-icons/fa";
+import * as Icons from 'feather-icons-react';
 import "../styles/combined.css"
-import config from '../config.json';
-import { ThumbsUp, ThumbsDown, Heart } from 'feather-icons-react';
+
 
 function Photo({ photo: initialPhoto }) {
-    const [photo, setPhoto] = useState(initialPhoto);
-    const { user } = useContext(UserContext);
-    const [showOverlay, setShowOverlay] = useState(false);
+  const [photo, setPhoto] = useState(initialPhoto);
+  const { user } = useContext(UserContext);
+  const [showOverlay, setShowOverlay] = useState(false);
 
-    useEffect(() => {
-        if (config.layout === 'grid') {
-            import('../styles/Imagev1.css');
-        } else if (config.layout === 'list') {
-            import('../styles/Imagev2.css');
-        } else if (config.layout === 'masonry') {
-            import('../styles/Imagev3.css');
-        }
-    }, [config]);
+  useEffect(() => { import("../styles/Imagev3.css")});
 
-    if (config.layout === 'grid') {
-        return (
-            <div className="photo-card card text-white bg-dark mb-3 border-secondary">
-                <div className="image-container" onMouseEnter={() => setShowOverlay(true)} onMouseLeave={() => setShowOverlay(false)} >
-                    <Link to="/ShowPhoto" state={{ photo }} className="image-link">
-                        <img className="card-img-top full-size-image" src={`${config.base_api}${photo.Path}`} alt={photo.Title} />
-                    </Link>
-                    {!showOverlay && (
-                        <div className={`stats ${config.display_stats_layout}`}>
-                            {config.like_display && (<span className="display-likes"><FaThumbsUp/> {photo.Likes || 0}</span>)}
-                            {config.dislike_display && (<span className="display-dislikes"><FaThumbsDown/> {photo.Dislikes || 0}</span>)}
-                        </div>
-                    )}
-                    {showOverlay && (
-                        <>
-                            <div className={`${config.action_buttons_layout}`}>
-                                {config.like && (
-                                    <ReactionButton icon={ThumbsUp} size={18} photo={photo} setPhoto={setPhoto} type="like" apiEndpoint={`http://localhost:3001/images/${photo._id}/like`}/>
-                                )}
-                                {config.favorite && (
-                                    <AddToFavoritesButton icon={Heart} size={18} photoId={photo._id} currentUserId={user?._id} addFavoriteEndpoint="http://localhost:3001/users/addToFavorites"/>
-                                )}
-                                {config.dislike && (
-                                    <ReactionButton icon={ThumbsDown} size={18} photo={photo} setPhoto={setPhoto} type="dislike" apiEndpoint={`http://localhost:3001/images/${photo._id}/dislike`}/>
-                                )}
-                            </div>
-                            <Link to="/ShowPhoto" state={{ photo }} className="image-link">
-                                <div className="content-overlay">
-                                    <div className="content-wrapper">
-                                        <h5 className="photo-title">{photo.Title}</h5>
-                                        <p className="photo-description">{photo.Text}</p>
-                                        <div className="photo-meta">
-                                            <small>By: {photo.PostedBy?.ProfileName}</small>
-                                            <small>Date: {new Date(photo.DatePosted).toLocaleDateString()}</small>
-                                        </div>
-                                    </div>
-                                </div>
-                            </Link>
-                        </>
-                    )}
+  const SET_LIKE = { api: `http://localhost:3001/images/${Photo._id}/like`, size: 18, icon: Icons.ThumbsUp};
+  const SET_FAVORITE = { api: `http://localhost:3001/users/addToFavorites`, size: 18, icon: Icons.Heart};
+  const SET_DISLIKE = { api: `http://localhost:3001/images/_id/dislike`, size: 18, icon: Icons.ThumbsDown};
+
+  return (
+    <div className="photo-masonry-card">
+      <div className="masonry-image-container" onMouseEnter={() => setShowOverlay(true)} onMouseLeave={() => setShowOverlay(false)}>
+        <Link to="/ShowPhoto" state={{ photo }} className="masonry-image-link">
+          <img className="masonry-image" src={`http://localhost:3001/${photo.Path}`} alt={photo.Title}/>
+        </Link>
+        {!showOverlay && (
+          <div className="masonry-info-bar">
+            <div className="masonry-text-content">
+              <h4 className="masonry-title">{photo.Title}</h4>
+              <p className="masonry-author">by {photo.PostedBy?.ProfileName}</p>
+            </div>
+            <div className={`stats vertical bottom right`}>
+              <span className="display-likes"><FaIcons.FaThumbsUp size={10} /> {photo.Likes || 0}</span>
+            </div>
+          </div>
+        )}
+
+        {showOverlay && (
+          <div className="masonry-overlay">
+            <div className={`action-buttons horizontal top right`}>
+              <ReactionButton icon={SET_LIKE.icon} size={SET_LIKE.size} photo={photo} setPhoto={setPhoto} type="like" apiEndpoint={`http://localhost:3001/images/${photo._id}/like`}/>
+              <AddToFavoritesButton icon={SET_FAVORITE.icon} size={SET_FAVORITE.size} photoId={photo._id} currentUserId={user?._id} addFavoriteEndpoint={SET_FAVORITE.api}/>
+              <ReactionButton icon={SET_DISLIKE.icon} size={SET_DISLIKE.size} photo={photo} setPhoto={setPhoto} type="dislike" apiEndpoint={SET_DISLIKE.api}/>
+            </div>
+            <Link to="/ShowPhoto" state={{ photo }} className="masonry-details-link">
+              <div className="masonry-full-info">
+                <p className="masonry-description">{photo.Description}</p>
+                <div className="masonry-meta">
+                  <span className="masonry-full-date">
+                    {new Date(photo.DatePosted).toLocaleDateString()}
+                  </span>
                 </div>
-            </div>
-        );
-    }
-
-    if (config.layout === 'list') {
-        return (
-            <div className="photo-list-card">
-                <div className="photo-list-content">
-                    <div className="photo-list-image" onMouseEnter={() => setShowOverlay(true)} onMouseLeave={() => setShowOverlay(false)}>
-                        <Link to="/ShowPhoto" state={{ photo }} className="image-link">
-                            <img className="list-image" src={`${config.base_api}${photo.Path}`} alt={photo.Title}/>
-                        </Link>
-                        {showOverlay && (
-                            <div className={`${config.action_buttons_layout}`}>
-                                {config.like && (
-                                    <ReactionButton icon={ThumbsUp} size={18} photo={photo} setPhoto={setPhoto} type="like" apiEndpoint={`http://localhost:3001/images/${photo._id}/like`}/>
-                                )}
-                                {config.favorite && (
-                                    <AddToFavoritesButton icon={Heart} size={18} photoId={photo._id} currentUserId={user?._id} addFavoriteEndpoint="http://localhost:3001/users/addToFavorites"/>
-                                )}
-                                {config.dislike && (
-                                    <ReactionButton icon={ThumbsDown} size={18} photo={photo} setPhoto={setPhoto} type="dislike"apiEndpoint={`http://localhost:3001/images/${photo._id}/dislike`}/>
-                                )}
-                            </div>
-                        )}
-                        {!showOverlay && (
-                            <div className={`stats ${config.display_stats_layout}`}>
-                                {config.like_display && (<span className="display-likes"><FaThumbsUp/> {photo.Likes || 0}</span>)}
-                                {config.dislike_display && (<span className="display-dislikes"><FaThumbsDown/> {photo.Dislikes || 0}</span>)}
-                            </div>
-                        )}
-                    </div>
-
-                    <div className="photo-list-info">
-                        <Link to="/ShowPhoto" state={{ photo }} className="text-link">
-                            <h3 className="photo-list-title">{photo.Title}</h3>
-                            <p className="photo-list-description">{photo.Text}</p>
-                        </Link>
-                        <div className="photo-list-meta">
-                            <span className="photo-author">By: {photo.PostedBy?.ProfileName}</span>
-                            <span className="photo-date">{new Date(photo.DatePosted).toLocaleDateString()}</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        );
-    }
-
-    return (
-        <div className="photo-masonry-card">
-            <div className="masonry-image-container" onMouseEnter={() => setShowOverlay(true)} onMouseLeave={() => setShowOverlay(false)}>
-                <Link to="/ShowPhoto" state={{ photo }} className="masonry-image-link">
-                    <img className="masonry-image" src={`${config.base_api}${photo.Path}`} alt={photo.Title}/>
-                </Link>
-                {!showOverlay && (
-                    <div className="masonry-info-bar">
-                        <div className="masonry-text-content">
-                            <h4 className="masonry-title">{photo.Title}</h4>
-                            <p className="masonry-author">by {photo.PostedBy?.ProfileName}</p>
-                        </div>
-                        <div className={`stats ${config.display_stats_layout}`}>
-                            {config.like_display && (<span className="display-likes"><FaThumbsUp/> {photo.Likes || 0}</span>)}
-                            {config.dislike_display && (<span className="display-dislikes"><FaThumbsDown/> {photo.Dislikes || 0}</span>)}
-                        </div>
-                    </div>
-                )}
-
-                {showOverlay && (
-                    <div className="masonry-overlay">
-                        <div className={`${config.action_buttons_layout}`}>
-                            {config.like && (
-                                <ReactionButton icon={ThumbsUp} size={18} photo={photo} setPhoto={setPhoto} type="like" apiEndpoint={`http://localhost:3001/images/${photo._id}/like`}/>
-                            )}
-                            {config.favorite && (
-                                <AddToFavoritesButton icon={Heart} size={18} photoId={photo._id} currentUserId={user?._id} addFavoriteEndpoint="http://localhost:3001/users/addToFavorites"/>
-                            )}
-                            {config.dislike && (
-                                <ReactionButton icon={ThumbsDown} size={18} photo={photo} setPhoto={setPhoto} type="dislike"apiEndpoint={`http://localhost:3001/images/${photo._id}/dislike`}/>
-                            )}
-                        </div>
-                        <Link to="/ShowPhoto" state={{ photo }} className="masonry-details-link">
-                            <div className="masonry-full-info">
-                                <p className="masonry-description">{photo.Text}</p>
-                                <div className="masonry-meta">
-                                    <span className="masonry-full-date">
-                                        {new Date(photo.DatePosted).toLocaleDateString()}
-                                    </span>
-                                </div>
-                            </div>
-                        </Link>
-                    </div>
-                )}
-            </div>
-        </div>
-    );
+              </div>
+            </Link>
+          </div>
+        )}
+      </div>
+    </div>
+  );
 }
 
 export default Photo;

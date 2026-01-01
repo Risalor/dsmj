@@ -1,8 +1,8 @@
 import {useState} from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Header from './components/Header';
+import Header, { MENU_TYPE } from './components/Header';
 import Footer from './components/Footer';
-import Photos from "./components/Photos";
+import Photos, {LAYOUT_TYPE} from "./components/Photos";
 import Register from "./components/Register";
 import AddPhoto from "./components/AddPhoto";
 import Login from './components/Login';
@@ -28,9 +28,9 @@ function App() {
         user: user,
         setUserContext: updateUserData,
       }}>
-        <div className="App" style={{ minHeight: '100vh', display: 'flex', flexDirection: config.menu === 'sidebar' ? 'row' : 'column'}}>
+        <div className="App" style={{ minHeight: '100vh', display: 'flex', flexDirection: MENU_TYPE === 'sidebar' ? 'row' : 'column'}}>
           <Header />
-          <main style={{ flex: 1, marginLeft: config.layout === 'masonry' ? '250px' : '0' }}>
+          <main style={{ flex: 1, marginLeft: LAYOUT_TYPE === 'Masonary' ? '250px' : '0' }}>
             <Routes>
               <Route path="/" exact element={<Photos />}></Route>
               <Route path="/Register" element={<Register />}></Route>

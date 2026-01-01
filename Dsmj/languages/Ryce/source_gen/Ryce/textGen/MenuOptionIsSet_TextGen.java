@@ -33,7 +33,7 @@ public class MenuOptionIsSet_TextGen extends TextGenDescriptorBase {
         ctx.getBuffer().area().increaseIndent();
         tgs.indent();
         if ((SLinkOperations.getTarget(option, LINKS.icon$KTkR) != null)) {
-          tgs.append("<");
+          tgs.append("<IconsFeather.");
           tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(option, LINKS.icon$KTkR), PROPS.iconName$he9p));
           tgs.append(" className=\"header-icon\" size={");
           tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(option, LINKS.icon$KTkR), PROPS.size$tFxB));
@@ -72,7 +72,7 @@ public class MenuOptionIsSet_TextGen extends TextGenDescriptorBase {
         ctx.getBuffer().area().increaseIndent();
         tgs.indent();
         if ((SLinkOperations.getTarget(option, LINKS.icon$KTkR) != null)) {
-          tgs.append("<");
+          tgs.append("<IconsFeather.");
           tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(option, LINKS.icon$KTkR), PROPS.iconName$he9p));
           tgs.append(" size={");
           tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(option, LINKS.icon$KTkR), PROPS.size$tFxB));
