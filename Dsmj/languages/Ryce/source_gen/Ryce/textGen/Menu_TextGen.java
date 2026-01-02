@@ -16,7 +16,7 @@ public class Menu_TextGen extends TextGenDescriptorBase {
   @Override
   public void generateText(final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
-    tgs.append("//UserDisplay Start");
+    tgs.append("//UserDisplay start");
     tgs.newLine();
     tgs.append("import { useContext, useEffect, useState } from \"react\";");
     tgs.newLine();
@@ -440,12 +440,12 @@ public class Menu_TextGen extends TextGenDescriptorBase {
       tgs.newLine();
       tgs.append("export default UserDisplay;");
       tgs.newLine();
-      tgs.append("//UserDisplay End");
+      tgs.append("//UserDisplay end");
       tgs.newLine();
       tgs.newLine();
     }
 
-    tgs.append("//Header Start");
+    tgs.append("//Header start");
     tgs.newLine();
     tgs.append("import { useContext, useEffect, useState } from \"react\";");
     tgs.newLine();
@@ -712,9 +712,9 @@ public class Menu_TextGen extends TextGenDescriptorBase {
     tgs.newLine();
     ctx.getBuffer().area().decreaseIndent();
 
-    tgs.append("default export Header;");
+    tgs.append("export default Header;");
     tgs.newLine();
-    tgs.append("//Header End");
+    tgs.append("//Header end");
     tgs.newLine();
   }
 

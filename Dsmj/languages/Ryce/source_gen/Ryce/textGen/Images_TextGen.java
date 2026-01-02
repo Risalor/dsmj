@@ -18,7 +18,7 @@ public class Images_TextGen extends TextGenDescriptorBase {
   @Override
   public void generateText(final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
-    tgs.append("//Photos Start");
+    tgs.append("//Photos start");
     tgs.newLine();
     tgs.append("import { useState, useEffect } from 'react';");
     tgs.newLine();
@@ -312,8 +312,9 @@ public class Images_TextGen extends TextGenDescriptorBase {
     tgs.newLine();
     ctx.getBuffer().area().increaseIndent();
     tgs.indent();
-    tgs.append("<div className={LAYOUT.c3} key={photo._id}>");
+    tgs.append("<div className={LAYOUT.c3} key={photo.");
     tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.load_action$KRVq), LINKS.for_each$wZ_U), LINKS.image_id$pPQl), PROPS.api_source$7BWq));
+    tgs.append("}>");
     tgs.newLine();
     ctx.getBuffer().area().increaseIndent();
     tgs.indent();
@@ -407,7 +408,7 @@ public class Images_TextGen extends TextGenDescriptorBase {
     tgs.newLine();
     tgs.append("export default Photos;");
     tgs.newLine();
-    tgs.append("//Photos End");
+    tgs.append("//Photos end");
     tgs.newLine();
     tgs.newLine();
     tgs.newLine();
@@ -415,7 +416,7 @@ public class Images_TextGen extends TextGenDescriptorBase {
 
     // Photo ----------------------------------------------
 
-    tgs.append("//Photo Start");
+    tgs.append("//Photo start");
     tgs.newLine();
     tgs.append("import { useContext, useEffect, useState } from \"react\";");
     tgs.newLine();
@@ -525,6 +526,33 @@ public class Images_TextGen extends TextGenDescriptorBase {
       tgs.newLine();
     }
 
+    tgs.indent();
+    tgs.append("const photoId = photo.");
+    tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.load_action$KRVq), LINKS.for_each$wZ_U), LINKS.image_id$pPQl), PROPS.api_source$7BWq));
+    tgs.append(";");
+    tgs.newLine();
+    tgs.indent();
+    tgs.append("const photoTitle = photo.");
+    tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.load_action$KRVq), LINKS.for_each$wZ_U), LINKS.title$pXOR), PROPS.api_source$7BWq));
+    tgs.append(";");
+    tgs.newLine();
+    tgs.indent();
+    tgs.append("const photoDescription = photo.");
+    tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.load_action$KRVq), LINKS.for_each$wZ_U), LINKS.description$pY3S), PROPS.api_source$7BWq));
+    tgs.append(";");
+    tgs.newLine();
+    tgs.indent();
+    tgs.append("const photoDatePosted = photo.");
+    tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.load_action$KRVq), LINKS.for_each$wZ_U), LINKS.date$pX_Q), PROPS.api_source$7BWq));
+    tgs.append(";");
+    tgs.newLine();
+    tgs.indent();
+    tgs.append("const photoPath = photo.");
+    tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.load_action$KRVq), LINKS.for_each$wZ_U), LINKS.image$pYiT), PROPS.api_source$7BWq));
+    tgs.append(";");
+    tgs.newLine();
+    tgs.newLine();
+
     if (SEnumOperations.isMember(SPropertyOperations.getEnum(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.layout$KYXS), PROPS.type$b7cT), 0x7f63219c035cbd93L)) {
       tgs.indent();
       tgs.append("return (");
@@ -547,8 +575,7 @@ public class Images_TextGen extends TextGenDescriptorBase {
       tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.api$sddj), LINKS.base_url$zLxn), PROPS.url$zsEU));
       tgs.append("${photo.");
       tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.load_action$KRVq), LINKS.for_each$wZ_U), LINKS.image$pYiT), PROPS.api_source$7BWq));
-      tgs.append("}`} alt={photo.");
-      tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.load_action$KRVq), LINKS.for_each$wZ_U), LINKS.title$pXOR), PROPS.api_source$7BWq));
+      tgs.append("}`} alt={photoTitle");
       tgs.append("} />");
       tgs.newLine();
       ctx.getBuffer().area().decreaseIndent();
@@ -619,8 +646,7 @@ public class Images_TextGen extends TextGenDescriptorBase {
       }
       if (SPropertyOperations.getBoolean(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.enable_components$2$TR), LINKS.favorite$YGRV), LINKS.enable$YHBp), PROPS.value$RdAp)) {
         tgs.indent();
-        tgs.append("<AddToFavoritesButton icon={SET_FAVORITE.icon} size={SET_FAVORITE.size} photoId={photo.");
-        tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.load_action$KRVq), LINKS.for_each$wZ_U), LINKS.image_id$pPQl), PROPS.api_source$7BWq));
+        tgs.append("<AddToFavoritesButton icon={SET_FAVORITE.icon} size={SET_FAVORITE.size} photoId={photoId");
         tgs.append("} currentUserId={user?._id} addFavoriteEndpoint={SET_FAVORITE.api}/>");
         tgs.newLine();
       }
@@ -646,13 +672,12 @@ public class Images_TextGen extends TextGenDescriptorBase {
       tgs.newLine();
       ctx.getBuffer().area().increaseIndent();
       tgs.indent();
-      tgs.append("<h5 className=\"photo-title\">{photo.");
-      tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.load_action$KRVq), LINKS.for_each$wZ_U), LINKS.title$pXOR), PROPS.api_source$7BWq));
+      tgs.append("<h5 className=\"photo-title\">{photoTitle");
       tgs.append("}</h5>");
       tgs.newLine();
       tgs.indent();
       // Left off here!!
-      tgs.append("<p className=\"photo-description\">{photo.Text}</p>");
+      tgs.append("<p className=\"photo-description\">{photoDescription}</p>");
       tgs.newLine();
       tgs.indent();
       tgs.append("<div className=\"photo-meta\">");
@@ -662,7 +687,7 @@ public class Images_TextGen extends TextGenDescriptorBase {
       tgs.append("<small>By: {photo.PostedBy?.ProfileName}</small>");
       tgs.newLine();
       tgs.indent();
-      tgs.append("<small>Date: {new Date(photo.DatePosted).toLocaleDateString()}</small>");
+      tgs.append("<small>Date: {new Date(photoDatePosted).toLocaleDateString()}</small>");
       tgs.newLine();
       ctx.getBuffer().area().decreaseIndent();
       tgs.indent();
@@ -723,7 +748,7 @@ public class Images_TextGen extends TextGenDescriptorBase {
       tgs.indent();
       tgs.append("<img className=\"list-image\" src={`");
       tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.api$sddj), LINKS.base_url$zLxn), PROPS.url$zsEU));
-      tgs.append("${photo.Path}`} alt={photo.Title}/>");
+      tgs.append("${photoPath}`} alt={photoTitle}/>");
       tgs.newLine();
       ctx.getBuffer().area().decreaseIndent();
       tgs.indent();
@@ -749,7 +774,7 @@ public class Images_TextGen extends TextGenDescriptorBase {
       }
       if (SPropertyOperations.getBoolean(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.enable_components$2$TR), LINKS.favorite$YGRV), LINKS.enable$YHBp), PROPS.value$RdAp)) {
         tgs.indent();
-        tgs.append("<AddToFavoritesButton icon={SET_FAVORITE.icon} size={SET_FAVORITE.size} photoId={photo._id} currentUserId={user?._id} addFavoriteEndpoint={SET_FAVORITE.api}/>");
+        tgs.append("<AddToFavoritesButton icon={SET_FAVORITE.icon} size={SET_FAVORITE.size} photoId={photoId} currentUserId={user?._id} addFavoriteEndpoint={SET_FAVORITE.api}/>");
         tgs.newLine();
       }
       if (SPropertyOperations.getBoolean(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.enable_components$2$TR), LINKS.dislike$YGCU), LINKS.enable$RuaT), PROPS.value$RdAp)) {
@@ -818,10 +843,10 @@ public class Images_TextGen extends TextGenDescriptorBase {
       tgs.newLine();
       ctx.getBuffer().area().increaseIndent();
       tgs.indent();
-      tgs.append("<h3 className=\"photo-list-title\">{photo.Title}</h3>");
+      tgs.append("<h3 className=\"photo-list-title\">{photoTitle}</h3>");
       tgs.newLine();
       tgs.indent();
-      tgs.append("<p className=\"photo-list-description\">{photo.Text}</p>");
+      tgs.append("<p className=\"photo-list-description\">{photoDescription}</p>");
       tgs.newLine();
       ctx.getBuffer().area().decreaseIndent();
       tgs.indent();
@@ -835,7 +860,7 @@ public class Images_TextGen extends TextGenDescriptorBase {
       tgs.append("<span className=\"photo-author\">By: {photo.PostedBy?.ProfileName}</span>");
       tgs.newLine();
       tgs.indent();
-      tgs.append("<span className=\"photo-date\">{new Date(photo.DatePosted).toLocaleDateString()}</span>");
+      tgs.append("<span className=\"photo-date\">{new Date(photoDatePosted).toLocaleDateString()}</span>");
       tgs.newLine();
       ctx.getBuffer().area().decreaseIndent();
       tgs.indent();
@@ -877,7 +902,7 @@ public class Images_TextGen extends TextGenDescriptorBase {
       tgs.indent();
       tgs.append("<img className=\"masonry-image\" src={`");
       tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.api$sddj), LINKS.base_url$zLxn), PROPS.url$zsEU));
-      tgs.append("${photo.Path}`} alt={photo.Title}/>");
+      tgs.append("${photoPath}`} alt={photoTitle}/>");
       tgs.newLine();
       ctx.getBuffer().area().decreaseIndent();
       tgs.indent();
@@ -896,7 +921,7 @@ public class Images_TextGen extends TextGenDescriptorBase {
       tgs.newLine();
       ctx.getBuffer().area().increaseIndent();
       tgs.indent();
-      tgs.append("<h4 className=\"masonry-title\">{photo.Title}</h4>");
+      tgs.append("<h4 className=\"masonry-title\">{photoTitle}</h4>");
       tgs.newLine();
       tgs.indent();
       tgs.append("<p className=\"masonry-author\">by {photo.PostedBy?.ProfileName}</p>");
@@ -963,12 +988,12 @@ public class Images_TextGen extends TextGenDescriptorBase {
       ctx.getBuffer().area().increaseIndent();
       if (SPropertyOperations.getBoolean(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.enable_components$2$TR), LINKS.like$YGpT), LINKS.enable$UX7q), PROPS.value$RdAp)) {
         tgs.indent();
-        tgs.append("<ReactionButton icon={SET_LIKE.icon} size={SET_LIKE.size} photo={photo} setPhoto={setPhoto} type=\"like\" apiEndpoint={`http://localhost:3001/images/${photo._id}/like`}/>");
+        tgs.append("<ReactionButton icon={SET_LIKE.icon} size={SET_LIKE.size} photo={photo} setPhoto={setPhoto} type=\"like\" apiEndpoint={`http://localhost:3001/images/${photoId}/like`}/>");
         tgs.newLine();
       }
       if (SPropertyOperations.getBoolean(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.enable_components$2$TR), LINKS.favorite$YGRV), LINKS.enable$YHBp), PROPS.value$RdAp)) {
         tgs.indent();
-        tgs.append("<AddToFavoritesButton icon={SET_FAVORITE.icon} size={SET_FAVORITE.size} photoId={photo._id} currentUserId={user?._id} addFavoriteEndpoint={SET_FAVORITE.api}/>");
+        tgs.append("<AddToFavoritesButton icon={SET_FAVORITE.icon} size={SET_FAVORITE.size} photoId={photoId} currentUserId={user?._id} addFavoriteEndpoint={SET_FAVORITE.api}/>");
         tgs.newLine();
       }
       if (SPropertyOperations.getBoolean(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.enable_components$2$TR), LINKS.dislike$YGCU), LINKS.enable$RuaT), PROPS.value$RdAp)) {
@@ -989,8 +1014,7 @@ public class Images_TextGen extends TextGenDescriptorBase {
       tgs.newLine();
       ctx.getBuffer().area().increaseIndent();
       tgs.indent();
-      tgs.append("<p className=\"masonry-description\">{photo.");
-      tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.load_action$KRVq), LINKS.for_each$wZ_U), LINKS.description$pY3S), PROPS.api_source$7BWq));
+      tgs.append("<p className=\"masonry-description\">{photoDescription");
       tgs.append("}</p>");
       tgs.newLine();
       tgs.indent();
@@ -1002,7 +1026,7 @@ public class Images_TextGen extends TextGenDescriptorBase {
       tgs.newLine();
       ctx.getBuffer().area().increaseIndent();
       tgs.indent();
-      tgs.append("{new Date(photo.DatePosted).toLocaleDateString()}");
+      tgs.append("{new Date(photoDatePosted).toLocaleDateString()}");
       tgs.newLine();
       ctx.getBuffer().area().decreaseIndent();
       tgs.indent();
@@ -1046,7 +1070,7 @@ public class Images_TextGen extends TextGenDescriptorBase {
     tgs.newLine();
     tgs.append("export default Photo;");
     tgs.newLine();
-    tgs.append("//Photo End");
+    tgs.append("//Photo end");
     tgs.newLine();
     tgs.newLine();
     ctx.getBuffer().area().decreaseIndent();
@@ -1088,8 +1112,10 @@ public class Images_TextGen extends TextGenDescriptorBase {
     /*package*/ static final SContainmentLink dislike$YGCU = MetaAdapterFactory.getContainmentLink(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x7f63219c035cbedcL, 0x7f63219c035cbedeL, "dislike");
     /*package*/ static final SContainmentLink icon$nA2n = MetaAdapterFactory.getContainmentLink(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x39c93bd42de5bf0bL, 0x50366596986f0e70L, "icon");
     /*package*/ static final SContainmentLink enable$RuaT = MetaAdapterFactory.getContainmentLink(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x39c93bd42de5bf0bL, 0x39c93bd42de5bf0cL, "enable");
-    /*package*/ static final SContainmentLink image$pYiT = MetaAdapterFactory.getContainmentLink(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x7f63219c035cbd05L, 0x7e0d89be9616ea9cL, "image");
     /*package*/ static final SContainmentLink title$pXOR = MetaAdapterFactory.getContainmentLink(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x7f63219c035cbd05L, 0x7e0d89be9616ea9aL, "title");
+    /*package*/ static final SContainmentLink description$pY3S = MetaAdapterFactory.getContainmentLink(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x7f63219c035cbd05L, 0x7e0d89be9616ea9bL, "description");
+    /*package*/ static final SContainmentLink date$pX_Q = MetaAdapterFactory.getContainmentLink(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x7f63219c035cbd05L, 0x7e0d89be9616ea99L, "date");
+    /*package*/ static final SContainmentLink image$pYiT = MetaAdapterFactory.getContainmentLink(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x7f63219c035cbd05L, 0x7e0d89be9616ea9cL, "image");
     /*package*/ static final SContainmentLink enable_display_components$58nr = MetaAdapterFactory.getContainmentLink(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x7f63219c035cbd8dL, 0x7f5e51ed8fac258eL, "enable_display_components");
     /*package*/ static final SContainmentLink position$X46W = MetaAdapterFactory.getContainmentLink(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x7f5e51ed8fac2532L, 0x7f5e51ed8fac256dL, "position");
     /*package*/ static final SContainmentLink display_likes$U0rU = MetaAdapterFactory.getContainmentLink(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x7f5e51ed8fac2532L, 0x7f5e51ed8fac2534L, "display_likes");
@@ -1101,7 +1127,6 @@ public class Images_TextGen extends TextGenDescriptorBase {
     /*package*/ static final SContainmentLink content$xZbq = MetaAdapterFactory.getContainmentLink(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x503665969856bcc6L, 0x503665969856bcc8L, "content");
     /*package*/ static final SContainmentLink enable$xYWp = MetaAdapterFactory.getContainmentLink(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x503665969856bcc6L, 0x503665969856bcc7L, "enable");
     /*package*/ static final SContainmentLink position$tGxY = MetaAdapterFactory.getContainmentLink(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x7f63219c035cbedcL, 0x39c93bd42dd9788eL, "position");
-    /*package*/ static final SContainmentLink description$pY3S = MetaAdapterFactory.getContainmentLink(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x7f63219c035cbd05L, 0x7e0d89be9616ea9bL, "description");
   }
 
   private static final class PROPS {

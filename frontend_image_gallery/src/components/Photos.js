@@ -1,19 +1,20 @@
+//Photos start
 import { useState, useEffect } from 'react';
 import Photo from './Photo';
 import '../styles/combined.css'
 
-export const LAYOUT_TYPE = 'Masonary';
+export const LAYOUT_TYPE = 'List';
 
 function Photos() {
   const [photos, setPhotos] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [pagination, setPagination] = useState({});
-  const [currentSort, setCurrentSort] = useState('newest_asc');
+  const [currentSort, setCurrentSort] = useState('title_asc');
 
-    const LAYOUT = { c1: 'masonry-container', c2: 'masonry-grid', c3: 'masonry-item'};
-useEffect(() => {
+    const LAYOUT = { c1: 'container mt-4', c2: 'photos-list', c3: 'photo-list-item'};
+  useEffect(() => {
     const getPhotos = async () => {
-      const res = await fetch('http://localhost:3001/images/?page=' + currentPage + '&limit=5&sort=' + currentSort);
+      const res = await fetch('http://localhost:3001/images/?page=' + currentPage + '&limit=3&sort=' + currentSort);
       const data = await res.json();
       setPhotos(data.photos);
       setPagination(data.pagination);
@@ -72,7 +73,7 @@ useEffect(() => {
     <div className={LAYOUT.c1}>
       <div className={LAYOUT.c2}>
         {photos.map(photo => (
-          <div className={LAYOUT.c3} key={photo._id}>_id
+          <div className={LAYOUT.c3} key={photo._id}>
             <Photo photo={photo} />
           </div>
         ))}
@@ -99,3 +100,4 @@ useEffect(() => {
 }
 
 export default Photos;
+//Photos end

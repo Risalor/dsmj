@@ -1,59 +1,50 @@
+//Header start
 import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../userContexts";
 import { Link, useLocation } from "react-router-dom";
 import * as IconsFeather from 'feather-icons-react';import { FaPaintBrush } from "react-icons/fa";
 import UserDisplay from "./UserDisplay";
-import "../styles/Headerv3.css";
-export const MENU_TYPE = 'sidebar';
+import "../styles/Headerv1.css";
+export const MENU_TYPE = 'topbar';
 
 function Header() {
-    const [isCollapsed, setIsCollapsed] = useState(false);
-    const location = useLocation();
     const { user } = useContext(UserContext);
 
     return (
-      <div className={`sidebar bg-dark ${isCollapsed ? 'collapsed' : ''}`}>
-        <div className="sidebar-brand">
-          {
-            !isCollapsed &&
-              <>
-                <Link className="brand-link" to="/">
-                  <FaPaintBrush className="brand-icon" />
-                  <span className="brand-text">KrisGal</span>
-                </Link>                
-              </>
-          }
-          <button className="sidebar-toggle" onClick={() => setIsCollapsed(!isCollapsed)}>
-            {isCollapsed ? '→' : '←'}
-          </button>
+      <div className="navbar navbar-expand-lg navbar-dark bg-dark px-3">
+        <div>
+          <Link className="navbar-brand d-flex align-items-center" to="/">
+            <FaPaintBrush size={10} className="me-2" style={{ color: 'rgb(0, 174, 3)' }}/>
+            <span className="icon-text">KrisGal</span>
+          </Link>          
         </div>
-        <div className="sidebar-nav">
-          <ul className="nav-list">
+        <div className="collapse navbar-collapse" id="navbarNav">
+          <ul className="navbar-nav me-auto align-items-center">
             
             {user ? (
               <>
                 <li className="nav-item">
-                  <Link className={`nav-link ${location.pathname === '/Hal' ? 'active' : ''}`} to="/Hal">
-                    {!isCollapsed && <span>Mull</span>}
+                  <Link className="nav-link icon-link" to="/Hal">
+                    <span className="icon-text">Mull</span>
                   </Link>
                 </li>                
               </>
             ) : (
               <>
                 <li className="nav-item">
-                  <Link className={`nav-link ${location.pathname === '/Profile' ? 'active' : ''}`} to="/Tubb">
-                    {!isCollapsed && <span>APPPP</span>}
+                  <Link className="nav-link icon-link" to="/Tubb">
+                    <span className="icon-text">APPPP</span>
                   </Link>
                 </li>                
               </>
             )}
           </ul>
-        </div>
-      <div className="sidebar-user">
-        <UserDisplay isCollapsed={isCollapsed} isTopbar={false} />      
+          <div>
+            <UserDisplay isCollapsed={false} isTopbar={true} />
+          </div>
         </div>
       </div>
     );
 }
-
 export default Header;
+//Header end
