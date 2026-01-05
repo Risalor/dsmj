@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="utf-8">
-  <title>DSMJ Game Visualization</title>
+  <title>DSMJ Game</title>
   <script src="./node_modules/blockly/blockly_compressed.js"></script>
   <script src="./node_modules/blockly/blocks_compressed.js"></script>
   <script src="./node_modules/blockly/javascript_compressed.js"></script>
@@ -11,7 +12,8 @@
   <script src="movements-gen.js"></script>
   <script src="game-engine.js" defer></script>
   <style>
-    html, body {
+    html,
+    body {
       height: 100%;
       margin: 0;
       font-family: sans-serif;
@@ -27,7 +29,10 @@
       width: 100%;
     }
 
-    table, tr, td, img {
+    table,
+    tr,
+    td,
+    img {
       margin: 0;
       padding: 0;
       border: none;
@@ -47,18 +52,18 @@
       height: 50px;
       width: 50px;
     }
-    
+
     #blocklyDiv {
       height: 600px;
       width: 100%;
     }
-    
+
     button {
       padding: 8px 16px;
       margin: 0 5px;
       cursor: pointer;
     }
-    
+
     #status {
       padding: 10px;
       background-color: #f0f0f0;
@@ -72,13 +77,13 @@
   <table id="table">
     <tr>
       <td colspan="2">
-        <h1>DSMJ Game: Battle Simulation</h1>
+        <h1>DSMJ Game: Battle</h1>
         <p>Program your character to attack enemies with step-by-step visualization</p>
       </td>
     </tr>
     <tr>
       <td style="padding: 10px;">
-        <button onclick="showCode()">Show JavaScript Code</button>
+        <button onclick="showCode()">Show Code</button>
         <button onclick="runCode()">Start Visualization</button>
         <button onclick="resetGame()">Reset Game</button>
       </td>
@@ -131,7 +136,9 @@
       </block>
       <block type="controls_whileUntil"></block>
       <block type="controls_if"></block>
-      <block type="controls_if"><mutation else="1"></mutation></block>
+      <block type="controls_if">
+        <mutation else="1"></mutation>
+      </block>
       <block type="logic_boolean"></block>
       <block type="logic_compare"></block>
       <block type="math_number">
@@ -144,14 +151,104 @@
     </category>
   </xml>
 
-  <xml xmlns="https://developers.google.com/blockly/xml" id="startBlocks" style="display: none">
+  <xml xmlns="https://developers.google.com/blockly/xml" id="ex1" style="display: none">
+    <block type="controls_repeat_ext" x="20" y="20">
+      <value name="TIMES">
+        <block type="math_number">
+          <field name="NUM">3</field>
+        </block>
+      </value>
+      <statement name="DO">
+        <block type="moveForward"></block>
+      </statement>
+      <next>
+        <block type="turnRight">
+          <next>
+            <block type="controls_repeat_ext">
+              <value name="TIMES">
+                <block type="math_number">
+                  <field name="NUM">2</field>
+                </block>
+              </value>
+              <statement name="DO">
+                <block type="moveForward"></block>
+              </statement>
+              <next>
+                <block type="controls_repeat_ext">
+                  <value name="TIMES">
+                    <block type="math_number">
+                      <field name="NUM">3</field>
+                    </block>
+                  </value>
+                  <statement name="DO">
+                    <block type="attack"></block>
+                  </statement>
+                  <next>
+                    <block type="controls_repeat_ext">
+                      <value name="TIMES">
+                        <block type="math_number">
+                          <field name="NUM">3</field>
+                        </block>
+                      </value>
+                      <statement name="DO">
+                        <block type="moveForward"></block>
+                      </statement>
+                      <next>
+                        <block type="turnRight">
+                          <next>
+                            <block type="controls_repeat_ext">
+                              <value name="TIMES">
+                                <block type="math_number">
+                                  <field name="NUM">3</field>
+                                </block>
+                              </value>
+                              <statement name="DO">
+                                <block type="moveForward"></block>
+                              </statement>
+                              <next>
+                                <block type="controls_repeat_ext">
+                                  <value name="TIMES">
+                                    <block type="math_number">
+                                      <field name="NUM">2</field>
+                                    </block>
+                                  </value>
+                                  <statement name="DO">
+                                    <block type="attack"></block>
+                                  </statement>
+                                  <next>
+
+                                  </next>
+                                </block>
+                              </next>
+                            </block>
+                          </next>
+                        </block>
+                      </next>
+                    </block>
+                  </next>
+                </block>
+              </next>
+            </block>
+          </next>
+        </block>
+      </next>
+    </block>
+  </xml>
+
+  <xml xmlns="https://developers.google.com/blockly/xml" id="ex2" style="display: none">
+    <block type="moveForward" x="20" y="20"></block>
+    <block type="moveForward" x="20" y="80"></block>
+    <block type="turnRight" x="20" y="140"></block>
+  </xml>
+
+  <xml xmlns="https://developers.google.com/blockly/xml" id="ex3" style="display: none">
     <block type="moveForward" x="20" y="20"></block>
     <block type="moveForward" x="20" y="80"></block>
     <block type="turnRight" x="20" y="140"></block>
   </xml>
 
   <script>
-    var demoWorkspace = Blockly.inject('blocklyDiv', {
+    var Workspace = Blockly.inject('blocklyDiv', {
       toolbox: document.getElementById('toolbox'),
       trashcan: true,
       horizontalLayout: false,
@@ -159,8 +256,9 @@
       css: true,
       media: './node_modules/blockly/media/'
     });
-    
-    Blockly.Xml.domToWorkspace(document.getElementById('startBlocks'), demoWorkspace);
+
+    Blockly.Xml.domToWorkspace(document.getElementById('ex1'), Workspace);
   </script>
 </body>
+
 </html>
