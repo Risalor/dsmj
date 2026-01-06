@@ -13,7 +13,7 @@ public class Footer_TextGen extends TextGenDescriptorBase {
   @Override
   public void generateText(final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
-    tgs.append("//Footerr start");
+    tgs.append("//Footer start");
     tgs.newLine();
     tgs.append("import { UserContext } from \"../userContexts\";");
     tgs.newLine();
@@ -58,7 +58,7 @@ public class Footer_TextGen extends TextGenDescriptorBase {
     tgs.newLine();
     tgs.append("export default Footer;");
     tgs.newLine();
-    tgs.append("//Footerr end");
+    tgs.append("//Footer end");
   }
 
   private static final class PROPS {

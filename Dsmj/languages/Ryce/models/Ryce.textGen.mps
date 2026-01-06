@@ -144,7 +144,7 @@
       <node concept="3clFbS" id="2HXaMQLB0Te" role="2VODD2">
         <node concept="lc7rE" id="5xEwV9mq5RL" role="3cqZAp">
           <node concept="la8eA" id="5xEwV9mq5Uz" role="lcghm">
-            <property role="lacIc" value="//Footerr start" />
+            <property role="lacIc" value="//Footer start" />
           </node>
           <node concept="l8MVK" id="5xEwV9mq656" role="lcghm" />
         </node>
@@ -260,7 +260,7 @@
         </node>
         <node concept="lc7rE" id="5xEwV9mq65w" role="3cqZAp">
           <node concept="la8eA" id="5xEwV9mq66k" role="lcghm">
-            <property role="lacIc" value="//Footerr end" />
+            <property role="lacIc" value="//Footer end" />
           </node>
         </node>
       </node>
@@ -1414,7 +1414,7 @@
         </node>
         <node concept="lc7rE" id="4f_8f$MLpjE" role="3cqZAp">
           <node concept="la8eA" id="4f_8f$MLpk6" role="lcghm">
-            <property role="lacIc" value="import { FaPaintBrush } from &quot;react-icons/fa&quot;;" />
+            <property role="lacIc" value="import * as FaIcons from &quot;react-icons/fa&quot;;" />
           </node>
           <node concept="l8MVK" id="4f_8f$MLplh" role="lcghm" />
         </node>
@@ -2353,7 +2353,7 @@
                       <node concept="3clFbS" id="61vyoKhu86F" role="3clFbx">
                         <node concept="lc7rE" id="61vyoKhu9Kr" role="3cqZAp">
                           <node concept="la8eA" id="61vyoKhu9KR" role="lcghm">
-                            <property role="lacIc" value="&lt;" />
+                            <property role="lacIc" value="&lt;FaIcons." />
                           </node>
                           <node concept="l9hG8" id="61vyoKhu9LH" role="lcghm">
                             <node concept="2OqwBi" id="50QppqoqEz7" role="lb14g">
@@ -5496,7 +5496,7 @@
                             </node>
                           </node>
                           <node concept="la8eA" id="5M0zVYwVQeP" role="lcghm">
-                            <property role="lacIc" value="${Photo." />
+                            <property role="lacIc" value="${photo." />
                           </node>
                           <node concept="l9hG8" id="5M0zVYwRGtd" role="lcghm">
                             <node concept="2OqwBi" id="5M0zVYwRIdP" role="lb14g">
@@ -5891,6 +5891,9 @@
                               </node>
                             </node>
                           </node>
+                          <node concept="la8eA" id="27H$HODPAIN" role="lcghm">
+                            <property role="lacIc" value="photo." />
+                          </node>
                           <node concept="l9hG8" id="5M0zVYwSn5X" role="lcghm">
                             <node concept="2OqwBi" id="5M0zVYwSoLQ" role="lb14g">
                               <node concept="2OqwBi" id="5M0zVYwSodR" role="2Oq$k0">
@@ -6176,7 +6179,106 @@
                 <property role="lacIc" value=";" />
               </node>
               <node concept="l8MVK" id="5xEwV9mr1cq" role="lcghm" />
-              <node concept="l8MVK" id="5xEwV9msHD_" role="lcghm" />
+            </node>
+            <node concept="1bpajm" id="27H$HODQTxm" role="3cqZAp" />
+            <node concept="lc7rE" id="27H$HODQVRa" role="3cqZAp">
+              <node concept="la8eA" id="27H$HODQXBi" role="lcghm">
+                <property role="lacIc" value="const photoPoster = photo." />
+              </node>
+              <node concept="l9hG8" id="27H$HODQXFF" role="lcghm">
+                <node concept="2OqwBi" id="27H$HODR18d" role="lb14g">
+                  <node concept="2OqwBi" id="27H$HODR0z_" role="2Oq$k0">
+                    <node concept="2OqwBi" id="27H$HODR00K" role="2Oq$k0">
+                      <node concept="2OqwBi" id="27H$HODQXQP" role="2Oq$k0">
+                        <node concept="117lpO" id="27H$HODQXGc" role="2Oq$k0" />
+                        <node concept="3TrEf2" id="27H$HODQZNT" role="2OqNvi">
+                          <ref role="3Tt5mk" to="qmra:7Xz8pK3nbQf" resolve="load_action" />
+                        </node>
+                      </node>
+                      <node concept="3TrEf2" id="27H$HODR0kY" role="2OqNvi">
+                        <ref role="3Tt5mk" to="qmra:7Xz8pK3nbOR" resolve="for_each" />
+                      </node>
+                    </node>
+                    <node concept="3TrEf2" id="27H$HODR0Vh" role="2OqNvi">
+                      <ref role="3Tt5mk" to="qmra:27H$HODQK1I" resolve="poster" />
+                    </node>
+                  </node>
+                  <node concept="3TrcHB" id="27H$HODR1sN" role="2OqNvi">
+                    <ref role="3TsBF5" to="qmra:7Xz8pK3mCOg" resolve="api_source" />
+                  </node>
+                </node>
+              </node>
+              <node concept="la8eA" id="27H$HODR1Cu" role="lcghm">
+                <property role="lacIc" value=";" />
+              </node>
+              <node concept="l8MVK" id="27H$HODR1EQ" role="lcghm" />
+            </node>
+            <node concept="1bpajm" id="27H$HODR72P" role="3cqZAp" />
+            <node concept="lc7rE" id="27H$HODRa$b" role="3cqZAp">
+              <node concept="la8eA" id="27H$HODRbjA" role="lcghm">
+                <property role="lacIc" value="const photoLikes = photo." />
+              </node>
+              <node concept="l9hG8" id="27H$HODRbp4" role="lcghm">
+                <node concept="2OqwBi" id="27H$HODSzet" role="lb14g">
+                  <node concept="2OqwBi" id="27H$HODRc$h" role="2Oq$k0">
+                    <node concept="2OqwBi" id="27H$HODRc4A" role="2Oq$k0">
+                      <node concept="2OqwBi" id="27H$HODRb$e" role="2Oq$k0">
+                        <node concept="117lpO" id="27H$HODRbp_" role="2Oq$k0" />
+                        <node concept="3TrEf2" id="27H$HODRbRJ" role="2OqNvi">
+                          <ref role="3Tt5mk" to="qmra:7XukuQfF2me" resolve="enable_display_components" />
+                        </node>
+                      </node>
+                      <node concept="3TrEf2" id="27H$HODRcnq" role="2OqNvi">
+                        <ref role="3Tt5mk" to="qmra:7XukuQfF2kO" resolve="display_likes" />
+                      </node>
+                    </node>
+                    <node concept="3TrEf2" id="27H$HODRcVg" role="2OqNvi">
+                      <ref role="3Tt5mk" to="qmra:50QppqolFLH" resolve="content" />
+                    </node>
+                  </node>
+                  <node concept="3TrcHB" id="27H$HODSzBx" role="2OqNvi">
+                    <ref role="3TsBF5" to="qmra:7Xz8pK3nbSC" resolve="value" />
+                  </node>
+                </node>
+              </node>
+              <node concept="la8eA" id="27H$HODRdC7" role="lcghm">
+                <property role="lacIc" value=";" />
+              </node>
+              <node concept="l8MVK" id="27H$HODRdE1" role="lcghm" />
+            </node>
+            <node concept="1bpajm" id="27H$HODRfvN" role="3cqZAp" />
+            <node concept="lc7rE" id="27H$HODRhVl" role="3cqZAp">
+              <node concept="la8eA" id="27H$HODRjKg" role="lcghm">
+                <property role="lacIc" value="const photoDislikes = photo." />
+              </node>
+              <node concept="l9hG8" id="27H$HODRjQs" role="lcghm">
+                <node concept="2OqwBi" id="27H$HODSzTs" role="lb14g">
+                  <node concept="2OqwBi" id="27H$HODRl3P" role="2Oq$k0">
+                    <node concept="2OqwBi" id="27H$HODRkw6" role="2Oq$k0">
+                      <node concept="2OqwBi" id="27H$HODRjZI" role="2Oq$k0">
+                        <node concept="117lpO" id="27H$HODRjQX" role="2Oq$k0" />
+                        <node concept="3TrEf2" id="27H$HODRkjf" role="2OqNvi">
+                          <ref role="3Tt5mk" to="qmra:7XukuQfF2me" resolve="enable_display_components" />
+                        </node>
+                      </node>
+                      <node concept="3TrEf2" id="27H$HODRkQY" role="2OqNvi">
+                        <ref role="3Tt5mk" to="qmra:7XukuQfF2kP" resolve="displayy_dislikes" />
+                      </node>
+                    </node>
+                    <node concept="3TrEf2" id="27H$HODRlof" role="2OqNvi">
+                      <ref role="3Tt5mk" to="qmra:50QppqolFN8" resolve="content" />
+                    </node>
+                  </node>
+                  <node concept="3TrcHB" id="27H$HODS$iw" role="2OqNvi">
+                    <ref role="3TsBF5" to="qmra:7Xz8pK3nbSC" resolve="value" />
+                  </node>
+                </node>
+              </node>
+              <node concept="la8eA" id="27H$HODRl_x" role="lcghm">
+                <property role="lacIc" value=";" />
+              </node>
+              <node concept="l8MVK" id="27H$HODRlOB" role="lcghm" />
+              <node concept="l8MVK" id="27H$HODRlQu" role="lcghm" />
             </node>
             <node concept="3clFbH" id="50QppqosPcQ" role="3cqZAp" />
             <node concept="3clFbJ" id="50QppqosPdf" role="3cqZAp">
@@ -6836,7 +6938,7 @@
                                                     <node concept="1bpajm" id="7XukuQfI0OV" role="3cqZAp" />
                                                     <node concept="lc7rE" id="7XukuQfI0PE" role="3cqZAp">
                                                       <node concept="la8eA" id="7XukuQfI0Q6" role="lcghm">
-                                                        <property role="lacIc" value="&lt;small&gt;By: {photo.PostedBy?.ProfileName}&lt;/small&gt;" />
+                                                        <property role="lacIc" value="&lt;small&gt;By: {photoPoster}&lt;/small&gt;" />
                                                       </node>
                                                       <node concept="l8MVK" id="7XukuQfI0QX" role="lcghm" />
                                                     </node>
@@ -7373,7 +7475,7 @@
                                                   </node>
                                                 </node>
                                                 <node concept="la8eA" id="7XukuQfK2n1" role="lcghm">
-                                                  <property role="lacIc" value="}/&gt; {photo.Likes || 0}&lt;/span&gt;" />
+                                                  <property role="lacIc" value="}/&gt; {photoLikes || 0}&lt;/span&gt;" />
                                                 </node>
                                                 <node concept="l8MVK" id="7XukuQfJzlR" role="lcghm" />
                                               </node>
@@ -7436,7 +7538,7 @@
                                                   </node>
                                                 </node>
                                                 <node concept="la8eA" id="7XukuQfK7uF" role="lcghm">
-                                                  <property role="lacIc" value="}/&gt; {photo.Dislikes || 0}&lt;/span&gt;" />
+                                                  <property role="lacIc" value="}/&gt; {photoDislikes || 0}&lt;/span&gt;" />
                                                 </node>
                                                 <node concept="l8MVK" id="7XukuQfJ_QA" role="lcghm" />
                                               </node>
@@ -7545,7 +7647,7 @@
                                       <node concept="1bpajm" id="7XukuQfJHZ1" role="3cqZAp" />
                                       <node concept="lc7rE" id="7XukuQfJHZK" role="3cqZAp">
                                         <node concept="la8eA" id="7XukuQfJI0c" role="lcghm">
-                                          <property role="lacIc" value="&lt;span className=&quot;photo-author&quot;&gt;By: {photo.PostedBy?.ProfileName}&lt;/span&gt;" />
+                                          <property role="lacIc" value="&lt;span className=&quot;photo-author&quot;&gt;By: {photoPoster}&lt;/span&gt;" />
                                         </node>
                                         <node concept="l8MVK" id="7XukuQfJI1n" role="lcghm" />
                                       </node>
@@ -7733,7 +7835,7 @@
                                           <node concept="1bpajm" id="7XukuQfJQsn" role="3cqZAp" />
                                           <node concept="lc7rE" id="7XukuQfJQt7" role="3cqZAp">
                                             <node concept="la8eA" id="7XukuQfJQtz" role="lcghm">
-                                              <property role="lacIc" value="&lt;p className=&quot;masonry-author&quot;&gt;by {photo.PostedBy?.ProfileName}&lt;/p&gt;" />
+                                              <property role="lacIc" value="&lt;p className=&quot;masonry-author&quot;&gt;by {photoPoster}&lt;/p&gt;" />
                                             </node>
                                             <node concept="l8MVK" id="7XukuQfJQuI" role="lcghm" />
                                           </node>
@@ -7881,7 +7983,7 @@
                                                   </node>
                                                 </node>
                                                 <node concept="la8eA" id="7XukuQfKcc3" role="lcghm">
-                                                  <property role="lacIc" value="} /&gt; {photo.Likes || 0}&lt;/span&gt;" />
+                                                  <property role="lacIc" value="} /&gt; {photoLikes || 0}&lt;/span&gt;" />
                                                 </node>
                                                 <node concept="l8MVK" id="7XukuQfKcoa" role="lcghm" />
                                               </node>
@@ -7944,7 +8046,7 @@
                                                   </node>
                                                 </node>
                                                 <node concept="la8eA" id="7XukuQfKk2v" role="lcghm">
-                                                  <property role="lacIc" value="} &gt; {photo.Dislikes || 0}&lt;/span&gt;" />
+                                                  <property role="lacIc" value="} &gt; {photoDislikes || 0}&lt;/span&gt;" />
                                                 </node>
                                                 <node concept="l8MVK" id="7XukuQfKkee" role="lcghm" />
                                               </node>

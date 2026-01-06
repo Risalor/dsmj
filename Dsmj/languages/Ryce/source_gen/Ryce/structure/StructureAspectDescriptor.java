@@ -419,6 +419,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.aggregate("title", 0x7e0d89be9616ea9aL).target(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x7f63219c035a8d0eL).optional(true).ordered(true).multiple(false).origin("9083067475131034266").done();
     b.aggregate("description", 0x7e0d89be9616ea9bL).target(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x7f63219c035a8d0eL).optional(true).ordered(true).multiple(false).origin("9083067475131034267").done();
     b.aggregate("image", 0x7e0d89be9616ea9cL).target(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x7f63219c035a8d0eL).optional(true).ordered(true).multiple(false).origin("9083067475131034268").done();
+    b.aggregate("poster", 0x21ed92dd29db006eL).target(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x7f63219c035a8d0eL).optional(true).ordered(true).multiple(false).origin("2444771651319693422").done();
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForIcon() {

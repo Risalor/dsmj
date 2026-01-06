@@ -16,15 +16,18 @@ function Photo({ photo: initialPhoto }) {
 
   useEffect(() => { import("../styles/Imagev2.css"); });
 
-  const SET_LIKE = { api: `http://localhost:3001/images/${Photo._id}/like`, size: 18, icon: Icons.ThumbsUp};
-  const SET_FAVORITE = { api: `http://localhost:3001/users/addToFavorites`, size: 18, icon: Icons.Heart};
-  const SET_DISLIKE = { api: `http://localhost:3001/images/_id/dislike`, size: 18, icon: Icons.ThumbsDown};
+  const SET_LIKE = { api: `http://localhost:3001/images/${photo._id}/like`, size: 18, icon: Icons.ThumbsUp};
+  const SET_FAVORITE = { api: `http://localhost:3001/users/addToFavorites`, size: 18, icon: Icons.Star};
+  const SET_DISLIKE = { api: `http://localhost:3001/images/photo._id/dislike`, size: 18, icon: Icons.ThumbsDown};
 
   const photoId = photo._id;
   const photoTitle = photo.Title;
   const photoDescription = photo.Description;
   const photoDatePosted = photo.Date;
   const photoPath = photo.Path;
+  const photoPoster = photo.PostedBy?.ProfileName;
+  const photoLikes = photo.Likes;
+  const photoDislikes = photo.Dislikes;
 
 return (
     <div className="photo-list-card">
@@ -42,7 +45,7 @@ return (
           )}
           {!showOverlay && (
             <div className={`stats action-buttons vertical bottom right`}>
-              <span className="display-likes"><FaIcons.FaThumbsUp size={10}/> {photo.Likes || 0}</span>
+              <span className="display-likes"><FaIcons.FaThumbsUp size={10}/> {photoLikes || 0}</span>
             </div>
           )}
         </div>
@@ -53,7 +56,7 @@ return (
             <p className="photo-list-description">{photoDescription}</p>
           </Link>
           <div className="photo-list-meta">
-            <span className="photo-author">By: {photo.PostedBy?.ProfileName}</span>
+            <span className="photo-author">By: {photoPoster}</span>
             <span className="photo-date">{new Date(photoDatePosted).toLocaleDateString()}</span>
           </div>
         </div>

@@ -56,7 +56,7 @@ export default UserDisplay;
 import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../userContexts";
 import { Link, useLocation } from "react-router-dom";
-import * as IconsFeather from 'feather-icons-react';import { FaPaintBrush } from "react-icons/fa";
+import * as IconsFeather from 'feather-icons-react';import * as FaIcons from "react-icons/fa";
 import UserDisplay from "./UserDisplay";
 import "../styles/Headerv1.css";
 export const MENU_TYPE = 'topbar';
@@ -68,26 +68,46 @@ function Header() {
       <div className="navbar navbar-expand-lg navbar-dark bg-dark px-3">
         <div>
           <Link className="navbar-brand d-flex align-items-center" to="/">
-            <FaPaintBrush size={10} className="me-2" style={{ color: 'rgb(0, 174, 3)' }}/>
+            <FaIcons.FaPaintBrush size={10} className="me-2" style={{ color: 'rgb(0, 174, 3)' }}/>
             <span className="icon-text">KrisGal</span>
           </Link>          
         </div>
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav me-auto align-items-center">
+            <li className="nav-item">
+              <Link className="nav-link icon-link" to="/">
+                <IconsFeather.Image className="header-icon" size={18} />
+                <span className="icon-text">Images</span>
+              </Link>
+            </li>            
             
             {user ? (
               <>
                 <li className="nav-item">
-                  <Link className="nav-link icon-link" to="/Hal">
-                    <span className="icon-text">Mull</span>
+                  <Link className="nav-link icon-link" to="/AddPhoto">
+                    <IconsFeather.Plus className="header-icon" size={18} />
+                    <span className="icon-text">Add Image</span>
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link icon-link" to="/Profile">
+                    <IconsFeather.User className="header-icon" size={18} />
+                    <span className="icon-text">Profile</span>
                   </Link>
                 </li>                
               </>
             ) : (
               <>
                 <li className="nav-item">
-                  <Link className="nav-link icon-link" to="/Tubb">
-                    <span className="icon-text">APPPP</span>
+                  <Link className="nav-link icon-link" to="/Login">
+                    <IconsFeather.LogIn className="header-icon" size={18} />
+                    <span className="icon-text">Login</span>
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link icon-link" to="/Register">
+                    <IconsFeather.UserPlus className="header-icon" size={18} />
+                    <span className="icon-text">Register</span>
                   </Link>
                 </li>                
               </>
@@ -103,6 +123,23 @@ function Header() {
 export default Header;
 //Header end
 
+
+//Footer start
+import { UserContext } from "../userContexts";
+import { useContext } from 'react';
+
+function Footer() {
+
+  return (
+    <footer style={{ backgroundColor: '#1a1a1a', color: 'white', padding: '20px', textAlign: 'center', marginTop: '3%', borderTop: '1px solid #333' }}>
+      <div className="container">
+        <p>This is some footer text</p>
+      </div>
+    </footer>
+  );
+}
+export default Footer;
+//Footer end
 
 //Photos start
 import { useState, useEffect } from 'react';
@@ -228,15 +265,18 @@ function Photo({ photo: initialPhoto }) {
 
   useEffect(() => { import("../styles/Imagev2.css"); });
 
-  const SET_LIKE = { api: `http://localhost:3001/images/${Photo._id}/like`, size: 18, icon: Icons.ThumbsUp};
-  const SET_FAVORITE = { api: `http://localhost:3001/users/addToFavorites`, size: 18, icon: Icons.Heart};
-  const SET_DISLIKE = { api: `http://localhost:3001/images/_id/dislike`, size: 18, icon: Icons.ThumbsDown};
+  const SET_LIKE = { api: `http://localhost:3001/images/${photo._id}/like`, size: 18, icon: Icons.ThumbsUp};
+  const SET_FAVORITE = { api: `http://localhost:3001/users/addToFavorites`, size: 18, icon: Icons.Star};
+  const SET_DISLIKE = { api: `http://localhost:3001/images/photo._id/dislike`, size: 18, icon: Icons.ThumbsDown};
 
   const photoId = photo._id;
   const photoTitle = photo.Title;
   const photoDescription = photo.Description;
   const photoDatePosted = photo.Date;
   const photoPath = photo.Path;
+  const photoPoster = photo.;
+  const photoLikes = photo.Likes;
+  const photoDislikes = photo.Dislikes;
 
 return (
     <div className="photo-list-card">
@@ -254,7 +294,7 @@ return (
           )}
           {!showOverlay && (
             <div className={`stats action-buttons vertical bottom right`}>
-              <span className="display-likes"><FaIcons.FaThumbsUp size={10}/> {photo.Likes || 0}</span>
+              <span className="display-likes"><FaIcons.FaThumbsUp size={10}/> {photoLikes || 0}</span>
             </div>
           )}
         </div>
@@ -265,7 +305,7 @@ return (
             <p className="photo-list-description">{photoDescription}</p>
           </Link>
           <div className="photo-list-meta">
-            <span className="photo-author">By: {photo.PostedBy?.ProfileName}</span>
+            <span className="photo-author">By: {photoPoster}</span>
             <span className="photo-date">{new Date(photoDatePosted).toLocaleDateString()}</span>
           </div>
         </div>

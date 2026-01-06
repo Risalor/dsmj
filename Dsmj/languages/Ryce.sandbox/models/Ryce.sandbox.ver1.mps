@@ -61,7 +61,11 @@
       <concept id="4163925112970906362" name="Ryce.structure.Footer" flags="ng" index="kfb4I">
         <property id="4163925112970906363" name="text" index="kfb4J" />
       </concept>
+      <concept id="6882320668103848225" name="Ryce.structure.MenuOption" flags="ng" index="2za_Gf">
+        <child id="6882320668104559063" name="options" index="2zcmfT" />
+      </concept>
       <concept id="6882320668103848216" name="Ryce.structure.Menu" flags="ng" index="2za_GQ">
+        <child id="6882320668103848229" name="options" index="2za_Gb" />
         <child id="5431886404992943964" name="set" index="2AwiyV" />
         <child id="5431886404993061615" name="options_IsSet" index="2AwRO8" />
         <child id="5431886404993061616" name="options_NotSet" index="2AwROn" />
@@ -146,6 +150,7 @@
         <property id="9179217419466227172" name="sorting" index="1WfTLS" />
       </concept>
       <concept id="9179217419466226949" name="Ryce.structure.ForEach" flags="ng" index="1WfTMp">
+        <child id="2444771651319693422" name="poster" index="8dDaN" />
         <child id="9083067475131034268" name="image" index="3C6Qcy" />
         <child id="9083067475131034266" name="title" index="3C6Qc$" />
         <child id="9083067475131034267" name="description" index="3C6Qc_" />
@@ -287,6 +292,9 @@
           <node concept="1WeqMi" id="5M0zVYwVNi5" role="3C6Qcy">
             <property role="1WeqMc" value="Path" />
           </node>
+          <node concept="1WeqMi" id="27H$HODUNHX" role="8dDaN">
+            <property role="1WeqMc" value="PostedBy.ProfileName" />
+          </node>
         </node>
       </node>
       <node concept="1A1pxx" id="4iPGXVBORq_" role="1WfTK4">
@@ -328,7 +336,7 @@
             <property role="1WfTYk" value="true" />
           </node>
           <node concept="k7uZC" id="5M0zVYwUBD3" role="38mmGu">
-            <property role="k7uZD" value="Heart" />
+            <property role="k7uZD" value="Star" />
             <property role="38kVha" value="18" />
           </node>
         </node>
@@ -414,17 +422,58 @@
       <node concept="kaLHL" id="1kIIJWZWUq5" role="2AwRO8">
         <node concept="2zcmfY" id="1kIIJWZWUq6" role="kaLHM">
           <property role="TrG5h" value="HALL" />
-          <property role="2zcmfW" value="/Hal" />
-          <property role="2zcmfX" value="Mull" />
+          <property role="2zcmfW" value="/AddPhoto" />
+          <property role="2zcmfX" value="Add Image" />
+          <node concept="k7uZC" id="27H$HODNV7K" role="k7uZE">
+            <property role="k7uZD" value="Plus" />
+            <property role="38kVha" value="18" />
+          </node>
+        </node>
+        <node concept="2zcmfY" id="27H$HODNV7L" role="kaLHM">
+          <property role="TrG5h" value="PROFILE" />
+          <property role="2zcmfW" value="/Profile" />
+          <property role="2zcmfX" value="Profile" />
+          <node concept="k7uZC" id="27H$HODNV7M" role="k7uZE">
+            <property role="k7uZD" value="User" />
+            <property role="38kVha" value="18" />
+          </node>
         </node>
       </node>
       <node concept="kaLGk" id="1kIIJWZWUq7" role="2AwROn">
         <node concept="2zcmfY" id="1kIIJWZWUq8" role="kaLGl">
-          <property role="TrG5h" value="PIR" />
-          <property role="2zcmfW" value="/Tubb" />
-          <property role="2zcmfX" value="APPPP" />
+          <property role="TrG5h" value="LOGIN" />
+          <property role="2zcmfW" value="/Login" />
+          <property role="2zcmfX" value="Login" />
+          <node concept="k7uZC" id="27H$HODNV7N" role="k7uZE">
+            <property role="k7uZD" value="LogIn" />
+            <property role="38kVha" value="18" />
+          </node>
+        </node>
+        <node concept="2zcmfY" id="27H$HODNV7O" role="kaLGl">
+          <property role="TrG5h" value="REGISTER" />
+          <property role="2zcmfW" value="/Register" />
+          <property role="2zcmfX" value="Register" />
+          <node concept="k7uZC" id="27H$HODNV7P" role="k7uZE">
+            <property role="k7uZD" value="UserPlus" />
+            <property role="38kVha" value="18" />
+          </node>
         </node>
       </node>
+      <node concept="2za_Gf" id="27H$HODNB3z" role="2za_Gb">
+        <node concept="2zcmfY" id="27H$HODNB3$" role="2zcmfT">
+          <property role="TrG5h" value="IMAGES" />
+          <property role="2zcmfW" value="/" />
+          <property role="2zcmfX" value="Images" />
+          <node concept="k7uZC" id="27H$HODNV7J" role="k7uZE">
+            <property role="k7uZD" value="Image" />
+            <property role="38kVha" value="18" />
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="kfb4I" id="7wc9lieIjqd" role="9Maun">
+      <property role="TrG5h" value="foot" />
+      <property role="kfb4J" value="This is some footer text" />
     </node>
   </node>
 </model>

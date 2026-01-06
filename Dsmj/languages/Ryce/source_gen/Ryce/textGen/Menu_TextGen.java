@@ -454,7 +454,7 @@ public class Menu_TextGen extends TextGenDescriptorBase {
     tgs.append("import { Link, useLocation } from \"react-router-dom\";");
     tgs.newLine();
     tgs.append("import * as IconsFeather from 'feather-icons-react';");
-    tgs.append("import { FaPaintBrush } from \"react-icons/fa\";");
+    tgs.append("import * as FaIcons from \"react-icons/fa\";");
     tgs.newLine();
     tgs.append("import UserDisplay from \"./UserDisplay\";");
     tgs.newLine();

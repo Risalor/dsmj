@@ -474,7 +474,7 @@ public class Images_TextGen extends TextGenDescriptorBase {
       for (SNode api_end : ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.api$sddj), LINKS.endpoints$DTlt), LINKS.endpoints$AonT))) {
         if (SPropertyOperations.getString(api_end, PROPS.name$MnvL) == SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.click_actions$JWIK), LINKS.like$dPcp), LINKS.endpoint$6EIT), PROPS.endpoint$hAHU)) {
           tgs.append(SPropertyOperations.getString(api_end, PROPS.path_first$Ah$s));
-          tgs.append("${Photo.");
+          tgs.append("${photo.");
           tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.click_actions$JWIK), LINKS.like$dPcp), LINKS.endpoint$6EIT), PROPS.parameter$T0O9));
           tgs.append("}");
           tgs.append(SPropertyOperations.getString(api_end, PROPS.path_second$cpiZ));
@@ -513,6 +513,7 @@ public class Images_TextGen extends TextGenDescriptorBase {
       for (SNode api_end : ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.api$sddj), LINKS.endpoints$DTlt), LINKS.endpoints$AonT))) {
         if (SPropertyOperations.getString(api_end, PROPS.name$MnvL) == SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.click_actions$JWIK), LINKS.dislike$dPrq), LINKS.endpoint$7gKp), PROPS.endpoint$hAHU)) {
           tgs.append(SPropertyOperations.getString(api_end, PROPS.path_first$Ah$s));
+          tgs.append("photo.");
           tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.click_actions$JWIK), LINKS.dislike$dPrq), LINKS.endpoint$7gKp), PROPS.parameter$T0O9));
           tgs.append(SPropertyOperations.getString(api_end, PROPS.path_second$cpiZ));
         }
@@ -549,6 +550,21 @@ public class Images_TextGen extends TextGenDescriptorBase {
     tgs.indent();
     tgs.append("const photoPath = photo.");
     tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.load_action$KRVq), LINKS.for_each$wZ_U), LINKS.image$pYiT), PROPS.api_source$7BWq));
+    tgs.append(";");
+    tgs.newLine();
+    tgs.indent();
+    tgs.append("const photoPoster = photo.");
+    tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.load_action$KRVq), LINKS.for_each$wZ_U), LINKS.poster$5y1m), PROPS.api_source$7BWq));
+    tgs.append(";");
+    tgs.newLine();
+    tgs.indent();
+    tgs.append("const photoLikes = photo.");
+    tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.enable_display_components$58nr), LINKS.display_likes$U0rU), LINKS.content$utGr), PROPS.value$RDye));
+    tgs.append(";");
+    tgs.newLine();
+    tgs.indent();
+    tgs.append("const photoDislikes = photo.");
+    tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.enable_display_components$58nr), LINKS.displayy_dislikes$U0EV), LINKS.content$xZbq), PROPS.value$RDye));
     tgs.append(";");
     tgs.newLine();
     tgs.newLine();
@@ -684,7 +700,7 @@ public class Images_TextGen extends TextGenDescriptorBase {
       tgs.newLine();
       ctx.getBuffer().area().increaseIndent();
       tgs.indent();
-      tgs.append("<small>By: {photo.PostedBy?.ProfileName}</small>");
+      tgs.append("<small>By: {photoPoster}</small>");
       tgs.newLine();
       tgs.indent();
       tgs.append("<small>Date: {new Date(photoDatePosted).toLocaleDateString()}</small>");
@@ -808,7 +824,7 @@ public class Images_TextGen extends TextGenDescriptorBase {
         tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.enable_display_components$58nr), LINKS.display_likes$U0rU), LINKS.icon$nnTR), PROPS.iconName$he9p));
         tgs.append(" size={");
         tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.enable_display_components$58nr), LINKS.display_likes$U0rU), LINKS.icon$nnTR), PROPS.size$tFxB));
-        tgs.append("}/> {photo.Likes || 0}</span>");
+        tgs.append("}/> {photoLikes || 0}</span>");
         tgs.newLine();
       }
       if (SPropertyOperations.getBoolean(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.enable_display_components$58nr), LINKS.displayy_dislikes$U0EV), LINKS.enable$xYWp), PROPS.value$RdAp)) {
@@ -817,7 +833,7 @@ public class Images_TextGen extends TextGenDescriptorBase {
         tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.enable_display_components$58nr), LINKS.displayy_dislikes$U0EV), LINKS.icon$nH2f), PROPS.iconName$he9p));
         tgs.append(" size={");
         tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.enable_display_components$58nr), LINKS.displayy_dislikes$U0EV), LINKS.icon$nH2f), PROPS.size$tFxB));
-        tgs.append("}/> {photo.Dislikes || 0}</span>");
+        tgs.append("}/> {photoDislikes || 0}</span>");
         tgs.newLine();
       }
       ctx.getBuffer().area().decreaseIndent();
@@ -857,7 +873,7 @@ public class Images_TextGen extends TextGenDescriptorBase {
       tgs.newLine();
       ctx.getBuffer().area().increaseIndent();
       tgs.indent();
-      tgs.append("<span className=\"photo-author\">By: {photo.PostedBy?.ProfileName}</span>");
+      tgs.append("<span className=\"photo-author\">By: {photoPoster}</span>");
       tgs.newLine();
       tgs.indent();
       tgs.append("<span className=\"photo-date\">{new Date(photoDatePosted).toLocaleDateString()}</span>");
@@ -924,7 +940,7 @@ public class Images_TextGen extends TextGenDescriptorBase {
       tgs.append("<h4 className=\"masonry-title\">{photoTitle}</h4>");
       tgs.newLine();
       tgs.indent();
-      tgs.append("<p className=\"masonry-author\">by {photo.PostedBy?.ProfileName}</p>");
+      tgs.append("<p className=\"masonry-author\">by {photoPoster}</p>");
       tgs.newLine();
       ctx.getBuffer().area().decreaseIndent();
       tgs.indent();
@@ -944,7 +960,7 @@ public class Images_TextGen extends TextGenDescriptorBase {
         tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.enable_display_components$58nr), LINKS.display_likes$U0rU), LINKS.icon$nnTR), PROPS.iconName$he9p));
         tgs.append(" size={");
         tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.enable_display_components$58nr), LINKS.display_likes$U0rU), LINKS.icon$nnTR), PROPS.size$tFxB));
-        tgs.append("} /> {photo.Likes || 0}</span>");
+        tgs.append("} /> {photoLikes || 0}</span>");
         tgs.newLine();
       }
       if (SPropertyOperations.getBoolean(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.enable_display_components$58nr), LINKS.displayy_dislikes$U0EV), LINKS.enable$xYWp), PROPS.value$RdAp)) {
@@ -953,7 +969,7 @@ public class Images_TextGen extends TextGenDescriptorBase {
         tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.enable_display_components$58nr), LINKS.displayy_dislikes$U0EV), LINKS.icon$nH2f), PROPS.iconName$he9p));
         tgs.append(" size={");
         tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.enable_display_components$58nr), LINKS.displayy_dislikes$U0EV), LINKS.icon$nH2f), PROPS.size$tFxB));
-        tgs.append("} > {photo.Dislikes || 0}</span>");
+        tgs.append("} > {photoDislikes || 0}</span>");
         tgs.newLine();
       }
       ctx.getBuffer().area().decreaseIndent();
@@ -1116,15 +1132,16 @@ public class Images_TextGen extends TextGenDescriptorBase {
     /*package*/ static final SContainmentLink description$pY3S = MetaAdapterFactory.getContainmentLink(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x7f63219c035cbd05L, 0x7e0d89be9616ea9bL, "description");
     /*package*/ static final SContainmentLink date$pX_Q = MetaAdapterFactory.getContainmentLink(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x7f63219c035cbd05L, 0x7e0d89be9616ea99L, "date");
     /*package*/ static final SContainmentLink image$pYiT = MetaAdapterFactory.getContainmentLink(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x7f63219c035cbd05L, 0x7e0d89be9616ea9cL, "image");
+    /*package*/ static final SContainmentLink poster$5y1m = MetaAdapterFactory.getContainmentLink(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x7f63219c035cbd05L, 0x21ed92dd29db006eL, "poster");
     /*package*/ static final SContainmentLink enable_display_components$58nr = MetaAdapterFactory.getContainmentLink(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x7f63219c035cbd8dL, 0x7f5e51ed8fac258eL, "enable_display_components");
-    /*package*/ static final SContainmentLink position$X46W = MetaAdapterFactory.getContainmentLink(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x7f5e51ed8fac2532L, 0x7f5e51ed8fac256dL, "position");
     /*package*/ static final SContainmentLink display_likes$U0rU = MetaAdapterFactory.getContainmentLink(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x7f5e51ed8fac2532L, 0x7f5e51ed8fac2534L, "display_likes");
-    /*package*/ static final SContainmentLink icon$nnTR = MetaAdapterFactory.getContainmentLink(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x503665969856bc6aL, 0x50366596986f0ea0L, "icon");
     /*package*/ static final SContainmentLink content$utGr = MetaAdapterFactory.getContainmentLink(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x503665969856bc6aL, 0x503665969856bc6dL, "content");
-    /*package*/ static final SContainmentLink enable$uttq = MetaAdapterFactory.getContainmentLink(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x503665969856bc6aL, 0x503665969856bc6cL, "enable");
     /*package*/ static final SContainmentLink displayy_dislikes$U0EV = MetaAdapterFactory.getContainmentLink(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x7f5e51ed8fac2532L, 0x7f5e51ed8fac2535L, "displayy_dislikes");
-    /*package*/ static final SContainmentLink icon$nH2f = MetaAdapterFactory.getContainmentLink(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x503665969856bcc6L, 0x50366596986f0eb2L, "icon");
     /*package*/ static final SContainmentLink content$xZbq = MetaAdapterFactory.getContainmentLink(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x503665969856bcc6L, 0x503665969856bcc8L, "content");
+    /*package*/ static final SContainmentLink position$X46W = MetaAdapterFactory.getContainmentLink(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x7f5e51ed8fac2532L, 0x7f5e51ed8fac256dL, "position");
+    /*package*/ static final SContainmentLink icon$nnTR = MetaAdapterFactory.getContainmentLink(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x503665969856bc6aL, 0x50366596986f0ea0L, "icon");
+    /*package*/ static final SContainmentLink enable$uttq = MetaAdapterFactory.getContainmentLink(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x503665969856bc6aL, 0x503665969856bc6cL, "enable");
+    /*package*/ static final SContainmentLink icon$nH2f = MetaAdapterFactory.getContainmentLink(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x503665969856bcc6L, 0x50366596986f0eb2L, "icon");
     /*package*/ static final SContainmentLink enable$xYWp = MetaAdapterFactory.getContainmentLink(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x503665969856bcc6L, 0x503665969856bcc7L, "enable");
     /*package*/ static final SContainmentLink position$tGxY = MetaAdapterFactory.getContainmentLink(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x7f63219c035cbedcL, 0x39c93bd42dd9788eL, "position");
   }
@@ -1146,8 +1163,8 @@ public class Images_TextGen extends TextGenDescriptorBase {
     /*package*/ static final SProperty parameter$T0O9 = MetaAdapterFactory.getProperty(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x39c93bd42df15e62L, 0x7e0d89be961bd221L, "parameter");
     /*package*/ static final SProperty size$tFxB = MetaAdapterFactory.getProperty(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x39c93bd42dd4d43cL, 0x503665969865d1dcL, "size");
     /*package*/ static final SProperty iconName$he9p = MetaAdapterFactory.getProperty(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x39c93bd42dd4d43cL, 0x39c93bd42dd4d43dL, "iconName");
+    /*package*/ static final SProperty value$RDye = MetaAdapterFactory.getProperty(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x7f63219c035cbe27L, 0x7f63219c035cbe28L, "value");
     /*package*/ static final SProperty position$S7Zm = MetaAdapterFactory.getProperty(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x7f63219c035cbe49L, 0x7f63219c035cbe52L, "position");
     /*package*/ static final SProperty aligment$KWkS = MetaAdapterFactory.getProperty(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x7f63219c035cbe49L, 0x7f5e51ed8fb0ca89L, "aligment");
-    /*package*/ static final SProperty value$RDye = MetaAdapterFactory.getProperty(0x5566a3bc3a3d48e5L, 0x9986b96a01ec7badL, 0x7f63219c035cbe27L, 0x7f63219c035cbe28L, "value");
   }
 }

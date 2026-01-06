@@ -29,7 +29,7 @@ public class TitleMenuOption_TextGen extends TextGenDescriptorBase {
         ctx.getBuffer().area().increaseIndent();
         tgs.indent();
         if ((SLinkOperations.getTarget(option, LINKS.icon$KTkR) != null)) {
-          tgs.append("<");
+          tgs.append("<FaIcons.");
           tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(option, LINKS.icon$KTkR), PROPS.iconName$he9p));
           tgs.append(" size={");
           tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(option, LINKS.icon$KTkR), PROPS.size$tFxB));

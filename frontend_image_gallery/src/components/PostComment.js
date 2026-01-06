@@ -14,7 +14,7 @@ function PostComment({ photoId, onCommentPosted }) {
         setError(null);
 
         try {
-            const res = await fetch(`${config.base_api}${config.post_comment_api_endpoint(photoId)}`, {
+            const res = await fetch(`http://localhost:3001/images/${photoId}/comments`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 credentials: 'include',
