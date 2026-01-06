@@ -152,99 +152,463 @@
   </xml>
 
   <xml xmlns="https://developers.google.com/blockly/xml" id="ex1" style="display: none">
-    <block type="controls_repeat_ext" x="20" y="20">
-      <value name="TIMES">
-        <block type="math_number">
-          <field name="NUM">3</field>
-        </block>
-      </value>
-      <statement name="DO">
-        <block type="moveForward"></block>
-      </statement>
-      <next>
-        <block type="turnRight">
-          <next>
-            <block type="controls_repeat_ext">
-              <value name="TIMES">
-                <block type="math_number">
-                  <field name="NUM">2</field>
-                </block>
-              </value>
-              <statement name="DO">
-                <block type="moveForward"></block>
-              </statement>
-              <next>
-                <block type="controls_repeat_ext">
-                  <value name="TIMES">
-                    <block type="math_number">
-                      <field name="NUM">3</field>
-                    </block>
-                  </value>
-                  <statement name="DO">
-                    <block type="attack"></block>
-                  </statement>
-                  <next>
-                    <block type="controls_repeat_ext">
-                      <value name="TIMES">
-                        <block type="math_number">
-                          <field name="NUM">3</field>
-                        </block>
-                      </value>
-                      <statement name="DO">
-                        <block type="moveForward"></block>
-                      </statement>
-                      <next>
-                        <block type="turnRight">
-                          <next>
-                            <block type="controls_repeat_ext">
-                              <value name="TIMES">
-                                <block type="math_number">
-                                  <field name="NUM">3</field>
-                                </block>
-                              </value>
-                              <statement name="DO">
-                                <block type="moveForward"></block>
-                              </statement>
-                              <next>
-                                <block type="controls_repeat_ext">
-                                  <value name="TIMES">
-                                    <block type="math_number">
-                                      <field name="NUM">2</field>
-                                    </block>
-                                  </value>
-                                  <statement name="DO">
-                                    <block type="attack"></block>
-                                  </statement>
-                                  <next>
-
-                                  </next>
-                                </block>
-                              </next>
-                            </block>
-                          </next>
-                        </block>
-                      </next>
-                    </block>
-                  </next>
-                </block>
-              </next>
-            </block>
-          </next>
-        </block>
-      </next>
-    </block>
+    <block type="controls_repeat_ext" x="90" y="67">
+    <value name="TIMES">
+      <block type="math_number">
+        <field name="NUM">3</field>
+      </block>
+    </value>
+    <statement name="DO">
+      <block type="moveForward"></block>
+    </statement>
+    <next>
+      <block type="turnRight">
+        <next>
+          <block type="controls_repeat_ext">
+            <value name="TIMES">
+              <block type="math_number">
+                <field name="NUM">2</field>
+              </block>
+            </value>
+            <statement name="DO">
+              <block type="moveForward"></block>
+            </statement>
+            <next>
+              <block type="controls_repeat_ext">
+                <value name="TIMES">
+                  <block type="math_number">
+                    <field name="NUM">3</field>
+                  </block>
+                </value>
+                <statement name="DO">
+                  <block type="attack"></block>
+                </statement>
+                <next>
+                  <block type="controls_repeat_ext">
+                    <value name="TIMES">
+                      <block type="math_number">
+                        <field name="NUM">3</field>
+                      </block>
+                    </value>
+                    <statement name="DO">
+                      <block type="moveForward"></block>
+                    </statement>
+                    <next>
+                      <block type="turnRight">
+                        <next>
+                          <block type="controls_repeat_ext">
+                            <value name="TIMES">
+                              <block type="math_number">
+                                <field name="NUM">3</field>
+                              </block>
+                            </value>
+                            <statement name="DO">
+                              <block type="moveForward"></block>
+                            </statement>
+                            <next>
+                              <block type="attack">
+                                <next>
+                                  <block type="attack">
+                                    <next>
+                                      <block type="controls_whileUntil">
+                                        <field name="MODE">WHILE</field>
+                                        <value name="BOOL">
+                                          <block type="logic_compare">
+                                            <field name="OP">NEQ</field>
+                                            <value name="A">
+                                              <block type="get_y"></block>
+                                            </value>
+                                            <value name="B">
+                                              <block type="math_number">
+                                                <field name="NUM">3</field>
+                                              </block>
+                                            </value>
+                                          </block>
+                                        </value>
+                                        <statement name="DO">
+                                          <block type="moveBackward"></block>
+                                        </statement>
+                                        <next>
+                                          <block type="turnRight">
+                                            <next>
+                                              <block type="controls_whileUntil">
+                                                <field name="MODE">WHILE</field>
+                                                <value name="BOOL">
+                                                  <block type="logic_compare">
+                                                    <field name="OP">NEQ</field>
+                                                    <value name="A">
+                                                      <block type="get_x"></block>
+                                                    </value>
+                                                    <value name="B">
+                                                      <block type="math_number">
+                                                        <field name="NUM">4</field>
+                                                      </block>
+                                                    </value>
+                                                  </block>
+                                                </value>
+                                                <statement name="DO">
+                                                  <block type="moveForward"></block>
+                                                </statement>
+                                                <next>
+                                                  <block type="attack">
+                                                    <next>
+                                                      <block type="attack">
+                                                        <next>
+                                                          <block type="turnLeft">
+                                                            <next>
+                                                              <block type="controls_repeat_ext">
+                                                                <value name="TIMES">
+                                                                  <block type="math_number">
+                                                                    <field name="NUM">7</field>
+                                                                  </block>
+                                                                </value>
+                                                                <statement name="DO">
+                                                                  <block type="moveForward"></block>
+                                                                </statement>
+                                                                <next>
+                                                                  <block type="turnLeft">
+                                                                    <next>
+                                                                      <block type="attack"></block>
+                                                                    </next>
+                                                                  </block>
+                                                                </next>
+                                                              </block>
+                                                            </next>
+                                                          </block>
+                                                        </next>
+                                                      </block>
+                                                    </next>
+                                                  </block>
+                                                </next>
+                                              </block>
+                                            </next>
+                                          </block>
+                                        </next>
+                                      </block>
+                                    </next>
+                                  </block>
+                                </next>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </next>
+  </block>
   </xml>
 
   <xml xmlns="https://developers.google.com/blockly/xml" id="ex2" style="display: none">
-    <block type="moveForward" x="20" y="20"></block>
-    <block type="moveForward" x="20" y="80"></block>
-    <block type="turnRight" x="20" y="140"></block>
+    <block type="controls_whileUntil" x="100" y="53">
+    <field name="MODE">UNTIL</field>
+    <value name="BOOL">
+      <block type="logic_compare">
+        <field name="OP">EQ</field>
+        <value name="A">
+          <block type="get_y"></block>
+        </value>
+        <value name="B">
+          <block type="math_number">
+            <field name="NUM">10</field>
+          </block>
+        </value>
+      </block>
+    </value>
+    <statement name="DO">
+      <block type="moveBackward"></block>
+    </statement>
+    <next>
+      <block type="turnLeft">
+        <next>
+          <block type="moveForward">
+            <next>
+              <block type="attack">
+                <next>
+                  <block type="controls_whileUntil">
+                    <field name="MODE">UNTIL</field>
+                    <value name="BOOL">
+                      <block type="logic_compare">
+                        <field name="OP">EQ</field>
+                        <value name="A">
+                          <block type="get_x"></block>
+                        </value>
+                        <value name="B">
+                          <block type="math_number">
+                            <field name="NUM">12</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <statement name="DO">
+                      <block type="moveBackward"></block>
+                    </statement>
+                    <next>
+                      <block type="turnRight">
+                        <next>
+                          <block type="moveForward">
+                            <next>
+                              <block type="attack">
+                                <next>
+                                  <block type="attack">
+                                    <next>
+                                      <block type="controls_whileUntil">
+                                        <field name="MODE">UNTIL</field>
+                                        <value name="BOOL">
+                                          <block type="logic_compare">
+                                            <field name="OP">EQ</field>
+                                            <value name="A">
+                                              <block type="get_y"></block>
+                                            </value>
+                                            <value name="B">
+                                              <block type="math_number">
+                                                <field name="NUM">4</field>
+                                              </block>
+                                            </value>
+                                          </block>
+                                        </value>
+                                        <statement name="DO">
+                                          <block type="moveForward"></block>
+                                        </statement>
+                                        <next>
+                                          <block type="turnLeft">
+                                            <next>
+                                              <block type="moveForward">
+                                                <next>
+                                                  <block type="controls_repeat_ext">
+                                                    <value name="TIMES">
+                                                      <block type="math_number">
+                                                        <field name="NUM">3</field>
+                                                      </block>
+                                                    </value>
+                                                    <statement name="DO">
+                                                      <block type="attack"></block>
+                                                    </statement>
+                                                    <next>
+                                                      <block type="controls_whileUntil">
+                                                        <field name="MODE">UNTIL</field>
+                                                        <value name="BOOL">
+                                                          <block type="logic_compare">
+                                                            <field name="OP">EQ</field>
+                                                            <value name="A">
+                                                              <block type="get_x"></block>
+                                                            </value>
+                                                            <value name="B">
+                                                              <block type="math_number">
+                                                                <field name="NUM">3</field>
+                                                              </block>
+                                                            </value>
+                                                          </block>
+                                                        </value>
+                                                        <statement name="DO">
+                                                          <block type="moveForward"></block>
+                                                        </statement>
+                                                        <next>
+                                                          <block type="turnRight">
+                                                            <next>
+                                                              <block type="attack">
+                                                                <next>
+                                                                  <block type="attack"></block>
+                                                                </next>
+                                                              </block>
+                                                            </next>
+                                                          </block>
+                                                        </next>
+                                                      </block>
+                                                    </next>
+                                                  </block>
+                                                </next>
+                                              </block>
+                                            </next>
+                                          </block>
+                                        </next>
+                                      </block>
+                                    </next>
+                                  </block>
+                                </next>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </next>
+  </block>
   </xml>
 
   <xml xmlns="https://developers.google.com/blockly/xml" id="ex3" style="display: none">
-    <block type="moveForward" x="20" y="20"></block>
-    <block type="moveForward" x="20" y="80"></block>
-    <block type="turnRight" x="20" y="140"></block>
+    <block type="turnRight" x="144" y="63">
+    <next>
+      <block type="controls_repeat_ext">
+        <value name="TIMES">
+          <block type="math_number">
+            <field name="NUM">5</field>
+          </block>
+        </value>
+        <statement name="DO">
+          <block type="moveForward"></block>
+        </statement>
+        <next>
+          <block type="turnRight">
+            <next>
+              <block type="controls_repeat_ext">
+                <value name="TIMES">
+                  <block type="math_number">
+                    <field name="NUM">2</field>
+                  </block>
+                </value>
+                <statement name="DO">
+                  <block type="attack"></block>
+                </statement>
+                <next>
+                  <block type="turnRight">
+                    <next>
+                      <block type="controls_whileUntil">
+                        <field name="MODE">WHILE</field>
+                        <value name="BOOL">
+                          <block type="logic_compare">
+                            <field name="OP">GT</field>
+                            <value name="A">
+                              <block type="get_x"></block>
+                            </value>
+                            <value name="B">
+                              <block type="math_number">
+                                <field name="NUM">3</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <statement name="DO">
+                          <block type="moveForward"></block>
+                        </statement>
+                        <next>
+                          <block type="turnRight">
+                            <next>
+                              <block type="controls_repeat_ext">
+                                <value name="TIMES">
+                                  <block type="math_number">
+                                    <field name="NUM">3</field>
+                                  </block>
+                                </value>
+                                <statement name="DO">
+                                  <block type="moveForward"></block>
+                                </statement>
+                                <next>
+                                  <block type="controls_repeat_ext">
+                                    <value name="TIMES">
+                                      <block type="math_number">
+                                        <field name="NUM">2</field>
+                                      </block>
+                                    </value>
+                                    <statement name="DO">
+                                      <block type="attack"></block>
+                                    </statement>
+                                    <next>
+                                      <block type="turnRight">
+                                        <next>
+                                          <block type="controls_repeat_ext">
+                                            <value name="TIMES">
+                                              <block type="math_number">
+                                                <field name="NUM">9</field>
+                                              </block>
+                                            </value>
+                                            <statement name="DO">
+                                              <block type="controls_if">
+                                                <mutation else="1"></mutation>
+                                                <value name="IF0">
+                                                  <block type="logic_compare">
+                                                    <field name="OP">EQ</field>
+                                                    <value name="A">
+                                                      <block type="get_x"></block>
+                                                    </value>
+                                                    <value name="B">
+                                                      <block type="math_number">
+                                                        <field name="NUM">9</field>
+                                                      </block>
+                                                    </value>
+                                                  </block>
+                                                </value>
+                                                <statement name="DO0">
+                                                  <block type="attack"></block>
+                                                </statement>
+                                                <statement name="ELSE">
+                                                  <block type="moveForward"></block>
+                                                </statement>
+                                              </block>
+                                            </statement>
+                                            <next>
+                                              <block type="moveForward">
+                                                <next>
+                                                  <block type="turnRight">
+                                                    <next>
+                                                      <block type="controls_repeat_ext">
+                                                        <value name="TIMES">
+                                                          <block type="math_number">
+                                                            <field name="NUM">6</field>
+                                                          </block>
+                                                        </value>
+                                                        <statement name="DO">
+                                                          <block type="moveForward"></block>
+                                                        </statement>
+                                                        <next>
+                                                          <block type="turnRight">
+                                                            <next>
+                                                              <block type="controls_repeat_ext">
+                                                                <value name="TIMES">
+                                                                  <block type="math_number">
+                                                                    <field name="NUM">4</field>
+                                                                  </block>
+                                                                </value>
+                                                                <statement name="DO">
+                                                                  <block type="moveForward"></block>
+                                                                </statement>
+                                                                <next>
+                                                                  <block type="attack"></block>
+                                                                </next>
+                                                              </block>
+                                                            </next>
+                                                          </block>
+                                                        </next>
+                                                      </block>
+                                                    </next>
+                                                  </block>
+                                                </next>
+                                              </block>
+                                            </next>
+                                          </block>
+                                        </next>
+                                      </block>
+                                    </next>
+                                  </block>
+                                </next>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </next>
+  </block>
   </xml>
 
   <script>
@@ -257,7 +621,7 @@
       media: './node_modules/blockly/media/'
     });
 
-    Blockly.Xml.domToWorkspace(document.getElementById('ex1'), Workspace);
+    Blockly.Xml.domToWorkspace(document.getElementById('ex2'), Workspace);
   </script>
 </body>
 
